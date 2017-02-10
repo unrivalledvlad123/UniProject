@@ -1,63 +1,51 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Net;
-//using System.Net.Http;
-//using System.Text;
-//using System.Threading.Tasks;
-//using System.Web.Http;
-//using System.Web.Mvc;
-//using Newtonsoft.Json;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+using System.Web.Http;
+using System.Web.Mvc;
+using DB3Server.BusinessLogic;
+using Newtonsoft.Json;
 
-//namespace DB3Server.Controllers
-//{
-//    public class ExampleController : Controller
-//    {
-//        // GET api/channels 
-//        [BasicAuthorizationFilter]
-//        public List<RSChannel> Get()
-//        {
-//            return BLChannel.ListChannels();
-//        }
+namespace DB3Server.Controllers
+{
+    public class ExampleController : Controller
+    {
+        public class OPCController : ApiController
+        {
+           [System.Web.Http.HttpGet]
+            [System.Web.Http.Route("api/test")]
+            public string GetAllServers()
+           {
 
-//        // GET api/channels/id
-//        [BasicAuthorizationFilter]
-//        public RSChannel Get(int id)
-//        {
-//            return BLChannel.Get(id);
-//        }
+               string test = BLTest.Test();
+                return test;
+            }
 
-//        // POST api/channels 
-//        [BasicAuthorizationFilter(Roles = "Administrator")]
-//        public int Post([FromBody]RSChannel channel)
-//        {
-//            return BLChannel.Insert(channel.Name, channel.PrimeConnection, channel.SecondConnection, channel.ChannelType);
-//        }
+            //[BasicAuthorizationFilter(Roles = "Administrator")]
+            //[System.Web.Http.HttpPut]
+            //[System.Web.Http.Route("nodes")]
+            //public List<OpcNode> GetAllnodes([FromBody]dynamic data /* OpcServer server, string node = ""*/)
+            //{
+            //    OpcConnection opc = new OpcConnection();
+            //    OpcServer server = JsonConvert.DeserializeObject<OpcServer>(data.server.ToString());
+            //    string nodeId = data.nodeId.Value as string; // JsonConvert.DeserializeObject<string>(data.nodeId.ToString());
 
-//        // PUT api/channels/{id}
-//        [BasicAuthorizationFilter(Roles = "Administrator")]
-//        public int Put(int id, [FromBody]RSChannel channel)
-//        {
-//            return BLChannel.Update(id, channel.Name, channel.PrimeConnection, channel.SecondConnection, channel.ChannelType);
-//        }
+            //    var nodes = opc.BrowseNodes(server.UriString, nodeId);
+            //    return nodes;
+            //}
 
-//        // DELETE api/channels/id
-//        [BasicAuthorizationFilter(Roles = "Administrator")]
-//        public HttpResponseMessage Delete(int id)
-//        {
-//            BLChannel.Delete(id);
-
-//            return new HttpResponseMessage(HttpStatusCode.OK);
-//        }
-
-//        // POST api/channels/test 
-//        [System.Web.Mvc.Route("api/channels/test")]
-//        [BasicAuthorizationFilter(Roles = "Administrator")]
-//        public HttpResponseMessage PostChannelTest([FromBody]RSConnection connection)
-//        {
-//            BLChannel.TestConnections(connection);
-
-//            return new HttpResponseMessage(HttpStatusCode.OK);
-//        }
-//    }
-//}
+            //[BasicAuthorizationFilter(Roles = "Administrator")]
+            //[System.Web.Http.HttpGet]
+            //[System.Web.Http.Route("resubscribe")]
+            //public bool Resubscribe()
+            //{
+            //    BLOPC.ManualResuscribeAll();
+            //    return true;
+            //}
+        }
+    }
+}

@@ -1,6 +1,5 @@
 ﻿using Owin;
 using System.Web.Http;
-using System.Web;
 
 namespace DB3Server
 {
@@ -38,29 +37,29 @@ namespace DB3Server
             //config.Formatters.Add(new BinaryMediaTypeFormatter());
 
             // Filters
-          //  config.Filters.Add(new ExceptionFilter());
+            //  config.Filters.Add(new ExceptionFilter());
             //config.Filters.Add(new BasicAuthorizationFilter());
 
             // Handlers
-          //  config.MessageHandlers.Add(new BasicAuthenticationHandler());
+            //  config.MessageHandlers.Add(new BasicAuthenticationHandler());
 
             // Json Serializer to ignore the [Serializable] attribute 'k__BackingField'
             //var serializerSettings = config.Formatters.JsonFormatter.SerializerSettings;
             //var contractResolver =  (DefaultContractResolver)serializerSettings.ContractResolver;
             //contractResolver.IgnoreSerializableAttribute = true;
 
-            // Routes
-            //config.Routes.MapHttpRoute(
-            //    name: "DefaultApi",
-            //    routeTemplate: "api/{controller}/{id}",
-            //    defaults: new { id = RouteParameter.Optional }
-            //);
+           // Routes
+            config.Routes.MapHttpRoute(
+                "DefaultApi",
+                "api/{controller}/{id}",
+                new { id = RouteParameter.Optional }
+            );
 
-            //config.Routes.MapHttpRoute(
-            //    name: "ActionNameApi",
-            //    routeTemplate: "api/{controller}/{action}/{id}",
-            //    defaults: new { id = RouteParameter.Optional }
-            //);
+            config.Routes.MapHttpRoute(
+                name: "ActionNameApi",
+                routeTemplate: "api/{controller}/{action}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
 
             appBuilder.UseWebApi(config);
         }

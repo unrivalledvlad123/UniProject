@@ -109,6 +109,10 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceAccess\SampleSA.cs" />
+    <Compile Include="ServiceAccess\SATest.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\SampleWinForm.resx">
       <DependentUpon>SampleWinForm.cs</DependentUpon>
     </EmbeddedResource>
