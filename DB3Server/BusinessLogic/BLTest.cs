@@ -10,7 +10,7 @@ namespace DB3Server.BusinessLogic
     {
         public static string Test()
         {
-            return "success";
+            return "ytththt";
         }
     }
 }
