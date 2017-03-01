@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Common
 {
-    public class Class1
+     public class Constants
     {
+        public const string Projectname = "DB3 Sklad";
+
     }
 }

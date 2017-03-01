@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Common.Fakes</name>
+    </assembly>
+    <members>
+        <member name="T:Common.Fakes.ShimConstants">
+            <summary>Shim type of Common.Constants</summary>
+        </member>
+        <member name="M:Common.Fakes.ShimConstants.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:Common.Fakes.ShimConstants.#ctor(Common.Constants)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="T:Common.Fakes.ShimConstants.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="M:Common.Fakes.ShimConstants.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:Common.Fakes.ShimConstants.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:Common.Fakes.ShimConstants.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:Common.Fakes.ShimConstants.Constructor">
+            <summary>Sets the shim of Constants.Constants()</summary>
+        </member>
+        <member name="T:Common.Fakes.ShimEnums">
+            <summary>Shim type of Common.Enums</summary>
+        </member>
+        <member name="M:Common.Fakes.ShimEnums.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:Common.Fakes.ShimEnums.#ctor(Common.Enums)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="T:Common.Fakes.ShimEnums.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="M:Common.Fakes.ShimEnums.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:Common.Fakes.ShimEnums.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:Common.Fakes.ShimEnums.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:Common.Fakes.ShimEnums.Constructor">
+            <summary>Sets the shim of Enums.Enums()</summary>
+        </member>
+        <member name="T:Common.Fakes.StubConstants">
+            <summary>Stub type of Common.Constants</summary>
+        </member>
+        <member name="M:Common.Fakes.StubConstants.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="P:Common.Fakes.StubConstants.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="M:Common.Fakes.StubConstants.InitializeStub">
+            <summary>Initializes a new instance of type StubConstants</summary>
+        </member>
+        <member name="P:Common.Fakes.StubConstants.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:Common.Fakes.StubConstants.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:Common.Fakes.StubEnums">
+            <summary>Stub type of Common.Enums</summary>
+        </member>
+        <member name="M:Common.Fakes.StubEnums.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="P:Common.Fakes.StubEnums.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="M:Common.Fakes.StubEnums.InitializeStub">
+            <summary>Initializes a new instance of type StubEnums</summary>
+        </member>
+        <member name="P:Common.Fakes.StubEnums.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:Common.Fakes.StubEnums.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+    </members>
+</doc>

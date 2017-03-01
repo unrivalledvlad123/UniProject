@@ -1,0 +1,2 @@
+D:\Projects\ДБ3 Склад\DB3Server\Fakes\Common.fakes : warning : Cannot generate shim for Common.Enums+SaleType: type is an enum.
+D:\Projects\ДБ3 Склад\DB3Server\Fakes\Common.fakes : warning : Cannot generate shim for Common.Enums+UserRoles: type is an enum.

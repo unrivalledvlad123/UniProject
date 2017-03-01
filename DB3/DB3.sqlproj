@@ -63,12 +63,15 @@
     <Folder Include="dbo\Tables\" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="dbo\Tables\Company.sql" />
-    <Build Include="dbo\Tables\Goods.sql" />
     <Build Include="dbo\Tables\MOL.sql" />
-    <Build Include="dbo\Tables\PurchaseMapping.sql" />
-    <Build Include="dbo\Tables\Salesmapping.sql" />
-    <Build Include="dbo\Tables\Purchases.sql" />
     <Build Include="dbo\Tables\Sales.sql" />
+    <Build Include="dbo\Tables\Users.sql" />
+    <Build Include="dbo\Tables\SoldItem.sql" />
+    <Build Include="dbo\Tables\PurchasedItem.sql" />
+    <Build Include="dbo\Tables\Purchase.sql" />
+    <Build Include="dbo\Tables\Partner.sql" />
+    <Build Include="dbo\Tables\OwnerUsers.sql" />
+    <Build Include="dbo\Tables\Owner.sql" />
+    <Build Include="dbo\Tables\Item.sql" />
   </ItemGroup>
 </Project>
