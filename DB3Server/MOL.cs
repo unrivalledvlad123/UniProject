@@ -17,8 +17,8 @@ namespace DB3Server
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public MOL()
         {
-            this.Owners = new HashSet<Owner>();
             this.Partners = new HashSet<Partner>();
+            this.Owners = new HashSet<Owner>();
         }
     
         public string FirstName { get; set; }
@@ -29,8 +29,8 @@ namespace DB3Server
         public System.Guid MollId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Owner> Owners { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Partner> Partners { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Owner> Owners { get; set; }
     }
 }

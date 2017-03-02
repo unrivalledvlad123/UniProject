@@ -7,24 +7,25 @@
       <Diagram DiagramId="8064c1562d344e79ba3cc14c8eecb142" Name="Diagram1">
         <EntityTypeShape EntityType="Model.Item" Width="1.5" PointX="12.375" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.MOL" Width="1.5" PointX="2.875" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Owner" Width="1.5" PointX="5.25" PointY="6.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.Partner" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.Purchase" Width="1.5" PointX="8.125" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Sale" Width="1.5" PointX="7.875" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.User" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Sale" Width="1.5" PointX="8.125" PointY="7.625" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.PurchasedItem" Width="1.5" PointX="10.5" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.SoldItem" Width="1.5" PointX="10.5" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.SoldItem" Width="1.5" PointX="10.25" PointY="7.5" IsExpanded="true" />
         <AssociationConnector Association="Model.FK_PurchasedItem_Item" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_SoldItem_Item" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_Owner_MOL" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_Partner_MOL" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_Purchase_Owner" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_Sales_Owner" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_Purchase_Partner" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_Sales_Partner" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_PurchasedItem_Purchase" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_SoldItem_Sales" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.OwnerUsers" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Model.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Model.Owner" Width="1.5" PointX="5.375" PointY="7.75" />
+        <EntityTypeShape EntityType="Model.User" Width="1.5" PointX="2.375" PointY="7.875" />
+        <AssociationConnector Association="Model.FK_Owner_MOL1" />
+        <AssociationConnector Association="Model.FK_Purchase_Owner" />
+        <AssociationConnector Association="Model.FK_Sales_Owner" />
+        <AssociationConnector Association="Model.FK_Users_Owner" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
