@@ -12,25 +12,20 @@ namespace DB3Server
     using System;
     using System.Collections.Generic;
     
-    public partial class Purchase
+    public partial class User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Purchase()
+        public User()
         {
-            this.PurchasedItems = new HashSet<PurchasedItem>();
+            this.Owners = new HashSet<Owner>();
         }
     
-        public System.DateTime Date { get; set; }
-        public int InvoiceId { get; set; }
-        public int WareHouseReceipt { get; set; }
-        public int PaymentId { get; set; }
-        public System.Guid PurchaseId { get; set; }
-        public System.Guid SellerId { get; set; }
-        public System.Guid BuyerId { get; set; }
+        public int Role { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public System.Guid UserId { get; set; }
     
-        public virtual Owner Owner { get; set; }
-        public virtual Partner Partner { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PurchasedItem> PurchasedItems { get; set; }
+        public virtual ICollection<Owner> Owners { get; set; }
     }
 }

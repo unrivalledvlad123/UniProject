@@ -33,21 +33,7 @@ namespace DB3Server
             //  http://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2
             config.MapHttpAttributeRoutes();
 
-            // Formatters
-            //config.Formatters.Add(new BinaryMediaTypeFormatter());
-
-            // Filters
-            //  config.Filters.Add(new ExceptionFilter());
-            //config.Filters.Add(new BasicAuthorizationFilter());
-
-            // Handlers
-            //  config.MessageHandlers.Add(new BasicAuthenticationHandler());
-
-            // Json Serializer to ignore the [Serializable] attribute 'k__BackingField'
-            //var serializerSettings = config.Formatters.JsonFormatter.SerializerSettings;
-            //var contractResolver =  (DefaultContractResolver)serializerSettings.ContractResolver;
-            //contractResolver.IgnoreSerializableAttribute = true;
-
+         
            // Routes
             config.Routes.MapHttpRoute(
                 "DefaultApi",
@@ -65,21 +51,6 @@ namespace DB3Server
         }
     }
 
-    //public class CustomAssembliesResolver : DefaultAssembliesResolver
-    //{
-    //	public override ICollection<Assembly> GetAssemblies()
-    //	{
-    //		ICollection<Assembly> baseAssemblies = base.GetAssemblies();
-
-    //		List<Assembly> assemblies = new List<Assembly>(baseAssemblies);
-
-    //		// Controllers from Server
-    //		baseAssemblies.Add(Assembly.GetAssembly(typeof(CASServer.Controllers.ProductsController)));
-    //		baseAssemblies.Add(Assembly.GetAssembly(typeof(CASServer.Controllers.CulturesController)));
-    //		baseAssemblies.Add(Assembly.GetAssembly(typeof(CASServer.Controllers.UsersController)));
-
-    //		return assemblies;
-    //	}
-    //}
+   
 }
 

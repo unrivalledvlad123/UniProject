@@ -17,19 +17,19 @@ namespace DB3Server
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Sale()
         {
-            this.Salesmappings = new HashSet<Salesmapping>();
+            this.SoldItems = new HashSet<SoldItem>();
         }
     
-        public int Id { get; set; }
-        public int Company_id { get; set; }
         public System.DateTime Date { get; set; }
-        public Nullable<int> Contract_id { get; set; }
         public int Type { get; set; }
-        public int Reciept_id { get; set; }
-        public Nullable<int> Invoice_id { get; set; }
+        public Nullable<int> InvoiceId { get; set; }
+        public System.Guid SaleId { get; set; }
+        public System.Guid SellerId { get; set; }
+        public System.Guid BuyerId { get; set; }
     
-        public virtual Company Company { get; set; }
+        public virtual Owner Owner { get; set; }
+        public virtual Partner Partner { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Salesmapping> Salesmappings { get; set; }
+        public virtual ICollection<SoldItem> SoldItems { get; set; }
     }
 }

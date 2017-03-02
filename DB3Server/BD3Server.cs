@@ -29,6 +29,8 @@ namespace DB3Server
             //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
             Output("{0} started successfully!", Constants.Projectname);
+
+            Output("Press any key to close the service.");
             Console.Read();
 
         }

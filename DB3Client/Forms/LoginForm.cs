@@ -7,21 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DB3Client.ServiceAccess;
 
-namespace DB3Client
+namespace DB3Client.Forms
 {
-    public partial class Form1 : Form
+    public partial class LoginForm : Form
     {
-        public Form1()
+        public LoginForm()
         {
             InitializeComponent();
-        }
-
-        private async void button1_Click(object sender, EventArgs e)
-        {
-            string test = await SATest.GetTest();
-            textBox1.Text = test;
         }
     }
 }

@@ -12,25 +12,26 @@ namespace DB3Server
     using System;
     using System.Collections.Generic;
     
-    public partial class Purchase
+    public partial class Partner
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Purchase()
+        public Partner()
         {
-            this.PurchasedItems = new HashSet<PurchasedItem>();
+            this.Purchases = new HashSet<Purchase>();
+            this.Sales = new HashSet<Sale>();
         }
     
-        public System.DateTime Date { get; set; }
-        public int InvoiceId { get; set; }
-        public int WareHouseReceipt { get; set; }
-        public int PaymentId { get; set; }
-        public System.Guid PurchaseId { get; set; }
-        public System.Guid SellerId { get; set; }
-        public System.Guid BuyerId { get; set; }
+        public string Name { get; set; }
+        public string Address { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
+        public System.Guid PartnerId { get; set; }
+        public System.Guid MollId { get; set; }
     
-        public virtual Owner Owner { get; set; }
-        public virtual Partner Partner { get; set; }
+        public virtual MOL MOL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PurchasedItem> PurchasedItems { get; set; }
+        public virtual ICollection<Purchase> Purchases { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Sale> Sales { get; set; }
     }
 }

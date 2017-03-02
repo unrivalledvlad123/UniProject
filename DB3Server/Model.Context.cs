@@ -25,13 +25,14 @@ namespace DB3Server
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Company> Companies { get; set; }
-        public virtual DbSet<Good> Goods { get; set; }
+        public virtual DbSet<Item> Items { get; set; }
         public virtual DbSet<MOL> MOLs { get; set; }
+        public virtual DbSet<Owner> Owners { get; set; }
+        public virtual DbSet<Partner> Partners { get; set; }
         public virtual DbSet<Purchase> Purchases { get; set; }
         public virtual DbSet<Sale> Sales { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<PurchaseMapping> PurchaseMappings { get; set; }
-        public virtual DbSet<Salesmapping> Salesmappings { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<PurchasedItem> PurchasedItems { get; set; }
+        public virtual DbSet<SoldItem> SoldItems { get; set; }
     }
 }

@@ -19,7 +19,7 @@ namespace DB3Server.BusinessLogic
 
            // Database.Goods.Add(vafla);
             Database.SaveChanges();
-            var test = Database.Goods.FirstOrDefault(p => p.Name == "vafla borovec");
+            var test = Database.Items.FirstOrDefault(p => p.Name == "vafla borovec");
             
             return "not found";
         }

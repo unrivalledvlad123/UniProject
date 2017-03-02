@@ -12,24 +12,30 @@ namespace DB3Server
     using System;
     using System.Collections.Generic;
     
-    public partial class Good
+    public partial class Owner
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Good()
+        public Owner()
         {
-            this.PurchaseMappings = new HashSet<PurchaseMapping>();
-            this.Salesmappings = new HashSet<Salesmapping>();
+            this.Purchases = new HashSet<Purchase>();
+            this.Sales = new HashSet<Sale>();
+            this.Users1 = new HashSet<User>();
         }
     
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public int Quantity { get; set; }
-        public Nullable<int> Type { get; set; }
-        public string Description { get; set; }
+        public int Users { get; set; }
+        public string CompanyName { get; set; }
+        public string Address { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
+        public System.Guid OwnerId { get; set; }
+        public System.Guid MollId { get; set; }
     
+        public virtual MOL MOL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PurchaseMapping> PurchaseMappings { get; set; }
+        public virtual ICollection<Purchase> Purchases { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Salesmapping> Salesmappings { get; set; }
+        public virtual ICollection<Sale> Sales { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User> Users1 { get; set; }
     }
 }
