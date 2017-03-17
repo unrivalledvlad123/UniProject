@@ -26,6 +26,7 @@ namespace DB3Server
         public Nullable<int> Type { get; set; }
         public string Description { get; set; }
         public System.Guid ItemId { get; set; }
+        public int SellingPriceCent { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PurchasedItem> PurchasedItems { get; set; }

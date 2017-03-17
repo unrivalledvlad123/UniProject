@@ -32,7 +32,6 @@ namespace DB3Server
         public virtual DbSet<Sale> Sales { get; set; }
         public virtual DbSet<PurchasedItem> PurchasedItems { get; set; }
         public virtual DbSet<SoldItem> SoldItems { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Owner> Owners { get; set; }
         public virtual DbSet<User> Users { get; set; }
     }

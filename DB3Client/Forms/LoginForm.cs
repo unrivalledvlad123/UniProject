@@ -10,11 +10,22 @@ using System.Windows.Forms;
 
 namespace DB3Client.Forms
 {
-    public partial class LoginForm : Form
+    public partial class LoginForm : MetroFramework.Forms.MetroForm
     {
         public LoginForm()
         {
             InitializeComponent();
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            MainForm form = new MainForm();
+            Hide();
+            if (form.ShowDialog() == DialogResult.Cancel)
+            {
+                Show();
+            }
+
         }
     }
 }
