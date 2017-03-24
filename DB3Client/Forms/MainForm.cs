@@ -45,42 +45,42 @@ namespace DB3Client.Forms
 
         private void mtSales_Click(object sender, EventArgs e)
         {
-            SalesControl salesControl = new SalesControl();
-            salesControl.Dock = DockStyle.Fill;
+            SalesControl salesControl = new SalesControl {Dock = DockStyle.Fill};
             MainContainer.Controls.Clear();
             MainContainer.Controls.Add(salesControl);
         }
 
         private void mtOrders_Click(object sender, EventArgs e)
         {
-            OrdersControl ordersControl = new OrdersControl();
-            ordersControl.Dock = DockStyle.Fill;
+            OrdersControl ordersControl = new OrdersControl {Dock = DockStyle.Fill};
             MainContainer.Controls.Clear();
             mpContainer.Controls.Add(ordersControl);
         }
 
         private void mtContacts_Click(object sender, EventArgs e)
         {
-            ContractsControl contractsControl = new ContractsControl();
-            contractsControl.Dock = DockStyle.Fill;
+            ContractsControl contractsControl = new ContractsControl {Dock = DockStyle.Fill};
             MainContainer.Controls.Clear();
             MainContainer.Controls.Add(contractsControl);
         }
 
         private void mtWerehouse_Click(object sender, EventArgs e)
         {
-            WarehouseControl warehouseControl = new WarehouseControl();
-            warehouseControl.Dock = DockStyle.Fill;
+            WarehouseControl warehouseControl = new WarehouseControl {Dock = DockStyle.Fill};
             MainContainer.Controls.Clear();
             MainContainer.Controls.Add(warehouseControl);
         }
 
         private void mtAdmin_Click(object sender, EventArgs e)
         {
-            AdminControl adminControl = new AdminControl();
-            adminControl.Dock = DockStyle.Fill;
+            AdminControl adminControl = new AdminControl {Dock = DockStyle.Fill};
             MainContainer.Controls.Clear();
             MainContainer.Controls.Add(adminControl);
+        }
+
+        private void timerClock_Tick(object sender, EventArgs e)
+        {
+            labelTime.Text = DateTime.Now.ToString("dd MMMM yyyy HH:mm:ss");
         }
     }
 }

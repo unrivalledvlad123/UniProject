@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.mpContainer = new MetroFramework.Controls.MetroPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -40,7 +41,8 @@
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroLink1 = new MetroFramework.Controls.MetroLink();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.labelTime = new MetroFramework.Controls.MetroLabel();
+            this.timerClock = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,13 +51,12 @@
             this.mpContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.mpContainer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.mpContainer.HorizontalScrollbarBarColor = true;
             this.mpContainer.HorizontalScrollbarHighlightOnWheel = false;
             this.mpContainer.HorizontalScrollbarSize = 10;
             this.mpContainer.Location = new System.Drawing.Point(179, 98);
             this.mpContainer.Name = "mpContainer";
-            this.mpContainer.Size = new System.Drawing.Size(930, 589);
+            this.mpContainer.Size = new System.Drawing.Size(989, 589);
             this.mpContainer.TabIndex = 0;
             this.mpContainer.VerticalScrollbarBarColor = true;
             this.mpContainer.VerticalScrollbarHighlightOnWheel = false;
@@ -139,7 +140,7 @@
             // 
             this.metroLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(824, 23);
+            this.metroLabel1.Location = new System.Drawing.Point(869, 23);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(226, 19);
             this.metroLabel1.TabIndex = 13;
@@ -148,9 +149,10 @@
             // metroLink1
             // 
             this.metroLink1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.metroLink1.Location = new System.Drawing.Point(1056, 23);
+            this.metroLink1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.metroLink1.Location = new System.Drawing.Point(1101, 23);
             this.metroLink1.Name = "metroLink1";
-            this.metroLink1.Size = new System.Drawing.Size(53, 23);
+            this.metroLink1.Size = new System.Drawing.Size(67, 23);
             this.metroLink1.TabIndex = 14;
             this.metroLink1.Text = "(logout)";
             this.metroLink1.UseSelectable = true;
@@ -159,28 +161,34 @@
             // 
             this.metroLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(872, 42);
+            this.metroLabel2.Location = new System.Drawing.Point(931, 42);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(237, 19);
             this.metroLabel2.TabIndex = 15;
             this.metroLabel2.Text = "You are connected to {{current_server}}";
             // 
-            // metroLabel3
+            // labelTime
             // 
-            this.metroLabel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(992, 61);
-            this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(117, 19);
-            this.metroLabel3.TabIndex = 16;
-            this.metroLabel3.Text = "12:25:45 12.05.2017";
+            this.labelTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelTime.AutoSize = true;
+            this.labelTime.Location = new System.Drawing.Point(1017, 61);
+            this.labelTime.Name = "labelTime";
+            this.labelTime.Size = new System.Drawing.Size(146, 19);
+            this.labelTime.TabIndex = 16;
+            this.labelTime.Text = "24 march 2017 33;33;44";
+            // 
+            // timerClock
+            // 
+            this.timerClock.Enabled = true;
+            this.timerClock.Interval = 1000;
+            this.timerClock.Tick += new System.EventHandler(this.timerClock_Tick);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1132, 710);
-            this.Controls.Add(this.metroLabel3);
+            this.ClientSize = new System.Drawing.Size(1191, 710);
+            this.Controls.Add(this.labelTime);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.metroLink1);
             this.Controls.Add(this.metroLabel1);
@@ -212,6 +220,7 @@
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroLink metroLink1;
         private MetroFramework.Controls.MetroLabel metroLabel2;
-        private MetroFramework.Controls.MetroLabel metroLabel3;
+        private MetroFramework.Controls.MetroLabel labelTime;
+        private System.Windows.Forms.Timer timerClock;
     }
 }
