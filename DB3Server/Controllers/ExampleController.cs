@@ -25,27 +25,6 @@ namespace DB3Server.Controllers
                 return test;
             }
 
-            //[BasicAuthorizationFilter(Roles = "Administrator")]
-            //[System.Web.Http.HttpPut]
-            //[System.Web.Http.Route("nodes")]
-            //public List<OpcNode> GetAllnodes([FromBody]dynamic data /* OpcServer server, string node = ""*/)
-            //{
-            //    OpcConnection opc = new OpcConnection();
-            //    OpcServer server = JsonConvert.DeserializeObject<OpcServer>(data.server.ToString());
-            //    string nodeId = data.nodeId.Value as string; // JsonConvert.DeserializeObject<string>(data.nodeId.ToString());
-
-            //    var nodes = opc.BrowseNodes(server.UriString, nodeId);
-            //    return nodes;
-            //}
-
-            //[BasicAuthorizationFilter(Roles = "Administrator")]
-            //[System.Web.Http.HttpGet]
-            //[System.Web.Http.Route("resubscribe")]
-            //public bool Resubscribe()
-            //{
-            //    BLOPC.ManualResuscribeAll();
-            //    return true;
-            //}
         }
     }
 }

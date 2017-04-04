@@ -25,7 +25,6 @@ namespace DB3Server
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Item> Items { get; set; }
         public virtual DbSet<MOL> MOLs { get; set; }
         public virtual DbSet<Partner> Partners { get; set; }
         public virtual DbSet<Purchase> Purchases { get; set; }
@@ -33,6 +32,9 @@ namespace DB3Server
         public virtual DbSet<PurchasedItem> PurchasedItems { get; set; }
         public virtual DbSet<SoldItem> SoldItems { get; set; }
         public virtual DbSet<Owner> Owners { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<Item> Items { get; set; }
+        public virtual DbSet<WarehouseItem> WarehouseItems { get; set; }
         public virtual DbSet<User> Users { get; set; }
     }
 }

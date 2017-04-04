@@ -21,16 +21,15 @@ namespace DB3Server
             this.SoldItems = new HashSet<SoldItem>();
         }
     
+        public System.Guid ItemId { get; set; }
         public string Name { get; set; }
-        public int Quantity { get; set; }
         public Nullable<int> Type { get; set; }
         public string Description { get; set; }
-        public System.Guid ItemId { get; set; }
-        public int SellingPriceCent { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PurchasedItem> PurchasedItems { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SoldItem> SoldItems { get; set; }
+        public virtual WarehouseItem WarehouseItem { get; set; }
     }
 }

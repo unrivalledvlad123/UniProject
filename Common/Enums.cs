@@ -10,15 +10,15 @@ namespace Common
     {
         public enum UserRoles
         {
-            Administrator,
-            Manager,
-            Casher
+            Administrator = 0,
+            Manager = 1,
+            Casher = 2
         }
 
         public enum SaleType
         {
-            Retail,
-            Wholesale
+            Retail = 0,
+            Wholesale = 1
         }
 
 

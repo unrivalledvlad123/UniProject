@@ -59,5 +59,14 @@ namespace DB3Client.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Username.
+        /// </summary>
+        internal static string AdminControl_SetGridColomns_Username {
+            get {
+                return ResourceManager.GetString("AdminControl_SetGridColomns_Username", resourceCulture);
+            }
+        }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace DB3Client.Forms
+﻿using Common;
+
+namespace DB3Client.Forms
 {
     partial class MainForm
     {
@@ -88,7 +90,7 @@
             this.mtAdmin.Name = "mtAdmin";
             this.mtAdmin.Size = new System.Drawing.Size(144, 92);
             this.mtAdmin.TabIndex = 11;
-            this.mtAdmin.Text = "Administration";
+            this.mtAdmin.Text = DataHolder.GetString("administration");
             this.mtAdmin.UseSelectable = true;
             this.mtAdmin.Click += new System.EventHandler(this.mtAdmin_Click);
             // 
@@ -99,7 +101,7 @@
             this.mtWerehouse.Name = "mtWerehouse";
             this.mtWerehouse.Size = new System.Drawing.Size(144, 92);
             this.mtWerehouse.TabIndex = 10;
-            this.mtWerehouse.Text = "Werehouse";
+            this.mtWerehouse.Text = DataHolder.GetString("werehouse");
             this.mtWerehouse.UseSelectable = true;
             this.mtWerehouse.Click += new System.EventHandler(this.mtWerehouse_Click);
             // 
@@ -110,7 +112,7 @@
             this.mtContacts.Name = "mtContacts";
             this.mtContacts.Size = new System.Drawing.Size(144, 92);
             this.mtContacts.TabIndex = 9;
-            this.mtContacts.Text = "Contacts";
+            this.mtContacts.Text = DataHolder.GetString("contacts");
             this.mtContacts.UseSelectable = true;
             this.mtContacts.Click += new System.EventHandler(this.mtContacts_Click);
             // 
@@ -121,7 +123,7 @@
             this.mtOrders.Name = "mtOrders";
             this.mtOrders.Size = new System.Drawing.Size(144, 92);
             this.mtOrders.TabIndex = 8;
-            this.mtOrders.Text = "Orders";
+            this.mtOrders.Text = DataHolder.GetString("orders");
             this.mtOrders.UseSelectable = true;
             this.mtOrders.Click += new System.EventHandler(this.mtOrders_Click);
             // 
@@ -132,7 +134,7 @@
             this.mtSales.Name = "mtSales";
             this.mtSales.Size = new System.Drawing.Size(144, 92);
             this.mtSales.TabIndex = 7;
-            this.mtSales.Text = "Sales";
+            this.mtSales.Text = DataHolder.GetString("sales");
             this.mtSales.UseSelectable = true;
             this.mtSales.Click += new System.EventHandler(this.mtSales_Click);
             // 
@@ -144,7 +146,7 @@
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(226, 19);
             this.metroLabel1.TabIndex = 13;
-            this.metroLabel1.Text = "You are logged on as {{current_user}}";
+            this.metroLabel1.Text = DataHolder.GetString("logged_as_current_user");
             // 
             // metroLink1
             // 
@@ -154,7 +156,7 @@
             this.metroLink1.Name = "metroLink1";
             this.metroLink1.Size = new System.Drawing.Size(67, 23);
             this.metroLink1.TabIndex = 14;
-            this.metroLink1.Text = "(logout)";
+            this.metroLink1.Text = DataHolder.GetString("logout");
             this.metroLink1.UseSelectable = true;
             // 
             // metroLabel2
@@ -165,7 +167,7 @@
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(237, 19);
             this.metroLabel2.TabIndex = 15;
-            this.metroLabel2.Text = "You are connected to {{current_server}}";
+            this.metroLabel2.Text = DataHolder.GetString("connected_to_server");
             // 
             // labelTime
             // 
@@ -175,7 +177,7 @@
             this.labelTime.Name = "labelTime";
             this.labelTime.Size = new System.Drawing.Size(146, 19);
             this.labelTime.TabIndex = 16;
-            this.labelTime.Text = "24 march 2017 33;33;44";
+            this.labelTime.Text = "24 xxxxx 2017 33;33;44";
             // 
             // timerClock
             // 

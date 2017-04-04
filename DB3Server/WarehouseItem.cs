@@ -12,16 +12,12 @@ namespace DB3Server
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class WarehouseItem
     {
-        public System.Guid UserId { get; set; }
-        public System.Guid OwnerId { get; set; }
-        public int Role { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public string AssignedTo { get; set; }
-        public Nullable<System.DateTime> RegisteredAt { get; set; }
+        public System.Guid ItemId { get; set; }
+        public Nullable<int> Quantity { get; set; }
+        public Nullable<int> SellingPriceCent { get; set; }
     
-        public virtual Owner Owner { get; set; }
+        public virtual Item Item { get; set; }
     }
 }
