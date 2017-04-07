@@ -4,28 +4,52 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Common;
+using Common.Classes;
+using Common.Forms.Base;
 using DB3Client.Controls;
+using DB3Client.ServiceAccess;
 using MetroFramework.Forms;
 
 namespace DB3Client.Forms
 {
-    public partial class MainForm : MetroForm
+    public partial class MainForm : MLForm
     {
-
+        
         public MetroFramework.Controls.MetroPanel MainContainer
         {
             get { return mpContainer; }
             set { mpContainer = value; }
         }
-        
+
         public MainForm()
         {
             InitializeComponent();
+            OnInitialization();
+            GetOwner(DataHolder.OwnerId);
         }
+
+        public void OnInitialization()
+        {
+            labelLogedAs.Text = DataHolder.GetString("logged_as_current_user") + " " + DataHolder.Username;
+            labelCurrentServer.Text = DataHolder.GetString("connected_to_server") + " " + DataHolder.ServerAddress;
+        }
+
+        #region // < ======== Methods ====== > //
+
+        public async void GetOwner(Guid ownerId)
+        {
+            DataHolder.Owner = await SAOwner.getOwner(ownerId);
+        }
+
+        #endregion
+
+
+        #region // < ====== Events ======> //
 
         private void mtSales_Click(object sender, EventArgs e)
         {
@@ -66,5 +90,8 @@ namespace DB3Client.Forms
         {
             labelTime.Text = DateTime.Now.ToString("dd MMMM yyyy HH:mm:ss", DataHolder.UserCulture);
         }
+
+        #endregion
+
     }
 }

@@ -28,10 +28,10 @@ namespace DB3Server
         public System.Guid PartnerId { get; set; }
         public System.Guid MollId { get; set; }
     
-        public virtual MOL MOL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Purchase> Purchases { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sale> Sales { get; set; }
+        public virtual MOL MOL { get; set; }
     }
 }

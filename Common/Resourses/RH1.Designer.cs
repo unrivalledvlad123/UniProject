@@ -61,11 +61,29 @@ namespace Common.Resourses {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add/Edit User.
+        ///   Looks up a localized string similar to Add Acc. Person.
         /// </summary>
-        internal static string add_edit_user {
+        internal static string add_mol {
             get {
-                return ResourceManager.GetString("add_edit_user", resourceCulture);
+                return ResourceManager.GetString("add_mol", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add User.
+        /// </summary>
+        internal static string add_new_user {
+            get {
+                return ResourceManager.GetString("add_new_user", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Address:.
+        /// </summary>
+        internal static string address {
+            get {
+                return ResourceManager.GetString("address", resourceCulture);
             }
         }
         
@@ -97,6 +115,33 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        internal static string cancel {
+            get {
+                return ResourceManager.GetString("cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Company Info.
+        /// </summary>
+        internal static string company_info {
+            get {
+                return ResourceManager.GetString("company_info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Company name:.
+        /// </summary>
+        internal static string company_name {
+            get {
+                return ResourceManager.GetString("company_name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You are connected to:.
         /// </summary>
         internal static string connected_to_server {
@@ -115,11 +160,83 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create new User.
+        /// </summary>
+        internal static string create_new_user {
+            get {
+                return ResourceManager.GetString("create_new_user", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Created at.
         /// </summary>
         internal static string created_at {
             get {
                 return ResourceManager.GetString("created_at", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete Acc. Person.
+        /// </summary>
+        internal static string delete_mol {
+            get {
+                return ResourceManager.GetString("delete_mol", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete User.
+        /// </summary>
+        internal static string delete_user {
+            get {
+                return ResourceManager.GetString("delete_user", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Info.
+        /// </summary>
+        internal static string edit_company_info {
+            get {
+                return ResourceManager.GetString("edit_company_info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Acc. Person.
+        /// </summary>
+        internal static string edit_mol {
+            get {
+                return ResourceManager.GetString("edit_mol", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit User.
+        /// </summary>
+        internal static string edit_user {
+            get {
+                return ResourceManager.GetString("edit_user", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email:.
+        /// </summary>
+        internal static string email {
+            get {
+                return ResourceManager.GetString("email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid username or password!.
+        /// </summary>
+        internal static string invalid_username_or_password {
+            get {
+                return ResourceManager.GetString("invalid_username_or_password", resourceCulture);
             }
         }
         
@@ -138,6 +255,15 @@ namespace Common.Resourses {
         internal static string logout {
             get {
                 return ResourceManager.GetString("logout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Manage company.
+        /// </summary>
+        internal static string manage_company {
+            get {
+                return ResourceManager.GetString("manage_company", resourceCulture);
             }
         }
         
@@ -169,6 +295,42 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        internal static string password {
+            get {
+                return ResourceManager.GetString("password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Passwords does not match!.
+        /// </summary>
+        internal static string password_mismatch {
+            get {
+                return ResourceManager.GetString("password_mismatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phone:.
+        /// </summary>
+        internal static string phone {
+            get {
+                return ResourceManager.GetString("phone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Repeat password.
+        /// </summary>
+        internal static string repeat_password {
+            get {
+                return ResourceManager.GetString("repeat_password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sales.
         /// </summary>
         internal static string sales {
@@ -178,11 +340,38 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        internal static string save {
+            get {
+                return ResourceManager.GetString("save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User role.
+        /// </summary>
+        internal static string user_role {
+            get {
+                return ResourceManager.GetString("user_role", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Username.
         /// </summary>
         internal static string username {
             get {
                 return ResourceManager.GetString("username", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A User with the same username already exist! Please select a new one!.
+        /// </summary>
+        internal static string username_already_exist {
+            get {
+                return ResourceManager.GetString("username_already_exist", resourceCulture);
             }
         }
         

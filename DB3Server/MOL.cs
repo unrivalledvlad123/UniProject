@@ -18,19 +18,16 @@ namespace DB3Server
         public MOL()
         {
             this.Partners = new HashSet<Partner>();
-            this.Owners = new HashSet<Owner>();
         }
     
+        public System.Guid MolId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
-        public System.Guid MollId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Partner> Partners { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Owner> Owners { get; set; }
     }
 }

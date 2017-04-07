@@ -9,18 +9,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Common;
+using Common.Classes;
+using DB3Client.Forms;
+using DB3Client.Forms.AdminForms;
 
 namespace DB3Client.Controls
 {
-    public partial class AdminControl : UserControl
+    public partial class AdminControl : MetroFramework.Controls.MetroUserControl
     {
-        public AdminControl()
+       public AdminControl()
         {
             InitializeComponent();
             SetGridColomns();
-        }
-       ResourceManager rm = new ResourceManager(typeof(string));
-
+            //tabControlAdmin.SelectedTab = metroTabPage1;
+         }
+      
         public void SetGridColomns()
         {
             dgvUsers.DataSource = null;
@@ -70,8 +73,32 @@ namespace DB3Client.Controls
 
         #region // <====== Utility Methodts ======> //
 
-        
+
 
         #endregion
+
+        private void btnEditInfo_Click(object sender, EventArgs e)
+        {
+            EditForm editForm = new EditForm();
+            
+            if (editForm.ShowDialog() == DialogResult.OK)
+            {
+                labelCompanyName.Text = editForm.Owner2.CompanyName;
+                labelAddress.Text = editForm.Owner2.Address;
+                labelEmail.Text = editForm.Owner2.Email;
+                labelPhone.Text = editForm.Owner2.Phone;
+                
+            }
+        }
+
+        private void btnAddNewUser_Click(object sender, EventArgs e)
+        {
+            Add_EditUser addForm = new Add_EditUser();
+
+            if (addForm.ShowDialog() == DialogResult.OK)
+            {
+                
+            }
+        }
     }
 }

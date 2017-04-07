@@ -5,16 +5,16 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using Common.Classes;
 
 namespace DB3Client.ServiceAccess
 {
-    class SATest
+    class SAOwner
     {
-        public async static Task<string> GetTest()
+        public static async Task<CompanyOwner> getOwner(Guid ownerId)
         {
-            string test = null;
-           HttpResponseMessage response;
-
+            CompanyOwner owner = new CompanyOwner();
+            HttpResponseMessage response;
             using (HttpClient client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://localhost:9000/");
@@ -22,7 +22,7 @@ namespace DB3Client.ServiceAccess
 
                 try
                 {
-                    response = await client.GetAsync("api/test");
+                    response = await client.GetAsync("api/owner/" + ownerId);
                 }
                 catch (HttpRequestException ex)
                 {
@@ -31,11 +31,12 @@ namespace DB3Client.ServiceAccess
 
                 if (response.IsSuccessStatusCode)
                 {
-                    test = await response.Content.ReadAsAsync<string>();
+                    owner = await response.Content.ReadAsAsync<CompanyOwner>();
                 }
+                
             }
-
-            return test;
+            return owner;
         }
+
     }
 }

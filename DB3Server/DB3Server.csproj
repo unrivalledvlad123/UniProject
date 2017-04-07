@@ -156,9 +156,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BD3Server.cs" />
-    <Compile Include="BusinessLogic\BLTest.cs" />
+    <Compile Include="BusinessLogic\BLAuthenticationProvider.cs" />
+    <Compile Include="BusinessLogic\BLOwner.cs" />
     <Compile Include="Controllers\ExampleController.cs" />
-    <Compile Include="DataAccess\ExampleDA.cs" />
+    <Compile Include="Controllers\OwnerController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="BD3Service.cs" />
     <Compile Include="Item.cs">
       <DependentUpon>Model.tt</DependentUpon>

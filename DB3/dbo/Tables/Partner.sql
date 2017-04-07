@@ -6,8 +6,10 @@
     [Phone]     VARCHAR (50)     NULL,
     [Email]     VARCHAR (50)     NULL,
     CONSTRAINT [PK_Partner_1] PRIMARY KEY CLUSTERED ([PartnerId] ASC),
-    CONSTRAINT [FK_Partner_MOL1] FOREIGN KEY ([MollId]) REFERENCES [dbo].[MOL] ([MollId])
+    CONSTRAINT [FK_Partner_MOL1] FOREIGN KEY ([MollId]) REFERENCES [dbo].[MOL] ([MolId])
 );
+
+
 
 
 

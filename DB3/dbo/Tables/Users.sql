@@ -1,14 +1,19 @@
 ﻿CREATE TABLE [dbo].[Users] (
-    [UserId]       UNIQUEIDENTIFIER NOT NULL,
+    [Username]     VARCHAR (100)    NOT NULL,
     [OwnerId]      UNIQUEIDENTIFIER NOT NULL,
-    [Role]         INT              NOT NULL,
-    [Username]     VARCHAR (50)     NOT NULL,
-    [Password]     VARCHAR (150)    NOT NULL,
+    [Password]     VARCHAR (500)    NOT NULL,
     [AssignedTo]   NVARCHAR (150)   NULL,
-    [RegisteredAt] DATETIME         NULL,
-    CONSTRAINT [PK_Users] PRIMARY KEY CLUSTERED ([UserId] ASC),
-    CONSTRAINT [FK_Users_Owner] FOREIGN KEY ([OwnerId]) REFERENCES [dbo].[Owner] ([OwnerId])
+    [RegisteredAt] DATETIME         NOT NULL,
+    [Role]         INT              NOT NULL,
+    [PasswordSalt] VARCHAR (50)     NOT NULL,
+    [UserId]       UNIQUEIDENTIFIER NOT NULL,
+    CONSTRAINT [PK_Users] PRIMARY KEY CLUSTERED ([Username] ASC),
+    CONSTRAINT [FK_Users_Owner1] FOREIGN KEY ([OwnerId]) REFERENCES [dbo].[Owner] ([OwnerId])
 );
+
+
+
+
 
 
 

@@ -20,18 +20,18 @@ namespace DB3Server
                 MessageBox.Show("Only one instance of " + procName + " can be running at time.", "BD3 Service",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Application.Exit();
-                return;
             }
             else
             {
                 AppSettingsReader configurationAppSettings = new AppSettingsReader();
                 String baseAddress = (string) configurationAppSettings.GetValue("ServerAddress", typeof(string));
 
+                WebApp.Start<Startup>(url: baseAddress);
+
+
                 // Start OWIN host 
-                using (WebApp.Start<Startup>(url: baseAddress))
-                {
-                    BD3Server.Run(args);
-                }
+                BD3Server.Run(args);
+                
             }
         }
     }

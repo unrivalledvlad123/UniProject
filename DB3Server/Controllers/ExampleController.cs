@@ -12,19 +12,16 @@ using Newtonsoft.Json;
 
 namespace DB3Server.Controllers
 {
-    public class ExampleController : Controller
-    {
-        public class OPCController : ApiController
+    public class ExampleController : ApiController
         {
-           [System.Web.Http.HttpGet]
+            [System.Web.Http.HttpGet]
             [System.Web.Http.Route("api/test")]
             public string GetAllServers()
-           {
+            {
 
-               string test = BLTest.Test();
-                return test;
+               // string test = BLTest.Test();
+                return "test";
             }
 
         }
-    }
 }

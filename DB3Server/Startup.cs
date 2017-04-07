@@ -16,8 +16,8 @@ namespace DB3Server
             // HTTPS and Windows authentication
             // http://frendsrnd.wordpress.com/2014/02/03/httpselfhostserver-hosted-web-api-with-https-and-windows-authentication-enabled/
             //HttpListener listener = (HttpListener)appBuilder.Properties["System.Net.HttpListener"];
-            //listener.AuthenticationSchemes = AuthenticationSchemes.IntegratedWindowsAuthentication;			
-
+            //listener.AuthenticationSchemes = AuthenticationSchemes.IntegratedWindowsAuthentication;	
+            
             // Configure Web API for self-host. 
             HttpConfiguration config = new HttpConfiguration();
 
@@ -33,20 +33,7 @@ namespace DB3Server
             //  http://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2
             config.MapHttpAttributeRoutes();
 
-         
-           // Routes
-            config.Routes.MapHttpRoute(
-                "DefaultApi",
-                "api/{controller}/{id}",
-                new { id = RouteParameter.Optional }
-            );
-
-            config.Routes.MapHttpRoute(
-                name: "ActionNameApi",
-                routeTemplate: "api/{controller}/{action}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
-
+        
             appBuilder.UseWebApi(config);
         }
     }

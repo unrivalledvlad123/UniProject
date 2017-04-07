@@ -14,13 +14,14 @@ namespace DB3Server
     
     public partial class User
     {
-        public System.Guid UserId { get; set; }
-        public System.Guid OwnerId { get; set; }
-        public int Role { get; set; }
         public string Username { get; set; }
+        public System.Guid OwnerId { get; set; }
         public string Password { get; set; }
         public string AssignedTo { get; set; }
-        public Nullable<System.DateTime> RegisteredAt { get; set; }
+        public System.DateTime RegisteredAt { get; set; }
+        public int Role { get; set; }
+        public string PasswordSalt { get; set; }
+        public System.Guid UserId { get; set; }
     
         public virtual Owner Owner { get; set; }
     }
