@@ -17,6 +17,8 @@ namespace DB3Client.Forms
     public partial class LoginForm : MetroFramework.Forms.MetroForm
     {
         
+
+
         public LoginForm()
         {
             InitializeComponent();
