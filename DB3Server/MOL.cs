@@ -14,20 +14,12 @@ namespace DB3Server
     
     public partial class MOL
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public MOL()
-        {
-            this.Partners = new HashSet<Partner>();
-        }
-    
         public System.Guid MolId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Partner> Partners { get; set; }
+        public System.Guid OwnerId { get; set; }
     }
 }

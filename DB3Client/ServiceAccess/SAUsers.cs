@@ -33,7 +33,63 @@ namespace DB3Client.ServiceAccess
 
                 if (response.IsSuccessStatusCode)
                 {
-                    success = true;
+                    success = await response.Content.ReadAsAsync<bool>();
+                }
+            }
+
+            return success;
+        }
+
+        public static async Task<bool> PostEditUser(CommonUser user)
+        {
+            bool success = false;
+            HttpResponseMessage response;
+
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:9000/");
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic");
+
+                try
+                {
+                    response = await client.PostAsJsonAsync("api/users/edit", user);
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw new Exception(ex.InnerException.Message);
+                }
+
+                if (response.IsSuccessStatusCode)
+                {
+                    success = await response.Content.ReadAsAsync<bool>();
+                }
+            }
+
+            return success;
+        }
+
+        public static async Task<bool> PostDeleteUser(Guid userId)
+        {
+            bool success = false;
+            HttpResponseMessage response;
+
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:9000/");
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic");
+
+                try
+                {
+                    response = await client.PostAsJsonAsync("api/users/delete", userId);
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw new Exception(ex.InnerException.Message);
+                }
+
+                if (response.IsSuccessStatusCode)
+                {
+                    success = await response.Content.ReadAsAsync<bool>();
                 }
             }
 
@@ -65,6 +121,33 @@ namespace DB3Client.ServiceAccess
             }
 
             return user;
+        }
+
+        public static async Task<List<CommonUser>> GetAllUsers(Guid ownerId)
+        {
+            List<CommonUser> users = new List<CommonUser>();
+            HttpResponseMessage response;
+
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:9000/");
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic");
+
+                try
+                {
+                    response = await client.GetAsync("api/users/allusers/" + ownerId);
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw new Exception(ex.InnerException.Message);
+                }
+
+                if (response.IsSuccessStatusCode)
+                {
+                    users = await response.Content.ReadAsAsync<List<CommonUser>>();
+                }
+            }
+            return users;
         }
 
 

@@ -10,11 +10,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Common;
 using Common.Classes;
+using Common.Forms.Base;
 using DB3Client.ServiceAccess;
 
 namespace DB3Client.Forms
 {
-    public partial class LoginForm : MetroFramework.Forms.MetroForm
+    public partial class LoginForm : MLForm
     {
         
 

@@ -225,4 +225,52 @@
   <data name="werehouse" xml:space="preserve">
     <value>Склад</value>
   </data>
+  <data name="add_mol_info" xml:space="preserve">
+    <value>Добавяне на нов МОЛ</value>
+  </data>
+  <data name="bulstat_number" xml:space="preserve">
+    <value>Булстат:</value>
+  </data>
+  <data name="edit_company_fail_error" xml:space="preserve">
+    <value>Възникна грешка при редактирането на компанията!</value>
+  </data>
+  <data name="edit_user_info" xml:space="preserve">
+    <value>Промяна на потребител</value>
+  </data>
+  <data name="email_grid" xml:space="preserve">
+    <value>Имайл</value>
+  </data>
+  <data name="empty_username_or_password" xml:space="preserve">
+    <value>Полетата парола и потребителско име за задължителни!</value>
+  </data>
+  <data name="firstname_grid" xml:space="preserve">
+    <value>Име</value>
+  </data>
+  <data name="invalid_user" xml:space="preserve">
+    <value>Невалиден потребител!</value>
+  </data>
+  <data name="lastname_grid" xml:space="preserve">
+    <value>Фамилия</value>
+  </data>
+  <data name="password_change" xml:space="preserve">
+    <value>Промяна на паролата?</value>
+  </data>
+  <data name="phone_grid" xml:space="preserve">
+    <value>Телефон</value>
+  </data>
+  <data name="user_already_exist" xml:space="preserve">
+    <value>Вече съществува потребител с това потребителско име!</value>
+  </data>
+  <data name="vat_number" xml:space="preserve">
+    <value>ДДС Номер:</value>
+  </data>
+  <data name="firstname" xml:space="preserve">
+    <value>Име:</value>
+  </data>
+  <data name="lastname" xml:space="preserve">
+    <value>Фамилия:</value>
+  </data>
+  <data name="unknow_error" xml:space="preserve">
+    <value>Възникна грешка - моля опитайте отново!</value>
+  </data>
 </root>
