@@ -1,6 +1,6 @@
 ﻿namespace DB3Client.Forms.AdminForms
 {
-    partial class EditForm
+    partial class EditCompanyForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,6 +29,11 @@
         private void InitializeComponent()
         {
             this.mlGroupBox1 = new Common.Forms.Base.MLGroupBox();
+            this.labelError = new Common.Forms.Base.MLErrorLabel();
+            this.tbBulstat = new Common.Forms.Base.MLTextBox();
+            this.mlLabel1 = new Common.Forms.Base.MLLabel();
+            this.tbVatNumber = new Common.Forms.Base.MLTextBox();
+            this.mlLabel2 = new Common.Forms.Base.MLLabel();
             this.btnCancel = new Common.Forms.Base.MLButton();
             this.btnSave = new Common.Forms.Base.MLButton();
             this.tbEmail = new Common.Forms.Base.MLTextBox();
@@ -45,6 +50,11 @@
             // mlGroupBox1
             // 
             this.mlGroupBox1.BackColor = System.Drawing.Color.White;
+            this.mlGroupBox1.Controls.Add(this.labelError);
+            this.mlGroupBox1.Controls.Add(this.tbBulstat);
+            this.mlGroupBox1.Controls.Add(this.mlLabel1);
+            this.mlGroupBox1.Controls.Add(this.tbVatNumber);
+            this.mlGroupBox1.Controls.Add(this.mlLabel2);
             this.mlGroupBox1.Controls.Add(this.btnCancel);
             this.mlGroupBox1.Controls.Add(this.btnSave);
             this.mlGroupBox1.Controls.Add(this.tbEmail);
@@ -63,6 +73,97 @@
             this.mlGroupBox1.TabStop = false;
             this.mlGroupBox1.Text = "company_info";
             // 
+            // labelError
+            // 
+            this.labelError.ForeColor = System.Drawing.Color.Red;
+            this.labelError.Location = new System.Drawing.Point(7, 244);
+            this.labelError.MaximumSize = new System.Drawing.Size(346, 62);
+            this.labelError.Name = "labelError";
+            this.labelError.Size = new System.Drawing.Size(346, 62);
+            this.labelError.TabIndex = 14;
+            this.labelError.Text = "edit_company_fail_error";
+            this.labelError.Visible = false;
+            // 
+            // tbBulstat
+            // 
+            // 
+            // 
+            // 
+            this.tbBulstat.CustomButton.Image = null;
+            this.tbBulstat.CustomButton.Location = new System.Drawing.Point(175, 1);
+            this.tbBulstat.CustomButton.Name = "";
+            this.tbBulstat.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.tbBulstat.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.tbBulstat.CustomButton.TabIndex = 1;
+            this.tbBulstat.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.tbBulstat.CustomButton.UseSelectable = true;
+            this.tbBulstat.CustomButton.Visible = false;
+            this.tbBulstat.Lines = new string[0];
+            this.tbBulstat.Location = new System.Drawing.Point(156, 207);
+            this.tbBulstat.MaxLength = 32767;
+            this.tbBulstat.Name = "tbBulstat";
+            this.tbBulstat.PasswordChar = '\0';
+            this.tbBulstat.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.tbBulstat.SelectedText = "";
+            this.tbBulstat.SelectionLength = 0;
+            this.tbBulstat.SelectionStart = 0;
+            this.tbBulstat.ShortcutsEnabled = true;
+            this.tbBulstat.Size = new System.Drawing.Size(197, 23);
+            this.tbBulstat.TabIndex = 13;
+            this.tbBulstat.UseSelectable = true;
+            this.tbBulstat.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.tbBulstat.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // mlLabel1
+            // 
+            this.mlLabel1.AutoSize = true;
+            this.mlLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.mlLabel1.Location = new System.Drawing.Point(7, 211);
+            this.mlLabel1.Name = "mlLabel1";
+            this.mlLabel1.Size = new System.Drawing.Size(105, 19);
+            this.mlLabel1.TabIndex = 12;
+            this.mlLabel1.Text = "bulstat_number";
+            // 
+            // tbVatNumber
+            // 
+            // 
+            // 
+            // 
+            this.tbVatNumber.CustomButton.Image = null;
+            this.tbVatNumber.CustomButton.Location = new System.Drawing.Point(175, 1);
+            this.tbVatNumber.CustomButton.Name = "";
+            this.tbVatNumber.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.tbVatNumber.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.tbVatNumber.CustomButton.TabIndex = 1;
+            this.tbVatNumber.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.tbVatNumber.CustomButton.UseSelectable = true;
+            this.tbVatNumber.CustomButton.Visible = false;
+            this.tbVatNumber.Lines = new string[0];
+            this.tbVatNumber.Location = new System.Drawing.Point(156, 169);
+            this.tbVatNumber.MaxLength = 32767;
+            this.tbVatNumber.Name = "tbVatNumber";
+            this.tbVatNumber.PasswordChar = '\0';
+            this.tbVatNumber.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.tbVatNumber.SelectedText = "";
+            this.tbVatNumber.SelectionLength = 0;
+            this.tbVatNumber.SelectionStart = 0;
+            this.tbVatNumber.ShortcutsEnabled = true;
+            this.tbVatNumber.Size = new System.Drawing.Size(197, 23);
+            this.tbVatNumber.TabIndex = 11;
+            this.tbVatNumber.UseSelectable = true;
+            this.tbVatNumber.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.tbVatNumber.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // mlLabel2
+            // 
+            this.mlLabel2.AutoSize = true;
+            this.mlLabel2.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.mlLabel2.Location = new System.Drawing.Point(7, 173);
+            this.mlLabel2.Name = "mlLabel2";
+            this.mlLabel2.Size = new System.Drawing.Size(82, 19);
+            this.mlLabel2.TabIndex = 10;
+            this.mlLabel2.Text = "vat_number";
+            // 
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
@@ -75,7 +176,6 @@
             // 
             // btnSave
             // 
-            this.btnSave.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnSave.Location = new System.Drawing.Point(156, 411);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(93, 23);
@@ -244,13 +344,13 @@
             this.labelName.TabIndex = 0;
             this.labelName.Text = "company_name";
             // 
-            // EditForm
+            // EditCompanyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(399, 520);
             this.Controls.Add(this.mlGroupBox1);
-            this.Name = "EditForm";
+            this.Name = "EditCompanyForm";
             this.mlGroupBox1.ResumeLayout(false);
             this.mlGroupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -270,5 +370,10 @@
         private Common.Forms.Base.MLLabel labelAddress;
         private Common.Forms.Base.MLTextBox tbCompanyName;
         private Common.Forms.Base.MLLabel labelName;
+        private Common.Forms.Base.MLTextBox tbBulstat;
+        private Common.Forms.Base.MLLabel mlLabel1;
+        private Common.Forms.Base.MLTextBox tbVatNumber;
+        private Common.Forms.Base.MLLabel mlLabel2;
+        private Common.Forms.Base.MLErrorLabel labelError;
     }
 }

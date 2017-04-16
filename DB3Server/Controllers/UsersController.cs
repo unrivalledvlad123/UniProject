@@ -13,9 +13,16 @@ namespace DB3Server.Controllers
     public class UserController : ApiController
     {
         [System.Web.Http.Route("api/users/create")]
-        public void PostCreateUser([FromBody] CommonUser user)
+        public bool PostCreateUser([FromBody] CommonUser user)
         {
-            BLAuthenticationProvider.CreateUser(user);
+          return  BLAuthenticationProvider.CreateUser(user);
+        }
+
+
+        [System.Web.Http.Route("api/users/edit")]
+        public bool PostEditUser([FromBody] CommonUser user)
+        {
+            return BLAuthenticationProvider.UpdateUser(user);
         }
 
         [System.Web.Http.Route("api/users/login/{username}/{password}")]
@@ -23,6 +30,19 @@ namespace DB3Server.Controllers
         {
             return BLAuthenticationProvider.Login(username, password);
         }
+
+        [System.Web.Http.Route("api/users/allusers/{ownerId}")]
+        public List<CommonUser> GetAllUsers(Guid ownerId)
+        {
+            return BLAuthenticationProvider.GetAllUsers(ownerId);
+        }
+
+        [System.Web.Http.Route("api/users/delete")]
+        public bool PostDeleteUser([FromBody] Guid userId)
+        {
+            return BLAuthenticationProvider.DeleteUser(userId);
+        }
+
 
     }
 
