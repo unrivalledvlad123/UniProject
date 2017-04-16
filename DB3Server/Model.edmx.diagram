@@ -5,13 +5,10 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="8064c1562d344e79ba3cc14c8eecb142" Name="Diagram1">
-        <EntityTypeShape EntityType="Model.Partner" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.Purchase" Width="1.5" PointX="8.125" PointY="3.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.Sale" Width="1.5" PointX="8.125" PointY="7.625" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.PurchasedItem" Width="1.5" PointX="10.5" PointY="3.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.SoldItem" Width="1.5" PointX="10.25" PointY="7.5" IsExpanded="true" />
-        <AssociationConnector Association="Model.FK_Purchase_Partner" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_Sales_Partner" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_PurchasedItem_Purchase" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_SoldItem_Sales" ManuallyRouted="false" />
         <EntityTypeShape EntityType="Model.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" />
@@ -20,13 +17,15 @@
         <AssociationConnector Association="Model.FK_PurchasedItem_Item1" />
         <AssociationConnector Association="Model.FK_SoldItem_Item1" />
         <AssociationConnector Association="Model.FK_WarehouseItems_Item" />
-        <EntityTypeShape EntityType="Model.MOL" Width="1.5" PointX="1.375" PointY="4.75" />
-        <EntityTypeShape EntityType="Model.Owner" Width="1.5" PointX="5" PointY="7.75" />
-        <EntityTypeShape EntityType="Model.User" Width="1.5" PointX="2.375" PointY="9.375" />
-        <AssociationConnector Association="Model.FK_Partner_MOL1" />
+        <EntityTypeShape EntityType="Model.User" Width="1.5" PointX="2.375" PointY="7.375" />
+        <EntityTypeShape EntityType="Model.Owner" Width="1.5" PointX="5.125" PointY="7.375" />
+        <EntityTypeShape EntityType="Model.Partner" Width="1.5" PointX="5.25" PointY="3.125" />
         <AssociationConnector Association="Model.FK_Purchase_Owner" />
         <AssociationConnector Association="Model.FK_Sales_Owner" />
         <AssociationConnector Association="Model.FK_Users_Owner1" />
+        <AssociationConnector Association="Model.FK_Purchase_Partner1" />
+        <AssociationConnector Association="Model.FK_Sales_Partner1" />
+        <EntityTypeShape EntityType="Model.MOL" Width="1.5" PointX="2.375" PointY="3.125" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

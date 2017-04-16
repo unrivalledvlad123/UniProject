@@ -5,6 +5,7 @@ using System.Security.Authentication;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Common;
 using Common.Classes;
 
 namespace DB3Server.BusinessLogic
@@ -37,35 +38,53 @@ namespace DB3Server.BusinessLogic
             return null;
         }
 
-        internal static List<User> GetAllUsers(Guid ownerId)
+        internal static List<CommonUser> GetAllUsers(Guid ownerId)
         {
             DatabaseEntities entities = new DatabaseEntities();
-            return entities.Users.Where(p => p.OwnerId == ownerId).ToList();
+            List<CommonUser> users = new List<CommonUser>();
+            List<User> dbUsers = entities.Users.Where(p => p.OwnerId == ownerId).ToList();
+            foreach (User dbUser in dbUsers)
+            {
+                CommonUser user = new CommonUser();
+                user.OwnerId = dbUser.OwnerId;
+                user.AssignedTo = dbUser.AssignedTo;
+                user.RegisteredAt = dbUser.RegisteredAt;
+                user.Role = dbUser.Role;
+                user.UserId = dbUser.UserId;
+                user.Username = dbUser.Username;
+                Enums.UserRoles role = (Enums.UserRoles)dbUser.Role;
+                user.RoleString = role.ToString();
+                users.Add(user);
+            }
+            return users;
         }
 
-        internal static void DeleteUser(Guid userId)
+        internal static bool DeleteUser(Guid userId)
         {
             DatabaseEntities entities = new DatabaseEntities();
             User user = entities.Users.FirstOrDefault(p => p.UserId == userId);
-            if (user != null) entities.Users.Remove(user);
-            entities.SaveChanges();
+            if (user != null)
+            {
+                entities.Users.Remove(user);
+                entities.SaveChanges();
+                return true;
+            }
+            return false;
         }
 
-        internal static void CreateUser(CommonUser user)
+        internal static bool CreateUser(CommonUser user)
         {
             DatabaseEntities entities = new DatabaseEntities();
-            
             User check = entities.Users.FirstOrDefault(p => p.Username == user.Username);
             if (check != null)
             {
-                throw new AuthenticationException(Common.DataHolder.GetString("username_already_exist"));
+                return false;
             }
             User newUser = new User();
             string salt = GenerateSalt();
 
             newUser.Username = user.Username;
-           // newUser.OwnerId = ownerId;
-            newUser.OwnerId =Guid.Parse("14A4C2B8-4571-4ABC-A8BD-CE78625FBF1E");
+            newUser.OwnerId = user.OwnerId;
             newUser.PasswordSalt = salt;
             newUser.Password = EncodePassword(user.Password + salt);
             newUser.RegisteredAt = DateTime.UtcNow;
@@ -74,42 +93,33 @@ namespace DB3Server.BusinessLogic
             newUser.UserId = Guid.NewGuid();
             entities.Users.Add(newUser);
             entities.SaveChanges();
+            return true;
         }
 
-        internal static void UpdateUser(Guid userId, int userRole, string assignedTo)
+        internal static bool UpdateUser(CommonUser oldUser)
         {
             DatabaseEntities entities = new DatabaseEntities();
-
-            User user = entities.Users.FirstOrDefault(p => p.UserId == userId);
-            if (user == null) throw new Exception("user_not_found");
-            user.Role = userRole;
-            user.AssignedTo = assignedTo;
+            User user = entities.Users.FirstOrDefault(p => p.UserId == oldUser.UserId);
+            if (user == null) return false;
+            user.Role = oldUser.Role;
+            user.AssignedTo = oldUser.AssignedTo;
+            if (!string.IsNullOrEmpty(oldUser.Password))
+            {
+                string newSalt = GenerateSalt();
+                user.PasswordSalt = newSalt;
+                user.Password = EncodePassword(oldUser.Password + newSalt);
+            }
 
             entities.Users.Attach(user);
             var entry = entities.Entry(user);
             entry.Property(e => e.Role).IsModified = true;
             entry.Property(e => e.AssignedTo).IsModified = true;
+            entry.Property(e => e.Password).IsModified = true;
+            entry.Property(e => e.PasswordSalt).IsModified = true;
             entities.SaveChanges();
+            return true;
         }
 
-        internal static void ChangePassword(Guid userId, string oldPassword, string newPassword)
-        {
-            DatabaseEntities entities = new DatabaseEntities();
-            User user = entities.Users.FirstOrDefault(p => p.UserId == userId);
-            if (user == null) throw new AuthenticationException(Common.DataHolder.GetString("invalid_username_or_password"));
-            if (user.Password == EncodePassword(oldPassword + user.PasswordSalt))
-            {
-                string newSalt = GenerateSalt();
-                string newPasswordGenerated = EncodePassword(newPassword + newSalt);
-                user.Password = newPasswordGenerated;
-                user.PasswordSalt = newSalt;
-                entities.SaveChanges();
-            }
-            else
-            {
-                throw new AuthenticationException(Common.DataHolder.GetString("password_mismatch"));
-            }
-        }
         
         #endregion
 

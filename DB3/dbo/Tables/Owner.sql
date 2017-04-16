@@ -4,8 +4,12 @@
     [Address]     VARCHAR (250)    NOT NULL,
     [Phone]       VARCHAR (50)     NULL,
     [Email]       VARCHAR (50)     NULL,
+    [VATNumber]   VARCHAR (50)     NULL,
+    [Bulstat]     VARCHAR (50)     NULL,
     CONSTRAINT [PK_Owner] PRIMARY KEY CLUSTERED ([OwnerId] ASC)
 );
+
+
 
 
 
