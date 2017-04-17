@@ -38,5 +38,132 @@ namespace DB3Client.ServiceAccess
             return owner;
         }
 
+        public static async Task<bool> PostUpdateOwner(CompanyOwner owner)
+        {
+            HttpResponseMessage response;
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:9000/");
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic");
+
+                try
+                {
+                    response = await client.PostAsJsonAsync("api/owner/update", owner);
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw new Exception(ex.InnerException.Message);
+                }
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+                return await response.Content.ReadAsAsync<bool>();
+            }
+        }
+
+        public static async Task<List<CommonMol>> getAllMols(Guid ownerId)
+        {
+            List<CommonMol> mols = new List<CommonMol>();
+            HttpResponseMessage response;
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:9000/");
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic");
+
+                try
+                {
+                    response = await client.GetAsync("api/owner/mols/" + ownerId);
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw new Exception(ex.InnerException.Message);
+                }
+
+                if (response.IsSuccessStatusCode)
+                {
+                    mols = await response.Content.ReadAsAsync<List<CommonMol>>();
+                }
+
+            }
+            return mols;
+        }
+
+        public static async Task<bool> PostCreateMol(CommonMol mol)
+        {
+            HttpResponseMessage response;
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:9000/");
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic");
+
+                try
+                {
+                    response = await client.PostAsJsonAsync("api/owner/createmol", mol);
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw new Exception(ex.InnerException.Message);
+                }
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+                return await response.Content.ReadAsAsync<bool>();
+            }
+        }
+
+        public static async Task<bool> PostUpdateMol(CommonMol mol)
+        {
+            HttpResponseMessage response;
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:9000/");
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic");
+
+                try
+                {
+                    response = await client.PostAsJsonAsync("api/owner/updatemol", mol);
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw new Exception(ex.InnerException.Message);
+                }
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+                return await response.Content.ReadAsAsync<bool>();
+            }
+        }
+
+        public static async Task<bool> PostDeleteMol(Guid molId)
+        {
+            HttpResponseMessage response;
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:9000/");
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic");
+
+                try
+                {
+                    response = await client.PostAsJsonAsync("api/owner/deletemol", molId);
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw new Exception(ex.InnerException.Message);
+                }
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+                return await response.Content.ReadAsAsync<bool>();
+            }
+        }
+
     }
 }

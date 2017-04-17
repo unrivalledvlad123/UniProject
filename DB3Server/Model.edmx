@@ -19,11 +19,12 @@
             <PropertyRef Name="MolId" />
           </Key>
           <Property Name="MolId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
           <Property Name="LastName" Type="varchar" MaxLength="50" />
           <Property Name="Address" Type="varchar" MaxLength="50" />
           <Property Name="Phone" Type="varchar" MaxLength="20" />
           <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="OwnerId" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="Owner">
           <Key>
@@ -34,23 +35,20 @@
           <Property Name="Address" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="Phone" Type="varchar" MaxLength="50" />
           <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="VATNumber" Type="varchar" MaxLength="50" />
+          <Property Name="Bulstat" Type="varchar" MaxLength="50" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'DB3 Sklad.dbo.OwnerMol' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="OwnerMol">
-          <Property Name="OwnerId" Type="uniqueidentifier" />
-          <Property Name="MolId" Type="uniqueidentifier" />
-        </EntityType>-->
         <EntityType Name="Partner">
           <Key>
             <PropertyRef Name="PartnerId" />
           </Key>
           <Property Name="PartnerId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="MollId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Address" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Phone" Type="varchar" MaxLength="50" />
           <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="VATNumber" Type="varchar" MaxLength="50" />
+          <Property Name="Bulstat" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Purchase">
           <Key>
@@ -134,24 +132,6 @@ warning 6002: The table/view 'DB3 Sklad.dbo.SoldItem' does not have a primary ke
           <Property Name="Quantity" Type="int" />
           <Property Name="SellingPriceCent" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-error 6004: The table 'DB3 Sklad.dbo.OwnerMol' is referenced by a relationship, but cannot be found.
-        <Association Name="FK_OwnerMol_MOL" />-->
-        <!--Errors Found During Generation:
-error 6004: The table 'DB3 Sklad.dbo.OwnerMol' is referenced by a relationship, but cannot be found.
-        <Association Name="FK_OwnerMol_Owner" />-->
-        <Association Name="FK_Partner_MOL1">
-          <End Role="MOL" Type="Self.MOL" Multiplicity="1" />
-          <End Role="Partner" Type="Self.Partner" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MOL">
-              <PropertyRef Name="MolId" />
-            </Principal>
-            <Dependent Role="Partner">
-              <PropertyRef Name="MollId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Purchase_Owner">
           <End Role="Owner" Type="Self.Owner" Multiplicity="1" />
           <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
@@ -298,10 +278,6 @@ error 6004: The table 'DB3 Sklad.dbo.OwnerMol' is referenced by a relationship, 
     [SoldItem].[SaleId] AS [SaleId]
     FROM [dbo].[SoldItem] AS [SoldItem]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK_Partner_MOL1" Association="Self.FK_Partner_MOL1">
-            <End Role="MOL" EntitySet="MOL" />
-            <End Role="Partner" EntitySet="Partner" />
-          </AssociationSet>
           <AssociationSet Name="FK_Purchase_Owner" Association="Self.FK_Purchase_Owner">
             <End Role="Owner" EntitySet="Owner" />
             <End Role="Purchase" EntitySet="Purchase" />
@@ -347,20 +323,6 @@ error 6004: The table 'DB3 Sklad.dbo.OwnerMol' is referenced by a relationship, 
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Partner">
-          <Key>
-            <PropertyRef Name="PartnerId" />
-          </Key>
-          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PartnerId" Type="Guid" Nullable="false" />
-          <Property Name="MollId" Type="Guid" Nullable="false" />
-          <NavigationProperty Name="Purchases" Relationship="Self.FK_Purchase_Partner" FromRole="Partner" ToRole="Purchase" />
-          <NavigationProperty Name="Sales" Relationship="Self.FK_Sales_Partner" FromRole="Partner" ToRole="Sales" />
-          <NavigationProperty Name="MOL" Relationship="Model.FK_Partner_MOL1" FromRole="Partner" ToRole="MOL" />
-        </EntityType>
         <EntityType Name="Purchase">
           <Key>
             <PropertyRef Name="PurchaseId" />
@@ -372,9 +334,9 @@ error 6004: The table 'DB3 Sklad.dbo.OwnerMol' is referenced by a relationship, 
           <Property Name="PurchaseId" Type="Guid" Nullable="false" />
           <Property Name="SellerId" Type="Guid" Nullable="false" />
           <Property Name="BuyerId" Type="Guid" Nullable="false" />
-          <NavigationProperty Name="Partner" Relationship="Self.FK_Purchase_Partner" FromRole="Purchase" ToRole="Partner" />
           <NavigationProperty Name="PurchasedItems" Relationship="Self.FK_PurchasedItem_Purchase" FromRole="Purchase" ToRole="PurchasedItem" />
           <NavigationProperty Name="Owner" Relationship="Model.FK_Purchase_Owner" FromRole="Purchase" ToRole="Owner" />
+          <NavigationProperty Name="Partner" Relationship="Model.FK_Purchase_Partner1" FromRole="Purchase" ToRole="Partner" />
         </EntityType>
         <EntityType Name="Sale">
           <Key>
@@ -386,9 +348,9 @@ error 6004: The table 'DB3 Sklad.dbo.OwnerMol' is referenced by a relationship, 
           <Property Name="SaleId" Type="Guid" Nullable="false" />
           <Property Name="SellerId" Type="Guid" Nullable="false" />
           <Property Name="BuyerId" Type="Guid" Nullable="false" />
-          <NavigationProperty Name="Partner" Relationship="Self.FK_Sales_Partner" FromRole="Sales" ToRole="Partner" />
           <NavigationProperty Name="SoldItems" Relationship="Self.FK_SoldItem_Sales" FromRole="Sales" ToRole="SoldItem" />
           <NavigationProperty Name="Owner" Relationship="Model.FK_Sales_Owner" FromRole="Sale" ToRole="Owner" />
+          <NavigationProperty Name="Partner" Relationship="Model.FK_Sales_Partner1" FromRole="Sale" ToRole="Partner" />
         </EntityType>
         <EntityType Name="PurchasedItem">
           <Key>
@@ -418,30 +380,6 @@ error 6004: The table 'DB3 Sklad.dbo.OwnerMol' is referenced by a relationship, 
           <NavigationProperty Name="Sale" Relationship="Self.FK_SoldItem_Sales" FromRole="SoldItem" ToRole="Sales" />
           <NavigationProperty Name="Item" Relationship="Model.FK_SoldItem_Item1" FromRole="SoldItem" ToRole="Item" />
         </EntityType>
-        <Association Name="FK_Purchase_Partner">
-          <End Role="Partner" Type="Self.Partner" Multiplicity="1" />
-          <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Partner">
-              <PropertyRef Name="PartnerId" />
-            </Principal>
-            <Dependent Role="Purchase">
-              <PropertyRef Name="SellerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Sales_Partner">
-          <End Role="Partner" Type="Self.Partner" Multiplicity="1" />
-          <End Role="Sales" Type="Self.Sale" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Partner">
-              <PropertyRef Name="PartnerId" />
-            </Principal>
-            <Dependent Role="Sales">
-              <PropertyRef Name="BuyerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_PurchasedItem_Purchase">
           <End Role="Purchase" Type="Self.Purchase" Multiplicity="1" />
           <End Role="PurchasedItem" Type="Self.PurchasedItem" Multiplicity="*" />
@@ -467,19 +405,10 @@ error 6004: The table 'DB3 Sklad.dbo.OwnerMol' is referenced by a relationship, 
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="DatabaseEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Partners" EntityType="Self.Partner" />
           <EntitySet Name="Purchases" EntityType="Self.Purchase" />
           <EntitySet Name="Sales" EntityType="Self.Sale" />
           <EntitySet Name="PurchasedItems" EntityType="Self.PurchasedItem" />
           <EntitySet Name="SoldItems" EntityType="Self.SoldItem" />
-          <AssociationSet Name="FK_Purchase_Partner" Association="Self.FK_Purchase_Partner">
-            <End Role="Partner" EntitySet="Partners" />
-            <End Role="Purchase" EntitySet="Purchases" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Sales_Partner" Association="Self.FK_Sales_Partner">
-            <End Role="Partner" EntitySet="Partners" />
-            <End Role="Sales" EntitySet="Sales" />
-          </AssociationSet>
           <AssociationSet Name="FK_PurchasedItem_Purchase" Association="Self.FK_PurchasedItem_Purchase">
             <End Role="Purchase" EntitySet="Purchases" />
             <End Role="PurchasedItem" EntitySet="PurchasedItems" />
@@ -503,13 +432,9 @@ error 6004: The table 'DB3 Sklad.dbo.OwnerMol' is referenced by a relationship, 
             <End Role="Item" EntitySet="Items" />
             <End Role="WarehouseItem" EntitySet="WarehouseItems" />
           </AssociationSet>
-          <EntitySet Name="MOLs" EntityType="Model.MOL" />
-          <EntitySet Name="Owners" EntityType="Model.Owner" />
           <EntitySet Name="Users" EntityType="Model.User" />
-          <AssociationSet Name="FK_Partner_MOL1" Association="Model.FK_Partner_MOL1">
-            <End Role="MOL" EntitySet="MOLs" />
-            <End Role="Partner" EntitySet="Partners" />
-          </AssociationSet>
+          <EntitySet Name="Owners" EntityType="Model.Owner" />
+          <EntitySet Name="Partners" EntityType="Model.Partner" />
           <AssociationSet Name="FK_Purchase_Owner" Association="Model.FK_Purchase_Owner">
             <End Role="Owner" EntitySet="Owners" />
             <End Role="Purchase" EntitySet="Purchases" />
@@ -522,6 +447,15 @@ error 6004: The table 'DB3 Sklad.dbo.OwnerMol' is referenced by a relationship, 
             <End Role="Owner" EntitySet="Owners" />
             <End Role="User" EntitySet="Users" />
           </AssociationSet>
+          <AssociationSet Name="FK_Purchase_Partner1" Association="Model.FK_Purchase_Partner1">
+            <End Role="Partner" EntitySet="Partners" />
+            <End Role="Purchase" EntitySet="Purchases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sales_Partner1" Association="Model.FK_Sales_Partner1">
+            <End Role="Partner" EntitySet="Partners" />
+            <End Role="Sale" EntitySet="Sales" />
+          </AssociationSet>
+          <EntitySet Name="MOLs" EntityType="Model.MOL" />
           </EntityContainer>
         <EntityType Name="sysdiagram">
           <Key>
@@ -590,31 +524,6 @@ error 6004: The table 'DB3 Sklad.dbo.OwnerMol' is referenced by a relationship, 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="MOL">
-          <Key>
-            <PropertyRef Name="MolId" />
-          </Key>
-          <Property Name="MolId" Type="Guid" Nullable="false" />
-          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Partners" Relationship="Model.FK_Partner_MOL1" FromRole="MOL" ToRole="Partner" />
-        </EntityType>
-        <EntityType Name="Owner">
-          <Key>
-            <PropertyRef Name="OwnerId" />
-          </Key>
-          <Property Name="OwnerId" Type="Guid" Nullable="false" />
-          <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Address" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Purchases" Relationship="Model.FK_Purchase_Owner" FromRole="Owner" ToRole="Purchase" />
-          <NavigationProperty Name="Sales" Relationship="Model.FK_Sales_Owner" FromRole="Owner" ToRole="Sale" />
-          <NavigationProperty Name="Users" Relationship="Model.FK_Users_Owner1" FromRole="Owner" ToRole="User" />
-        </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="Username" />
@@ -629,18 +538,35 @@ error 6004: The table 'DB3 Sklad.dbo.OwnerMol' is referenced by a relationship, 
           <Property Name="UserId" Type="Guid" Nullable="false" />
           <NavigationProperty Name="Owner" Relationship="Model.FK_Users_Owner1" FromRole="User" ToRole="Owner" />
         </EntityType>
-        <Association Name="FK_Partner_MOL1">
-          <End Type="Model.MOL" Role="MOL" Multiplicity="1" />
-          <End Type="Model.Partner" Role="Partner" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MOL">
-              <PropertyRef Name="MolId" />
-            </Principal>
-            <Dependent Role="Partner">
-              <PropertyRef Name="MollId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <EntityType Name="Owner">
+          <Key>
+            <PropertyRef Name="OwnerId" />
+          </Key>
+          <Property Name="OwnerId" Type="Guid" Nullable="false" />
+          <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VATNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Bulstat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Purchases" Relationship="Model.FK_Purchase_Owner" FromRole="Owner" ToRole="Purchase" />
+          <NavigationProperty Name="Sales" Relationship="Model.FK_Sales_Owner" FromRole="Owner" ToRole="Sale" />
+          <NavigationProperty Name="Users" Relationship="Model.FK_Users_Owner1" FromRole="Owner" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Partner">
+          <Key>
+            <PropertyRef Name="PartnerId" />
+          </Key>
+          <Property Name="PartnerId" Type="Guid" Nullable="false" />
+          <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VATNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Bulstat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Purchases" Relationship="Model.FK_Purchase_Partner1" FromRole="Partner" ToRole="Purchase" />
+          <NavigationProperty Name="Sales" Relationship="Model.FK_Sales_Partner1" FromRole="Partner" ToRole="Sale" />
+        </EntityType>
         <Association Name="FK_Purchase_Owner">
           <End Type="Model.Owner" Role="Owner" Multiplicity="1" />
           <End Type="Model.Purchase" Role="Purchase" Multiplicity="*" />
@@ -677,24 +603,48 @@ error 6004: The table 'DB3 Sklad.dbo.OwnerMol' is referenced by a relationship, 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Purchase_Partner1">
+          <End Type="Model.Partner" Role="Partner" Multiplicity="1" />
+          <End Type="Model.Purchase" Role="Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partner">
+              <PropertyRef Name="PartnerId" />
+            </Principal>
+            <Dependent Role="Purchase">
+              <PropertyRef Name="SellerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sales_Partner1">
+          <End Type="Model.Partner" Role="Partner" Multiplicity="1" />
+          <End Type="Model.Sale" Role="Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partner">
+              <PropertyRef Name="PartnerId" />
+            </Principal>
+            <Dependent Role="Sale">
+              <PropertyRef Name="BuyerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MOL">
+          <Key>
+            <PropertyRef Name="MolId" />
+          </Key>
+          <Property Name="MolId" Type="Guid" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerId" Type="Guid" Nullable="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="DatabaseEntities">
-          <EntitySetMapping Name="Partners">
-            <EntityTypeMapping TypeName="Model.Partner">
-              <MappingFragment StoreEntitySet="Partner">
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
-                <ScalarProperty Name="MollId" ColumnName="MollId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Purchases">
             <EntityTypeMapping TypeName="Model.Purchase">
               <MappingFragment StoreEntitySet="Purchase">
@@ -770,29 +720,6 @@ error 6004: The table 'DB3 Sklad.dbo.OwnerMol' is referenced by a relationship, 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MOLs">
-            <EntityTypeMapping TypeName="Model.MOL">
-              <MappingFragment StoreEntitySet="MOL">
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="MolId" ColumnName="MolId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Owners">
-            <EntityTypeMapping TypeName="Model.Owner">
-              <MappingFragment StoreEntitySet="Owner">
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
-                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="Model.User">
               <MappingFragment StoreEntitySet="Users">
@@ -804,6 +731,45 @@ error 6004: The table 'DB3 Sklad.dbo.OwnerMol' is referenced by a relationship, 
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Owners">
+            <EntityTypeMapping TypeName="Model.Owner">
+              <MappingFragment StoreEntitySet="Owner">
+                <ScalarProperty Name="Bulstat" ColumnName="Bulstat" />
+                <ScalarProperty Name="VATNumber" ColumnName="VATNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Partners">
+            <EntityTypeMapping TypeName="Model.Partner">
+              <MappingFragment StoreEntitySet="Partner">
+                <ScalarProperty Name="Bulstat" ColumnName="Bulstat" />
+                <ScalarProperty Name="VATNumber" ColumnName="VATNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MOLs">
+            <EntityTypeMapping TypeName="Model.MOL">
+              <MappingFragment StoreEntitySet="MOL">
+                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MolId" ColumnName="MolId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

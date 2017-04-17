@@ -73,6 +73,5 @@
     <Build Include="dbo\Tables\Owner.sql" />
     <Build Include="dbo\Tables\Item.sql" />
     <Build Include="dbo\Tables\WarehouseItems.sql" />
-    <Build Include="dbo\Tables\OwnerMol.sql" />
   </ItemGroup>
 </Project>

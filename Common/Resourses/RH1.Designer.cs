@@ -70,6 +70,15 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add new Accountable person.
+        /// </summary>
+        internal static string add_mol_info {
+            get {
+                return ResourceManager.GetString("add_mol_info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add User.
         /// </summary>
         internal static string add_new_user {
@@ -111,6 +120,15 @@ namespace Common.Resourses {
         internal static string assigned_to {
             get {
                 return ResourceManager.GetString("assigned_to", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bulstat:.
+        /// </summary>
+        internal static string bulstat_number {
+            get {
+                return ResourceManager.GetString("bulstat_number", resourceCulture);
             }
         }
         
@@ -196,6 +214,15 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Editing company Info failed!.
+        /// </summary>
+        internal static string edit_company_fail_error {
+            get {
+                return ResourceManager.GetString("edit_company_fail_error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit Info.
         /// </summary>
         internal static string edit_company_info {
@@ -223,6 +250,15 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit user information.
+        /// </summary>
+        internal static string edit_user_info {
+            get {
+                return ResourceManager.GetString("edit_user_info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email:.
         /// </summary>
         internal static string email {
@@ -232,11 +268,74 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        internal static string email_grid {
+            get {
+                return ResourceManager.GetString("email_grid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Some required fields are empty!.
+        /// </summary>
+        internal static string empty_username_or_password {
+            get {
+                return ResourceManager.GetString("empty_username_or_password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First name:.
+        /// </summary>
+        internal static string firstname {
+            get {
+                return ResourceManager.GetString("firstname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First name.
+        /// </summary>
+        internal static string firstname_grid {
+            get {
+                return ResourceManager.GetString("firstname_grid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid User!.
+        /// </summary>
+        internal static string invalid_user {
+            get {
+                return ResourceManager.GetString("invalid_user", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid username or password!.
         /// </summary>
         internal static string invalid_username_or_password {
             get {
                 return ResourceManager.GetString("invalid_username_or_password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last name:.
+        /// </summary>
+        internal static string lastname {
+            get {
+                return ResourceManager.GetString("lastname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last name.
+        /// </summary>
+        internal static string lastname_grid {
+            get {
+                return ResourceManager.GetString("lastname_grid", resourceCulture);
             }
         }
         
@@ -304,6 +403,15 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Change password?.
+        /// </summary>
+        internal static string password_change {
+            get {
+                return ResourceManager.GetString("password_change", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Passwords does not match!.
         /// </summary>
         internal static string password_mismatch {
@@ -318,6 +426,15 @@ namespace Common.Resourses {
         internal static string phone {
             get {
                 return ResourceManager.GetString("phone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phone.
+        /// </summary>
+        internal static string phone_grid {
+            get {
+                return ResourceManager.GetString("phone_grid", resourceCulture);
             }
         }
         
@@ -349,6 +466,24 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unknow error - please try again!.
+        /// </summary>
+        internal static string unknow_error {
+            get {
+                return ResourceManager.GetString("unknow_error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Such user already exists!.
+        /// </summary>
+        internal static string user_already_exist {
+            get {
+                return ResourceManager.GetString("user_already_exist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to User role.
         /// </summary>
         internal static string user_role {
@@ -372,6 +507,15 @@ namespace Common.Resourses {
         internal static string username_already_exist {
             get {
                 return ResourceManager.GetString("username_already_exist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Number:.
+        /// </summary>
+        internal static string vat_number {
+            get {
+                return ResourceManager.GetString("vat_number", resourceCulture);
             }
         }
         

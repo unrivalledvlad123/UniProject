@@ -12,6 +12,7 @@ namespace Common.Forms.Base
 {
 	public partial class MLCheckBox : MetroCheckBox
 	{
+
 		public new string Text
 		{
 			get { return base.Text; }

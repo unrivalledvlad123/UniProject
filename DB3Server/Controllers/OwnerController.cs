@@ -17,7 +17,37 @@ namespace DB3Server.Controllers
         {
             return BLOwner.GetOwnerById(ownerId);
         }
-    }
 
+        [System.Web.Http.Route("api/owner/update")]
+        public bool PostUpdateOwner([FromBody] CompanyOwner owner)
+        {
+            return BLOwner.UpdateOwner(owner);
+        }
+
+        [System.Web.Http.Route("api/owner/mols/{ownerId}")]
+        public List<CommonMol> GetAllMols(Guid ownerId)
+        {
+            return BLOwner.GetAllMols(ownerId);
+        }
+
+        [System.Web.Http.Route("api/owner/createmol")]
+        public bool PostCreateMol([FromBody] CommonMol mol)
+        {
+            return BLOwner.CreateMol(mol);
+        }
+
+        [System.Web.Http.Route("api/owner/updatemol")]
+        public bool PostUpdateMol([FromBody] CommonMol mol)
+        {
+            return BLOwner.UpdateMol(mol);
+        }
+
+        [System.Web.Http.Route("api/owner/deletemol")]
+        public bool PostDeleteMol([FromBody] Guid molId)
+        {
+            return BLOwner.DeleteMol(molId);
+        }
+    }
+   
 
 }
