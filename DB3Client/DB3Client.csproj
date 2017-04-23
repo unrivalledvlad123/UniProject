@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -191,11 +191,25 @@
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+
+    <Compile Include="Forms\WarehouseForms\AddEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\WarehouseForms\AddEditForm.Designer.cs">
+      <DependentUpon>AddEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\WarehouseForms\PricelistForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\WarehouseForms\PricelistForm.Designer.cs">
+      <DependentUpon>PricelistForm.cs</DependentUpon>
+
     <Compile Include="Forms\TrasactionForms\ViewTransactionForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\TrasactionForms\ViewTransactionForm.Designer.cs">
       <DependentUpon>ViewTransactionForm.cs</DependentUpon>
+
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -238,9 +252,16 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+
+    <EmbeddedResource Include="Forms\WarehouseForms\AddEditForm.resx">
+      <DependentUpon>AddEditForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\WarehouseForms\PricelistForm.resx">
+      <DependentUpon>PricelistForm.cs</DependentUpon>
+
     <EmbeddedResource Include="Forms\TrasactionForms\ViewTransactionForm.resx">
       <DependentUpon>ViewTransactionForm.cs</DependentUpon>
+
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
