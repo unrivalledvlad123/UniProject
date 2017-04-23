@@ -157,7 +157,9 @@
   <ItemGroup>
     <Compile Include="BD3Server.cs" />
     <Compile Include="BusinessLogic\BLAuthenticationProvider.cs" />
+    <Compile Include="BusinessLogic\BLContract.cs" />
     <Compile Include="BusinessLogic\BLOwner.cs" />
+    <Compile Include="Controllers\ContractController.cs" />
     <Compile Include="Controllers\ExampleController.cs" />
     <Compile Include="Controllers\OwnerController.cs" />
     <Compile Include="Controllers\UsersController.cs" />

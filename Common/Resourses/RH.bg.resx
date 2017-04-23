@@ -273,4 +273,46 @@
   <data name="unknow_error" xml:space="preserve">
     <value>Възникна грешка - моля опитайте отново!</value>
   </data>
+  <data name="add_contract" xml:space="preserve">
+    <value>Добави Контрагент</value>
+  </data>
+  <data name="add_contract_info" xml:space="preserve">
+    <value>Добави Информация за Контрагента</value>
+  </data>
+  <data name="contracts" xml:space="preserve">
+    <value>Контрагенти</value>
+  </data>
+  <data name="edit_contract" xml:space="preserve">
+    <value>Промени Контрагент</value>
+  </data>
+  <data name="view_transactions" xml:space="preserve">
+    <value>Покажи Транзакции</value>
+  </data>
+  <data name="address_grid" xml:space="preserve">
+    <value>Адрес</value>
+  </data>
+  <data name="bulstat_grid" xml:space="preserve">
+    <value>Булстат</value>
+  </data>
+  <data name="companyname_grid" xml:space="preserve">
+    <value>Име на Фирма</value>
+  </data>
+  <data name="partner_Id_grid" xml:space="preserve">
+    <value>Контрагент ID</value>
+  </data>
+  <data name="search_by_invoice_id" xml:space="preserve">
+    <value>Търсене по Фактура ID:</value>
+  </data>
+  <data name="search_transactions" xml:space="preserve">
+    <value>Търси Транзакции</value>
+  </data>
+  <data name="total_transactions" xml:space="preserve">
+    <value>Общо Транзакции:</value>
+  </data>
+  <data name="vatnumber_grid" xml:space="preserve">
+    <value>ДДС Номер</value>
+  </data>
+  <data name="view_transaction_details" xml:space="preserve">
+    <value>Покажи Детайли на Транзакцията:</value>
+  </data>
 </root>
