@@ -273,4 +273,79 @@
   <data name="unknow_error" xml:space="preserve">
     <value>Unknow error - please try again!</value>
   </data>
+  <data name="add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="add_edit_goods" xml:space="preserve">
+    <value>Add or Edit Goods</value>
+  </data>
+  <data name="edit_goods" xml:space="preserve">
+    <value>Edit </value>
+  </data>
+  <data name="edit_pricelist" xml:space="preserve">
+    <value>Edit Pricelist</value>
+  </data>
+  <data name="goods_tab" xml:space="preserve">
+    <value>Goods</value>
+  </data>
+  <data name="label_description" xml:space="preserve">
+    <value>Description of Good</value>
+  </data>
+  <data name="label_name_goods" xml:space="preserve">
+    <value>Name of Good</value>
+  </data>
+  <data name="label_total_goods" xml:space="preserve">
+    <value>Total:  goods found</value>
+  </data>
+  <data name="label_type_goods" xml:space="preserve">
+    <value>Type of Good</value>
+  </data>
+  <data name="enter_text_error" xml:space="preserve">
+    <value>Please filll fileds Name and Type of Goods</value>
+  </data>
+  <data name="btn_save_new_price_wharehouse" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="current_price_list_warehouse" xml:space="preserve">
+    <value>Current price</value>
+  </data>
+  <data name="description_grid_goods" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="item_description_wharehouse" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="item_name_wharehouse" xml:space="preserve">
+    <value>Item name</value>
+  </data>
+  <data name="name_goods" xml:space="preserve">
+    <value>Name of Goods</value>
+  </data>
+  <data name="name_goods_pricelist" xml:space="preserve">
+    <value>Item name</value>
+  </data>
+  <data name="old_price_wharehouse" xml:space="preserve">
+    <value>OLD PRICE:</value>
+  </data>
+  <data name="price_list_form_error" xml:space="preserve">
+    <value>Please enter price</value>
+  </data>
+  <data name="price_per_each_grid_good" xml:space="preserve">
+    <value>Price per each good</value>
+  </data>
+  <data name="quantity_grid_goods" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+  <data name="tb_price_list_wharehouse" xml:space="preserve">
+    <value>Price list</value>
+  </data>
+  <data name="tb_under_development_wharehouse" xml:space="preserve">
+    <value>Under development</value>
+  </data>
+  <data name="type_goods_pricelist" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="type_grid_goods" xml:space="preserve">
+    <value>Type</value>
+  </data>
 </root>

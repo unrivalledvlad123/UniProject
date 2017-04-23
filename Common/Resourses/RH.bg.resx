@@ -273,4 +273,79 @@
   <data name="unknow_error" xml:space="preserve">
     <value>Възникна грешка - моля опитайте отново!</value>
   </data>
+  <data name="add" xml:space="preserve">
+    <value>Добави</value>
+  </data>
+  <data name="add_edit_goods" xml:space="preserve">
+    <value>Добавяне или Редактиране на Стоки</value>
+  </data>
+  <data name="edit_goods" xml:space="preserve">
+    <value>Редакция</value>
+  </data>
+  <data name="edit_pricelist" xml:space="preserve">
+    <value>Редакция на Цени</value>
+  </data>
+  <data name="goods_tab" xml:space="preserve">
+    <value>Стоки</value>
+  </data>
+  <data name="label_description" xml:space="preserve">
+    <value>Описание на стока</value>
+  </data>
+  <data name="label_name_goods" xml:space="preserve">
+    <value>Име на стока</value>
+  </data>
+  <data name="label_total_goods" xml:space="preserve">
+    <value>Общо: стоки</value>
+  </data>
+  <data name="label_type_goods" xml:space="preserve">
+    <value>Вид на стока</value>
+  </data>
+  <data name="enter_text_error" xml:space="preserve">
+    <value>Моля попълнете полето Име и Вид стока</value>
+  </data>
+  <data name="btn_save_new_price_wharehouse" xml:space="preserve">
+    <value>Запамети</value>
+  </data>
+  <data name="current_price_list_warehouse" xml:space="preserve">
+    <value>Текуща цена</value>
+  </data>
+  <data name="description_grid_goods" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="item_description_wharehouse" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="item_name_wharehouse" xml:space="preserve">
+    <value>Име на стока</value>
+  </data>
+  <data name="name_goods" xml:space="preserve">
+    <value>Име на стока</value>
+  </data>
+  <data name="name_goods_pricelist" xml:space="preserve">
+    <value>Име на стока</value>
+  </data>
+  <data name="old_price_wharehouse" xml:space="preserve">
+    <value>СТАРА ЦЕНА:</value>
+  </data>
+  <data name="price_list_form_error" xml:space="preserve">
+    <value>Моля въведете цена</value>
+  </data>
+  <data name="price_per_each_grid_good" xml:space="preserve">
+    <value>Цена за една стока</value>
+  </data>
+  <data name="quantity_grid_goods" xml:space="preserve">
+    <value>Наличност</value>
+  </data>
+  <data name="tb_price_list_wharehouse" xml:space="preserve">
+    <value>Ценова листа</value>
+  </data>
+  <data name="tb_under_development_wharehouse" xml:space="preserve">
+    <value>В процес на разработка</value>
+  </data>
+  <data name="type_goods_pricelist" xml:space="preserve">
+    <value>Вид</value>
+  </data>
+  <data name="type_grid_goods" xml:space="preserve">
+    <value>Вид</value>
+  </data>
 </root>

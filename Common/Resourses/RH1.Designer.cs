@@ -61,6 +61,24 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add.
+        /// </summary>
+        internal static string add {
+            get {
+                return ResourceManager.GetString("add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add or Edit Goods.
+        /// </summary>
+        internal static string add_edit_goods {
+            get {
+                return ResourceManager.GetString("add_edit_goods", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add Acc. Person.
         /// </summary>
         internal static string add_mol {
@@ -120,6 +138,15 @@ namespace Common.Resourses {
         internal static string assigned_to {
             get {
                 return ResourceManager.GetString("assigned_to", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        internal static string btn_save_new_price_wharehouse {
+            get {
+                return ResourceManager.GetString("btn_save_new_price_wharehouse", resourceCulture);
             }
         }
         
@@ -196,6 +223,15 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Current price.
+        /// </summary>
+        internal static string current_price_list_warehouse {
+            get {
+                return ResourceManager.GetString("current_price_list_warehouse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete Acc. Person.
         /// </summary>
         internal static string delete_mol {
@@ -210,6 +246,15 @@ namespace Common.Resourses {
         internal static string delete_user {
             get {
                 return ResourceManager.GetString("delete_user", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        internal static string description_grid_goods {
+            get {
+                return ResourceManager.GetString("description_grid_goods", resourceCulture);
             }
         }
         
@@ -232,11 +277,29 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit .
+        /// </summary>
+        internal static string edit_goods {
+            get {
+                return ResourceManager.GetString("edit_goods", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit Acc. Person.
         /// </summary>
         internal static string edit_mol {
             get {
                 return ResourceManager.GetString("edit_mol", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Pricelist.
+        /// </summary>
+        internal static string edit_pricelist {
+            get {
+                return ResourceManager.GetString("edit_pricelist", resourceCulture);
             }
         }
         
@@ -286,6 +349,15 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please filll fileds Name and Type of Goods.
+        /// </summary>
+        internal static string enter_text_error {
+            get {
+                return ResourceManager.GetString("enter_text_error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to First name:.
         /// </summary>
         internal static string firstname {
@@ -304,6 +376,15 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Goods.
+        /// </summary>
+        internal static string goods_tab {
+            get {
+                return ResourceManager.GetString("goods_tab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid User!.
         /// </summary>
         internal static string invalid_user {
@@ -318,6 +399,60 @@ namespace Common.Resourses {
         internal static string invalid_username_or_password {
             get {
                 return ResourceManager.GetString("invalid_username_or_password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        internal static string item_description_wharehouse {
+            get {
+                return ResourceManager.GetString("item_description_wharehouse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item name.
+        /// </summary>
+        internal static string item_name_wharehouse {
+            get {
+                return ResourceManager.GetString("item_name_wharehouse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description of Good.
+        /// </summary>
+        internal static string label_description {
+            get {
+                return ResourceManager.GetString("label_description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name of Good.
+        /// </summary>
+        internal static string label_name_goods {
+            get {
+                return ResourceManager.GetString("label_name_goods", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total:  goods found.
+        /// </summary>
+        internal static string label_total_goods {
+            get {
+                return ResourceManager.GetString("label_total_goods", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type of Good.
+        /// </summary>
+        internal static string label_type_goods {
+            get {
+                return ResourceManager.GetString("label_type_goods", resourceCulture);
             }
         }
         
@@ -372,6 +507,33 @@ namespace Common.Resourses {
         internal static string manage_users {
             get {
                 return ResourceManager.GetString("manage_users", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name of Goods.
+        /// </summary>
+        internal static string name_goods {
+            get {
+                return ResourceManager.GetString("name_goods", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item name.
+        /// </summary>
+        internal static string name_goods_pricelist {
+            get {
+                return ResourceManager.GetString("name_goods_pricelist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OLD PRICE:.
+        /// </summary>
+        internal static string old_price_wharehouse {
+            get {
+                return ResourceManager.GetString("old_price_wharehouse", resourceCulture);
             }
         }
         
@@ -439,6 +601,33 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please enter price.
+        /// </summary>
+        internal static string price_list_form_error {
+            get {
+                return ResourceManager.GetString("price_list_form_error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Price per each good.
+        /// </summary>
+        internal static string price_per_each_grid_good {
+            get {
+                return ResourceManager.GetString("price_per_each_grid_good", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quantity.
+        /// </summary>
+        internal static string quantity_grid_goods {
+            get {
+                return ResourceManager.GetString("quantity_grid_goods", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Repeat password.
         /// </summary>
         internal static string repeat_password {
@@ -462,6 +651,42 @@ namespace Common.Resourses {
         internal static string save {
             get {
                 return ResourceManager.GetString("save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Price list.
+        /// </summary>
+        internal static string tb_price_list_wharehouse {
+            get {
+                return ResourceManager.GetString("tb_price_list_wharehouse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Under development.
+        /// </summary>
+        internal static string tb_under_development_wharehouse {
+            get {
+                return ResourceManager.GetString("tb_under_development_wharehouse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type.
+        /// </summary>
+        internal static string type_goods_pricelist {
+            get {
+                return ResourceManager.GetString("type_goods_pricelist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type.
+        /// </summary>
+        internal static string type_grid_goods {
+            get {
+                return ResourceManager.GetString("type_grid_goods", resourceCulture);
             }
         }
         
