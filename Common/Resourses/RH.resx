@@ -346,7 +346,6 @@
   <data name="type_goods_pricelist" xml:space="preserve">
     <value>Type</value>
   </data>
-  <data name="type_grid_goods" xml:space="preserve">
 
   <data name="add_contract" xml:space="preserve">
     <value>Add Contract</value>
@@ -391,3 +390,4 @@
     <value>View Transaction Details</value>
 
   </data>
+</root>

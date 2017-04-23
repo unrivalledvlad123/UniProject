@@ -276,7 +276,7 @@
 
   <data name="add" xml:space="preserve">
     <value>Добави</value>
-
+</data>
   <data name="add_edit_goods" xml:space="preserve">
     <value>Добавяне или Редактиране на Стоки</value>
   </data>
@@ -348,6 +348,7 @@
   </data>
   <data name="type_grid_goods" xml:space="preserve">
     <value>Вид</value>
+    </data>
 
   <data name="add_contract" xml:space="preserve">
     <value>Добави Контрагент</value>
@@ -390,5 +391,5 @@
   </data>
   <data name="view_transaction_details" xml:space="preserve">
     <value>Покажи Детайли на Транзакцията:</value>
-
   </data>
+</root>
