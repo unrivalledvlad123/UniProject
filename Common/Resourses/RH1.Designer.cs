@@ -61,20 +61,36 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+
         ///   Looks up a localized string similar to Add.
         /// </summary>
         internal static string add {
             get {
                 return ResourceManager.GetString("add", resourceCulture);
+
+        ///   Looks up a localized string similar to Add Contract.
+        /// </summary>
+        internal static string add_contract {
+            get {
+                return ResourceManager.GetString("add_contract", resourceCulture);
+
             }
         }
         
         /// <summary>
+
         ///   Looks up a localized string similar to Add or Edit Goods.
         /// </summary>
         internal static string add_edit_goods {
             get {
                 return ResourceManager.GetString("add_edit_goods", resourceCulture);
+
+        ///   Looks up a localized string similar to Add Contract Information.
+        /// </summary>
+        internal static string add_contract_info {
+            get {
+                return ResourceManager.GetString("add_contract_info", resourceCulture);
+
             }
         }
         
@@ -115,6 +131,15 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Address.
+        /// </summary>
+        internal static string address_grid {
+            get {
+                return ResourceManager.GetString("address_grid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Administration.
         /// </summary>
         internal static string administration {
@@ -142,11 +167,19 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+
         ///   Looks up a localized string similar to Save.
         /// </summary>
         internal static string btn_save_new_price_wharehouse {
             get {
                 return ResourceManager.GetString("btn_save_new_price_wharehouse", resourceCulture);
+
+        ///   Looks up a localized string similar to Bulstat.
+        /// </summary>
+        internal static string bulstat_grid {
+            get {
+                return ResourceManager.GetString("bulstat_grid", resourceCulture);
+
             }
         }
         
@@ -187,6 +220,15 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Company Name.
+        /// </summary>
+        internal static string companyname_grid {
+            get {
+                return ResourceManager.GetString("companyname_grid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You are connected to:.
         /// </summary>
         internal static string connected_to_server {
@@ -201,6 +243,15 @@ namespace Common.Resourses {
         internal static string contacts {
             get {
                 return ResourceManager.GetString("contacts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contracts.
+        /// </summary>
+        internal static string contracts {
+            get {
+                return ResourceManager.GetString("contracts", resourceCulture);
             }
         }
         
@@ -277,11 +328,19 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+
         ///   Looks up a localized string similar to Edit .
         /// </summary>
         internal static string edit_goods {
             get {
                 return ResourceManager.GetString("edit_goods", resourceCulture);
+
+        ///   Looks up a localized string similar to Edit Contract.
+        /// </summary>
+        internal static string edit_contract {
+            get {
+                return ResourceManager.GetString("edit_contract", resourceCulture);
+
             }
         }
         
@@ -556,6 +615,15 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Partner ID.
+        /// </summary>
+        internal static string partner_Id_grid {
+            get {
+                return ResourceManager.GetString("partner_Id_grid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password.
         /// </summary>
         internal static string password {
@@ -655,24 +723,41 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+
         ///   Looks up a localized string similar to Price list.
         /// </summary>
         internal static string tb_price_list_wharehouse {
             get {
                 return ResourceManager.GetString("tb_price_list_wharehouse", resourceCulture);
+
+        ///   Looks up a localized string similar to Search by Invoice ID:.
+        /// </summary>
+        internal static string search_by_invoice_id {
+            get {
+                return ResourceManager.GetString("search_by_invoice_id", resourceCulture);
+
             }
         }
         
         /// <summary>
+
         ///   Looks up a localized string similar to Under development.
         /// </summary>
         internal static string tb_under_development_wharehouse {
             get {
                 return ResourceManager.GetString("tb_under_development_wharehouse", resourceCulture);
+
+        ///   Looks up a localized string similar to Search Transactions.
+        /// </summary>
+        internal static string search_transactions {
+            get {
+                return ResourceManager.GetString("search_transactions", resourceCulture);
+
             }
         }
         
         /// <summary>
+
         ///   Looks up a localized string similar to Type.
         /// </summary>
         internal static string type_goods_pricelist {
@@ -687,6 +772,13 @@ namespace Common.Resourses {
         internal static string type_grid_goods {
             get {
                 return ResourceManager.GetString("type_grid_goods", resourceCulture);
+
+        ///   Looks up a localized string similar to Total Transactions:.
+        /// </summary>
+        internal static string total_transactions {
+            get {
+                return ResourceManager.GetString("total_transactions", resourceCulture);
+
             }
         }
         
@@ -741,6 +833,33 @@ namespace Common.Resourses {
         internal static string vat_number {
             get {
                 return ResourceManager.GetString("vat_number", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Number.
+        /// </summary>
+        internal static string vatnumber_grid {
+            get {
+                return ResourceManager.GetString("vatnumber_grid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View Transaction Details.
+        /// </summary>
+        internal static string view_transaction_details {
+            get {
+                return ResourceManager.GetString("view_transaction_details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View Transactions.
+        /// </summary>
+        internal static string view_transactions {
+            get {
+                return ResourceManager.GetString("view_transactions", resourceCulture);
             }
         }
         

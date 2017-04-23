@@ -63,8 +63,11 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
-  <ItemGroup>
+
     <Compile Include="Classes\CommonItem.cs" />
+
+    <Compile Include="Classes\CommonContract.cs" />
+
     <Compile Include="Classes\CommonMol.cs" />
     <Compile Include="Classes\CommonWarehouseItemsPrice.cs" />
     <Compile Include="Classes\CompanyOwner.cs" />
