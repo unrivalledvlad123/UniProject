@@ -42,9 +42,11 @@ namespace DB3Client.Controls
             this.dgvContracts = new MetroFramework.Controls.MetroGrid();
             this.metroTabPage2 = new Common.Forms.Base.MLTabPage();
             this.metroTabPage3 = new Common.Forms.Base.MLTabPage();
+            this.mlLabel1 = new Common.Forms.Base.MLLabel();
             this.tabControlContracts.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvContracts)).BeginInit();
+            this.metroTabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlContracts
@@ -55,7 +57,7 @@ namespace DB3Client.Controls
             this.tabControlContracts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlContracts.Location = new System.Drawing.Point(0, 0);
             this.tabControlContracts.Name = "tabControlContracts";
-            this.tabControlContracts.SelectedIndex = 0;
+            this.tabControlContracts.SelectedIndex = 2;
             this.tabControlContracts.Size = new System.Drawing.Size(1064, 460);
             this.tabControlContracts.TabIndex = 0;
             this.tabControlContracts.UseSelectable = true;
@@ -201,6 +203,7 @@ namespace DB3Client.Controls
             // 
             // metroTabPage3
             // 
+            this.metroTabPage3.Controls.Add(this.mlLabel1);
             this.metroTabPage3.HorizontalScrollbarBarColor = true;
             this.metroTabPage3.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage3.HorizontalScrollbarSize = 10;
@@ -213,6 +216,16 @@ namespace DB3Client.Controls
             this.metroTabPage3.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage3.VerticalScrollbarSize = 10;
             // 
+            // mlLabel1
+            // 
+            this.mlLabel1.AutoSize = true;
+            this.mlLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.mlLabel1.Location = new System.Drawing.Point(127, 73);
+            this.mlLabel1.Name = "mlLabel1";
+            this.mlLabel1.Size = new System.Drawing.Size(74, 19);
+            this.mlLabel1.TabIndex = 2;
+            this.mlLabel1.Text = "interesting";
+            // 
             // ContractsControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -223,6 +236,8 @@ namespace DB3Client.Controls
             this.tabControlContracts.ResumeLayout(false);
             this.metroTabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvContracts)).EndInit();
+            this.metroTabPage3.ResumeLayout(false);
+            this.metroTabPage3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -238,5 +253,6 @@ namespace DB3Client.Controls
         private MLButton btnEditContract;
         private MLButton btnAddContract;
         private MetroFramework.Controls.MetroGrid dgvContracts;
+        private MLLabel mlLabel1;
     }
 }
