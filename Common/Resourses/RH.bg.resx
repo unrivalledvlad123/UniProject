@@ -273,67 +273,123 @@
   <data name="unknow_error" xml:space="preserve">
     <value>Възникна грешка - моля опитайте отново!</value>
   </data>
+
   <data name="add" xml:space="preserve">
-    <value>Добавяне</value>
+    <value>Добави</value>
+</data>
+  <data name="add_edit_goods" xml:space="preserve">
+    <value>Добавяне или Редактиране на Стоки</value>
   </data>
-  <data name="cash" xml:space="preserve">
-    <value>В брой:</value>
+  <data name="edit_goods" xml:space="preserve">
+    <value>Редакция</value>
   </data>
-  <data name="change" xml:space="preserve">
-    <value>Ресто:</value>
+  <data name="edit_pricelist" xml:space="preserve">
+    <value>Редакция на Цени</value>
   </data>
-  <data name="client_info" xml:space="preserve">
-    <value>Информация за клиента</value>
+  <data name="goods_tab" xml:space="preserve">
+    <value>Стоки</value>
   </data>
-  <data name="delete" xml:space="preserve">
-    <value>Изтриване</value>
+  <data name="label_description" xml:space="preserve">
+    <value>Описание на стока</value>
   </data>
-  <data name="detach" xml:space="preserve">
-    <value>Разкачи</value>
+  <data name="label_name_goods" xml:space="preserve">
+    <value>Име на стока</value>
   </data>
-  <data name="finish" xml:space="preserve">
-    <value>Приключване</value>
+  <data name="label_total_goods" xml:space="preserve">
+    <value>Общо: стоки</value>
   </data>
-  <data name="generate_invoice" xml:space="preserve">
-    <value>Издаване на фактура</value>
+  <data name="label_type_goods" xml:space="preserve">
+    <value>Вид на стока</value>
   </data>
-  <data name="item_name" xml:space="preserve">
-    <value>Наименование</value>
+  <data name="enter_text_error" xml:space="preserve">
+    <value>Моля попълнете полето Име и Вид стока</value>
   </data>
-  <data name="main_navigation" xml:space="preserve">
-    <value>Навигация</value>
+  <data name="btn_save_new_price_wharehouse" xml:space="preserve">
+    <value>Запамети</value>
   </data>
-  <data name="measurment_unit" xml:space="preserve">
-    <value>Единица</value>
+  <data name="current_price_list_warehouse" xml:space="preserve">
+    <value>Текуща цена</value>
   </data>
-  <data name="price_each" xml:space="preserve">
-    <value>Единична Цена</value>
+  <data name="description_grid_goods" xml:space="preserve">
+    <value>Описание</value>
   </data>
-  <data name="product_info" xml:space="preserve">
-    <value>Информация за продукта</value>
+  <data name="item_description_wharehouse" xml:space="preserve">
+    <value>Описание</value>
   </data>
-  <data name="quantity" xml:space="preserve">
-    <value>Количество</value>
+  <data name="item_name_wharehouse" xml:space="preserve">
+    <value>Име на стока</value>
   </data>
-  <data name="reports" xml:space="preserve">
-    <value>Отчети</value>
+  <data name="name_goods" xml:space="preserve">
+    <value>Име на стока</value>
   </data>
-  <data name="search_company_name" xml:space="preserve">
-    <value>Име или ДДС Номер</value>
+  <data name="name_goods_pricelist" xml:space="preserve">
+    <value>Име на стока</value>
   </data>
-  <data name="search_info" xml:space="preserve">
-    <value>Търсене по име или по код на продукта</value>
+  <data name="old_price_wharehouse" xml:space="preserve">
+    <value>СТАРА ЦЕНА:</value>
   </data>
-  <data name="tab_page_direct_sales" xml:space="preserve">
-    <value>Директни продажби</value>
+  <data name="price_list_form_error" xml:space="preserve">
+    <value>Моля въведете цена</value>
   </data>
-  <data name="total" xml:space="preserve">
-    <value>Общо</value>
+  <data name="price_per_each_grid_good" xml:space="preserve">
+    <value>Цена за една стока</value>
   </data>
-  <data name="total_amount" xml:space="preserve">
-    <value>Обща Сума:</value>
+  <data name="quantity_grid_goods" xml:space="preserve">
+    <value>Наличност</value>
   </data>
-  <data name="wholesale" xml:space="preserve">
-    <value>Продажба на едро?</value>
+  <data name="tb_price_list_wharehouse" xml:space="preserve">
+    <value>Ценова листа</value>
+  </data>
+  <data name="tb_under_development_wharehouse" xml:space="preserve">
+    <value>В процес на разработка</value>
+  </data>
+  <data name="type_goods_pricelist" xml:space="preserve">
+    <value>Вид</value>
+  </data>
+  <data name="type_grid_goods" xml:space="preserve">
+    <value>Вид</value>
+    </data>
+
+  <data name="add_contract" xml:space="preserve">
+    <value>Добави Контрагент</value>
+  </data>
+  <data name="add_contract_info" xml:space="preserve">
+    <value>Добави Информация за Контрагента</value>
+  </data>
+  <data name="contracts" xml:space="preserve">
+    <value>Контрагенти</value>
+  </data>
+  <data name="edit_contract" xml:space="preserve">
+    <value>Промени Контрагент</value>
+  </data>
+  <data name="view_transactions" xml:space="preserve">
+    <value>Покажи Транзакции</value>
+  </data>
+  <data name="address_grid" xml:space="preserve">
+    <value>Адрес</value>
+  </data>
+  <data name="bulstat_grid" xml:space="preserve">
+    <value>Булстат</value>
+  </data>
+  <data name="companyname_grid" xml:space="preserve">
+    <value>Име на Фирма</value>
+  </data>
+  <data name="partner_Id_grid" xml:space="preserve">
+    <value>Контрагент ID</value>
+  </data>
+  <data name="search_by_invoice_id" xml:space="preserve">
+    <value>Търсене по Фактура ID:</value>
+  </data>
+  <data name="search_transactions" xml:space="preserve">
+    <value>Търси Транзакции</value>
+  </data>
+  <data name="total_transactions" xml:space="preserve">
+    <value>Общо Транзакции:</value>
+  </data>
+  <data name="vatnumber_grid" xml:space="preserve">
+    <value>ДДС Номер</value>
+  </data>
+  <data name="view_transaction_details" xml:space="preserve">
+    <value>Покажи Детайли на Транзакцията:</value>
   </data>
 </root>

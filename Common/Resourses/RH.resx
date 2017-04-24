@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -273,67 +273,121 @@
   <data name="unknow_error" xml:space="preserve">
     <value>Unknow error - please try again!</value>
   </data>
+
   <data name="add" xml:space="preserve">
     <value>Add</value>
   </data>
-  <data name="cash" xml:space="preserve">
-    <value>Cash:</value>
+  <data name="add_edit_goods" xml:space="preserve">
+    <value>Add or Edit Goods</value>
   </data>
-  <data name="change" xml:space="preserve">
-    <value>Change:</value>
+  <data name="edit_goods" xml:space="preserve">
+    <value>Edit </value>
   </data>
-  <data name="client_info" xml:space="preserve">
-    <value>Client Information</value>
+  <data name="edit_pricelist" xml:space="preserve">
+    <value>Edit Pricelist</value>
   </data>
-  <data name="delete" xml:space="preserve">
-    <value>Delete</value>
+  <data name="goods_tab" xml:space="preserve">
+    <value>Goods</value>
   </data>
-  <data name="detach" xml:space="preserve">
-    <value>Detach</value>
+  <data name="label_description" xml:space="preserve">
+    <value>Description of Good</value>
   </data>
-  <data name="finish" xml:space="preserve">
-    <value>Finish</value>
+  <data name="label_name_goods" xml:space="preserve">
+    <value>Name of Good</value>
   </data>
-  <data name="generate_invoice" xml:space="preserve">
-    <value>Generate Invoice</value>
+  <data name="label_total_goods" xml:space="preserve">
+    <value>Total:  goods found</value>
   </data>
-  <data name="item_name" xml:space="preserve">
+  <data name="label_type_goods" xml:space="preserve">
+    <value>Type of Good</value>
+  </data>
+  <data name="enter_text_error" xml:space="preserve">
+    <value>Please filll fileds Name and Type of Goods</value>
+  </data>
+  <data name="btn_save_new_price_wharehouse" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="current_price_list_warehouse" xml:space="preserve">
+    <value>Current price</value>
+  </data>
+  <data name="description_grid_goods" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="item_description_wharehouse" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="item_name_wharehouse" xml:space="preserve">
     <value>Item name</value>
   </data>
-  <data name="main_navigation" xml:space="preserve">
-    <value>Main navigation</value>
+  <data name="name_goods" xml:space="preserve">
+    <value>Name of Goods</value>
   </data>
-  <data name="measurment_unit" xml:space="preserve">
-    <value>Unit</value>
+  <data name="name_goods_pricelist" xml:space="preserve">
+    <value>Item name</value>
   </data>
-  <data name="price_each" xml:space="preserve">
-    <value>Price each</value>
+  <data name="old_price_wharehouse" xml:space="preserve">
+    <value>OLD PRICE:</value>
   </data>
-  <data name="product_info" xml:space="preserve">
-    <value>Product Information</value>
+  <data name="price_list_form_error" xml:space="preserve">
+    <value>Please enter price</value>
   </data>
-  <data name="quantity" xml:space="preserve">
+  <data name="price_per_each_grid_good" xml:space="preserve">
+    <value>Price per each good</value>
+  </data>
+  <data name="quantity_grid_goods" xml:space="preserve">
     <value>Quantity</value>
   </data>
-  <data name="reports" xml:space="preserve">
-    <value>Reports</value>
+  <data name="tb_price_list_wharehouse" xml:space="preserve">
+    <value>Price list</value>
   </data>
-  <data name="search_company_name" xml:space="preserve">
-    <value>Company name or VAT Number</value>
+  <data name="tb_under_development_wharehouse" xml:space="preserve">
+    <value>Under development</value>
   </data>
-  <data name="search_info" xml:space="preserve">
-    <value>Search by name or item code:</value>
+  <data name="type_goods_pricelist" xml:space="preserve">
+    <value>Type</value>
   </data>
-  <data name="tab_page_direct_sales" xml:space="preserve">
-    <value>Direct sales</value>
+
+  <data name="add_contract" xml:space="preserve">
+    <value>Add Contract</value>
   </data>
-  <data name="total" xml:space="preserve">
-    <value>Total</value>
+  <data name="add_contract_info" xml:space="preserve">
+    <value>Add Contract Information</value>
   </data>
-  <data name="total_amount" xml:space="preserve">
-    <value>Total Amount:</value>
+  <data name="contracts" xml:space="preserve">
+    <value>Contracts</value>
   </data>
-  <data name="wholesale" xml:space="preserve">
-    <value>Wholesale?</value>
+  <data name="edit_contract" xml:space="preserve">
+    <value>Edit Contract</value>
+  </data>
+  <data name="view_transactions" xml:space="preserve">
+    <value>View Transactions</value>
+  </data>
+  <data name="address_grid" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="bulstat_grid" xml:space="preserve">
+    <value>Bulstat</value>
+  </data>
+  <data name="companyname_grid" xml:space="preserve">
+    <value>Company Name</value>
+  </data>
+  <data name="partner_Id_grid" xml:space="preserve">
+    <value>Partner ID</value>
+  </data>
+  <data name="search_by_invoice_id" xml:space="preserve">
+    <value>Search by Invoice ID:</value>
+  </data>
+  <data name="search_transactions" xml:space="preserve">
+    <value>Search Transactions</value>
+  </data>
+  <data name="total_transactions" xml:space="preserve">
+    <value>Total Transactions:</value>
+  </data>
+  <data name="vatnumber_grid" xml:space="preserve">
+    <value>VAT Number</value>
+  </data>
+  <data name="view_transaction_details" xml:space="preserve">
+    <value>View Transaction Details</value>
+
   </data>
 </root>
