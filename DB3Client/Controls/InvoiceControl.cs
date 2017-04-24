@@ -15,6 +15,7 @@ namespace DB3Client.Controls
         public InvoiceControl()
         {
             InitializeComponent();
+            // useless coment to test git
         }
     }
 }
