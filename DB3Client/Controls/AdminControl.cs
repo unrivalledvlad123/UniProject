@@ -33,8 +33,6 @@ namespace DB3Client.Controls
             LoadMolList();
 
             tabControlAdmin.SelectedTab = metroTabPage1;
-
-            
         }
 
 
@@ -167,6 +165,34 @@ namespace DB3Client.Controls
         #endregion
 
         #region // < ====== Events =====> //
+
+        private void dgvUsers_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvUsers.SelectedRows.Count != 1)
+            {
+                btnEditUser.Enabled = false;
+                btnDeleteUser.Enabled = false;
+            }
+            else
+            {
+                btnEditUser.Enabled = true;
+                btnDeleteUser.Enabled = true;
+            }
+        }
+
+        private void dgvMol_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvMol.SelectedRows.Count != 1)
+            {
+                btnEditMol.Enabled = false;
+                btnDeleteMol.Enabled = false;
+            }
+            else
+            {
+                btnEditMol.Enabled = true;
+                btnDeleteMol.Enabled = true;
+            }
+        }
 
         private void btnEditInfo_Click(object sender, EventArgs e)
         {

@@ -41,14 +41,16 @@ namespace DB3Client.Forms
             this.labelTime = new Common.Forms.Base.MLLabel();
             this.labelLogedAs = new Common.Forms.Base.MLLabel();
             this.labelCurrentServer = new Common.Forms.Base.MLLabel();
-            this.metroTile6 = new Common.Forms.Base.MLTile();
+            this.mtReports = new Common.Forms.Base.MLTile();
             this.mtAdmin = new Common.Forms.Base.MLTile();
             this.mtWerehouse = new Common.Forms.Base.MLTile();
             this.mtContacts = new Common.Forms.Base.MLTile();
             this.mtOrders = new Common.Forms.Base.MLTile();
             this.mtSales = new Common.Forms.Base.MLTile();
+            this.mlGroupBox1 = new Common.Forms.Base.MLGroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.mlGroupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // mpContainer
@@ -59,9 +61,9 @@ namespace DB3Client.Forms
             this.mpContainer.HorizontalScrollbarBarColor = true;
             this.mpContainer.HorizontalScrollbarHighlightOnWheel = false;
             this.mpContainer.HorizontalScrollbarSize = 10;
-            this.mpContainer.Location = new System.Drawing.Point(179, 128);
+            this.mpContainer.Location = new System.Drawing.Point(191, 128);
             this.mpContainer.Name = "mpContainer";
-            this.mpContainer.Size = new System.Drawing.Size(989, 591);
+            this.mpContainer.Size = new System.Drawing.Size(977, 602);
             this.mpContainer.TabIndex = 0;
             this.mpContainer.VerticalScrollbarBarColor = true;
             this.mpContainer.VerticalScrollbarHighlightOnWheel = false;
@@ -138,22 +140,22 @@ namespace DB3Client.Forms
             this.labelCurrentServer.TabIndex = 15;
             this.labelCurrentServer.Text = "connected_to_server";
             // 
-            // metroTile6
+            // mtReports
             // 
-            this.metroTile6.ActiveControl = null;
-            this.metroTile6.Location = new System.Drawing.Point(23, 618);
-            this.metroTile6.Name = "metroTile6";
-            this.metroTile6.Size = new System.Drawing.Size(144, 92);
-            this.metroTile6.TabIndex = 12;
-            this.metroTile6.Text = "under devolopments";
-            this.metroTile6.UseSelectable = true;
+            this.mtReports.ActiveControl = null;
+            this.mtReports.Location = new System.Drawing.Point(6, 410);
+            this.mtReports.Name = "mtReports";
+            this.mtReports.Size = new System.Drawing.Size(150, 88);
+            this.mtReports.TabIndex = 12;
+            this.mtReports.Text = "reports";
+            this.mtReports.UseSelectable = true;
             // 
             // mtAdmin
             // 
             this.mtAdmin.ActiveControl = null;
-            this.mtAdmin.Location = new System.Drawing.Point(23, 520);
+            this.mtAdmin.Location = new System.Drawing.Point(6, 504);
             this.mtAdmin.Name = "mtAdmin";
-            this.mtAdmin.Size = new System.Drawing.Size(144, 92);
+            this.mtAdmin.Size = new System.Drawing.Size(150, 92);
             this.mtAdmin.TabIndex = 11;
             this.mtAdmin.Text = "administration";
             this.mtAdmin.UseSelectable = true;
@@ -162,9 +164,9 @@ namespace DB3Client.Forms
             // mtWerehouse
             // 
             this.mtWerehouse.ActiveControl = null;
-            this.mtWerehouse.Location = new System.Drawing.Point(23, 422);
+            this.mtWerehouse.Location = new System.Drawing.Point(6, 117);
             this.mtWerehouse.Name = "mtWerehouse";
-            this.mtWerehouse.Size = new System.Drawing.Size(144, 92);
+            this.mtWerehouse.Size = new System.Drawing.Size(150, 92);
             this.mtWerehouse.TabIndex = 10;
             this.mtWerehouse.Text = "werehouse";
             this.mtWerehouse.UseSelectable = true;
@@ -173,9 +175,9 @@ namespace DB3Client.Forms
             // mtContacts
             // 
             this.mtContacts.ActiveControl = null;
-            this.mtContacts.Location = new System.Drawing.Point(23, 324);
+            this.mtContacts.Location = new System.Drawing.Point(6, 214);
             this.mtContacts.Name = "mtContacts";
-            this.mtContacts.Size = new System.Drawing.Size(144, 92);
+            this.mtContacts.Size = new System.Drawing.Size(150, 92);
             this.mtContacts.TabIndex = 9;
             this.mtContacts.Text = "contacts";
             this.mtContacts.UseSelectable = true;
@@ -184,9 +186,9 @@ namespace DB3Client.Forms
             // mtOrders
             // 
             this.mtOrders.ActiveControl = null;
-            this.mtOrders.Location = new System.Drawing.Point(23, 226);
+            this.mtOrders.Location = new System.Drawing.Point(6, 312);
             this.mtOrders.Name = "mtOrders";
-            this.mtOrders.Size = new System.Drawing.Size(144, 92);
+            this.mtOrders.Size = new System.Drawing.Size(150, 92);
             this.mtOrders.TabIndex = 8;
             this.mtOrders.Text = "orders";
             this.mtOrders.UseSelectable = true;
@@ -195,32 +197,45 @@ namespace DB3Client.Forms
             // mtSales
             // 
             this.mtSales.ActiveControl = null;
-            this.mtSales.Location = new System.Drawing.Point(23, 128);
+            this.mtSales.Location = new System.Drawing.Point(6, 19);
             this.mtSales.Name = "mtSales";
-            this.mtSales.Size = new System.Drawing.Size(144, 92);
+            this.mtSales.Size = new System.Drawing.Size(150, 92);
             this.mtSales.TabIndex = 7;
             this.mtSales.Text = "sales";
             this.mtSales.UseSelectable = true;
             this.mtSales.Click += new System.EventHandler(this.mtSales_Click);
+            // 
+            // mlGroupBox1
+            // 
+            this.mlGroupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.mlGroupBox1.Controls.Add(this.mtReports);
+            this.mlGroupBox1.Controls.Add(this.mtSales);
+            this.mlGroupBox1.Controls.Add(this.mtWerehouse);
+            this.mlGroupBox1.Controls.Add(this.mtAdmin);
+            this.mlGroupBox1.Controls.Add(this.mtContacts);
+            this.mlGroupBox1.Controls.Add(this.mtOrders);
+            this.mlGroupBox1.Location = new System.Drawing.Point(23, 128);
+            this.mlGroupBox1.Name = "mlGroupBox1";
+            this.mlGroupBox1.Size = new System.Drawing.Size(162, 602);
+            this.mlGroupBox1.TabIndex = 2;
+            this.mlGroupBox1.TabStop = false;
+            this.mlGroupBox1.Text = "main_navigation";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1191, 742);
-            this.Controls.Add(this.metroTile6);
-            this.Controls.Add(this.mtAdmin);
+            this.Controls.Add(this.mlGroupBox1);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.mtWerehouse);
-            this.Controls.Add(this.mtContacts);
-            this.Controls.Add(this.mtOrders);
-            this.Controls.Add(this.mtSales);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.mpContainer);
             this.Name = "MainForm";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.mlGroupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -229,7 +244,7 @@ namespace DB3Client.Forms
 
         private MetroFramework.Controls.MetroPanel mpContainer;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private Common.Forms.Base.MLTile metroTile6;
+        private Common.Forms.Base.MLTile mtReports;
         private Common.Forms.Base.MLTile mtAdmin;
         private Common.Forms.Base.MLTile mtWerehouse;
         private Common.Forms.Base.MLTile mtContacts;
@@ -241,5 +256,6 @@ namespace DB3Client.Forms
         private MLLabel labelTime;
         private MLLink metroLink1;
         private System.Windows.Forms.GroupBox groupBox1;
+        private MLGroupBox mlGroupBox1;
     }
 }

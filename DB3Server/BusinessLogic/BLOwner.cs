@@ -60,7 +60,7 @@ namespace DB3Server.BusinessLogic
             mol.Email = newMol.Email;
             mol.FirstName = newMol.FirstName;
             mol.LastName = newMol.LastName;
-            mol.Phone = newMol.LastName;
+            mol.Phone = newMol.Phone;
             mol.MolId = Guid.NewGuid();
             entities.MOLs.Add(mol);
             entities.SaveChanges();

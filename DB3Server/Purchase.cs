@@ -20,17 +20,17 @@ namespace DB3Server
             this.PurchasedItems = new HashSet<PurchasedItem>();
         }
     
-        public System.DateTime Date { get; set; }
-        public int InvoiceId { get; set; }
-        public int WareHouseReceipt { get; set; }
-        public int PaymentId { get; set; }
         public System.Guid PurchaseId { get; set; }
-        public System.Guid SellerId { get; set; }
         public System.Guid BuyerId { get; set; }
+        public System.Guid SellerId { get; set; }
+        public System.DateTime Date { get; set; }
+        public string InvoiceId { get; set; }
+        public string WareHouseReceipt { get; set; }
+        public string PaymentId { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PurchasedItem> PurchasedItems { get; set; }
         public virtual Owner Owner { get; set; }
         public virtual Partner Partner { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PurchasedItem> PurchasedItems { get; set; }
     }
 }

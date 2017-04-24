@@ -12,28 +12,19 @@ namespace DB3Server
     using System;
     using System.Collections.Generic;
     
-    public partial class Owner
+    public partial class Invoice
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Owner()
+        public Invoice()
         {
-            this.Users = new HashSet<User>();
-            this.Purchases = new HashSet<Purchase>();
             this.Sales = new HashSet<Sale>();
         }
     
+        public long InvoiceId { get; set; }
         public System.Guid OwnerId { get; set; }
-        public string CompanyName { get; set; }
-        public string Address { get; set; }
-        public string Phone { get; set; }
-        public string Email { get; set; }
-        public string VATNumber { get; set; }
-        public string Bulstat { get; set; }
+        public System.Guid PartnerId { get; set; }
+        public System.Guid PurchaseId { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> Users { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Purchase> Purchases { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sale> Sales { get; set; }
     }

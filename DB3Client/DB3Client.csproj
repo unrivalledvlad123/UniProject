@@ -118,7 +118,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\ExampleClass.cs" />
     <Compile Include="Controls\AdminControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -215,7 +214,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceAccess\SAContract.cs" />
     <Compile Include="ServiceAccess\SAOwner.cs" />
-    <Compile Include="ServiceAccess\SATest.cs" />
     <Compile Include="ServiceAccess\SAUsers.cs" />
     <EmbeddedResource Include="Controls\AdminControl.resx">
       <DependentUpon>AdminControl.cs</DependentUpon>
@@ -288,7 +286,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controls\AdminControls\" />
+    <Folder Include="Classes\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

@@ -164,6 +164,9 @@
     <Compile Include="Controllers\OwnerController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="BD3Service.cs" />
+    <Compile Include="Invoice.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Item.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
