@@ -370,7 +370,7 @@ namespace DB3Client.Controls
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(159, 263);
+            this.btnDelete.Location = new System.Drawing.Point(115, 264);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(144, 23);
             this.btnDelete.TabIndex = 3;
