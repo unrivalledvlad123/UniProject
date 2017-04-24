@@ -29,7 +29,7 @@ namespace DB3Client
             }
             else
             {
-               MessageBox.Show(DataHolder.GetString("only_one_instance_at_a_time"));
+               MessageBox.Show("Only one instance of the program can run at the same time!","Error");
             }
         }
     }

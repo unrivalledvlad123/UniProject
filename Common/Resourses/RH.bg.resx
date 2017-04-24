@@ -273,4 +273,67 @@
   <data name="unknow_error" xml:space="preserve">
     <value>Възникна грешка - моля опитайте отново!</value>
   </data>
+  <data name="add" xml:space="preserve">
+    <value>Добавяне</value>
+  </data>
+  <data name="cash" xml:space="preserve">
+    <value>В брой:</value>
+  </data>
+  <data name="change" xml:space="preserve">
+    <value>Ресто:</value>
+  </data>
+  <data name="client_info" xml:space="preserve">
+    <value>Информация за клиента</value>
+  </data>
+  <data name="delete" xml:space="preserve">
+    <value>Изтриване</value>
+  </data>
+  <data name="detach" xml:space="preserve">
+    <value>Разкачи</value>
+  </data>
+  <data name="finish" xml:space="preserve">
+    <value>Приключване</value>
+  </data>
+  <data name="generate_invoice" xml:space="preserve">
+    <value>Издаване на фактура</value>
+  </data>
+  <data name="item_name" xml:space="preserve">
+    <value>Наименование</value>
+  </data>
+  <data name="main_navigation" xml:space="preserve">
+    <value>Навигация</value>
+  </data>
+  <data name="measurment_unit" xml:space="preserve">
+    <value>Единица</value>
+  </data>
+  <data name="price_each" xml:space="preserve">
+    <value>Единична Цена</value>
+  </data>
+  <data name="product_info" xml:space="preserve">
+    <value>Информация за продукта</value>
+  </data>
+  <data name="quantity" xml:space="preserve">
+    <value>Количество</value>
+  </data>
+  <data name="reports" xml:space="preserve">
+    <value>Отчети</value>
+  </data>
+  <data name="search_company_name" xml:space="preserve">
+    <value>Име или ДДС Номер</value>
+  </data>
+  <data name="search_info" xml:space="preserve">
+    <value>Търсене по име или по код на продукта</value>
+  </data>
+  <data name="tab_page_direct_sales" xml:space="preserve">
+    <value>Директни продажби</value>
+  </data>
+  <data name="total" xml:space="preserve">
+    <value>Общо</value>
+  </data>
+  <data name="total_amount" xml:space="preserve">
+    <value>Обща Сума:</value>
+  </data>
+  <data name="wholesale" xml:space="preserve">
+    <value>Продажба на едро?</value>
+  </data>
 </root>

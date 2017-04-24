@@ -31,12 +31,19 @@ namespace DB3Client.Forms
             InitializeComponent();
             OnInitialization();
             GetOwner(DataHolder.OwnerId);
+            SwitchRoles();
         }
 
         public void OnInitialization()
         {
             labelLogedAs.Text = DataHolder.GetString("logged_as_current_user") + " " + DataHolder.Username;
             labelCurrentServer.Text = DataHolder.GetString("connected_to_server") + " " + DataHolder.ServerAddress;
+            mtAdmin.Visible = false;
+            mtContacts.Visible = false;
+            mtOrders.Visible = false;
+            mtSales.Visible = false;
+            mtWerehouse.Visible = false;
+            mtReports.Visible = false;
         }
 
         #region // < ======== Methods ====== > //
@@ -44,6 +51,32 @@ namespace DB3Client.Forms
         public async void GetOwner(Guid ownerId)
         {
             DataHolder.Owner = await SAOwner.getOwner(ownerId);
+        }
+
+        public void SwitchRoles()
+        {
+            switch (DataHolder.UserType)
+            {
+                case 0:
+                    mtAdmin.Visible = true;
+                    mtContacts.Visible = true;
+                    mtOrders.Visible = true;
+                    mtSales.Visible = true;
+                    mtWerehouse.Visible = true;
+                    mtReports.Visible = true;
+                    break;
+                case 1:
+                    mtContacts.Visible = true;
+                    mtOrders.Visible = true;
+                    mtSales.Visible = true;
+                    mtWerehouse.Visible = true;
+                    mtReports.Visible = true;
+                    break;
+                case 2:
+                    mtSales.Visible = true;
+                    mtWerehouse.Visible = true;
+                    break;
+            }
         }
 
         #endregion
