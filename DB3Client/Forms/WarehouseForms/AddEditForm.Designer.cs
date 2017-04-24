@@ -196,7 +196,7 @@
             this.tbNameGoods.CustomButton.UseSelectable = true;
             this.tbNameGoods.CustomButton.Visible = false;
             this.tbNameGoods.Lines = new string[0];
-            this.tbNameGoods.Location = new System.Drawing.Point(7, 69);
+            this.tbNameGoods.Location = new System.Drawing.Point(66, 69);
             this.tbNameGoods.MaxLength = 32767;
             this.tbNameGoods.Name = "tbNameGoods";
             this.tbNameGoods.PasswordChar = '\0';
