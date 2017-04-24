@@ -26,7 +26,7 @@ namespace DB3Client.Forms
             cbLanguage.DataSource = Constants.SupportedLanguages;
             cbServer.DataSource = Constants.AvailableServers;
             Trigger = true;
-            
+
         }
 
         private async void btnLogin_Click(object sender, EventArgs e)
@@ -80,12 +80,13 @@ namespace DB3Client.Forms
                             DataHolder.UserCulture = new CultureInfo("en-US");
                         }
                     }
-                }
-                else
-                {
-                    labelError.Visible = true;
-                    labelError.Text = DataHolder.GetString("invalid_username_or_password");
-                    labelError.ForeColor = Color.Red;
+                    else
+                    {
+                        labelError.Visible = true;
+                        labelError.Text = DataHolder.GetString("invalid_username_or_password");
+                        labelError.ForeColor = Color.Red;
+                        Trigger = true;
+                    }
                 }
             }
         }
