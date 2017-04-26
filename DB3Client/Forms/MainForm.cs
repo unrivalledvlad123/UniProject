@@ -119,6 +119,13 @@ namespace DB3Client.Forms
             MainContainer.Controls.Add(adminControl);
         }
 
+        private void mtReports_Click(object sender, EventArgs e)
+        {
+            ReportsControl reportControl = new ReportsControl() { Dock = DockStyle.Fill };
+            MainContainer.Controls.Clear();
+            MainContainer.Controls.Add(reportControl);
+        }
+
         private void timerClock_Tick(object sender, EventArgs e)
         {
             labelTime.Text = DateTime.Now.ToString("dd MMMM yyyy HH:mm:ss", DataHolder.UserCulture);
@@ -126,5 +133,6 @@ namespace DB3Client.Forms
 
         #endregion
 
+       
     }
 }

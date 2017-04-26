@@ -34,8 +34,8 @@ namespace DB3Server
         public virtual DbSet<Partner> Partners { get; set; }
         public virtual DbSet<MOL> MOLs { get; set; }
         public virtual DbSet<Invoice> Invoices { get; set; }
-        public virtual DbSet<Purchase> Purchases { get; set; }
         public virtual DbSet<Sale> Sales { get; set; }
         public virtual DbSet<Item> Items { get; set; }
+        public virtual DbSet<Purchase> Purchases { get; set; }
     }
 }

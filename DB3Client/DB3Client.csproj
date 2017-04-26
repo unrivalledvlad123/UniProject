@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -45,6 +45,10 @@
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.11.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.11\lib\itextsharp.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
@@ -107,6 +111,7 @@
       <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -130,11 +135,41 @@
     <Compile Include="Controls\ContractsControl.Designer.cs">
       <DependentUpon>ContractsControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\InvoiceControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\InvoiceControl.Designer.cs">
+      <DependentUpon>InvoiceControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\InvoiceControls - obsolate!\InvoiceBottom.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\InvoiceControls - obsolate!\InvoiceBottom.Designer.cs">
+      <DependentUpon>InvoiceBottom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\InvoiceControls - obsolate!\InvoiceMiddle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\InvoiceControls - obsolate!\InvoiceMiddle.Designer.cs">
+      <DependentUpon>InvoiceMiddle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\InvoiceControls - obsolate!\InvoiceTop.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\InvoiceControls - obsolate!\InvoiceTop.Designer.cs">
+      <DependentUpon>InvoiceTop.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\OrdersControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controls\OrdersControl.Designer.cs">
       <DependentUpon>OrdersControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ReportsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ReportsControl.Designer.cs">
+      <DependentUpon>ReportsControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\SalesControl.cs">
       <SubType>UserControl</SubType>
@@ -178,6 +213,12 @@
     <Compile Include="Forms\ContractsForms\AddEditContractForm.Designer.cs">
       <DependentUpon>AddEditContractForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\InvoiceTemplateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InvoiceTemplateForm.Designer.cs">
+      <DependentUpon>InvoiceTemplateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -190,7 +231,6 @@
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Forms\WarehouseForms\AddEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -202,13 +242,12 @@
     </Compile>
     <Compile Include="Forms\WarehouseForms\PricelistForm.Designer.cs">
       <DependentUpon>PricelistForm.cs</DependentUpon>
- </Compile>
+    </Compile>
     <Compile Include="Forms\TrasactionForms\ViewTransactionForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\TrasactionForms\ViewTransactionForm.Designer.cs">
       <DependentUpon>ViewTransactionForm.cs</DependentUpon>
-
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -221,8 +260,23 @@
     <EmbeddedResource Include="Controls\ContractsControl.resx">
       <DependentUpon>ContractsControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\InvoiceControl.resx">
+      <DependentUpon>InvoiceControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\InvoiceControls - obsolate!\InvoiceBottom.resx">
+      <DependentUpon>InvoiceBottom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\InvoiceControls - obsolate!\InvoiceMiddle.resx">
+      <DependentUpon>InvoiceMiddle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\InvoiceControls - obsolate!\InvoiceTop.resx">
+      <DependentUpon>InvoiceTop.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\OrdersControl.resx">
       <DependentUpon>OrdersControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ReportsControl.resx">
+      <DependentUpon>ReportsControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\SalesControl.resx">
       <DependentUpon>SalesControl.cs</DependentUpon>
@@ -245,21 +299,23 @@
     <EmbeddedResource Include="Forms\ContractsForms\AddEditContractForm.resx">
       <DependentUpon>AddEditContractForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\InvoiceTemplateForm.resx">
+      <DependentUpon>InvoiceTemplateForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
- </EmbeddedResource>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\WarehouseForms\AddEditForm.resx">
       <DependentUpon>AddEditForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\WarehouseForms\PricelistForm.resx">
       <DependentUpon>PricelistForm.cs</DependentUpon>
- </EmbeddedResource>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\TrasactionForms\ViewTransactionForm.resx">
       <DependentUpon>ViewTransactionForm.cs</DependentUpon>
-
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

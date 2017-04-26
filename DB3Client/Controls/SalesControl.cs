@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Common;
+using DB3Client.Forms;
 
 namespace DB3Client.Controls
 {
@@ -121,8 +122,16 @@ namespace DB3Client.Controls
         {
 
         }
-        
+
         #endregion
 
+        private void mlButton1_Click(object sender, EventArgs e)
+        {
+            InvoiceTemplateForm form = new InvoiceTemplateForm();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                
+            }
+        }
     }
 }

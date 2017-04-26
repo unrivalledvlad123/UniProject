@@ -71,7 +71,6 @@
           <Property Name="Date" Type="datetime" Nullable="false" />
           <Property Name="InvoiceId" Type="varchar" MaxLength="50" />
           <Property Name="WareHouseReceipt" Type="varchar" MaxLength="50" />
-          <Property Name="PaymentId" Type="varchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'DB3 Sklad.dbo.PurchasedItem' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -362,8 +361,8 @@ warning 6002: The table/view 'DB3 Sklad.dbo.SoldItem' does not have a primary ke
           <Property Name="Quantity" Type="Int32" Nullable="false" />
           <Property Name="PurchaseId" Type="Guid" Nullable="false" />
           <Property Name="ItemId" Type="Guid" Nullable="false" />
-          <NavigationProperty Name="Purchase" Relationship="Model.FK_PurchasedItem_Purchase1" FromRole="PurchasedItem" ToRole="Purchase" />
           <NavigationProperty Name="Item" Relationship="Model.FK_PurchasedItem_Item1" FromRole="PurchasedItem" ToRole="Item" />
+          <NavigationProperty Name="Purchase" Relationship="Model.FK_PurchasedItem_Purchase1" FromRole="PurchasedItem" ToRole="Purchase" />
         </EntityType>
         <EntityType Name="SoldItem">
           <Key>
@@ -393,31 +392,18 @@ warning 6002: The table/view 'DB3 Sklad.dbo.SoldItem' does not have a primary ke
           </AssociationSet>
           <EntitySet Name="MOLs" EntityType="Model.MOL" />
           <EntitySet Name="Invoices" EntityType="Model.Invoice" />
-          <EntitySet Name="Purchases" EntityType="Model.Purchase" />
           <EntitySet Name="Sales" EntityType="Model.Sale" />
           <AssociationSet Name="FK_Sales_Invoice" Association="Model.FK_Sales_Invoice">
             <End Role="Invoice" EntitySet="Invoices" />
             <End Role="Sale" EntitySet="Sales" />
           </AssociationSet>
-          <AssociationSet Name="FK_Purchase_Owner" Association="Model.FK_Purchase_Owner">
-            <End Role="Owner" EntitySet="Owners" />
-            <End Role="Purchase" EntitySet="Purchases" />
-          </AssociationSet>
           <AssociationSet Name="FK_Sales_Owner" Association="Model.FK_Sales_Owner">
             <End Role="Owner" EntitySet="Owners" />
             <End Role="Sale" EntitySet="Sales" />
           </AssociationSet>
-          <AssociationSet Name="FK_Purchase_Partner1" Association="Model.FK_Purchase_Partner1">
-            <End Role="Partner" EntitySet="Partners" />
-            <End Role="Purchase" EntitySet="Purchases" />
-          </AssociationSet>
           <AssociationSet Name="FK_Sales_Partner1" Association="Model.FK_Sales_Partner1">
             <End Role="Partner" EntitySet="Partners" />
             <End Role="Sale" EntitySet="Sales" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PurchasedItem_Purchase1" Association="Model.FK_PurchasedItem_Purchase1">
-            <End Role="Purchase" EntitySet="Purchases" />
-            <End Role="PurchasedItem" EntitySet="PurchasedItems" />
           </AssociationSet>
           <AssociationSet Name="FK_SoldItem_Sales1" Association="Model.FK_SoldItem_Sales1">
             <End Role="Sale" EntitySet="Sales" />
@@ -435,6 +421,19 @@ warning 6002: The table/view 'DB3 Sklad.dbo.SoldItem' does not have a primary ke
           <AssociationSet Name="FK_WarehouseItems_Item" Association="Model.FK_WarehouseItems_Item">
             <End Role="Item" EntitySet="Items" />
             <End Role="WarehouseItem" EntitySet="WarehouseItems" />
+          </AssociationSet>
+          <EntitySet Name="Purchases" EntityType="Model.Purchase" />
+          <AssociationSet Name="FK_Purchase_Owner" Association="Model.FK_Purchase_Owner">
+            <End Role="Owner" EntitySet="Owners" />
+            <End Role="Purchase" EntitySet="Purchases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_Partner1" Association="Model.FK_Purchase_Partner1">
+            <End Role="Partner" EntitySet="Partners" />
+            <End Role="Purchase" EntitySet="Purchases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchasedItem_Purchase1" Association="Model.FK_PurchasedItem_Purchase1">
+            <End Role="Purchase" EntitySet="Purchases" />
+            <End Role="PurchasedItem" EntitySet="PurchasedItems" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="sysdiagram">
@@ -482,8 +481,8 @@ warning 6002: The table/view 'DB3 Sklad.dbo.SoldItem' does not have a primary ke
           <Property Name="VATNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Bulstat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Users" Relationship="Model.FK_Users_Owner1" FromRole="Owner" ToRole="User" />
-          <NavigationProperty Name="Purchases" Relationship="Model.FK_Purchase_Owner" FromRole="Owner" ToRole="Purchase" />
           <NavigationProperty Name="Sales" Relationship="Model.FK_Sales_Owner" FromRole="Owner" ToRole="Sale" />
+          <NavigationProperty Name="Purchases" Relationship="Model.FK_Purchase_Owner" FromRole="Owner" ToRole="Purchase" />
         </EntityType>
         <EntityType Name="Partner">
           <Key>
@@ -496,8 +495,8 @@ warning 6002: The table/view 'DB3 Sklad.dbo.SoldItem' does not have a primary ke
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="VATNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Bulstat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Purchases" Relationship="Model.FK_Purchase_Partner1" FromRole="Partner" ToRole="Purchase" />
           <NavigationProperty Name="Sales" Relationship="Model.FK_Sales_Partner1" FromRole="Partner" ToRole="Sale" />
+          <NavigationProperty Name="Purchases" Relationship="Model.FK_Purchase_Partner1" FromRole="Partner" ToRole="Purchase" />
         </EntityType>
         <Association Name="FK_Users_Owner1">
           <End Type="Model.Owner" Role="Owner" Multiplicity="1" />
@@ -533,21 +532,6 @@ warning 6002: The table/view 'DB3 Sklad.dbo.SoldItem' does not have a primary ke
           <Property Name="PurchaseId" Type="Guid" Nullable="false" />
           <NavigationProperty Name="Sales" Relationship="Model.FK_Sales_Invoice" FromRole="Invoice" ToRole="Sale" />
         </EntityType>
-        <EntityType Name="Purchase">
-          <Key>
-            <PropertyRef Name="PurchaseId" />
-          </Key>
-          <Property Name="PurchaseId" Type="Guid" Nullable="false" />
-          <Property Name="BuyerId" Type="Guid" Nullable="false" />
-          <Property Name="SellerId" Type="Guid" Nullable="false" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="InvoiceId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="WareHouseReceipt" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PaymentId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Owner" Relationship="Model.FK_Purchase_Owner" FromRole="Purchase" ToRole="Owner" />
-          <NavigationProperty Name="Partner" Relationship="Model.FK_Purchase_Partner1" FromRole="Purchase" ToRole="Partner" />
-          <NavigationProperty Name="PurchasedItems" Relationship="Model.FK_PurchasedItem_Purchase1" FromRole="Purchase" ToRole="PurchasedItem" />
-        </EntityType>
         <EntityType Name="Sale">
           <Key>
             <PropertyRef Name="SaleId" />
@@ -575,18 +559,6 @@ warning 6002: The table/view 'DB3 Sklad.dbo.SoldItem' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Purchase_Owner">
-          <End Type="Model.Owner" Role="Owner" Multiplicity="1" />
-          <End Type="Model.Purchase" Role="Purchase" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Owner">
-              <PropertyRef Name="OwnerId" />
-            </Principal>
-            <Dependent Role="Purchase">
-              <PropertyRef Name="BuyerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Sales_Owner">
           <End Type="Model.Owner" Role="Owner" Multiplicity="1" />
           <End Type="Model.Sale" Role="Sale" Multiplicity="*" />
@@ -595,18 +567,6 @@ warning 6002: The table/view 'DB3 Sklad.dbo.SoldItem' does not have a primary ke
               <PropertyRef Name="OwnerId" />
             </Principal>
             <Dependent Role="Sale">
-              <PropertyRef Name="SellerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Purchase_Partner1">
-          <End Type="Model.Partner" Role="Partner" Multiplicity="1" />
-          <End Type="Model.Purchase" Role="Purchase" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Partner">
-              <PropertyRef Name="PartnerId" />
-            </Principal>
-            <Dependent Role="Purchase">
               <PropertyRef Name="SellerId" />
             </Dependent>
           </ReferentialConstraint>
@@ -620,18 +580,6 @@ warning 6002: The table/view 'DB3 Sklad.dbo.SoldItem' does not have a primary ke
             </Principal>
             <Dependent Role="Sale">
               <PropertyRef Name="BuyerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PurchasedItem_Purchase1">
-          <End Type="Model.Purchase" Role="Purchase" Multiplicity="1" />
-          <End Type="Model.PurchasedItem" Role="PurchasedItem" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Purchase">
-              <PropertyRef Name="PurchaseId" />
-            </Principal>
-            <Dependent Role="PurchasedItem">
-              <PropertyRef Name="PurchaseId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -694,6 +642,56 @@ warning 6002: The table/view 'DB3 Sklad.dbo.SoldItem' does not have a primary ke
             </Principal>
             <Dependent Role="WarehouseItem">
               <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Purchase">
+          <Key>
+            <PropertyRef Name="PurchaseId" />
+          </Key>
+          <Property Name="PurchaseId" Type="Guid" Nullable="false" />
+          <Property Name="BuyerId" Type="Guid" Nullable="false" />
+          <Property Name="SellerId" Type="Guid" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="InvoiceId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WareHouseReceipt" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Owner" Relationship="Model.FK_Purchase_Owner" FromRole="Purchase" ToRole="Owner" />
+          <NavigationProperty Name="Partner" Relationship="Model.FK_Purchase_Partner1" FromRole="Purchase" ToRole="Partner" />
+          <NavigationProperty Name="PurchasedItems" Relationship="Model.FK_PurchasedItem_Purchase1" FromRole="Purchase" ToRole="PurchasedItem" />
+        </EntityType>
+        <Association Name="FK_Purchase_Owner">
+          <End Type="Model.Owner" Role="Owner" Multiplicity="1" />
+          <End Type="Model.Purchase" Role="Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Owner">
+              <PropertyRef Name="OwnerId" />
+            </Principal>
+            <Dependent Role="Purchase">
+              <PropertyRef Name="BuyerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchase_Partner1">
+          <End Type="Model.Partner" Role="Partner" Multiplicity="1" />
+          <End Type="Model.Purchase" Role="Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partner">
+              <PropertyRef Name="PartnerId" />
+            </Principal>
+            <Dependent Role="Purchase">
+              <PropertyRef Name="SellerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchasedItem_Purchase1">
+          <End Type="Model.Purchase" Role="Purchase" Multiplicity="1" />
+          <End Type="Model.PurchasedItem" Role="PurchasedItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Purchase">
+              <PropertyRef Name="PurchaseId" />
+            </Principal>
+            <Dependent Role="PurchasedItem">
+              <PropertyRef Name="PurchaseId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -806,19 +804,6 @@ warning 6002: The table/view 'DB3 Sklad.dbo.SoldItem' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Purchases">
-            <EntityTypeMapping TypeName="Model.Purchase">
-              <MappingFragment StoreEntitySet="Purchase">
-                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
-                <ScalarProperty Name="WareHouseReceipt" ColumnName="WareHouseReceipt" />
-                <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="SellerId" ColumnName="SellerId" />
-                <ScalarProperty Name="BuyerId" ColumnName="BuyerId" />
-                <ScalarProperty Name="PurchaseId" ColumnName="PurchaseId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Sales">
             <EntityTypeMapping TypeName="Model.Sale">
               <MappingFragment StoreEntitySet="Sales">
@@ -840,6 +825,18 @@ warning 6002: The table/view 'DB3 Sklad.dbo.SoldItem' does not have a primary ke
                 <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Purchases">
+            <EntityTypeMapping TypeName="Model.Purchase">
+              <MappingFragment StoreEntitySet="Purchase">
+                <ScalarProperty Name="WareHouseReceipt" ColumnName="WareHouseReceipt" />
+                <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="SellerId" ColumnName="SellerId" />
+                <ScalarProperty Name="BuyerId" ColumnName="BuyerId" />
+                <ScalarProperty Name="PurchaseId" ColumnName="PurchaseId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

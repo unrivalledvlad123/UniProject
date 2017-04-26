@@ -529,6 +529,42 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invoice.
+        /// </summary>
+        internal static string invoice {
+            get {
+                return ResourceManager.GetString("invoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invoice Date.
+        /// </summary>
+        internal static string invoice_date {
+            get {
+                return ResourceManager.GetString("invoice_date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tax event Date.
+        /// </summary>
+        internal static string invoice_date_DDS {
+            get {
+                return ResourceManager.GetString("invoice_date_DDS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invoice Number.
+        /// </summary>
+        internal static string invoice_number {
+            get {
+                return ResourceManager.GetString("invoice_number", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Description.
         /// </summary>
         internal static string item_description_wharehouse {
@@ -660,6 +696,15 @@ namespace Common.Resourses {
         internal static string measurment_unit {
             get {
                 return ResourceManager.GetString("measurment_unit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Acc. person.
+        /// </summary>
+        internal static string mol {
+            get {
+                return ResourceManager.GetString("mol", resourceCulture);
             }
         }
         

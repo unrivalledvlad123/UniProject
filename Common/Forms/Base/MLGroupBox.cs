@@ -11,7 +11,7 @@ using MetroFramework.Controls;
 
 namespace Common.Forms.Base
 {
-    public class MLGroupBox : GroupBox
+    public sealed class MLGroupBox : GroupBox
     {
         public new string Text
         {
@@ -24,10 +24,10 @@ namespace Common.Forms.Base
                     base.Text = DataHolder.GetString(value);
             }
         }
-
+        
         public MLGroupBox()
         {
-
+            BackColor = Color.White;
         }
     }
 }

@@ -149,6 +149,7 @@ namespace DB3Client.Forms
             this.mtReports.TabIndex = 12;
             this.mtReports.Text = "reports";
             this.mtReports.UseSelectable = true;
+            this.mtReports.Click += new System.EventHandler(this.mtReports_Click);
             // 
             // mtAdmin
             // 
@@ -209,6 +210,7 @@ namespace DB3Client.Forms
             // 
             this.mlGroupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.mlGroupBox1.BackColor = System.Drawing.Color.White;
             this.mlGroupBox1.Controls.Add(this.mtReports);
             this.mlGroupBox1.Controls.Add(this.mtSales);
             this.mlGroupBox1.Controls.Add(this.mtWerehouse);

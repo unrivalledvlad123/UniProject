@@ -273,10 +273,9 @@
   <data name="unknow_error" xml:space="preserve">
     <value>Възникна грешка - моля опитайте отново!</value>
   </data>
-
   <data name="add" xml:space="preserve">
-    <value>Добави</value>
-</data>
+    <value>Добавяне</value>
+  </data>
   <data name="add_edit_goods" xml:space="preserve">
     <value>Добавяне или Редактиране на Стоки</value>
   </data>
@@ -348,8 +347,7 @@
   </data>
   <data name="type_grid_goods" xml:space="preserve">
     <value>Вид</value>
-    </data>
-
+  </data>
   <data name="add_contract" xml:space="preserve">
     <value>Добави Контрагент</value>
   </data>
@@ -391,9 +389,6 @@
   </data>
   <data name="view_transaction_details" xml:space="preserve">
     <value>Покажи Детайли на Транзакцията:</value>
-  </data>
-  <data name="add" xml:space="preserve">
-    <value>Добавяне</value>
   </data>
   <data name="cash" xml:space="preserve">
     <value>В брой:</value>
@@ -455,5 +450,19 @@
   <data name="wholesale" xml:space="preserve">
     <value>Продажба на едро?</value>
   </data>
-
+  <data name="invoice" xml:space="preserve">
+    <value>Фактура</value>
+  </data>
+  <data name="invoice_date" xml:space="preserve">
+    <value>Дата</value>
+  </data>
+  <data name="invoice_date_DDS" xml:space="preserve">
+    <value>Данъчно събитие</value>
+  </data>
+  <data name="invoice_number" xml:space="preserve">
+    <value>Номер</value>
+  </data>
+  <data name="mol" xml:space="preserve">
+    <value>МОЛ</value>
+  </data>
 </root>

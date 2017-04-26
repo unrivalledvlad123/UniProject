@@ -26,7 +26,6 @@ namespace DB3Server
         public System.DateTime Date { get; set; }
         public string InvoiceId { get; set; }
         public string WareHouseReceipt { get; set; }
-        public string PaymentId { get; set; }
     
         public virtual Owner Owner { get; set; }
         public virtual Partner Partner { get; set; }
