@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Common.Forms.Base;
 using DB3Client.Controls;
-using DB3Client.Controls.InvoiceControls;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using Rectangle = System.Drawing.Rectangle;

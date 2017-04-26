@@ -141,24 +141,6 @@
     <Compile Include="Controls\InvoiceControl.Designer.cs">
       <DependentUpon>InvoiceControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\InvoiceControls - obsolate!\InvoiceBottom.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\InvoiceControls - obsolate!\InvoiceBottom.Designer.cs">
-      <DependentUpon>InvoiceBottom.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\InvoiceControls - obsolate!\InvoiceMiddle.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\InvoiceControls - obsolate!\InvoiceMiddle.Designer.cs">
-      <DependentUpon>InvoiceMiddle.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\InvoiceControls - obsolate!\InvoiceTop.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\InvoiceControls - obsolate!\InvoiceTop.Designer.cs">
-      <DependentUpon>InvoiceTop.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controls\OrdersControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -262,15 +244,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\InvoiceControl.resx">
       <DependentUpon>InvoiceControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\InvoiceControls - obsolate!\InvoiceBottom.resx">
-      <DependentUpon>InvoiceBottom.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\InvoiceControls - obsolate!\InvoiceMiddle.resx">
-      <DependentUpon>InvoiceMiddle.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\InvoiceControls - obsolate!\InvoiceTop.resx">
-      <DependentUpon>InvoiceTop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\OrdersControl.resx">
       <DependentUpon>OrdersControl.cs</DependentUpon>
