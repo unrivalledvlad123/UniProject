@@ -22,5 +22,29 @@ namespace DB3Client.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.2")]
+        public decimal VatMultiplier {
+            get {
+                return ((decimal)(this["VatMultiplier"]));
+            }
+            set {
+                this["VatMultiplier"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string InvoiceSaveLocation {
+            get {
+                return ((string)(this["InvoiceSaveLocation"]));
+            }
+            set {
+                this["InvoiceSaveLocation"] = value;
+            }
+        }
     }
 }

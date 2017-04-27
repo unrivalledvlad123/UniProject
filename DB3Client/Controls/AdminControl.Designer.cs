@@ -41,10 +41,10 @@ namespace DB3Client.Controls
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControlAdmin = new Common.Forms.Base.MLTabControl();
             this.metroTabPage1 = new Common.Forms.Base.MLTabPage();
-            this.btnDeleteUser = new Common.Forms.Base.MLButton();
-            this.btnEditUser = new Common.Forms.Base.MLButton();
             this.dgvUsers = new MetroFramework.Controls.MetroGrid();
             this.btnAddNewUser = new Common.Forms.Base.MLButton();
+            this.btnEditUser = new Common.Forms.Base.MLButton();
+            this.btnDeleteUser = new Common.Forms.Base.MLButton();
             this.metroTabPage2 = new Common.Forms.Base.MLTabPage();
             this.mlGroupBox2 = new Common.Forms.Base.MLGroupBox();
             this.mlGroupBox1 = new Common.Forms.Base.MLGroupBox();
@@ -67,6 +67,13 @@ namespace DB3Client.Controls
             this.dgvMol = new MetroFramework.Controls.MetroGrid();
             this.btnEditMol = new Common.Forms.Base.MLButton();
             this.metroTabPage3 = new Common.Forms.Base.MLTabPage();
+            this.mlGroupBox3 = new Common.Forms.Base.MLGroupBox();
+            this.tbVatMultiplier = new System.Windows.Forms.NumericUpDown();
+            this.labelErrorSettings = new Common.Forms.Base.MLErrorLabel();
+            this.btnSaveSettings = new Common.Forms.Base.MLButton();
+            this.tbPdfSaveLocation = new Common.Forms.Base.MLTextBox();
+            this.ff = new Common.Forms.Base.MLLabel();
+            this.mlLabel1 = new Common.Forms.Base.MLLabel();
             this.tabControlAdmin.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
@@ -74,6 +81,9 @@ namespace DB3Client.Controls
             this.mlGroupBox1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMol)).BeginInit();
+            this.metroTabPage3.SuspendLayout();
+            this.mlGroupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbVatMultiplier)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlAdmin
@@ -84,10 +94,11 @@ namespace DB3Client.Controls
             this.tabControlAdmin.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlAdmin.Location = new System.Drawing.Point(0, 0);
             this.tabControlAdmin.Name = "tabControlAdmin";
-            this.tabControlAdmin.SelectedIndex = 0;
+            this.tabControlAdmin.SelectedIndex = 2;
             this.tabControlAdmin.Size = new System.Drawing.Size(933, 560);
             this.tabControlAdmin.TabIndex = 0;
             this.tabControlAdmin.UseSelectable = true;
+            this.tabControlAdmin.SelectedIndexChanged += new System.EventHandler(this.tabControlAdmin_SelectedIndexChanged);
             // 
             // metroTabPage1
             // 
@@ -106,26 +117,6 @@ namespace DB3Client.Controls
             this.metroTabPage1.VerticalScrollbarBarColor = true;
             this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.VerticalScrollbarSize = 10;
-            // 
-            // btnDeleteUser
-            // 
-            this.btnDeleteUser.Location = new System.Drawing.Point(205, 195);
-            this.btnDeleteUser.Name = "btnDeleteUser";
-            this.btnDeleteUser.Size = new System.Drawing.Size(95, 23);
-            this.btnDeleteUser.TabIndex = 6;
-            this.btnDeleteUser.Text = "delete_user";
-            this.btnDeleteUser.UseSelectable = true;
-            this.btnDeleteUser.Click += new System.EventHandler(this.btnDeleteUser_Click);
-            // 
-            // btnEditUser
-            // 
-            this.btnEditUser.Location = new System.Drawing.Point(104, 195);
-            this.btnEditUser.Name = "btnEditUser";
-            this.btnEditUser.Size = new System.Drawing.Size(95, 23);
-            this.btnEditUser.TabIndex = 5;
-            this.btnEditUser.Text = "edit_user";
-            this.btnEditUser.UseSelectable = true;
-            this.btnEditUser.Click += new System.EventHandler(this.btnEditUser_Click);
             // 
             // dgvUsers
             // 
@@ -171,9 +162,9 @@ namespace DB3Client.Controls
             this.dgvUsers.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvUsers.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvUsers.Size = new System.Drawing.Size(919, 291);
+            this.dgvUsers.Size = new System.Drawing.Size(919, 294);
             this.dgvUsers.TabIndex = 4;
-            this.dgvUsers.SelectionChanged += new EventHandler(this.dgvUsers_SelectionChanged);
+            this.dgvUsers.SelectionChanged += new System.EventHandler(this.dgvUsers_SelectionChanged);
             // 
             // btnAddNewUser
             // 
@@ -185,6 +176,26 @@ namespace DB3Client.Controls
             this.btnAddNewUser.UseSelectable = true;
             this.btnAddNewUser.Click += new System.EventHandler(this.btnAddNewUser_Click);
             // 
+            // btnEditUser
+            // 
+            this.btnEditUser.Location = new System.Drawing.Point(104, 195);
+            this.btnEditUser.Name = "btnEditUser";
+            this.btnEditUser.Size = new System.Drawing.Size(95, 23);
+            this.btnEditUser.TabIndex = 5;
+            this.btnEditUser.Text = "edit_user";
+            this.btnEditUser.UseSelectable = true;
+            this.btnEditUser.Click += new System.EventHandler(this.btnEditUser_Click);
+            // 
+            // btnDeleteUser
+            // 
+            this.btnDeleteUser.Location = new System.Drawing.Point(205, 195);
+            this.btnDeleteUser.Name = "btnDeleteUser";
+            this.btnDeleteUser.Size = new System.Drawing.Size(95, 23);
+            this.btnDeleteUser.TabIndex = 6;
+            this.btnDeleteUser.Text = "delete_user";
+            this.btnDeleteUser.UseSelectable = true;
+            this.btnDeleteUser.Click += new System.EventHandler(this.btnDeleteUser_Click);
+            // 
             // metroTabPage2
             // 
             this.metroTabPage2.Controls.Add(this.mlGroupBox2);
@@ -194,7 +205,7 @@ namespace DB3Client.Controls
             this.metroTabPage2.HorizontalScrollbarSize = 10;
             this.metroTabPage2.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage2.Name = "metroTabPage2";
-            this.metroTabPage2.Size = new System.Drawing.Size(918, 518);
+            this.metroTabPage2.Size = new System.Drawing.Size(925, 518);
             this.metroTabPage2.TabIndex = 1;
             this.metroTabPage2.Text = "manage_company";
             this.metroTabPage2.VerticalScrollbarBarColor = true;
@@ -208,7 +219,7 @@ namespace DB3Client.Controls
             this.mlGroupBox2.BackColor = System.Drawing.Color.White;
             this.mlGroupBox2.Location = new System.Drawing.Point(447, 4);
             this.mlGroupBox2.Name = "mlGroupBox2";
-            this.mlGroupBox2.Size = new System.Drawing.Size(437, 511);
+            this.mlGroupBox2.Size = new System.Drawing.Size(437, 514);
             this.mlGroupBox2.TabIndex = 8;
             this.mlGroupBox2.TabStop = false;
             // 
@@ -225,7 +236,7 @@ namespace DB3Client.Controls
             this.mlGroupBox1.Controls.Add(this.btnEditMol);
             this.mlGroupBox1.Location = new System.Drawing.Point(4, 4);
             this.mlGroupBox1.Name = "mlGroupBox1";
-            this.mlGroupBox1.Size = new System.Drawing.Size(437, 511);
+            this.mlGroupBox1.Size = new System.Drawing.Size(437, 514);
             this.mlGroupBox1.TabIndex = 7;
             this.mlGroupBox1.TabStop = false;
             // 
@@ -439,6 +450,7 @@ namespace DB3Client.Controls
             this.dgvMol.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dgvMol.Location = new System.Drawing.Point(6, 255);
             this.dgvMol.Name = "dgvMol";
+            this.dgvMol.ReadOnly = true;
             this.dgvMol.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
@@ -450,10 +462,9 @@ namespace DB3Client.Controls
             this.dgvMol.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvMol.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvMol.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMol.Size = new System.Drawing.Size(426, 250);
+            this.dgvMol.Size = new System.Drawing.Size(426, 253);
             this.dgvMol.TabIndex = 6;
-            this.dgvMol.SelectionChanged += new EventHandler(this.dgvMol_SelectionChanged);
-            this.dgvMol.ReadOnly = true;
+            this.dgvMol.SelectionChanged += new System.EventHandler(this.dgvMol_SelectionChanged);
             // 
             // btnEditMol
             // 
@@ -467,17 +478,116 @@ namespace DB3Client.Controls
             // 
             // metroTabPage3
             // 
+            this.metroTabPage3.Controls.Add(this.mlGroupBox3);
             this.metroTabPage3.HorizontalScrollbarBarColor = true;
             this.metroTabPage3.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage3.HorizontalScrollbarSize = 10;
             this.metroTabPage3.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage3.Name = "metroTabPage3";
-            this.metroTabPage3.Size = new System.Drawing.Size(909, 508);
+            this.metroTabPage3.Size = new System.Drawing.Size(925, 518);
             this.metroTabPage3.TabIndex = 2;
-            this.metroTabPage3.Text = "Some random shit";
+            this.metroTabPage3.Text = "settings_tab";
             this.metroTabPage3.VerticalScrollbarBarColor = true;
             this.metroTabPage3.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage3.VerticalScrollbarSize = 10;
+            // 
+            // mlGroupBox3
+            // 
+            this.mlGroupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.mlGroupBox3.BackColor = System.Drawing.Color.White;
+            this.mlGroupBox3.Controls.Add(this.tbVatMultiplier);
+            this.mlGroupBox3.Controls.Add(this.labelErrorSettings);
+            this.mlGroupBox3.Controls.Add(this.btnSaveSettings);
+            this.mlGroupBox3.Controls.Add(this.tbPdfSaveLocation);
+            this.mlGroupBox3.Controls.Add(this.ff);
+            this.mlGroupBox3.Controls.Add(this.mlLabel1);
+            this.mlGroupBox3.Location = new System.Drawing.Point(4, 4);
+            this.mlGroupBox3.Name = "mlGroupBox3";
+            this.mlGroupBox3.Size = new System.Drawing.Size(319, 511);
+            this.mlGroupBox3.TabIndex = 2;
+            this.mlGroupBox3.TabStop = false;
+            this.mlGroupBox3.Text = "settings";
+            // 
+            // tbVatMultiplier
+            // 
+            this.tbVatMultiplier.Location = new System.Drawing.Point(10, 42);
+            this.tbVatMultiplier.Name = "tbVatMultiplier";
+            this.tbVatMultiplier.Size = new System.Drawing.Size(120, 20);
+            this.tbVatMultiplier.TabIndex = 7;
+            // 
+            // labelErrorSettings
+            // 
+            this.labelErrorSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelErrorSettings.AutoSize = true;
+            this.labelErrorSettings.ForeColor = System.Drawing.Color.Red;
+            this.labelErrorSettings.Location = new System.Drawing.Point(7, 418);
+            this.labelErrorSettings.MaximumSize = new System.Drawing.Size(306, 61);
+            this.labelErrorSettings.Name = "labelErrorSettings";
+            this.labelErrorSettings.Size = new System.Drawing.Size(0, 13);
+            this.labelErrorSettings.TabIndex = 6;
+            this.labelErrorSettings.Visible = false;
+            // 
+            // btnSaveSettings
+            // 
+            this.btnSaveSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSaveSettings.Location = new System.Drawing.Point(238, 482);
+            this.btnSaveSettings.Name = "btnSaveSettings";
+            this.btnSaveSettings.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveSettings.TabIndex = 5;
+            this.btnSaveSettings.Text = "save";
+            this.btnSaveSettings.UseSelectable = true;
+            this.btnSaveSettings.Click += new System.EventHandler(this.btnSaveSettings_Click);
+            // 
+            // tbPdfSaveLocation
+            // 
+            // 
+            // 
+            // 
+            this.tbPdfSaveLocation.CustomButton.Image = null;
+            this.tbPdfSaveLocation.CustomButton.Location = new System.Drawing.Point(284, 1);
+            this.tbPdfSaveLocation.CustomButton.Name = "";
+            this.tbPdfSaveLocation.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.tbPdfSaveLocation.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.tbPdfSaveLocation.CustomButton.TabIndex = 1;
+            this.tbPdfSaveLocation.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.tbPdfSaveLocation.CustomButton.UseSelectable = true;
+            this.tbPdfSaveLocation.CustomButton.Visible = false;
+            this.tbPdfSaveLocation.Lines = new string[0];
+            this.tbPdfSaveLocation.Location = new System.Drawing.Point(7, 91);
+            this.tbPdfSaveLocation.MaxLength = 32767;
+            this.tbPdfSaveLocation.Name = "tbPdfSaveLocation";
+            this.tbPdfSaveLocation.PasswordChar = '\0';
+            this.tbPdfSaveLocation.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.tbPdfSaveLocation.SelectedText = "";
+            this.tbPdfSaveLocation.SelectionLength = 0;
+            this.tbPdfSaveLocation.SelectionStart = 0;
+            this.tbPdfSaveLocation.ShortcutsEnabled = true;
+            this.tbPdfSaveLocation.Size = new System.Drawing.Size(306, 23);
+            this.tbPdfSaveLocation.TabIndex = 4;
+            this.tbPdfSaveLocation.UseSelectable = true;
+            this.tbPdfSaveLocation.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.tbPdfSaveLocation.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // ff
+            // 
+            this.ff.AutoSize = true;
+            this.ff.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.ff.Location = new System.Drawing.Point(7, 69);
+            this.ff.Name = "ff";
+            this.ff.Size = new System.Drawing.Size(116, 19);
+            this.ff.TabIndex = 2;
+            this.ff.Text = "pdf_save_location";
+            // 
+            // mlLabel1
+            // 
+            this.mlLabel1.AutoSize = true;
+            this.mlLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.mlLabel1.Location = new System.Drawing.Point(7, 20);
+            this.mlLabel1.Name = "mlLabel1";
+            this.mlLabel1.Size = new System.Drawing.Size(91, 19);
+            this.mlLabel1.TabIndex = 0;
+            this.mlLabel1.Text = "vat_multiplier";
             // 
             // AdminControl
             // 
@@ -494,6 +604,10 @@ namespace DB3Client.Controls
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMol)).EndInit();
+            this.metroTabPage3.ResumeLayout(false);
+            this.mlGroupBox3.ResumeLayout(false);
+            this.mlGroupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbVatMultiplier)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -528,5 +642,12 @@ namespace DB3Client.Controls
         private MLLabel mlLabel2;
         private MLLabel labelVAT;
         private MLLabel mlLabel4;
+        private MLGroupBox mlGroupBox3;
+        private MLTextBox tbPdfSaveLocation;
+        private MLLabel ff;
+        private MLLabel mlLabel1;
+        private MLButton btnSaveSettings;
+        private MLErrorLabel labelErrorSettings;
+        private NumericUpDown tbVatMultiplier;
     }
 }

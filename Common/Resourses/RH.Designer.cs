@@ -466,6 +466,15 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Saving failed! Please try again!.
+        /// </summary>
+        internal static string fail_error_settings {
+            get {
+                return ResourceManager.GetString("fail_error_settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Finish.
         /// </summary>
         internal static string finish {
@@ -790,6 +799,15 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Save invoices to:.
+        /// </summary>
+        internal static string pdf_save_location {
+            get {
+                return ResourceManager.GetString("pdf_save_location", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Phone:.
         /// </summary>
         internal static string phone {
@@ -934,11 +952,56 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        internal static string settings {
+            get {
+                return ResourceManager.GetString("settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Global settings.
+        /// </summary>
+        internal static string settings_tab {
+            get {
+                return ResourceManager.GetString("settings_tab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings saved cussessfully!.
+        /// </summary>
+        internal static string success_error_settings {
+            get {
+                return ResourceManager.GetString("success_error_settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Diagrams.
+        /// </summary>
+        internal static string tab_diagrams {
+            get {
+                return ResourceManager.GetString("tab_diagrams", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Direct sales.
         /// </summary>
         internal static string tab_page_direct_sales {
             get {
                 return ResourceManager.GetString("tab_page_direct_sales", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reports.
+        /// </summary>
+        internal static string tab_reports {
+            get {
+                return ResourceManager.GetString("tab_reports", resourceCulture);
             }
         }
         
@@ -1038,6 +1101,15 @@ namespace Common.Resourses {
         internal static string username_already_exist {
             get {
                 return ResourceManager.GetString("username_already_exist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Multiplier in percent ( for example: 0.2).
+        /// </summary>
+        internal static string vat_multiplier {
+            get {
+                return ResourceManager.GetString("vat_multiplier", resourceCulture);
             }
         }
         

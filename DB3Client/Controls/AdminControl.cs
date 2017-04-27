@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Data;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Resources;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -14,6 +15,7 @@ using Common.Classes;
 using DB3Client.Forms;
 using DB3Client.Forms.AdminForms;
 using DB3Client.ServiceAccess;
+using Newtonsoft.Json.Linq;
 
 namespace DB3Client.Controls
 {
@@ -31,6 +33,8 @@ namespace DB3Client.Controls
             LoadData();
             LoadCompanyData();
             LoadMolList();
+            LoadSettings();
+           
 
             tabControlAdmin.SelectedTab = metroTabPage1;
         }
@@ -162,6 +166,12 @@ namespace DB3Client.Controls
             dgvMol.DataSource = AllMols;
         }
 
+        public void LoadSettings()
+        {
+            tbVatMultiplier.Text = Properties.Settings.Default.VatMultiplier.ToString();
+            tbPdfSaveLocation.Text = Properties.Settings.Default.InvoiceSaveLocation;
+        }
+
         #endregion
 
         #region // < ====== Events =====> //
@@ -289,7 +299,34 @@ namespace DB3Client.Controls
                 }
             }
         }
+
+        private void btnSaveSettings_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Properties.Settings.Default.VatMultiplier = tbVatMultiplier.Value;
+                Properties.Settings.Default.InvoiceSaveLocation = tbPdfSaveLocation.Text;
+                labelErrorSettings.Text = "success_error_settings";
+                labelErrorSettings.ForeColor = Color.Green;
+                labelErrorSettings.Visible = true;
+                Properties.Settings.Default.Save();
+            }
+            catch (Exception)
+            {
+                labelErrorSettings.Text = "fail_error_settings";
+                labelErrorSettings.ForeColor = Color.Red;
+                labelErrorSettings.Visible = true;
+            }
+
+        }
+        private void tabControlAdmin_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            labelErrorSettings.Visible = false;
+        }
+
+        
         #endregion
+
 
     }
 }

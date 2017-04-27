@@ -1,4 +1,6 @@
-﻿namespace DB3Client.Controls
+﻿using Common.Forms.Base;
+
+namespace DB3Client.Controls
 {
     partial class OrdersControl
     {
@@ -29,10 +31,10 @@
         private void InitializeComponent()
         {
             this.tabControlOrders = new MetroFramework.Controls.MetroTabControl();
-            this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
-            this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
-            this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
-            this.metroTabPage4 = new MetroFramework.Controls.MetroTabPage();
+            this.metroTabPage1 = new MLTabPage();
+            this.metroTabPage2 = new MLTabPage();
+            this.metroTabPage3 = new MLTabPage();
+            this.metroTabPage4 = new MLTabPage();
             this.tabControlOrders.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,7 +75,7 @@
             this.metroTabPage2.Name = "metroTabPage2";
             this.metroTabPage2.Size = new System.Drawing.Size(1064, 499);
             this.metroTabPage2.TabIndex = 1;
-            this.metroTabPage2.Text = "metroTabPage2";
+            this.metroTabPage2.Text = "metroTabPage1";
             this.metroTabPage2.VerticalScrollbarBarColor = true;
             this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.VerticalScrollbarSize = 10;
@@ -121,9 +123,9 @@
         #endregion
 
         private MetroFramework.Controls.MetroTabControl tabControlOrders;
-        private MetroFramework.Controls.MetroTabPage metroTabPage1;
-        private MetroFramework.Controls.MetroTabPage metroTabPage2;
-        private MetroFramework.Controls.MetroTabPage metroTabPage3;
-        private MetroFramework.Controls.MetroTabPage metroTabPage4;
+        private MLTabPage metroTabPage1;
+        private MLTabPage metroTabPage2;
+        private MLTabPage metroTabPage3;
+        private MLTabPage metroTabPage4;
     }
 }

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DB3Client.Properties;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using Rectangle = System.Drawing.Rectangle;
@@ -54,7 +55,7 @@ namespace DB3Client.Controls
             
             Bitmap image = b;
             Document doc = new Document(PageSize.A4);
-            PdfWriter.GetInstance(doc, new FileStream(@"C:\Users\vlado.CC\Desktop\image.pdf", FileMode.Create));
+            PdfWriter.GetInstance(doc, new FileStream(Settings.Default.InvoiceSaveLocation + @"\" + labelInvoiceNumber.Text +".pdf", FileMode.Create));
             doc.Open();
             iTextSharp.text.Image pdfImage = iTextSharp.text.Image.GetInstance(image,
                 ImageFormat.Bmp);
@@ -82,6 +83,8 @@ namespace DB3Client.Controls
         {
            //await someMethod
         }
+
+
 
     }
 }

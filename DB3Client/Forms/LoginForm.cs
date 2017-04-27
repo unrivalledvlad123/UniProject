@@ -50,13 +50,13 @@ namespace DB3Client.Forms
 
                 if (!string.IsNullOrEmpty(tbUsername.Text) && !string.IsNullOrEmpty(tbPassword.Text))
                 {
+                    DataHolder.ServerAddress = cbServer.Text;
                     CommonUser user = await SAUsers.Login(tbUsername.Text, tbPassword.Text);
                     if (user != null)
                     {
 
                         DataHolder.CurrnetUserId = user.UserId;
                         DataHolder.OwnerId = user.OwnerId;
-                        DataHolder.ServerAddress = cbServer.Text;
                         DataHolder.Username = user.Username;
                         DataHolder.UserType = user.Role;
 

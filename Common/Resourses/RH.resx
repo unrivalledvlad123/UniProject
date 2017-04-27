@@ -462,4 +462,28 @@
   <data name="mol" xml:space="preserve">
     <value>Acc. person</value>
   </data>
+  <data name="fail_error_settings" xml:space="preserve">
+    <value>Saving failed! Please try again!</value>
+  </data>
+  <data name="pdf_save_location" xml:space="preserve">
+    <value>Save invoices to:</value>
+  </data>
+  <data name="settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="settings_tab" xml:space="preserve">
+    <value>Global settings</value>
+  </data>
+  <data name="success_error_settings" xml:space="preserve">
+    <value>Settings saved cussessfully!</value>
+  </data>
+  <data name="tab_diagrams" xml:space="preserve">
+    <value>Diagrams</value>
+  </data>
+  <data name="tab_reports" xml:space="preserve">
+    <value>Reports</value>
+  </data>
+  <data name="vat_multiplier" xml:space="preserve">
+    <value>VAT Multiplier in percent ( for example: 0.2)</value>
+  </data>
 </root>

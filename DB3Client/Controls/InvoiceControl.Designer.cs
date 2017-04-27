@@ -32,7 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DONOTTOUCH = new System.Windows.Forms.FlowLayoutPanel();
-            this.dgvItems = new MetroFramework.Controls.MetroGrid();
             this.mlGroupBox1 = new Common.Forms.Base.MLGroupBox();
             this.mlLabel7 = new Common.Forms.Base.MLLabel();
             this.mlLabel8 = new Common.Forms.Base.MLLabel();
@@ -60,10 +59,11 @@
             this.mlLabel26 = new Common.Forms.Base.MLLabel();
             this.mlLabel18 = new Common.Forms.Base.MLLabel();
             this.mlLabel19 = new Common.Forms.Base.MLLabel();
-            this.mlLabel25 = new Common.Forms.Base.MLLabel();
+            this.labelInvoiceNumber = new Common.Forms.Base.MLLabel();
             this.mlLabel3 = new Common.Forms.Base.MLLabel();
             this.mlLabel2 = new Common.Forms.Base.MLLabel();
             this.mlLabel1 = new Common.Forms.Base.MLLabel();
+            this.dgvItems = new MetroFramework.Controls.MetroGrid();
             this.mlGroupBox6 = new Common.Forms.Base.MLGroupBox();
             this.mlLabel40 = new Common.Forms.Base.MLLabel();
             this.mlLabel41 = new Common.Forms.Base.MLLabel();
@@ -88,10 +88,10 @@
             this.mlLabel30 = new Common.Forms.Base.MLLabel();
             this.mlLabel31 = new Common.Forms.Base.MLLabel();
             this.DONOTTOUCH.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).BeginInit();
             this.mlGroupBox1.SuspendLayout();
             this.mlGroupBox2.SuspendLayout();
             this.mlGroupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).BeginInit();
             this.mlGroupBox6.SuspendLayout();
             this.mlGroupBox5.SuspendLayout();
             this.mlGroupBox4.SuspendLayout();
@@ -112,53 +112,8 @@
             this.DONOTTOUCH.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DONOTTOUCH.Location = new System.Drawing.Point(0, 0);
             this.DONOTTOUCH.Name = "DONOTTOUCH";
-            this.DONOTTOUCH.Size = new System.Drawing.Size(800, 1050);
+            this.DONOTTOUCH.Size = new System.Drawing.Size(800, 1020);
             this.DONOTTOUCH.TabIndex = 10;
-            // 
-            // dgvItems
-            // 
-            this.dgvItems.AllowUserToResizeRows = false;
-            this.dgvItems.BackgroundColor = System.Drawing.Color.White;
-            this.dgvItems.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvItems.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dgvItems.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvItems.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvItems.EnableHeadersVisualStyles = false;
-            this.dgvItems.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.dgvItems.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dgvItems.Location = new System.Drawing.Point(3, 302);
-            this.dgvItems.MaximumSize = new System.Drawing.Size(766, 10000);
-            this.dgvItems.MinimumSize = new System.Drawing.Size(766, 100);
-            this.dgvItems.Name = "dgvItems";
-            this.dgvItems.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvItems.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvItems.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dgvItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvItems.Size = new System.Drawing.Size(766, 204);
-            this.dgvItems.TabIndex = 9;
             // 
             // mlGroupBox1
             // 
@@ -318,7 +273,7 @@
             this.mlLabel21.Location = new System.Drawing.Point(138, 133);
             this.mlLabel21.MaximumSize = new System.Drawing.Size(231, 60);
             this.mlLabel21.Name = "mlLabel21";
-            this.mlLabel21.Size = new System.Drawing.Size(231, 19);
+            this.mlLabel21.Size = new System.Drawing.Size(236, 19);
             this.mlLabel21.TabIndex = 13;
             this.mlLabel21.Text = "ul treti ma.rt nom.er 65, vhod 6 i t.n. ";
             this.mlLabel21.WrapToLine = true;
@@ -395,7 +350,7 @@
             this.mlGroupBox3.Controls.Add(this.mlLabel26);
             this.mlGroupBox3.Controls.Add(this.mlLabel18);
             this.mlGroupBox3.Controls.Add(this.mlLabel19);
-            this.mlGroupBox3.Controls.Add(this.mlLabel25);
+            this.mlGroupBox3.Controls.Add(this.labelInvoiceNumber);
             this.mlGroupBox3.Controls.Add(this.mlLabel3);
             this.mlGroupBox3.Controls.Add(this.mlLabel2);
             this.mlGroupBox3.Controls.Add(this.mlLabel1);
@@ -447,14 +402,14 @@
             this.mlLabel19.TabIndex = 4;
             this.mlLabel19.Text = "mlLabel19";
             // 
-            // mlLabel25
+            // labelInvoiceNumber
             // 
-            this.mlLabel25.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.mlLabel25.Location = new System.Drawing.Point(524, 16);
-            this.mlLabel25.Name = "mlLabel25";
-            this.mlLabel25.Size = new System.Drawing.Size(231, 19);
-            this.mlLabel25.TabIndex = 3;
-            this.mlLabel25.Text = "mlLabel25";
+            this.labelInvoiceNumber.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.labelInvoiceNumber.Location = new System.Drawing.Point(524, 16);
+            this.labelInvoiceNumber.Name = "labelInvoiceNumber";
+            this.labelInvoiceNumber.Size = new System.Drawing.Size(231, 19);
+            this.labelInvoiceNumber.TabIndex = 3;
+            this.labelInvoiceNumber.Text = "mlLabel25";
             // 
             // mlLabel3
             // 
@@ -485,6 +440,51 @@
             this.mlLabel1.Size = new System.Drawing.Size(105, 19);
             this.mlLabel1.TabIndex = 0;
             this.mlLabel1.Text = "invoice_number";
+            // 
+            // dgvItems
+            // 
+            this.dgvItems.AllowUserToResizeRows = false;
+            this.dgvItems.BackgroundColor = System.Drawing.Color.White;
+            this.dgvItems.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvItems.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvItems.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvItems.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvItems.EnableHeadersVisualStyles = false;
+            this.dgvItems.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.dgvItems.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dgvItems.Location = new System.Drawing.Point(3, 302);
+            this.dgvItems.MaximumSize = new System.Drawing.Size(766, 10000);
+            this.dgvItems.MinimumSize = new System.Drawing.Size(766, 100);
+            this.dgvItems.Name = "dgvItems";
+            this.dgvItems.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvItems.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvItems.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvItems.Size = new System.Drawing.Size(766, 204);
+            this.dgvItems.TabIndex = 9;
             // 
             // mlGroupBox6
             // 
@@ -736,13 +736,13 @@
             this.Name = "InvoiceControl";
             this.Size = new System.Drawing.Size(800, 1020);
             this.DONOTTOUCH.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).EndInit();
             this.mlGroupBox1.ResumeLayout(false);
             this.mlGroupBox1.PerformLayout();
             this.mlGroupBox2.ResumeLayout(false);
             this.mlGroupBox2.PerformLayout();
             this.mlGroupBox3.ResumeLayout(false);
             this.mlGroupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).EndInit();
             this.mlGroupBox6.ResumeLayout(false);
             this.mlGroupBox6.PerformLayout();
             this.mlGroupBox5.ResumeLayout(false);
@@ -760,7 +760,7 @@
         private Common.Forms.Base.MLLabel mlLabel26;
         private Common.Forms.Base.MLLabel mlLabel18;
         private Common.Forms.Base.MLLabel mlLabel19;
-        private Common.Forms.Base.MLLabel mlLabel25;
+        private Common.Forms.Base.MLLabel labelInvoiceNumber;
         private Common.Forms.Base.MLLabel mlLabel3;
         private Common.Forms.Base.MLLabel mlLabel2;
         private Common.Forms.Base.MLLabel mlLabel1;

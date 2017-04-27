@@ -1,4 +1,6 @@
-﻿namespace DB3Client.Controls
+﻿using Common.Forms.Base;
+
+namespace DB3Client.Controls
 {
     partial class ReportsControl
     {
@@ -29,9 +31,9 @@
         private void InitializeComponent()
         {
             this.tabControlReports = new MetroFramework.Controls.MetroTabControl();
-            this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
-            this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
-            this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
+            this.metroTabPage1 = new MLTabPage();
+            this.metroTabPage2 = new MLTabPage();
+            this.metroTabPage3 = new MLTabPage();
             this.tabControlReports.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,7 +59,7 @@
             this.metroTabPage1.Name = "metroTabPage1";
             this.metroTabPage1.Size = new System.Drawing.Size(1228, 559);
             this.metroTabPage1.TabIndex = 0;
-            this.metroTabPage1.Text = "metroTabPage1";
+            this.metroTabPage1.Text = "tab_reports";
             this.metroTabPage1.VerticalScrollbarBarColor = true;
             this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.VerticalScrollbarSize = 10;
@@ -71,7 +73,7 @@
             this.metroTabPage2.Name = "metroTabPage2";
             this.metroTabPage2.Size = new System.Drawing.Size(192, 58);
             this.metroTabPage2.TabIndex = 1;
-            this.metroTabPage2.Text = "metroTabPage2";
+            this.metroTabPage2.Text = "tab_diagrams";
             this.metroTabPage2.VerticalScrollbarBarColor = true;
             this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.VerticalScrollbarSize = 10;
@@ -105,8 +107,8 @@
         #endregion
 
         private MetroFramework.Controls.MetroTabControl tabControlReports;
-        private MetroFramework.Controls.MetroTabPage metroTabPage1;
-        private MetroFramework.Controls.MetroTabPage metroTabPage2;
-        private MetroFramework.Controls.MetroTabPage metroTabPage3;
+        private MLTabPage metroTabPage1;
+        private MLTabPage metroTabPage2;
+        private MLTabPage metroTabPage3;
     }
 }

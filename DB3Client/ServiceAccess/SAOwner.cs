@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using Common;
 using Common.Classes;
 
 namespace DB3Client.ServiceAccess
@@ -17,7 +18,7 @@ namespace DB3Client.ServiceAccess
             HttpResponseMessage response;
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://localhost:9000/");
+                client.BaseAddress = new Uri(DataHolder.ServerAddress);
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic");
 
                 try
@@ -43,7 +44,7 @@ namespace DB3Client.ServiceAccess
             HttpResponseMessage response;
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://localhost:9000/");
+                client.BaseAddress = new Uri(DataHolder.ServerAddress);
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic");
 
                 try
@@ -69,7 +70,7 @@ namespace DB3Client.ServiceAccess
             HttpResponseMessage response;
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://localhost:9000/");
+                client.BaseAddress = new Uri(DataHolder.ServerAddress);
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic");
 
                 try
@@ -95,7 +96,7 @@ namespace DB3Client.ServiceAccess
             HttpResponseMessage response;
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://localhost:9000/");
+                client.BaseAddress = new Uri(DataHolder.ServerAddress);
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic");
 
                 try
@@ -120,7 +121,7 @@ namespace DB3Client.ServiceAccess
             HttpResponseMessage response;
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://localhost:9000/");
+                client.BaseAddress = new Uri(DataHolder.ServerAddress);
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic");
 
                 try
@@ -145,7 +146,7 @@ namespace DB3Client.ServiceAccess
             HttpResponseMessage response;
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://localhost:9000/");
+                client.BaseAddress = new Uri(DataHolder.ServerAddress);
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic");
 
                 try

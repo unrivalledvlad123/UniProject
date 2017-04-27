@@ -465,4 +465,28 @@
   <data name="mol" xml:space="preserve">
     <value>МОЛ</value>
   </data>
+  <data name="fail_error_settings" xml:space="preserve">
+    <value>Възникна грешка. Моля опитайте отново!</value>
+  </data>
+  <data name="pdf_save_location" xml:space="preserve">
+    <value>Запазвай фактурите в:</value>
+  </data>
+  <data name="settings" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="settings_tab" xml:space="preserve">
+    <value>Глобални настройки</value>
+  </data>
+  <data name="success_error_settings" xml:space="preserve">
+    <value>Настройките за запазани!</value>
+  </data>
+  <data name="tab_diagrams" xml:space="preserve">
+    <value>Диаграми</value>
+  </data>
+  <data name="tab_reports" xml:space="preserve">
+    <value>Справки</value>
+  </data>
+  <data name="vat_multiplier" xml:space="preserve">
+    <value>ДДС Ставка в процент:</value>
+  </data>
 </root>
