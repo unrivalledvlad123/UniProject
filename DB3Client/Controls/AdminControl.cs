@@ -247,16 +247,24 @@ namespace DB3Client.Controls
         {
             if (dgvUsers.SelectedRows.Count == 1 && dgvUsers.SelectedRows[0] != null)
             {
-                CommonUser selectedItem = (CommonUser)dgvUsers.SelectedRows[0].DataBoundItem;
-                bool success = await SAUsers.PostDeleteUser(selectedItem.UserId);
-                if (success)
+                CommonUser selectedItem = (CommonUser) dgvUsers.SelectedRows[0].DataBoundItem;
+                if (selectedItem.UserId != DataHolder.CurrnetUserId)
                 {
-                    LoadData();
+                    bool success = await SAUsers.PostDeleteUser(selectedItem.UserId);
+                    if (success)
+                    {
+                        LoadData();
+                    }
+                    else
+                    {
+                        MessageBox.Show( DataHolder.GetString("error_deleting_user"), DataHolder.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Error_deleting_user", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(DataHolder.GetString("error_deleting_user"), DataHolder.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+
             }
         }
         private void btnAddMol_Click(object sender, EventArgs e)
@@ -295,7 +303,7 @@ namespace DB3Client.Controls
                 }
                 else
                 {
-                    MessageBox.Show("Error_deleting_mol", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(DataHolder.GetString("error_deleting_mol"), DataHolder.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

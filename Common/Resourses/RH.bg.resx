@@ -489,4 +489,13 @@
   <data name="vat_multiplier" xml:space="preserve">
     <value>ДДС Ставка в процент:</value>
   </data>
+  <data name="error" xml:space="preserve">
+    <value>Грешка!</value>
+  </data>
+  <data name="error_deleting_mol" xml:space="preserve">
+    <value>Грешка при изтриване на МОЛ</value>
+  </data>
+  <data name="Error_deleting_user" xml:space="preserve">
+    <value>Грешка при изтриване на потребителя!</value>
+  </data>
 </root>

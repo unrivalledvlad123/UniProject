@@ -466,6 +466,33 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        internal static string error {
+            get {
+                return ResourceManager.GetString("error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error deleting Accauntable person!.
+        /// </summary>
+        internal static string error_deleting_mol {
+            get {
+                return ResourceManager.GetString("error_deleting_mol", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error deleting selecting user!.
+        /// </summary>
+        internal static string error_deleting_user {
+            get {
+                return ResourceManager.GetString("error_deleting_user", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Saving failed! Please try again!.
         /// </summary>
         internal static string fail_error_settings {

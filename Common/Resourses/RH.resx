@@ -486,4 +486,13 @@
   <data name="vat_multiplier" xml:space="preserve">
     <value>VAT Multiplier in percent ( for example: 0.2)</value>
   </data>
+  <data name="error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="error_deleting_mol" xml:space="preserve">
+    <value>Error deleting Accauntable person!</value>
+  </data>
+  <data name="error_deleting_user" xml:space="preserve">
+    <value>Error deleting selecting user!</value>
+  </data>
 </root>
