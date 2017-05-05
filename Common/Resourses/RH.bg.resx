@@ -498,4 +498,28 @@
   <data name="Error_deleting_user" xml:space="preserve">
     <value>Грешка при изтриване на потребителя!</value>
   </data>
+  <data name="from_date" xml:space="preserve">
+    <value>От дата:</value>
+  </data>
+  <data name="generate" xml:space="preserve">
+    <value>Генерирай</value>
+  </data>
+  <data name="item_type" xml:space="preserve">
+    <value>Стокова група</value>
+  </data>
+  <data name="report_for" xml:space="preserve">
+    <value>Отчет за</value>
+  </data>
+  <data name="specific_item" xml:space="preserve">
+    <value>Специфична стока</value>
+  </data>
+  <data name="to_date" xml:space="preserve">
+    <value>До дата:</value>
+  </data>
+  <data name="invalid_data" xml:space="preserve">
+    <value>Невалидни парамeтри за търсене! Моля попълнете всички полета.</value>
+  </data>
+  <data name="no_results_found" xml:space="preserve">
+    <value>Няма намерени резултати по посочените параметри!</value>
+  </data>
 </root>

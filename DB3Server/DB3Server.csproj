@@ -159,9 +159,11 @@
     <Compile Include="BusinessLogic\BLAuthenticationProvider.cs" />
     <Compile Include="BusinessLogic\BLContract.cs" />
     <Compile Include="BusinessLogic\BLOwner.cs" />
+    <Compile Include="BusinessLogic\BLReports.cs" />
     <Compile Include="Controllers\ContractController.cs" />
     <Compile Include="Controllers\ExampleController.cs" />
     <Compile Include="Controllers\OwnerController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="BD3Service.cs" />
     <Compile Include="Invoice.cs">

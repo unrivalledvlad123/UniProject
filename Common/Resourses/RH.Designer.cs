@@ -529,6 +529,24 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to From date:.
+        /// </summary>
+        internal static string from_date {
+            get {
+                return ResourceManager.GetString("from_date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generate.
+        /// </summary>
+        internal static string generate {
+            get {
+                return ResourceManager.GetString("generate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Generate Invoice.
         /// </summary>
         internal static string generate_invoice {
@@ -543,6 +561,15 @@ namespace Common.Resourses {
         internal static string goods_tab {
             get {
                 return ResourceManager.GetString("goods_tab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid parameters! Please fill all fields!.
+        /// </summary>
+        internal static string invalid_data {
+            get {
+                return ResourceManager.GetString("invalid_data", resourceCulture);
             }
         }
         
@@ -624,6 +651,15 @@ namespace Common.Resourses {
         internal static string item_name_wharehouse {
             get {
                 return ResourceManager.GetString("item_name_wharehouse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item type.
+        /// </summary>
+        internal static string item_type {
+            get {
+                return ResourceManager.GetString("item_type", resourceCulture);
             }
         }
         
@@ -759,6 +795,15 @@ namespace Common.Resourses {
         internal static string name_goods_pricelist {
             get {
                 return ResourceManager.GetString("name_goods_pricelist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No results found!.
+        /// </summary>
+        internal static string no_results_found {
+            get {
+                return ResourceManager.GetString("no_results_found", resourceCulture);
             }
         }
         
@@ -916,6 +961,15 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Report Type.
+        /// </summary>
+        internal static string report_for {
+            get {
+                return ResourceManager.GetString("report_for", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reports.
         /// </summary>
         internal static string reports {
@@ -997,6 +1051,15 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Specific Item.
+        /// </summary>
+        internal static string specific_item {
+            get {
+                return ResourceManager.GetString("specific_item", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings saved cussessfully!.
         /// </summary>
         internal static string success_error_settings {
@@ -1047,6 +1110,15 @@ namespace Common.Resourses {
         internal static string tb_under_development_wharehouse {
             get {
                 return ResourceManager.GetString("tb_under_development_wharehouse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To date:.
+        /// </summary>
+        internal static string to_date {
+            get {
+                return ResourceManager.GetString("to_date", resourceCulture);
             }
         }
         

@@ -54,7 +54,7 @@ namespace DB3Client.Forms
                     CommonUser user = await SAUsers.Login(tbUsername.Text, tbPassword.Text);
                     if (user != null)
                     {
-
+                      
                         DataHolder.CurrnetUserId = user.UserId;
                         DataHolder.OwnerId = user.OwnerId;
                         DataHolder.Username = user.Username;

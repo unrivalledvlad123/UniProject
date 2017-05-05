@@ -495,4 +495,28 @@
   <data name="error_deleting_user" xml:space="preserve">
     <value>Error deleting selecting user!</value>
   </data>
+  <data name="from_date" xml:space="preserve">
+    <value>From date:</value>
+  </data>
+  <data name="generate" xml:space="preserve">
+    <value>Generate</value>
+  </data>
+  <data name="item_type" xml:space="preserve">
+    <value>Item type</value>
+  </data>
+  <data name="report_for" xml:space="preserve">
+    <value>Report Type</value>
+  </data>
+  <data name="specific_item" xml:space="preserve">
+    <value>Specific Item</value>
+  </data>
+  <data name="to_date" xml:space="preserve">
+    <value>To date:</value>
+  </data>
+  <data name="invalid_data" xml:space="preserve">
+    <value>Invalid parameters! Please fill all fields!</value>
+  </data>
+  <data name="no_results_found" xml:space="preserve">
+    <value>No results found!</value>
+  </data>
 </root>
