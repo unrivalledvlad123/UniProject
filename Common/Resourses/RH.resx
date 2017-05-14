@@ -519,4 +519,7 @@
   <data name="no_results_found" xml:space="preserve">
     <value>No results found!</value>
   </data>
+  <data name="choose_company_mol" xml:space="preserve">
+    <value>Choose Acc. Person</value>
+  </data>
 </root>

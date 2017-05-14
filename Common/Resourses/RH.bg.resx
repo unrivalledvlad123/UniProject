@@ -522,4 +522,7 @@
   <data name="no_results_found" xml:space="preserve">
     <value>Няма намерени резултати по посочените параметри!</value>
   </data>
+  <data name="choose_company_mol" xml:space="preserve">
+    <value>Избор на МОЛ</value>
+  </data>
 </root>

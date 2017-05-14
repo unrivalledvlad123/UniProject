@@ -223,6 +223,15 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Choose Acc. Person.
+        /// </summary>
+        internal static string choose_company_mol {
+            get {
+                return ResourceManager.GetString("choose_company_mol", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Client Information.
         /// </summary>
         internal static string client_info {

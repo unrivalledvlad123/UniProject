@@ -234,6 +234,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceAccess\SAContract.cs" />
+    <Compile Include="ServiceAccess\SAItem.cs" />
     <Compile Include="ServiceAccess\SAOwner.cs" />
     <Compile Include="ServiceAccess\SAReports.cs" />
     <Compile Include="ServiceAccess\SAUsers.cs" />

@@ -13,6 +13,10 @@ namespace Common.Classes
         public string Name { get; set; }
         public  int Type { get; set; }
         public string Description { get; set; }
-
+        public string ItemCode { get; set; }
+        public override string ToString()
+        {
+            return this.Name + " (" + this.ItemCode + ")";
+        }
     }
 }

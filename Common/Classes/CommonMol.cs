@@ -16,5 +16,9 @@ namespace Common.Classes
 
         public string Email { get; set; }
         public Guid OwnerId { get; set; }
+        public override string ToString()
+        {
+            return this.FirstName + " " + this.LastName;
+        }
     }
 }
