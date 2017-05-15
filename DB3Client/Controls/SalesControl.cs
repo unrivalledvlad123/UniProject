@@ -18,11 +18,14 @@ namespace DB3Client.Controls
 {
     public partial class SalesControl : MetroFramework.Controls.MetroUserControl
     {
+        public List<CommonItem> AllItems = new List<CommonItem>();
+        public List<CommonContract> AllContacts = new List<CommonContract>();
+        public List<CommonMol> AllMols = new List<CommonMol>();
         public SalesControl()
         {
             InitializeComponent();
-            LoadMolList();
             SetGridColomns();
+            LoadDataAsync();
             tabControlSales.SelectedTab = metroTabPage1;
             cbWholesale.Checked = false;
             gbClientInfo.Enabled = false;
@@ -86,22 +89,32 @@ namespace DB3Client.Controls
 
         }
 
-
-
-        #endregion
-
-        #region // < ========= Events =========> //
-
-        private void btnAdd_Click(object sender, EventArgs e)
+        public async void LoadDataAsync()
         {
-          CommonItem a = ((CommonItem) cbSearch.SelectedItem);
-            string name = mlLabel1.Text;
-            
-            string quantity = tbQuantity.Text;
-            string price = mlLabel2.Text;
-            float totalPrice = float.Parse(quantity) * float.Parse(price);
-            dgvSoldGoods.Rows.Add(name, quantity, price, totalPrice);
-            UpdateTotal();
+            try
+            {
+                AllItems = await SAItem.GetAllItems(cbSearch.Text);
+                cbSearch.DataSource = AllItems;
+                cbSearch.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                cbSearch.AutoCompleteSource = AutoCompleteSource.ListItems;
+                cbSearch.DropDownStyle = ComboBoxStyle.DropDown;
+                AllContacts = await SAContract.GetAllContracts(cbSearchContract.Text);
+                cbSearchContract.DataSource = AllContacts;
+                cbSearchContract.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                cbSearchContract.AutoCompleteSource = AutoCompleteSource.ListItems;
+                cbSearchContract.DropDownStyle = ComboBoxStyle.DropDown;
+                AllMols = await SAOwner.getAllMols(DataHolder.Owner.OwnerId);
+                cbChooseMol.DataSource = AllMols;
+                cbChooseMol.AutoCompleteSource = AutoCompleteSource.ListItems;
+                cbChooseMol.DropDownStyle = ComboBoxStyle.DropDown;
+                cbChooseMol.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, DataHolder.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void UpdateTotal()
@@ -111,11 +124,30 @@ namespace DB3Client.Controls
             {
                 if (row.Cells[3].Value != null)
                 {
-                    s += (float)row.Cells[3].Value;
+                    s += (float) row.Cells[3].Value;
                 }
-               
             }
             labelTotalAmount.Text = s.ToString();
+        }
+        private void CalculateChange()
+        {
+            float s = float.Parse(labelCash.Text) - float.Parse(labelTotalAmount.Text);
+            labelChange.Text = s.ToString();
+        }
+
+        #endregion
+
+        #region // < ========= Events =========> //
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            CommonItem a = ((CommonItem) cbSearch.SelectedItem);
+            string name = mlLabel1.Text;
+            string quantity = tbQuantity.Text;
+            string price = mlLabel2.Text;
+            float totalPrice = float.Parse(quantity) * float.Parse(price);
+            dgvSoldGoods.Rows.Add(name, quantity, price, totalPrice);
+            UpdateTotal();
         }
 
         private void btnFinish_Click(object sender, EventArgs e)
@@ -141,7 +173,6 @@ namespace DB3Client.Controls
         private void cbWholesale_CheckedChanged(object sender, EventArgs e)
         {
             gbClientInfo.Enabled = cbWholesale.Checked;
-           // gbClientInfo.Enabled = !cbWholesale.Checked;
         }
 
         private void btnGenerateInvoice_Click(object sender, EventArgs e)
@@ -153,47 +184,18 @@ namespace DB3Client.Controls
             }
         }
 
-        #endregion
-
         private void mlButton1_Click(object sender, EventArgs e)
         {
             InvoiceTemplateForm form = new InvoiceTemplateForm();
             if (form.ShowDialog() == DialogResult.OK)
             {
-                
+
             }
         }
-
-        private bool isInProgress = false;
-
-       
-
-        
-
-        private async void cbSearch_TextChanged(object sender, EventArgs e)
+        private void cbSearch_SelectionChangeCommitted(object sender, EventArgs e)
         {
-           
-            List<CommonItem> list = await SAItem.GetAllItems(cbSearch.Text);
-            cbSearch.Items.Clear();
-
-
-                        foreach (CommonItem item in list)
-                        {
-                          
-                            cbSearch.Items.Add(item);
-                        }
-
-
-
-            
-            cbSearch.DroppedDown = true;
-
-        }
-
-        private void cbSearch_SelectedValueChanged(object sender, EventArgs e)
-        {
-            mlLabel1.Text = ((CommonItem) cbSearch.SelectedItem).Name;
-            mlLabel3.Text = ((CommonItem) cbSearch.SelectedItem).Description;
+            mlLabel1.Text = ((CommonItem)cbSearch.SelectedItem).Name;
+            mlLabel3.Text = ((CommonItem)cbSearch.SelectedItem).Description;
             mlLabel2.Text = "10";
         }
 
@@ -207,47 +209,23 @@ namespace DB3Client.Controls
             CalculateChange();
         }
 
-        private void CalculateChange()
-        {
-            float s = float.Parse(labelCash.Text) - float.Parse(labelTotalAmount.Text);
-            labelChange.Text = s.ToString();
-        }
-
-        private async void cbSearchContract_TextChanged(object sender, EventArgs e)
-        {
-            List<CommonContract> list1 = await SAContract.GetAllContracts(cbSearchContract.Text);
-            cbSearchContract.Items.Clear();
-
-
-            foreach (CommonContract contract in list1)
-            {
-
-                cbSearchContract.Items.Add(contract);
-            }
-
-
-
-
-            cbSearchContract.DroppedDown = true;
-        }
-
-        private async void cbSearchContract_SelectedValueChanged(object sender, EventArgs e)
+        private async void cbSearchContract_SelectionChangeCommitted(object sender, EventArgs e)
         {
             mlLabel11.Text = ((CommonContract)cbSearchContract.SelectedItem).CompanyName;
             mlLabel12.Text = ((CommonContract)cbSearchContract.SelectedItem).VatNumber;
             mlLabel14.Text = ((CommonContract)cbSearchContract.SelectedItem).Bulstat;
             mlLabel16.Text = ((CommonContract)cbSearchContract.SelectedItem).Address;
-
             List<CommonMol> mols = await SAOwner.getAllMols(((CommonContract)cbSearchContract.SelectedItem).PartnerId);
             CommonMol mol = mols.Count == 0 ? new CommonMol() : mols.First();
             mlLabel13.Text = mol.FirstName + " " + mol.LastName;
 
         }
 
-        public async void LoadMolList()
-        {
-            List<CommonMol> AllMols = await SAOwner.getAllMols(DataHolder.Owner.OwnerId);
-            cbChooseMol.Items.AddRange(AllMols.ToArray());
-        }
+        #endregion
+
+
+        private bool isInProgress = false;
+
+        
     }
 }

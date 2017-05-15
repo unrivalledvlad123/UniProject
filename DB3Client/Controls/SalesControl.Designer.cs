@@ -249,8 +249,7 @@ namespace DB3Client.Controls
             this.cbSearchContract.Name = "cbSearchContract";
             this.cbSearchContract.Size = new System.Drawing.Size(240, 21);
             this.cbSearchContract.TabIndex = 9;
-            this.cbSearchContract.SelectedValueChanged += new System.EventHandler(this.cbSearchContract_SelectedValueChanged);
-            this.cbSearchContract.TextChanged += new System.EventHandler(this.cbSearchContract_TextChanged);
+            this.cbSearchContract.SelectionChangeCommitted += new System.EventHandler(this.cbSearchContract_SelectionChangeCommitted);
             // 
             // btnAddNewCompany
             // 
@@ -468,8 +467,7 @@ namespace DB3Client.Controls
             this.cbSearch.Name = "cbSearch";
             this.cbSearch.Size = new System.Drawing.Size(287, 21);
             this.cbSearch.TabIndex = 11;
-            this.cbSearch.SelectedValueChanged += new System.EventHandler(this.cbSearch_SelectedValueChanged);
-            this.cbSearch.TextChanged += new System.EventHandler(this.cbSearch_TextChanged);
+            this.cbSearch.SelectionChangeCommitted += new System.EventHandler(this.cbSearch_SelectionChangeCommitted);
             // 
             // mlLabel9
             // 

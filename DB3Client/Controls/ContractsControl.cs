@@ -21,6 +21,7 @@ namespace DB3Client.Controls
             InitializeComponent();
             LoadData();
             SetGridColomnsContracts();
+            tabControlContracts.SelectedTab = metroTabPage1;
         }
 
         private void btnAddContract_Click(object sender, EventArgs e)
@@ -31,6 +32,7 @@ namespace DB3Client.Controls
             {
                 LoadData();
             }
+           
         }
 
         private async void LoadData()
