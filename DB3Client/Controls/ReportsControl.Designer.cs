@@ -51,6 +51,7 @@ namespace DB3Client.Controls
             this.cbReportType = new Common.Forms.Base.MLComboBox();
             this.metroTabPage2 = new Common.Forms.Base.MLTabPage();
             this.metroTabPage3 = new Common.Forms.Base.MLTabPage();
+            this.btnExport = new Common.Forms.Base.MLButton();
             this.tabControlReports.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.mlGroupBox2.SuspendLayout();
@@ -91,6 +92,7 @@ namespace DB3Client.Controls
             this.mlGroupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.mlGroupBox2.BackColor = System.Drawing.Color.White;
+            this.mlGroupBox2.Controls.Add(this.btnExport);
             this.mlGroupBox2.Controls.Add(this.labelError);
             this.mlGroupBox2.Controls.Add(this.rbItemType);
             this.mlGroupBox2.Controls.Add(this.cbItemType);
@@ -114,7 +116,7 @@ namespace DB3Client.Controls
             // 
             this.labelError.AutoSize = true;
             this.labelError.ForeColor = System.Drawing.Color.Red;
-            this.labelError.Location = new System.Drawing.Point(13, 209);
+            this.labelError.Location = new System.Drawing.Point(10, 205);
             this.labelError.Name = "labelError";
             this.labelError.Size = new System.Drawing.Size(64, 13);
             this.labelError.TabIndex = 11;
@@ -280,7 +282,7 @@ namespace DB3Client.Controls
             // 
             this.mlLabel1.AutoSize = true;
             this.mlLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.mlLabel1.Location = new System.Drawing.Point(6, 16);
+            this.mlLabel1.Location = new System.Drawing.Point(12, 16);
             this.mlLabel1.Name = "mlLabel1";
             this.mlLabel1.Size = new System.Drawing.Size(70, 19);
             this.mlLabel1.TabIndex = 3;
@@ -324,6 +326,16 @@ namespace DB3Client.Controls
             this.metroTabPage3.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage3.VerticalScrollbarSize = 10;
             // 
+            // btnExport
+            // 
+            this.btnExport.Location = new System.Drawing.Point(359, 239);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(101, 23);
+            this.btnExport.TabIndex = 12;
+            this.btnExport.Text = "export_to_csv";
+            this.btnExport.UseSelectable = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
             // ReportsControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -360,5 +372,6 @@ namespace DB3Client.Controls
         private MLLabel mlLabel2;
         private MLButton btnGenerate;
         private MLErrorLabel labelError;
+        private MLButton btnExport;
     }
 }

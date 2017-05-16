@@ -12,7 +12,7 @@
           <Property Name="InvoiceId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="OwnerId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="PartnerId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="PurchaseId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SaleId" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="Item">
           <Key>
@@ -22,7 +22,7 @@
           <Property Name="Name" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="Type" Type="int" />
           <Property Name="Description" Type="nvarchar" MaxLength="500" />
-          <Property Name="MeasurmentUnit" Type="nvarchar" MaxLength="50" />
+          <Property Name="MeasurmentUnit" Type="int" />
           <Property Name="ItemCode" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="MOL">
@@ -361,8 +361,8 @@ warning 6002: The table/view 'DB3 Sklad.dbo.SoldItem' does not have a primary ke
           <Property Name="Quantity" Type="Int32" Nullable="false" />
           <Property Name="PurchaseId" Type="Guid" Nullable="false" />
           <Property Name="ItemId" Type="Guid" Nullable="false" />
-          <NavigationProperty Name="Item" Relationship="Model.FK_PurchasedItem_Item1" FromRole="PurchasedItem" ToRole="Item" />
           <NavigationProperty Name="Purchase" Relationship="Model.FK_PurchasedItem_Purchase1" FromRole="PurchasedItem" ToRole="Purchase" />
+          <NavigationProperty Name="Item" Relationship="Model.FK_PurchasedItem_Item1" FromRole="PurchasedItem" ToRole="Item" />
         </EntityType>
         <EntityType Name="SoldItem">
           <Key>
@@ -391,12 +391,7 @@ warning 6002: The table/view 'DB3 Sklad.dbo.SoldItem' does not have a primary ke
             <End Role="User" EntitySet="Users" />
           </AssociationSet>
           <EntitySet Name="MOLs" EntityType="Model.MOL" />
-          <EntitySet Name="Invoices" EntityType="Model.Invoice" />
           <EntitySet Name="Sales" EntityType="Model.Sale" />
-          <AssociationSet Name="FK_Sales_Invoice" Association="Model.FK_Sales_Invoice">
-            <End Role="Invoice" EntitySet="Invoices" />
-            <End Role="Sale" EntitySet="Sales" />
-          </AssociationSet>
           <AssociationSet Name="FK_Sales_Owner" Association="Model.FK_Sales_Owner">
             <End Role="Owner" EntitySet="Owners" />
             <End Role="Sale" EntitySet="Sales" />
@@ -408,19 +403,6 @@ warning 6002: The table/view 'DB3 Sklad.dbo.SoldItem' does not have a primary ke
           <AssociationSet Name="FK_SoldItem_Sales1" Association="Model.FK_SoldItem_Sales1">
             <End Role="Sale" EntitySet="Sales" />
             <End Role="SoldItem" EntitySet="SoldItems" />
-          </AssociationSet>
-          <EntitySet Name="Items" EntityType="Model.Item" />
-          <AssociationSet Name="FK_PurchasedItem_Item1" Association="Model.FK_PurchasedItem_Item1">
-            <End Role="Item" EntitySet="Items" />
-            <End Role="PurchasedItem" EntitySet="PurchasedItems" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SoldItem_Item1" Association="Model.FK_SoldItem_Item1">
-            <End Role="Item" EntitySet="Items" />
-            <End Role="SoldItem" EntitySet="SoldItems" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WarehouseItems_Item" Association="Model.FK_WarehouseItems_Item">
-            <End Role="Item" EntitySet="Items" />
-            <End Role="WarehouseItem" EntitySet="WarehouseItems" />
           </AssociationSet>
           <EntitySet Name="Purchases" EntityType="Model.Purchase" />
           <AssociationSet Name="FK_Purchase_Owner" Association="Model.FK_Purchase_Owner">
@@ -434,6 +416,24 @@ warning 6002: The table/view 'DB3 Sklad.dbo.SoldItem' does not have a primary ke
           <AssociationSet Name="FK_PurchasedItem_Purchase1" Association="Model.FK_PurchasedItem_Purchase1">
             <End Role="Purchase" EntitySet="Purchases" />
             <End Role="PurchasedItem" EntitySet="PurchasedItems" />
+          </AssociationSet>
+          <EntitySet Name="Invoices" EntityType="Model.Invoice" />
+          <EntitySet Name="Items" EntityType="Model.Item" />
+          <AssociationSet Name="FK_Sales_Invoice" Association="Model.FK_Sales_Invoice">
+            <End Role="Invoice" EntitySet="Invoices" />
+            <End Role="Sale" EntitySet="Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchasedItem_Item1" Association="Model.FK_PurchasedItem_Item1">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="PurchasedItem" EntitySet="PurchasedItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoldItem_Item1" Association="Model.FK_SoldItem_Item1">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="SoldItem" EntitySet="SoldItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WarehouseItems_Item" Association="Model.FK_WarehouseItems_Item">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="WarehouseItem" EntitySet="WarehouseItems" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="sysdiagram">
@@ -522,16 +522,6 @@ warning 6002: The table/view 'DB3 Sklad.dbo.SoldItem' does not have a primary ke
           <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="OwnerId" Type="Guid" Nullable="false" />
         </EntityType>
-        <EntityType Name="Invoice">
-          <Key>
-            <PropertyRef Name="InvoiceId" />
-          </Key>
-          <Property Name="InvoiceId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OwnerId" Type="Guid" Nullable="false" />
-          <Property Name="PartnerId" Type="Guid" Nullable="false" />
-          <Property Name="PurchaseId" Type="Guid" Nullable="false" />
-          <NavigationProperty Name="Sales" Relationship="Model.FK_Sales_Invoice" FromRole="Invoice" ToRole="Sale" />
-        </EntityType>
         <EntityType Name="Sale">
           <Key>
             <PropertyRef Name="SaleId" />
@@ -542,23 +532,11 @@ warning 6002: The table/view 'DB3 Sklad.dbo.SoldItem' does not have a primary ke
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Type" Type="Int32" Nullable="false" />
           <Property Name="InvoiceId" Type="Int64" />
-          <NavigationProperty Name="Invoice" Relationship="Model.FK_Sales_Invoice" FromRole="Sale" ToRole="Invoice" />
           <NavigationProperty Name="Owner" Relationship="Model.FK_Sales_Owner" FromRole="Sale" ToRole="Owner" />
           <NavigationProperty Name="Partner" Relationship="Model.FK_Sales_Partner1" FromRole="Sale" ToRole="Partner" />
           <NavigationProperty Name="SoldItems" Relationship="Model.FK_SoldItem_Sales1" FromRole="Sale" ToRole="SoldItem" />
+          <NavigationProperty Name="Invoice" Relationship="Model.FK_Sales_Invoice" FromRole="Sale" ToRole="Invoice" />
         </EntityType>
-        <Association Name="FK_Sales_Invoice">
-          <End Type="Model.Invoice" Role="Invoice" Multiplicity="0..1" />
-          <End Type="Model.Sale" Role="Sale" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Invoice">
-              <PropertyRef Name="InvoiceId" />
-            </Principal>
-            <Dependent Role="Sale">
-              <PropertyRef Name="InvoiceId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Sales_Owner">
           <End Type="Model.Owner" Role="Owner" Multiplicity="1" />
           <End Type="Model.Sale" Role="Sale" Multiplicity="*" />
@@ -592,56 +570,6 @@ warning 6002: The table/view 'DB3 Sklad.dbo.SoldItem' does not have a primary ke
             </Principal>
             <Dependent Role="SoldItem">
               <PropertyRef Name="SaleId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Item">
-          <Key>
-            <PropertyRef Name="ItemId" />
-          </Key>
-          <Property Name="ItemId" Type="Guid" Nullable="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="Type" Type="Int32" />
-          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="MeasurmentUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ItemCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="PurchasedItems" Relationship="Model.FK_PurchasedItem_Item1" FromRole="Item" ToRole="PurchasedItem" />
-          <NavigationProperty Name="SoldItems" Relationship="Model.FK_SoldItem_Item1" FromRole="Item" ToRole="SoldItem" />
-          <NavigationProperty Name="WarehouseItem" Relationship="Model.FK_WarehouseItems_Item" FromRole="Item" ToRole="WarehouseItem" />
-        </EntityType>
-        <Association Name="FK_PurchasedItem_Item1">
-          <End Type="Model.Item" Role="Item" Multiplicity="1" />
-          <End Type="Model.PurchasedItem" Role="PurchasedItem" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Item">
-              <PropertyRef Name="ItemId" />
-            </Principal>
-            <Dependent Role="PurchasedItem">
-              <PropertyRef Name="ItemId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SoldItem_Item1">
-          <End Type="Model.Item" Role="Item" Multiplicity="1" />
-          <End Type="Model.SoldItem" Role="SoldItem" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Item">
-              <PropertyRef Name="ItemId" />
-            </Principal>
-            <Dependent Role="SoldItem">
-              <PropertyRef Name="ItemId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WarehouseItems_Item">
-          <End Type="Model.Item" Role="Item" Multiplicity="1" />
-          <End Type="Model.WarehouseItem" Role="WarehouseItem" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Item">
-              <PropertyRef Name="ItemId" />
-            </Principal>
-            <Dependent Role="WarehouseItem">
-              <PropertyRef Name="ItemId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -692,6 +620,78 @@ warning 6002: The table/view 'DB3 Sklad.dbo.SoldItem' does not have a primary ke
             </Principal>
             <Dependent Role="PurchasedItem">
               <PropertyRef Name="PurchaseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Invoice">
+          <Key>
+            <PropertyRef Name="InvoiceId" />
+          </Key>
+          <Property Name="InvoiceId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OwnerId" Type="Guid" Nullable="false" />
+          <Property Name="PartnerId" Type="Guid" Nullable="false" />
+          <Property Name="SaleId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Sales" Relationship="Model.FK_Sales_Invoice" FromRole="Invoice" ToRole="Sale" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="ItemId" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MeasurmentUnit" Type="Int32" />
+          <Property Name="ItemCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PurchasedItems" Relationship="Model.FK_PurchasedItem_Item1" FromRole="Item" ToRole="PurchasedItem" />
+          <NavigationProperty Name="SoldItems" Relationship="Model.FK_SoldItem_Item1" FromRole="Item" ToRole="SoldItem" />
+          <NavigationProperty Name="WarehouseItem" Relationship="Model.FK_WarehouseItems_Item" FromRole="Item" ToRole="WarehouseItem" />
+        </EntityType>
+        <Association Name="FK_Sales_Invoice">
+          <End Type="Model.Invoice" Role="Invoice" Multiplicity="0..1" />
+          <End Type="Model.Sale" Role="Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Invoice">
+              <PropertyRef Name="InvoiceId" />
+            </Principal>
+            <Dependent Role="Sale">
+              <PropertyRef Name="InvoiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchasedItem_Item1">
+          <End Type="Model.Item" Role="Item" Multiplicity="1" />
+          <End Type="Model.PurchasedItem" Role="PurchasedItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="ItemId" />
+            </Principal>
+            <Dependent Role="PurchasedItem">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoldItem_Item1">
+          <End Type="Model.Item" Role="Item" Multiplicity="1" />
+          <End Type="Model.SoldItem" Role="SoldItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="ItemId" />
+            </Principal>
+            <Dependent Role="SoldItem">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WarehouseItems_Item">
+          <End Type="Model.Item" Role="Item" Multiplicity="1" />
+          <End Type="Model.WarehouseItem" Role="WarehouseItem" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="ItemId" />
+            </Principal>
+            <Dependent Role="WarehouseItem">
+              <PropertyRef Name="ItemId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -794,16 +794,6 @@ warning 6002: The table/view 'DB3 Sklad.dbo.SoldItem' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Invoices">
-            <EntityTypeMapping TypeName="Model.Invoice">
-              <MappingFragment StoreEntitySet="Invoice">
-                <ScalarProperty Name="PurchaseId" ColumnName="PurchaseId" />
-                <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
-                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
-                <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Sales">
             <EntityTypeMapping TypeName="Model.Sale">
               <MappingFragment StoreEntitySet="Sales">
@@ -816,18 +806,6 @@ warning 6002: The table/view 'DB3 Sklad.dbo.SoldItem' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Items">
-            <EntityTypeMapping TypeName="Model.Item">
-              <MappingFragment StoreEntitySet="Item">
-                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
-                <ScalarProperty Name="MeasurmentUnit" ColumnName="MeasurmentUnit" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Purchases">
             <EntityTypeMapping TypeName="Model.Purchase">
               <MappingFragment StoreEntitySet="Purchase">
@@ -837,6 +815,28 @@ warning 6002: The table/view 'DB3 Sklad.dbo.SoldItem' does not have a primary ke
                 <ScalarProperty Name="SellerId" ColumnName="SellerId" />
                 <ScalarProperty Name="BuyerId" ColumnName="BuyerId" />
                 <ScalarProperty Name="PurchaseId" ColumnName="PurchaseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Invoices">
+            <EntityTypeMapping TypeName="Model.Invoice">
+              <MappingFragment StoreEntitySet="Invoice">
+                <ScalarProperty Name="SaleId" ColumnName="SaleId" />
+                <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
+                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+                <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Items">
+            <EntityTypeMapping TypeName="Model.Item">
+              <MappingFragment StoreEntitySet="Item">
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="MeasurmentUnit" ColumnName="MeasurmentUnit" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

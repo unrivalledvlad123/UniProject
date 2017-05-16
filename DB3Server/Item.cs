@@ -25,7 +25,7 @@ namespace DB3Server
         public string Name { get; set; }
         public Nullable<int> Type { get; set; }
         public string Description { get; set; }
-        public string MeasurmentUnit { get; set; }
+        public Nullable<int> MeasurmentUnit { get; set; }
         public string ItemCode { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

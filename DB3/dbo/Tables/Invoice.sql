@@ -1,8 +1,10 @@
 ﻿CREATE TABLE [dbo].[Invoice] (
-    [InvoiceId]  BIGINT           IDENTITY (1, 1) NOT NULL,
-    [OwnerId]    UNIQUEIDENTIFIER NOT NULL,
-    [PartnerId]  UNIQUEIDENTIFIER NOT NULL,
-    [PurchaseId] UNIQUEIDENTIFIER NOT NULL,
+    [InvoiceId] BIGINT           IDENTITY (1, 1) NOT NULL,
+    [OwnerId]   UNIQUEIDENTIFIER NOT NULL,
+    [PartnerId] UNIQUEIDENTIFIER NOT NULL,
+    [SaleId]    UNIQUEIDENTIFIER NOT NULL,
     CONSTRAINT [PK_Invoice] PRIMARY KEY CLUSTERED ([InvoiceId] ASC)
 );
+
+
 

@@ -11,7 +11,8 @@ namespace Common.Classes.ReportClasses
         public DateTime Date { get; set; }
         public decimal PriceEach { get; set; }
         public decimal Quantity { get; set; }
-        public string Unit { get; set; }
+        public int Unit { get; set; }
         public decimal Total { get; set; }
+        public string UnitString { get; set; }
     }
 }

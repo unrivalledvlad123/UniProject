@@ -502,6 +502,15 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Export to CSV.
+        /// </summary>
+        internal static string export_to_csv {
+            get {
+                return ResourceManager.GetString("export_to_csv", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Saving failed! Please try again!.
         /// </summary>
         internal static string fail_error_settings {

@@ -525,4 +525,7 @@
   <data name="choose_company_mol" xml:space="preserve">
     <value>Избор на МОЛ</value>
   </data>
+  <data name="export_to_csv" xml:space="preserve">
+    <value>Запис като CSV</value>
+  </data>
 </root>

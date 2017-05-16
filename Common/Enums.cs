@@ -45,7 +45,7 @@ namespace Common
             General = 5
         }
 
-        public enum ItemTypesBG 
+        public enum ItemTypesBg 
         {
             Горива = 0,
             Захарни  = 1,
@@ -53,6 +53,26 @@ namespace Common
             Канцеларски = 3,
             Консерви = 4,
             Общи = 5
+        }
+
+        public enum UnitTypes
+        {
+            kg = 0,
+            g = 1,
+            litre = 2,
+            ml = 3,
+            ton = 4,
+            pc = 5
+        }
+
+        public enum UnitTypesBg 
+        {
+            кг = 0,
+            г = 1,
+            литър = 2,
+            мл = 3,
+            тон = 4,
+            бр = 5
         }
 
     }

@@ -54,7 +54,7 @@ namespace DB3Client.Forms
                     CommonUser user = await SAUsers.Login(tbUsername.Text, tbPassword.Text);
                     if (user != null)
                     {
-                      
+
                         DataHolder.CurrnetUserId = user.UserId;
                         DataHolder.OwnerId = user.OwnerId;
                         DataHolder.Username = user.Username;
@@ -84,9 +84,14 @@ namespace DB3Client.Forms
                     {
                         labelError.Visible = true;
                         labelError.Text = DataHolder.GetString("invalid_username_or_password");
-                        labelError.ForeColor = Color.Red;
                         Trigger = true;
                     }
+                }
+                else
+                {
+                    labelError.Visible = true;
+                    labelError.Text = DataHolder.GetString("invalid_username_or_password");
+                    Trigger = true;
                 }
             }
         }

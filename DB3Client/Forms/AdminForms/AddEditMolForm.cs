@@ -26,8 +26,8 @@ namespace DB3Client.Forms.AdminForms
                 tbFirstname.Text = !string.IsNullOrEmpty(oldMol.FirstName) ? oldMol.FirstName : "";
                 tbLastname.Text = !string.IsNullOrEmpty(oldMol.LastName) ? oldMol.LastName : "";
                 tbAddress.Text = !string.IsNullOrEmpty(oldMol.Address) ? oldMol.Address : "";
-                tbEmail.Text = !string.IsNullOrEmpty(oldMol.Email) ? oldMol.Email : "";
-                tbPhone.Text = !string.IsNullOrEmpty(oldMol.Phone) ? oldMol.Phone : "";
+                tbPhone.Text = !string.IsNullOrEmpty(oldMol.Email) ? oldMol.Email : "";
+                tbEmail.Text = !string.IsNullOrEmpty(oldMol.Phone) ? oldMol.Phone : "";
             }
             OldMol = oldMol;
         }
@@ -38,10 +38,10 @@ namespace DB3Client.Forms.AdminForms
             mol.MolId = OldMol?.MolId ?? Guid.Empty;  
             mol.OwnerId = DataHolder.Owner.OwnerId;
             mol.Address = tbAddress.Text;
-            mol.Email = tbEmail.Text;
+            mol.Email = tbPhone.Text;
             mol.FirstName = tbFirstname.Text;
             mol.LastName = tbLastname.Text;
-            mol.Phone = tbPhone.Text;
+            mol.Phone = tbEmail.Text;
             bool success;
             if (OldMol == null)
             {

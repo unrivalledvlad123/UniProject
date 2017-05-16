@@ -522,4 +522,7 @@
   <data name="choose_company_mol" xml:space="preserve">
     <value>Choose Acc. Person</value>
   </data>
+  <data name="export_to_csv" xml:space="preserve">
+    <value>Export to CSV</value>
+  </data>
 </root>

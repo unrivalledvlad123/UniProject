@@ -8,7 +8,7 @@ namespace Common.Classes.DTOs
 {
     public class ReportDTO
     {
-        public int ReportType { get; set; }
+        public int ReportType { get; set; } //
         public DateTime FromDate { get; set; }
         public DateTime ToDate { get; set; }
         public bool IsItem { get; set; }

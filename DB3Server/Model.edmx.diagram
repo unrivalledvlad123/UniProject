@@ -14,20 +14,20 @@
         <EntityTypeShape EntityType="Model.Partner" Width="1.5" PointX="5.25" PointY="3.125" />
         <AssociationConnector Association="Model.FK_Users_Owner1" />
         <EntityTypeShape EntityType="Model.MOL" Width="1.5" PointX="2.375" PointY="3.125" />
-        <EntityTypeShape EntityType="Model.Invoice" Width="1.5" PointX="7.375" PointY="9.75" />
         <EntityTypeShape EntityType="Model.Sale" Width="1.5" PointX="7.5" PointY="6.25" />
-        <AssociationConnector Association="Model.FK_Sales_Invoice" />
         <AssociationConnector Association="Model.FK_Sales_Owner" />
         <AssociationConnector Association="Model.FK_Sales_Partner1" />
         <AssociationConnector Association="Model.FK_SoldItem_Sales1" />
-        <EntityTypeShape EntityType="Model.Item" Width="1.5" PointX="12.375" PointY="4.875" />
-        <AssociationConnector Association="Model.FK_PurchasedItem_Item1" />
-        <AssociationConnector Association="Model.FK_SoldItem_Item1" />
-        <AssociationConnector Association="Model.FK_WarehouseItems_Item" />
         <EntityTypeShape EntityType="Model.Purchase" Width="1.5" PointX="7.5" PointY="2.375" />
         <AssociationConnector Association="Model.FK_Purchase_Owner" />
         <AssociationConnector Association="Model.FK_Purchase_Partner1" />
         <AssociationConnector Association="Model.FK_PurchasedItem_Purchase1" />
+        <EntityTypeShape EntityType="Model.Invoice" Width="1.5" PointX="7.5" PointY="9.625" />
+        <EntityTypeShape EntityType="Model.Item" Width="1.5" PointX="12.5" PointY="4.5" />
+        <AssociationConnector Association="Model.FK_Sales_Invoice" />
+        <AssociationConnector Association="Model.FK_PurchasedItem_Item1" />
+        <AssociationConnector Association="Model.FK_SoldItem_Item1" />
+        <AssociationConnector Association="Model.FK_WarehouseItems_Item" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

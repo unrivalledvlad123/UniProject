@@ -23,7 +23,7 @@ namespace DB3Server
         public long InvoiceId { get; set; }
         public System.Guid OwnerId { get; set; }
         public System.Guid PartnerId { get; set; }
-        public System.Guid PurchaseId { get; set; }
+        public System.Guid SaleId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sale> Sales { get; set; }

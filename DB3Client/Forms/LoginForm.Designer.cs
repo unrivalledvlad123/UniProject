@@ -36,7 +36,7 @@ namespace DB3Client.Forms
             this.metroLabel2 = new Common.Forms.Base.MLLabel();
             this.btnLogin = new Common.Forms.Base.MLButton();
             this.groupBox1 = new Common.Forms.Base.MLGroupBox();
-            this.labelError = new Common.Forms.Base.MLLabel();
+            this.labelError = new MLErrorLabel();
             this.tbPassword = new Common.Forms.Base.MLTextBox();
             this.tbUsername = new Common.Forms.Base.MLTextBox();
             this.cbLanguage = new MetroFramework.Controls.MetroComboBox();
@@ -104,7 +104,6 @@ namespace DB3Client.Forms
             // labelError
             // 
             this.labelError.AutoSize = true;
-            this.labelError.FontWeight = MetroFramework.MetroLabelWeight.Regular;
             this.labelError.ForeColor = System.Drawing.Color.Red;
             this.labelError.Location = new System.Drawing.Point(7, 138);
             this.labelError.Name = "labelError";
@@ -253,7 +252,7 @@ namespace DB3Client.Forms
         private MLTextBox tbPassword;
         private MLTextBox tbUsername;
         private MetroFramework.Controls.MetroComboBox cbLanguage;
-        private MLLabel labelError;
+        private MLErrorLabel labelError;
         private MetroFramework.Controls.MetroComboBox cbServer;
     }
 }

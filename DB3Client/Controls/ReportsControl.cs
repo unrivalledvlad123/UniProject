@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Data;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,12 +12,14 @@ using System.Windows.Forms;
 using Common;
 using Common.Classes.DTOs;
 using Common.Classes.ReportClasses;
+using DB3Client.Properties;
 using DB3Client.ServiceAccess;
 
 namespace DB3Client.Controls
 {
     public partial class ReportsControl : MetroFramework.Controls.MetroUserControl
     {
+        public List<ReportBuySell> ReportResult = new List<ReportBuySell>();
         public ReportsControl()
         {
             InitializeComponent();
@@ -26,13 +29,14 @@ namespace DB3Client.Controls
             if (DataHolder.UserCulture.TwoLetterISOLanguageName == "bg")
             {
                 cbReportType.DataSource = Enum.GetValues(typeof(Enums.ReportTypeBg));
-                cbItemType.DataSource = Enum.GetValues(typeof(Enums.ItemTypesBG));
+                cbItemType.DataSource = Enum.GetValues(typeof(Enums.ItemTypesBg));
             }
             else
             {
                 cbReportType.DataSource = Enum.GetValues(typeof(Enums.ReportType));
                 cbItemType.DataSource = Enum.GetValues(typeof(Enums.ItemTypes));
             }
+            CheckButtonState();
             
         }
         
@@ -60,7 +64,7 @@ namespace DB3Client.Controls
                     Enums.ReportTypeBg reportType;
                     Enum.TryParse(cbReportType.SelectedValue.ToString(), out reportType);
                     report = (int) reportType;
-                    Enums.ItemTypesBG itemType;
+                    Enums.ItemTypesBg itemType;
                     Enum.TryParse(cbItemType.SelectedValue.ToString(), out itemType);
                     item = (int) itemType;
                 }
@@ -87,12 +91,31 @@ namespace DB3Client.Controls
                 {
                     labelError.Text = "no_results_found";
                     labelError.Visible = true;
+                    dgvResults.DataSource = null;
+                    CheckButtonState();
                 }
                 else
                 {
+                    if (DataHolder.UserCulture.TwoLetterISOLanguageName == "bg")
+                    {
+                        foreach (var row in result)
+                        {
+                            Enums.UnitTypesBg types = (Enums.UnitTypesBg) row.Unit;
+                            row.UnitString = types.ToString();
+                        }
+                    }
+                    else
+                    {
+                        foreach (var row in result)
+                        {
+                            Enums.UnitTypes types = (Enums.UnitTypes) row.Unit;
+                            row.UnitString = types.ToString();
+                        }
+                    }
                     dgvResults.DataSource = result;
+                    ReportResult = result;
+                    CheckButtonState();
                 }
-
             }
         }
 
@@ -111,6 +134,19 @@ namespace DB3Client.Controls
         private void tabControlReports_SelectedIndexChanged(object sender, EventArgs e)
         {
             labelError.Visible = false;
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            var csv = new StringBuilder();
+            foreach (var row in ReportResult)
+            {
+                Enums.UnitTypes types = (Enums.UnitTypes)row.Unit;
+                string unit = types.ToString();
+                var newLine = string.Format("{0},{1},{2},{3},{4}", row.Date, row.PriceEach, row.Quantity, unit, row.Total);
+                csv.AppendLine(newLine);
+            }
+            File.WriteAllText(Settings.Default.InvoiceSaveLocation + @"\csv.csv", csv.ToString());
         }
 
         #endregion
@@ -149,7 +185,7 @@ namespace DB3Client.Controls
             DataGridViewTextBoxColumn c4 = new DataGridViewTextBoxColumn();
             c4.Name = "unit";
             c4.HeaderText = DataHolder.GetString("measurment_unit");
-            c4.DataPropertyName = "Unit";
+            c4.DataPropertyName = "UnitString";
             c4.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
             dgvResults.Columns.Add(c4);
 
@@ -162,7 +198,12 @@ namespace DB3Client.Controls
 
         }
 
+        public void CheckButtonState()
+        {
+            btnExport.Enabled = dgvResults.DataSource != null;
+        }
 
         #endregion
+        
     }
 }
