@@ -1,0 +1,425 @@
+USE [master]
+GO
+/****** Object:  Database [DB3 Sklad]    Script Date: 5/19/2017 5:52:59 PM ******/
+CREATE DATABASE [DB3 Sklad]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'DB3 Sklad', FILENAME = N'C:\Users\vlado.CC\DB3 Sklad.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'DB3 Sklad_log', FILENAME = N'C:\Users\vlado.CC\DB3 Sklad_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+GO
+ALTER DATABASE [DB3 Sklad] SET COMPATIBILITY_LEVEL = 130
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [DB3 Sklad].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [DB3 Sklad] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [DB3 Sklad] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [DB3 Sklad] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [DB3 Sklad] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [DB3 Sklad] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [DB3 Sklad] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [DB3 Sklad] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [DB3 Sklad] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [DB3 Sklad] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [DB3 Sklad] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [DB3 Sklad] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [DB3 Sklad] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [DB3 Sklad] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [DB3 Sklad] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [DB3 Sklad] SET  DISABLE_BROKER 
+GO
+ALTER DATABASE [DB3 Sklad] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [DB3 Sklad] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [DB3 Sklad] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [DB3 Sklad] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [DB3 Sklad] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [DB3 Sklad] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [DB3 Sklad] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [DB3 Sklad] SET RECOVERY SIMPLE 
+GO
+ALTER DATABASE [DB3 Sklad] SET  MULTI_USER 
+GO
+ALTER DATABASE [DB3 Sklad] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [DB3 Sklad] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [DB3 Sklad] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [DB3 Sklad] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [DB3 Sklad] SET DELAYED_DURABILITY = DISABLED 
+GO
+ALTER DATABASE [DB3 Sklad] SET QUERY_STORE = OFF
+GO
+USE [DB3 Sklad]
+GO
+ALTER DATABASE SCOPED CONFIGURATION SET MAXDOP = 0;
+GO
+ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET MAXDOP = PRIMARY;
+GO
+ALTER DATABASE SCOPED CONFIGURATION SET LEGACY_CARDINALITY_ESTIMATION = OFF;
+GO
+ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET LEGACY_CARDINALITY_ESTIMATION = PRIMARY;
+GO
+ALTER DATABASE SCOPED CONFIGURATION SET PARAMETER_SNIFFING = ON;
+GO
+ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET PARAMETER_SNIFFING = PRIMARY;
+GO
+ALTER DATABASE SCOPED CONFIGURATION SET QUERY_OPTIMIZER_HOTFIXES = OFF;
+GO
+ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET QUERY_OPTIMIZER_HOTFIXES = PRIMARY;
+GO
+USE [DB3 Sklad]
+GO
+/****** Object:  Table [dbo].[Invoice]    Script Date: 5/19/2017 5:52:59 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Invoice](
+	[InvoiceId] [bigint] IDENTITY(1,1) NOT NULL,
+	[OwnerId] [uniqueidentifier] NOT NULL,
+	[PartnerId] [uniqueidentifier] NOT NULL,
+	[SaleId] [uniqueidentifier] NOT NULL,
+ CONSTRAINT [PK_Invoice] PRIMARY KEY CLUSTERED 
+(
+	[InvoiceId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Item]    Script Date: 5/19/2017 5:52:59 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Item](
+	[ItemId] [uniqueidentifier] NOT NULL,
+	[Name] [varchar](150) NOT NULL,
+	[Type] [int] NULL,
+	[Description] [nvarchar](500) NULL,
+	[MeasurmentUnit] [int] NULL,
+	[ItemCode] [nvarchar](50) NULL,
+ CONSTRAINT [PK_Item_1] PRIMARY KEY CLUSTERED 
+(
+	[ItemId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[MOL]    Script Date: 5/19/2017 5:52:59 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[MOL](
+	[MolId] [uniqueidentifier] NOT NULL,
+	[FirstName] [varchar](200) NULL,
+	[LastName] [varchar](200) NULL,
+	[Address] [varchar](200) NULL,
+	[Phone] [varchar](200) NULL,
+	[Email] [varchar](200) NULL,
+	[OwnerId] [uniqueidentifier] NOT NULL,
+ CONSTRAINT [PK_MOL] PRIMARY KEY CLUSTERED 
+(
+	[MolId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Owner]    Script Date: 5/19/2017 5:52:59 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Owner](
+	[OwnerId] [uniqueidentifier] NOT NULL,
+	[CompanyName] [varchar](100) NOT NULL,
+	[Address] [varchar](250) NOT NULL,
+	[Phone] [varchar](50) NULL,
+	[Email] [varchar](50) NULL,
+	[VATNumber] [varchar](50) NULL,
+	[Bulstat] [varchar](50) NULL,
+ CONSTRAINT [PK_Owner] PRIMARY KEY CLUSTERED 
+(
+	[OwnerId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Partner]    Script Date: 5/19/2017 5:52:59 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Partner](
+	[PartnerId] [uniqueidentifier] NOT NULL,
+	[CompanyName] [varchar](100) NOT NULL,
+	[Address] [varchar](500) NOT NULL,
+	[Phone] [varchar](50) NULL,
+	[Email] [varchar](50) NULL,
+	[VATNumber] [varchar](50) NULL,
+	[Bulstat] [varchar](50) NULL,
+ CONSTRAINT [PK_Partner_1] PRIMARY KEY CLUSTERED 
+(
+	[PartnerId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Purchase]    Script Date: 5/19/2017 5:52:59 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Purchase](
+	[PurchaseId] [uniqueidentifier] NOT NULL,
+	[BuyerId] [uniqueidentifier] NOT NULL,
+	[SellerId] [uniqueidentifier] NOT NULL,
+	[Date] [datetime] NOT NULL,
+	[InvoiceId] [varchar](50) NULL,
+	[WareHouseReceipt] [varchar](50) NULL,
+ CONSTRAINT [PK_Purchase_1] PRIMARY KEY CLUSTERED 
+(
+	[PurchaseId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[PurchasedItem]    Script Date: 5/19/2017 5:52:59 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[PurchasedItem](
+	[Price] [decimal](18, 0) NOT NULL,
+	[Quantity] [int] NOT NULL,
+	[PurchaseId] [uniqueidentifier] NOT NULL,
+	[ItemId] [uniqueidentifier] NOT NULL
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Sales]    Script Date: 5/19/2017 5:52:59 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Sales](
+	[SaleId] [uniqueidentifier] NOT NULL,
+	[BuyerId] [uniqueidentifier] NOT NULL,
+	[SellerId] [uniqueidentifier] NOT NULL,
+	[Date] [datetime] NOT NULL,
+	[Type] [int] NOT NULL,
+	[InvoiceId] [bigint] NULL,
+ CONSTRAINT [PK_Sales] PRIMARY KEY CLUSTERED 
+(
+	[SaleId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[SoldItem]    Script Date: 5/19/2017 5:52:59 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[SoldItem](
+	[Price] [decimal](18, 0) NOT NULL,
+	[Quantity] [int] NOT NULL,
+	[ItemId] [uniqueidentifier] NOT NULL,
+	[SaleId] [uniqueidentifier] NOT NULL
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Users]    Script Date: 5/19/2017 5:52:59 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Users](
+	[Username] [varchar](100) NOT NULL,
+	[OwnerId] [uniqueidentifier] NOT NULL,
+	[Password] [varchar](500) NOT NULL,
+	[AssignedTo] [nvarchar](150) NULL,
+	[RegisteredAt] [datetime] NOT NULL,
+	[Role] [int] NOT NULL,
+	[PasswordSalt] [varchar](50) NOT NULL,
+	[UserId] [uniqueidentifier] NOT NULL,
+ CONSTRAINT [PK_Users] PRIMARY KEY CLUSTERED 
+(
+	[Username] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[WarehouseItems]    Script Date: 5/19/2017 5:52:59 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[WarehouseItems](
+	[ItemId] [uniqueidentifier] NOT NULL,
+	[Quantity] [int] NULL,
+	[SellingPriceCent] [int] NULL,
+ CONSTRAINT [PK_WarehouseItems] PRIMARY KEY CLUSTERED 
+(
+	[ItemId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+INSERT [dbo].[Item] ([ItemId], [Name], [Type], [Description], [MeasurmentUnit], [ItemCode]) VALUES (N'82c2e335-e528-4ce3-9fec-030a5ac02730', N'voda', 5, N'not null disc', 5, N'1023')
+INSERT [dbo].[Item] ([ItemId], [Name], [Type], [Description], [MeasurmentUnit], [ItemCode]) VALUES (N'd38d1a93-ce0c-46e4-8cdd-060122254de6', N'benzin', 0, N'benzin', 2, N'1001')
+INSERT [dbo].[Item] ([ItemId], [Name], [Type], [Description], [MeasurmentUnit], [ItemCode]) VALUES (N'f2c5f3ab-9e3c-470c-b73e-08edcf788f78', N'bira', 5, N'not null disc', 5, N'1024')
+INSERT [dbo].[Item] ([ItemId], [Name], [Type], [Description], [MeasurmentUnit], [ItemCode]) VALUES (N'19505017-509a-4db8-ad4d-0bb8ef90252e', N'dizel', 0, N'dizelak', 2, N'1002')
+INSERT [dbo].[Item] ([ItemId], [Name], [Type], [Description], [MeasurmentUnit], [ItemCode]) VALUES (N'1901367d-ead3-4e8b-be4b-160c4f639752', N'toner kaseta', 3, N'not null disc', 5, N'1019')
+INSERT [dbo].[Item] ([ItemId], [Name], [Type], [Description], [MeasurmentUnit], [ItemCode]) VALUES (N'5cf858be-609f-45ed-b750-2bd5a9270c42', N'nafta', 0, N'pak dizelak', 2, N'1003')
+INSERT [dbo].[Item] ([ItemId], [Name], [Type], [Description], [MeasurmentUnit], [ItemCode]) VALUES (N'ecccfd8e-ae7a-4c22-8e85-355792368da8', N'gas', 0, N'ruski', 2, N'1004')
+INSERT [dbo].[Item] ([ItemId], [Name], [Type], [Description], [MeasurmentUnit], [ItemCode]) VALUES (N'6e88ad48-41ce-4fbc-9944-37378cff130e', N'vafla spoko', 1, N'description1', 5, N'1005')
+INSERT [dbo].[Item] ([ItemId], [Name], [Type], [Description], [MeasurmentUnit], [ItemCode]) VALUES (N'31665601-39ca-4fcd-99e7-40a91f2f1a77', N'himikal', 3, N'not null disc', 5, N'1017')
+INSERT [dbo].[Item] ([ItemId], [Name], [Type], [Description], [MeasurmentUnit], [ItemCode]) VALUES (N'd89addbd-0e24-47d3-a8fb-4909d394fb2b', N'vafla borovec', 1, N'description1', 5, N'1006')
+INSERT [dbo].[Item] ([ItemId], [Name], [Type], [Description], [MeasurmentUnit], [ItemCode]) VALUES (N'c2937ea8-6cb0-4e69-b4c7-4a8ff407f110', N'vafla speis', 1, N'description1', 5, N'1007')
+INSERT [dbo].[Item] ([ItemId], [Name], [Type], [Description], [MeasurmentUnit], [ItemCode]) VALUES (N'f7bf8369-889f-4ad8-9f5b-4fd2ec866650', N'moliv', 3, N'not null disc', 5, N'1018')
+INSERT [dbo].[Item] ([ItemId], [Name], [Type], [Description], [MeasurmentUnit], [ItemCode]) VALUES (N'6ac8641e-29dd-4fa2-9615-5cd185148683', N'vafla mura', 1, N'description1', 5, N'1008')
+INSERT [dbo].[Item] ([ItemId], [Name], [Type], [Description], [MeasurmentUnit], [ItemCode]) VALUES (N'd57a7b0a-42e8-4d71-9c61-61538805017d', N'vafla rila', 1, N'description1', 5, N'1009')
+INSERT [dbo].[Item] ([ItemId], [Name], [Type], [Description], [MeasurmentUnit], [ItemCode]) VALUES (N'e18f2265-7eb0-48e0-b9cb-77e842594cc1', N'konserva carevica', 4, N'not null disc', 5, N'1022')
+INSERT [dbo].[Item] ([ItemId], [Name], [Type], [Description], [MeasurmentUnit], [ItemCode]) VALUES (N'bc59af68-ab93-444b-97a9-7a4df49d3c5e', N'tarelki', 2, N'nehranitelni', 5, N'1010')
+INSERT [dbo].[Item] ([ItemId], [Name], [Type], [Description], [MeasurmentUnit], [ItemCode]) VALUES (N'4d55f853-7408-4d91-8b62-89101cf0e782', N'tikso', 3, N'not null disc', 5, N'1015')
+INSERT [dbo].[Item] ([ItemId], [Name], [Type], [Description], [MeasurmentUnit], [ItemCode]) VALUES (N'd6307d79-1adc-4762-8481-9112c25507ff', N'hartiq', 3, N'not null disc', 5, N'1016')
+INSERT [dbo].[Item] ([ItemId], [Name], [Type], [Description], [MeasurmentUnit], [ItemCode]) VALUES (N'2e491c94-e307-416e-a1dd-930d8cb0d709', N'vilizi', 2, N'ттт', 5, N'1011')
+INSERT [dbo].[Item] ([ItemId], [Name], [Type], [Description], [MeasurmentUnit], [ItemCode]) VALUES (N'5ab580c8-fdf2-4c00-921f-9934323470fc', N'konserva krastavici', 4, N'not null disc', 5, N'1021')
+INSERT [dbo].[Item] ([ItemId], [Name], [Type], [Description], [MeasurmentUnit], [ItemCode]) VALUES (N'8d6f2722-7663-4af8-83f3-a978f4321329', N'toaletna hartiq', 2, N'тест', 5, N'1012')
+INSERT [dbo].[Item] ([ItemId], [Name], [Type], [Description], [MeasurmentUnit], [ItemCode]) VALUES (N'cd7d2df1-0cc3-45a2-a8bb-ba7cadb22c05', N'konserva domati', 4, N'not null disc', 5, N'1020')
+INSERT [dbo].[Item] ([ItemId], [Name], [Type], [Description], [MeasurmentUnit], [ItemCode]) VALUES (N'8fe96224-3f4d-493f-b0a4-e4d50717a4d7', N'lujici', 2, N'description1', 5, N'1013')
+INSERT [dbo].[Item] ([ItemId], [Name], [Type], [Description], [MeasurmentUnit], [ItemCode]) VALUES (N'29099157-7ca5-4b15-a3d8-fbc11558b4f1', N'salfetki', 2, N'za sled purjolite', 5, N'1014')
+INSERT [dbo].[MOL] ([MolId], [FirstName], [LastName], [Address], [Phone], [Email], [OwnerId]) VALUES (N'fe55d5ad-322d-42b1-bf9b-2c2b0924916b', N'test', N'test', N'adress', N'tel', N'mail', N'14a4c2b8-4571-4abc-a8bd-ce78625fbf1e')
+INSERT [dbo].[MOL] ([MolId], [FirstName], [LastName], [Address], [Phone], [Email], [OwnerId]) VALUES (N'33d570fe-8e01-4ea3-a659-340d9cc8736a', N'krali', N'marko', N'markovo', N'golqm', N'kralimarkovski', N'e2057907-046e-4b0f-835c-aafe74ac8fdb')
+INSERT [dbo].[MOL] ([MolId], [FirstName], [LastName], [Address], [Phone], [Email], [OwnerId]) VALUES (N'07b55ab0-f901-447c-a8bc-4af9e9a2d5b3', N'vladoooo', N'vladovda32', N'htierjer nomer 5 ly. dse', N'vladovda', N'hrjewrjen@fke.bg', N'14a4c2b8-4571-4abc-a8bd-ce78625fbf1e')
+INSERT [dbo].[MOL] ([MolId], [FirstName], [LastName], [Address], [Phone], [Email], [OwnerId]) VALUES (N'ca8f9521-4c3c-4c18-8cfa-81e822bddb17', N'ivan', N'inav4ov', N'plovdiv', N'987654321', N'random@random.bg', N'f997cd7e-4241-41ff-8272-1047f20070e7')
+INSERT [dbo].[MOL] ([MolId], [FirstName], [LastName], [Address], [Phone], [Email], [OwnerId]) VALUES (N'38f83f50-5001-493f-b2fe-8ec0a1adc3d5', N'321', N'321223', N'213', N'32123', N'231', N'14a4c2b8-4571-4abc-a8bd-ce78625fbf1e')
+INSERT [dbo].[MOL] ([MolId], [FirstName], [LastName], [Address], [Phone], [Email], [OwnerId]) VALUES (N'8a3f6ccb-70ea-4097-8a59-98a8203e110c', N'test', N'testov', N'test factory 5', N'987654321', N'blabla@ff.ff', N'7147239d-73d2-4da7-94b0-6e5611263713')
+INSERT [dbo].[MOL] ([MolId], [FirstName], [LastName], [Address], [Phone], [Email], [OwnerId]) VALUES (N'71b884c3-3ed0-4e7b-be95-c8d948e2bd84', N'az', N'azov', N'u nas', N'9889889889', N'lqlqlq@abv.bg', N'd8fe9818-4169-4f4c-ada6-a290bf2cce35')
+INSERT [dbo].[MOL] ([MolId], [FirstName], [LastName], [Address], [Phone], [Email], [OwnerId]) VALUES (N'23d3a949-f3b7-45c5-9f71-fccd707b5523', N'van4o', N'van4ov', N'plovdiv', N'741741741', N'741741741@mail.bg', N'92998101-3113-421c-a203-493340efffaa')
+INSERT [dbo].[Owner] ([OwnerId], [CompanyName], [Address], [Phone], [Email], [VATNumber], [Bulstat]) VALUES (N'14a4c2b8-4571-4abc-a8bd-ce78625fbf1e', N'r34rrerere', N'na ulicata', N'123456789', N'uselessmail@amail.useless', N'BG123456789', N'1234567891')
+INSERT [dbo].[Partner] ([PartnerId], [CompanyName], [Address], [Phone], [Email], [VATNumber], [Bulstat]) VALUES (N'f997cd7e-4241-41ff-8272-1047f20070e7', N'test', N'plovdiv 1000', N'123456789', N'test@test.com', N'111111111', N'BG111111111')
+INSERT [dbo].[Partner] ([PartnerId], [CompanyName], [Address], [Phone], [Email], [VATNumber], [Bulstat]) VALUES (N'92998101-3113-421c-a203-493340efffaa', N'company', N'somewhere', N'none', N'qwerty@abv.bg', N'159159159', N'BG159159159')
+INSERT [dbo].[Partner] ([PartnerId], [CompanyName], [Address], [Phone], [Email], [VATNumber], [Bulstat]) VALUES (N'7147239d-73d2-4da7-94b0-6e5611263713', N'test', N'ul na babati fur4iloto 5', N'123456789', N'random@random.bg', N'123456789', N'BG123456789')
+INSERT [dbo].[Partner] ([PartnerId], [CompanyName], [Address], [Phone], [Email], [VATNumber], [Bulstat]) VALUES (N'd8fe9818-4169-4f4c-ada6-a290bf2cce35', N'whatever', N'plovdiv', N'22222222', N'sernesr@en.bg', N'987898785', N'BG987898748')
+INSERT [dbo].[Partner] ([PartnerId], [CompanyName], [Address], [Phone], [Email], [VATNumber], [Bulstat]) VALUES (N'e2057907-046e-4b0f-835c-aafe74ac8fdb', N'baluk na kogoto prodavame', N'na mainata si', N'nqma', N'ne znae kakvo e tova', N'95135798462', N'BG95123578462')
+INSERT [dbo].[Purchase] ([PurchaseId], [BuyerId], [SellerId], [Date], [InvoiceId], [WareHouseReceipt]) VALUES (N'ec4ba7fb-4796-479d-9607-08c3625c6b35', N'14a4c2b8-4571-4abc-a8bd-ce78625fbf1e', N'7147239d-73d2-4da7-94b0-6e5611263713', CAST(N'2017-05-02T11:29:41.020' AS DateTime), N'0000000112', N'000000053477')
+INSERT [dbo].[Purchase] ([PurchaseId], [BuyerId], [SellerId], [Date], [InvoiceId], [WareHouseReceipt]) VALUES (N'a422fa1b-6acc-4244-ab8c-b40f476daae3', N'14a4c2b8-4571-4abc-a8bd-ce78625fbf1e', N'7147239d-73d2-4da7-94b0-6e5611263713', CAST(N'2017-05-04T11:23:21.120' AS DateTime), N'0000000111', N'000000054877')
+INSERT [dbo].[PurchasedItem] ([Price], [Quantity], [PurchaseId], [ItemId]) VALUES (CAST(100 AS Decimal(18, 0)), 23, N'a422fa1b-6acc-4244-ab8c-b40f476daae3', N'8fe96224-3f4d-493f-b0a4-e4d50717a4d7')
+INSERT [dbo].[PurchasedItem] ([Price], [Quantity], [PurchaseId], [ItemId]) VALUES (CAST(100 AS Decimal(18, 0)), 23, N'a422fa1b-6acc-4244-ab8c-b40f476daae3', N'2e491c94-e307-416e-a1dd-930d8cb0d709')
+INSERT [dbo].[PurchasedItem] ([Price], [Quantity], [PurchaseId], [ItemId]) VALUES (CAST(322 AS Decimal(18, 0)), 122, N'a422fa1b-6acc-4244-ab8c-b40f476daae3', N'bc59af68-ab93-444b-97a9-7a4df49d3c5e')
+INSERT [dbo].[PurchasedItem] ([Price], [Quantity], [PurchaseId], [ItemId]) VALUES (CAST(111 AS Decimal(18, 0)), 122, N'ec4ba7fb-4796-479d-9607-08c3625c6b35', N'bc59af68-ab93-444b-97a9-7a4df49d3c5e')
+INSERT [dbo].[PurchasedItem] ([Price], [Quantity], [PurchaseId], [ItemId]) VALUES (CAST(400 AS Decimal(18, 0)), 45, N'ec4ba7fb-4796-479d-9607-08c3625c6b35', N'ecccfd8e-ae7a-4c22-8e85-355792368da8')
+INSERT [dbo].[PurchasedItem] ([Price], [Quantity], [PurchaseId], [ItemId]) VALUES (CAST(1 AS Decimal(18, 0)), 100, N'ec4ba7fb-4796-479d-9607-08c3625c6b35', N'c2937ea8-6cb0-4e69-b4c7-4a8ff407f110')
+INSERT [dbo].[Sales] ([SaleId], [BuyerId], [SellerId], [Date], [Type], [InvoiceId]) VALUES (N'17ef8572-07f8-474c-891a-0f0a4d843803', N'e2057907-046e-4b0f-835c-aafe74ac8fdb', N'14a4c2b8-4571-4abc-a8bd-ce78625fbf1e', CAST(N'2017-05-02T11:59:08.637' AS DateTime), 1, NULL)
+INSERT [dbo].[Sales] ([SaleId], [BuyerId], [SellerId], [Date], [Type], [InvoiceId]) VALUES (N'fed90489-3925-488c-833d-9cf2a9bfacab', N'e2057907-046e-4b0f-835c-aafe74ac8fdb', N'14a4c2b8-4571-4abc-a8bd-ce78625fbf1e', CAST(N'2017-05-07T09:32:35.027' AS DateTime), 1, NULL)
+INSERT [dbo].[SoldItem] ([Price], [Quantity], [ItemId], [SaleId]) VALUES (CAST(22 AS Decimal(18, 0)), 100, N'8d6f2722-7663-4af8-83f3-a978f4321329', N'fed90489-3925-488c-833d-9cf2a9bfacab')
+INSERT [dbo].[SoldItem] ([Price], [Quantity], [ItemId], [SaleId]) VALUES (CAST(145 AS Decimal(18, 0)), 50, N'd57a7b0a-42e8-4d71-9c61-61538805017d', N'fed90489-3925-488c-833d-9cf2a9bfacab')
+INSERT [dbo].[SoldItem] ([Price], [Quantity], [ItemId], [SaleId]) VALUES (CAST(58 AS Decimal(18, 0)), 666, N'6e88ad48-41ce-4fbc-9944-37378cff130e', N'fed90489-3925-488c-833d-9cf2a9bfacab')
+INSERT [dbo].[SoldItem] ([Price], [Quantity], [ItemId], [SaleId]) VALUES (CAST(58 AS Decimal(18, 0)), 666, N'6e88ad48-41ce-4fbc-9944-37378cff130e', N'17ef8572-07f8-474c-891a-0f0a4d843803')
+INSERT [dbo].[SoldItem] ([Price], [Quantity], [ItemId], [SaleId]) VALUES (CAST(199 AS Decimal(18, 0)), 22, N'2e491c94-e307-416e-a1dd-930d8cb0d709', N'17ef8572-07f8-474c-891a-0f0a4d843803')
+INSERT [dbo].[SoldItem] ([Price], [Quantity], [ItemId], [SaleId]) VALUES (CAST(455 AS Decimal(18, 0)), 22, N'5cf858be-609f-45ed-b750-2bd5a9270c42', N'17ef8572-07f8-474c-891a-0f0a4d843803')
+INSERT [dbo].[Users] ([Username], [OwnerId], [Password], [AssignedTo], [RegisteredAt], [Role], [PasswordSalt], [UserId]) VALUES (N'1', N'14a4c2b8-4571-4abc-a8bd-ce78625fbf1e', N'gVmcOGVUvGSssL63dS0SgA90EMcthbYB0SSCgW/63JY=', N'1', CAST(N'2017-04-07T11:55:28.343' AS DateTime), 0, N'uSlLairfbH', N'ff896d17-d961-4199-a96f-f433453e7ebd')
+INSERT [dbo].[Users] ([Username], [OwnerId], [Password], [AssignedTo], [RegisteredAt], [Role], [PasswordSalt], [UserId]) VALUES (N'2', N'14a4c2b8-4571-4abc-a8bd-ce78625fbf1e', N'EYFDHY4nkatmHs8D9Qvn1YCIV+fm3dMhXwLEKXyvjIY=', N'manager', CAST(N'2017-04-21T11:58:09.733' AS DateTime), 1, N'RCXtukpyshmY', N'e1566b9b-3621-489b-8c68-90c8c3279ee2')
+INSERT [dbo].[Users] ([Username], [OwnerId], [Password], [AssignedTo], [RegisteredAt], [Role], [PasswordSalt], [UserId]) VALUES (N'3', N'14a4c2b8-4571-4abc-a8bd-ce78625fbf1e', N'GqbowNQ+bcoZ0Df/xj3T0NlJH+Vhs4rSTumV5nDrO3E=', N'casher', CAST(N'2017-04-21T11:58:19.303' AS DateTime), 2, N'pnZHTjRpruSb', N'c62f46da-a3b6-4126-9a0e-45897d45bbcc')
+INSERT [dbo].[Users] ([Username], [OwnerId], [Password], [AssignedTo], [RegisteredAt], [Role], [PasswordSalt], [UserId]) VALUES (N'admin', N'14a4c2b8-4571-4abc-a8bd-ce78625fbf1e', N'SQmrYGziP6C6cNPOTxU7/q78rv5vGci246uss3rlCBg=', N'admin', CAST(N'2017-05-17T07:58:32.487' AS DateTime), 0, N'yQlGNSieQpzzUTXkNDF', N'f03a54b3-75af-49b0-a845-3c06d5487ef6')
+INSERT [dbo].[WarehouseItems] ([ItemId], [Quantity], [SellingPriceCent]) VALUES (N'd38d1a93-ce0c-46e4-8cdd-060122254de6', 1000, 89)
+INSERT [dbo].[WarehouseItems] ([ItemId], [Quantity], [SellingPriceCent]) VALUES (N'19505017-509a-4db8-ad4d-0bb8ef90252e', 45, 255)
+INSERT [dbo].[WarehouseItems] ([ItemId], [Quantity], [SellingPriceCent]) VALUES (N'5cf858be-609f-45ed-b750-2bd5a9270c42', 100, 455)
+INSERT [dbo].[WarehouseItems] ([ItemId], [Quantity], [SellingPriceCent]) VALUES (N'ecccfd8e-ae7a-4c22-8e85-355792368da8', 800, 268)
+INSERT [dbo].[WarehouseItems] ([ItemId], [Quantity], [SellingPriceCent]) VALUES (N'6e88ad48-41ce-4fbc-9944-37378cff130e', 25, 58)
+INSERT [dbo].[WarehouseItems] ([ItemId], [Quantity], [SellingPriceCent]) VALUES (N'd89addbd-0e24-47d3-a8fb-4909d394fb2b', 36, 49)
+INSERT [dbo].[WarehouseItems] ([ItemId], [Quantity], [SellingPriceCent]) VALUES (N'c2937ea8-6cb0-4e69-b4c7-4a8ff407f110', 80, 822)
+INSERT [dbo].[WarehouseItems] ([ItemId], [Quantity], [SellingPriceCent]) VALUES (N'6ac8641e-29dd-4fa2-9615-5cd185148683', 600, 36)
+INSERT [dbo].[WarehouseItems] ([ItemId], [Quantity], [SellingPriceCent]) VALUES (N'd57a7b0a-42e8-4d71-9c61-61538805017d', 2100, 145)
+INSERT [dbo].[WarehouseItems] ([ItemId], [Quantity], [SellingPriceCent]) VALUES (N'bc59af68-ab93-444b-97a9-7a4df49d3c5e', 200, 199)
+INSERT [dbo].[WarehouseItems] ([ItemId], [Quantity], [SellingPriceCent]) VALUES (N'2e491c94-e307-416e-a1dd-930d8cb0d709', 800, 199)
+INSERT [dbo].[WarehouseItems] ([ItemId], [Quantity], [SellingPriceCent]) VALUES (N'8d6f2722-7663-4af8-83f3-a978f4321329', 22, 250)
+INSERT [dbo].[WarehouseItems] ([ItemId], [Quantity], [SellingPriceCent]) VALUES (N'8fe96224-3f4d-493f-b0a4-e4d50717a4d7', 15, 43)
+INSERT [dbo].[WarehouseItems] ([ItemId], [Quantity], [SellingPriceCent]) VALUES (N'29099157-7ca5-4b15-a3d8-fbc11558b4f1', 6, 36)
+ALTER TABLE [dbo].[Purchase]  WITH CHECK ADD  CONSTRAINT [FK_Purchase_Owner] FOREIGN KEY([BuyerId])
+REFERENCES [dbo].[Owner] ([OwnerId])
+GO
+ALTER TABLE [dbo].[Purchase] CHECK CONSTRAINT [FK_Purchase_Owner]
+GO
+ALTER TABLE [dbo].[Purchase]  WITH CHECK ADD  CONSTRAINT [FK_Purchase_Partner1] FOREIGN KEY([SellerId])
+REFERENCES [dbo].[Partner] ([PartnerId])
+GO
+ALTER TABLE [dbo].[Purchase] CHECK CONSTRAINT [FK_Purchase_Partner1]
+GO
+ALTER TABLE [dbo].[PurchasedItem]  WITH CHECK ADD  CONSTRAINT [FK_PurchasedItem_Item1] FOREIGN KEY([ItemId])
+REFERENCES [dbo].[Item] ([ItemId])
+GO
+ALTER TABLE [dbo].[PurchasedItem] CHECK CONSTRAINT [FK_PurchasedItem_Item1]
+GO
+ALTER TABLE [dbo].[PurchasedItem]  WITH CHECK ADD  CONSTRAINT [FK_PurchasedItem_Purchase1] FOREIGN KEY([PurchaseId])
+REFERENCES [dbo].[Purchase] ([PurchaseId])
+GO
+ALTER TABLE [dbo].[PurchasedItem] CHECK CONSTRAINT [FK_PurchasedItem_Purchase1]
+GO
+ALTER TABLE [dbo].[Sales]  WITH CHECK ADD  CONSTRAINT [FK_Sales_Invoice] FOREIGN KEY([InvoiceId])
+REFERENCES [dbo].[Invoice] ([InvoiceId])
+GO
+ALTER TABLE [dbo].[Sales] CHECK CONSTRAINT [FK_Sales_Invoice]
+GO
+ALTER TABLE [dbo].[Sales]  WITH CHECK ADD  CONSTRAINT [FK_Sales_Owner] FOREIGN KEY([SellerId])
+REFERENCES [dbo].[Owner] ([OwnerId])
+GO
+ALTER TABLE [dbo].[Sales] CHECK CONSTRAINT [FK_Sales_Owner]
+GO
+ALTER TABLE [dbo].[Sales]  WITH CHECK ADD  CONSTRAINT [FK_Sales_Partner1] FOREIGN KEY([BuyerId])
+REFERENCES [dbo].[Partner] ([PartnerId])
+GO
+ALTER TABLE [dbo].[Sales] CHECK CONSTRAINT [FK_Sales_Partner1]
+GO
+ALTER TABLE [dbo].[SoldItem]  WITH CHECK ADD  CONSTRAINT [FK_SoldItem_Item1] FOREIGN KEY([ItemId])
+REFERENCES [dbo].[Item] ([ItemId])
+GO
+ALTER TABLE [dbo].[SoldItem] CHECK CONSTRAINT [FK_SoldItem_Item1]
+GO
+ALTER TABLE [dbo].[SoldItem]  WITH CHECK ADD  CONSTRAINT [FK_SoldItem_Sales1] FOREIGN KEY([SaleId])
+REFERENCES [dbo].[Sales] ([SaleId])
+GO
+ALTER TABLE [dbo].[SoldItem] CHECK CONSTRAINT [FK_SoldItem_Sales1]
+GO
+ALTER TABLE [dbo].[Users]  WITH CHECK ADD  CONSTRAINT [FK_Users_Owner1] FOREIGN KEY([OwnerId])
+REFERENCES [dbo].[Owner] ([OwnerId])
+GO
+ALTER TABLE [dbo].[Users] CHECK CONSTRAINT [FK_Users_Owner1]
+GO
+ALTER TABLE [dbo].[WarehouseItems]  WITH CHECK ADD  CONSTRAINT [FK_WarehouseItems_Item] FOREIGN KEY([ItemId])
+REFERENCES [dbo].[Item] ([ItemId])
+GO
+ALTER TABLE [dbo].[WarehouseItems] CHECK CONSTRAINT [FK_WarehouseItems_Item]
+GO
+USE [master]
+GO
+ALTER DATABASE [DB3 Sklad] SET  READ_WRITE 
+GO
