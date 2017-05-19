@@ -528,4 +528,13 @@
   <data name="export_to_csv" xml:space="preserve">
     <value>Запис като CSV</value>
   </data>
+  <data name="report_unit" xml:space="preserve">
+    <value>Диаграма по:</value>
+  </data>
+  <data name="sales_diagram" xml:space="preserve">
+    <value>Диаграма за продадени или закупени стоки</value>
+  </data>
+  <data name="sales_report" xml:space="preserve">
+    <value>Отчет за продадени или закупени стоки</value>
+  </data>
 </root>

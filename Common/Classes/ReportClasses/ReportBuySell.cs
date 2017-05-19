@@ -14,5 +14,6 @@ namespace Common.Classes.ReportClasses
         public int Unit { get; set; }
         public decimal Total { get; set; }
         public string UnitString { get; set; }
+        public string Name { get; set; }
     }
 }

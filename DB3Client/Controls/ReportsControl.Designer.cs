@@ -33,9 +33,13 @@ namespace DB3Client.Controls
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabControlReports = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new Common.Forms.Base.MLTabPage();
             this.mlGroupBox2 = new Common.Forms.Base.MLGroupBox();
+            this.btnExport = new Common.Forms.Base.MLButton();
             this.labelError = new Common.Forms.Base.MLErrorLabel();
             this.rbItemType = new Common.Forms.Base.MLRadioButton();
             this.cbItemType = new Common.Forms.Base.MLComboBox();
@@ -50,12 +54,26 @@ namespace DB3Client.Controls
             this.mlLabel1 = new Common.Forms.Base.MLLabel();
             this.cbReportType = new Common.Forms.Base.MLComboBox();
             this.metroTabPage2 = new Common.Forms.Base.MLTabPage();
+            this.mlGroupBox1 = new Common.Forms.Base.MLGroupBox();
+            this.cbItemTypeDiagram = new Common.Forms.Base.MLCheckBox();
+            this.cbItemTypesDiagram = new Common.Forms.Base.MLComboBox();
+            this.btnGenerateDiagram = new Common.Forms.Base.MLButton();
+            this.chartSales = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.labelErrorDiagram = new Common.Forms.Base.MLErrorLabel();
+            this.mlLabel5 = new Common.Forms.Base.MLLabel();
+            this.mlLabel6 = new Common.Forms.Base.MLLabel();
+            this.dtToDiagram = new MetroFramework.Controls.MetroDateTime();
+            this.dtFromDiagram = new MetroFramework.Controls.MetroDateTime();
+            this.mlLabel4 = new Common.Forms.Base.MLLabel();
+            this.cbDiagramType = new Common.Forms.Base.MLComboBox();
             this.metroTabPage3 = new Common.Forms.Base.MLTabPage();
-            this.btnExport = new Common.Forms.Base.MLButton();
             this.tabControlReports.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.mlGroupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults)).BeginInit();
+            this.metroTabPage2.SuspendLayout();
+            this.mlGroupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartSales)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlReports
@@ -66,7 +84,7 @@ namespace DB3Client.Controls
             this.tabControlReports.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlReports.Location = new System.Drawing.Point(0, 0);
             this.tabControlReports.Name = "tabControlReports";
-            this.tabControlReports.SelectedIndex = 0;
+            this.tabControlReports.SelectedIndex = 1;
             this.tabControlReports.Size = new System.Drawing.Size(1236, 601);
             this.tabControlReports.TabIndex = 0;
             this.tabControlReports.UseSelectable = true;
@@ -78,9 +96,9 @@ namespace DB3Client.Controls
             this.metroTabPage1.HorizontalScrollbarBarColor = true;
             this.metroTabPage1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.HorizontalScrollbarSize = 10;
-            this.metroTabPage1.Location = new System.Drawing.Point(4, 38);
+            this.metroTabPage1.Location = new System.Drawing.Point(4, 35);
             this.metroTabPage1.Name = "metroTabPage1";
-            this.metroTabPage1.Size = new System.Drawing.Size(1228, 559);
+            this.metroTabPage1.Size = new System.Drawing.Size(1228, 562);
             this.metroTabPage1.TabIndex = 0;
             this.metroTabPage1.Text = "tab_reports";
             this.metroTabPage1.VerticalScrollbarBarColor = true;
@@ -108,9 +126,20 @@ namespace DB3Client.Controls
             this.mlGroupBox2.Controls.Add(this.cbReportType);
             this.mlGroupBox2.Location = new System.Drawing.Point(3, 3);
             this.mlGroupBox2.Name = "mlGroupBox2";
-            this.mlGroupBox2.Size = new System.Drawing.Size(574, 557);
+            this.mlGroupBox2.Size = new System.Drawing.Size(574, 560);
             this.mlGroupBox2.TabIndex = 5;
             this.mlGroupBox2.TabStop = false;
+            this.mlGroupBox2.Text = "sales_report";
+            // 
+            // btnExport
+            // 
+            this.btnExport.Location = new System.Drawing.Point(359, 239);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(101, 23);
+            this.btnExport.TabIndex = 12;
+            this.btnExport.Text = "export_to_csv";
+            this.btnExport.UseSelectable = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // labelError
             // 
@@ -239,7 +268,7 @@ namespace DB3Client.Controls
             this.dgvResults.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvResults.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvResults.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvResults.Size = new System.Drawing.Size(562, 283);
+            this.dgvResults.Size = new System.Drawing.Size(562, 286);
             this.dgvResults.TabIndex = 9;
             // 
             // mlLabel3
@@ -265,7 +294,7 @@ namespace DB3Client.Controls
             // dtTo
             // 
             this.dtTo.Location = new System.Drawing.Point(318, 173);
-            this.dtTo.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dtTo.MinimumSize = new System.Drawing.Size(4, 29);
             this.dtTo.Name = "dtTo";
             this.dtTo.Size = new System.Drawing.Size(249, 29);
             this.dtTo.TabIndex = 6;
@@ -273,7 +302,7 @@ namespace DB3Client.Controls
             // dtFrom
             // 
             this.dtFrom.Location = new System.Drawing.Point(12, 173);
-            this.dtFrom.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dtFrom.MinimumSize = new System.Drawing.Size(4, 29);
             this.dtFrom.Name = "dtFrom";
             this.dtFrom.Size = new System.Drawing.Size(250, 29);
             this.dtFrom.TabIndex = 5;
@@ -300,6 +329,7 @@ namespace DB3Client.Controls
             // 
             // metroTabPage2
             // 
+            this.metroTabPage2.Controls.Add(this.mlGroupBox1);
             this.metroTabPage2.HorizontalScrollbarBarColor = true;
             this.metroTabPage2.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.HorizontalScrollbarSize = 10;
@@ -312,29 +342,161 @@ namespace DB3Client.Controls
             this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.VerticalScrollbarSize = 10;
             // 
+            // mlGroupBox1
+            // 
+            this.mlGroupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.mlGroupBox1.BackColor = System.Drawing.Color.White;
+            this.mlGroupBox1.Controls.Add(this.cbItemTypeDiagram);
+            this.mlGroupBox1.Controls.Add(this.cbItemTypesDiagram);
+            this.mlGroupBox1.Controls.Add(this.btnGenerateDiagram);
+            this.mlGroupBox1.Controls.Add(this.chartSales);
+            this.mlGroupBox1.Controls.Add(this.labelErrorDiagram);
+            this.mlGroupBox1.Controls.Add(this.mlLabel5);
+            this.mlGroupBox1.Controls.Add(this.mlLabel6);
+            this.mlGroupBox1.Controls.Add(this.dtToDiagram);
+            this.mlGroupBox1.Controls.Add(this.dtFromDiagram);
+            this.mlGroupBox1.Controls.Add(this.mlLabel4);
+            this.mlGroupBox1.Controls.Add(this.cbDiagramType);
+            this.mlGroupBox1.Location = new System.Drawing.Point(3, 3);
+            this.mlGroupBox1.Name = "mlGroupBox1";
+            this.mlGroupBox1.Size = new System.Drawing.Size(574, 556);
+            this.mlGroupBox1.TabIndex = 2;
+            this.mlGroupBox1.TabStop = false;
+            this.mlGroupBox1.Text = "sales_diagram";
+            // 
+            // cbItemTypeDiagram
+            // 
+            this.cbItemTypeDiagram.AutoSize = true;
+            this.cbItemTypeDiagram.Location = new System.Drawing.Point(318, 20);
+            this.cbItemTypeDiagram.Name = "cbItemTypeDiagram";
+            this.cbItemTypeDiagram.Size = new System.Drawing.Size(75, 15);
+            this.cbItemTypeDiagram.TabIndex = 22;
+            this.cbItemTypeDiagram.Text = "item_type";
+            this.cbItemTypeDiagram.UseSelectable = true;
+            this.cbItemTypeDiagram.CheckedChanged += new System.EventHandler(this.cbItemTypeDiagram_CheckedChanged);
+            // 
+            // cbItemTypesDiagram
+            // 
+            this.cbItemTypesDiagram.FormattingEnabled = true;
+            this.cbItemTypesDiagram.ItemHeight = 23;
+            this.cbItemTypesDiagram.Location = new System.Drawing.Point(318, 42);
+            this.cbItemTypesDiagram.Name = "cbItemTypesDiagram";
+            this.cbItemTypesDiagram.Size = new System.Drawing.Size(249, 29);
+            this.cbItemTypesDiagram.TabIndex = 21;
+            this.cbItemTypesDiagram.UseSelectable = true;
+            // 
+            // btnGenerateDiagram
+            // 
+            this.btnGenerateDiagram.Location = new System.Drawing.Point(466, 131);
+            this.btnGenerateDiagram.Name = "btnGenerateDiagram";
+            this.btnGenerateDiagram.Size = new System.Drawing.Size(101, 23);
+            this.btnGenerateDiagram.TabIndex = 18;
+            this.btnGenerateDiagram.Text = "generate";
+            this.btnGenerateDiagram.UseSelectable = true;
+            this.btnGenerateDiagram.Click += new System.EventHandler(this.btnGenerateDiagram_Click);
+            // 
+            // chartSales
+            // 
+            this.chartSales.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.chartSales.AntiAliasing = System.Windows.Forms.DataVisualization.Charting.AntiAliasingStyles.Text;
+            chartArea1.BackColor = System.Drawing.Color.White;
+            chartArea1.Name = "ChartArea1";
+            this.chartSales.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartSales.Legends.Add(legend1);
+            this.chartSales.Location = new System.Drawing.Point(3, 160);
+            this.chartSales.Name = "chartSales";
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Legend = "Legend1";
+            series1.Name = "Items";
+            this.chartSales.Series.Add(series1);
+            this.chartSales.Size = new System.Drawing.Size(564, 393);
+            this.chartSales.TabIndex = 17;
+            this.chartSales.Text = "chartSales";
+            // 
+            // labelErrorDiagram
+            // 
+            this.labelErrorDiagram.AutoSize = true;
+            this.labelErrorDiagram.ForeColor = System.Drawing.Color.Red;
+            this.labelErrorDiagram.Location = new System.Drawing.Point(6, 131);
+            this.labelErrorDiagram.Name = "labelErrorDiagram";
+            this.labelErrorDiagram.Size = new System.Drawing.Size(64, 13);
+            this.labelErrorDiagram.TabIndex = 16;
+            this.labelErrorDiagram.Text = "invalid_data";
+            this.labelErrorDiagram.Visible = false;
+            // 
+            // mlLabel5
+            // 
+            this.mlLabel5.AutoSize = true;
+            this.mlLabel5.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.mlLabel5.Location = new System.Drawing.Point(318, 74);
+            this.mlLabel5.Name = "mlLabel5";
+            this.mlLabel5.Size = new System.Drawing.Size(55, 19);
+            this.mlLabel5.TabIndex = 15;
+            this.mlLabel5.Text = "to_date";
+            // 
+            // mlLabel6
+            // 
+            this.mlLabel6.AutoSize = true;
+            this.mlLabel6.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.mlLabel6.Location = new System.Drawing.Point(9, 74);
+            this.mlLabel6.Name = "mlLabel6";
+            this.mlLabel6.Size = new System.Drawing.Size(71, 19);
+            this.mlLabel6.TabIndex = 14;
+            this.mlLabel6.Text = "from_date";
+            // 
+            // dtToDiagram
+            // 
+            this.dtToDiagram.Location = new System.Drawing.Point(318, 96);
+            this.dtToDiagram.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dtToDiagram.Name = "dtToDiagram";
+            this.dtToDiagram.Size = new System.Drawing.Size(249, 29);
+            this.dtToDiagram.TabIndex = 13;
+            // 
+            // dtFromDiagram
+            // 
+            this.dtFromDiagram.Location = new System.Drawing.Point(8, 96);
+            this.dtFromDiagram.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dtFromDiagram.Name = "dtFromDiagram";
+            this.dtFromDiagram.Size = new System.Drawing.Size(250, 29);
+            this.dtFromDiagram.TabIndex = 12;
+            // 
+            // mlLabel4
+            // 
+            this.mlLabel4.AutoSize = true;
+            this.mlLabel4.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.mlLabel4.Location = new System.Drawing.Point(9, 16);
+            this.mlLabel4.Name = "mlLabel4";
+            this.mlLabel4.Size = new System.Drawing.Size(70, 19);
+            this.mlLabel4.TabIndex = 5;
+            this.mlLabel4.Text = "report_for";
+            // 
+            // cbDiagramType
+            // 
+            this.cbDiagramType.FormattingEnabled = true;
+            this.cbDiagramType.ItemHeight = 23;
+            this.cbDiagramType.Location = new System.Drawing.Point(8, 42);
+            this.cbDiagramType.Name = "cbDiagramType";
+            this.cbDiagramType.Size = new System.Drawing.Size(249, 29);
+            this.cbDiagramType.TabIndex = 4;
+            this.cbDiagramType.UseSelectable = true;
+            // 
             // metroTabPage3
             // 
             this.metroTabPage3.HorizontalScrollbarBarColor = true;
             this.metroTabPage3.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage3.HorizontalScrollbarSize = 10;
-            this.metroTabPage3.Location = new System.Drawing.Point(4, 38);
+            this.metroTabPage3.Location = new System.Drawing.Point(4, 35);
             this.metroTabPage3.Name = "metroTabPage3";
-            this.metroTabPage3.Size = new System.Drawing.Size(1228, 559);
+            this.metroTabPage3.Size = new System.Drawing.Size(1228, 562);
             this.metroTabPage3.TabIndex = 2;
             this.metroTabPage3.Text = "metroTabPage3";
             this.metroTabPage3.VerticalScrollbarBarColor = true;
             this.metroTabPage3.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage3.VerticalScrollbarSize = 10;
-            // 
-            // btnExport
-            // 
-            this.btnExport.Location = new System.Drawing.Point(359, 239);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(101, 23);
-            this.btnExport.TabIndex = 12;
-            this.btnExport.Text = "export_to_csv";
-            this.btnExport.UseSelectable = true;
-            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // ReportsControl
             // 
@@ -348,6 +510,10 @@ namespace DB3Client.Controls
             this.mlGroupBox2.ResumeLayout(false);
             this.mlGroupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults)).EndInit();
+            this.metroTabPage2.ResumeLayout(false);
+            this.mlGroupBox1.ResumeLayout(false);
+            this.mlGroupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartSales)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -373,5 +539,17 @@ namespace DB3Client.Controls
         private MLButton btnGenerate;
         private MLErrorLabel labelError;
         private MLButton btnExport;
+        private MLGroupBox mlGroupBox1;
+        private MLErrorLabel labelErrorDiagram;
+        private MLLabel mlLabel5;
+        private MLLabel mlLabel6;
+        private MetroFramework.Controls.MetroDateTime dtToDiagram;
+        private MetroFramework.Controls.MetroDateTime dtFromDiagram;
+        private MLLabel mlLabel4;
+        private MLComboBox cbDiagramType;
+        private MLButton btnGenerateDiagram;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartSales;
+        private MLComboBox cbItemTypesDiagram;
+        private MLCheckBox cbItemTypeDiagram;
     }
 }

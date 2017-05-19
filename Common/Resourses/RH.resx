@@ -525,4 +525,13 @@
   <data name="export_to_csv" xml:space="preserve">
     <value>Export to CSV</value>
   </data>
+  <data name="report_unit" xml:space="preserve">
+    <value>Diagram by:</value>
+  </data>
+  <data name="sales_diagram" xml:space="preserve">
+    <value>Diagram for bought/sold items</value>
+  </data>
+  <data name="sales_report" xml:space="preserve">
+    <value>Report for bought/ sold items</value>
+  </data>
 </root>

@@ -988,6 +988,15 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Diagram by:.
+        /// </summary>
+        internal static string report_unit {
+            get {
+                return ResourceManager.GetString("report_unit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reports.
         /// </summary>
         internal static string reports {
@@ -1002,6 +1011,24 @@ namespace Common.Resourses {
         internal static string sales {
             get {
                 return ResourceManager.GetString("sales", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Diagram for bought/sold items.
+        /// </summary>
+        internal static string sales_diagram {
+            get {
+                return ResourceManager.GetString("sales_diagram", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Report for bought/ sold items.
+        /// </summary>
+        internal static string sales_report {
+            get {
+                return ResourceManager.GetString("sales_report", resourceCulture);
             }
         }
         

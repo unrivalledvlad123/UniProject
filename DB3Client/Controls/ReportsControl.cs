@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using Common;
 using Common.Classes.DTOs;
 using Common.Classes.ReportClasses;
@@ -26,15 +27,21 @@ namespace DB3Client.Controls
             tabControlReports.SelectedTab = metroTabPage1;
             SetGridColomns();
             rbItemType.Checked = true;
+            cbItemTypeDiagram.Checked = false;
+            cbItemTypesDiagram.Enabled = false;
             if (DataHolder.UserCulture.TwoLetterISOLanguageName == "bg")
             {
                 cbReportType.DataSource = Enum.GetValues(typeof(Enums.ReportTypeBg));
                 cbItemType.DataSource = Enum.GetValues(typeof(Enums.ItemTypesBg));
+                cbDiagramType.DataSource = Enum.GetValues(typeof(Enums.DiagramTypeBg));
+                cbItemTypesDiagram.DataSource = Enum.GetValues(typeof(Enums.ItemTypesBg));
             }
             else
             {
                 cbReportType.DataSource = Enum.GetValues(typeof(Enums.ReportType));
                 cbItemType.DataSource = Enum.GetValues(typeof(Enums.ItemTypes));
+                cbDiagramType.DataSource = Enum.GetValues(typeof(Enums.DiagramType));
+                cbItemTypesDiagram.DataSource = Enum.GetValues(typeof(Enums.ItemTypes));
             }
             CheckButtonState();
             
@@ -138,7 +145,7 @@ namespace DB3Client.Controls
 
         private void btnExport_Click(object sender, EventArgs e)
         {
-            var csv = new StringBuilder();
+            StringBuilder csv = new StringBuilder();
             foreach (var row in ReportResult)
             {
                 Enums.UnitTypes types = (Enums.UnitTypes)row.Unit;
@@ -147,6 +154,85 @@ namespace DB3Client.Controls
                 csv.AppendLine(newLine);
             }
             File.WriteAllText(Settings.Default.InvoiceSaveLocation + @"\csv.csv", csv.ToString());
+        }
+
+        private async void btnGenerateDiagram_Click(object sender, EventArgs e)
+        {
+            labelErrorDiagram.Visible = false;
+            chartSales.Series["Items"].Points.Clear();
+            int diagram;
+            int temp1;
+            if (DataHolder.UserCulture.TwoLetterISOLanguageName == "bg")
+            {
+                Enums.DiagramTypeBg diagramType;
+                Enum.TryParse(cbDiagramType.SelectedValue.ToString(), out diagramType);
+                diagram = (int) diagramType;
+                Enums.ItemTypesBg temp;
+                Enum.TryParse(cbItemTypesDiagram.SelectedValue.ToString(), out temp);
+                temp1 = (int) temp;
+            }
+            else
+            {
+                Enums.DiagramType diagramType;
+                Enum.TryParse(cbDiagramType.SelectedValue.ToString(), out diagramType);
+                diagram = (int) diagramType;
+                Enums.ItemTypes temp;
+                Enum.TryParse(cbItemTypesDiagram.SelectedValue.ToString(), out temp);
+                temp1 = (int) temp;
+            }
+            DiagramDTO dto = new DiagramDTO
+            {
+                ReportType = diagram,
+                FromDate = dtFromDiagram.Value,
+                ToDate = dtToDiagram.Value,
+                IsType = cbItemTypeDiagram.Checked,
+                ItemType = temp1
+
+            };
+            Dictionary<string, int> result = await SAReports.PostGenerateDiagram(dto);
+            if (result == null || result.Count == 0)
+            {
+                labelErrorDiagram.Visible = true;
+                labelErrorDiagram.Text = DataHolder.GetString("no_results_found");
+            }
+            else
+            {
+                List<KeyValuePair<string, int>> parsedResults = new List<KeyValuePair<string, int>>();
+                if (!cbItemTypeDiagram.Checked)
+                {
+                    foreach (KeyValuePair<string, int> row in result)
+                    {
+                        if (DataHolder.UserCulture.TwoLetterISOLanguageName == "bg")
+                        {
+                            int value;
+                            int.TryParse(row.Key, out value);
+                            Enums.ItemTypesBg types = (Enums.ItemTypesBg) value;
+                            parsedResults.Add(new KeyValuePair<string, int>(types.ToString(), row.Value));
+                        }
+                        else
+                        {
+                            int value;
+                            int.TryParse(row.Key, out value);
+                            Enums.ItemTypes types = (Enums.ItemTypes) value;
+                            parsedResults.Add(new KeyValuePair<string, int>(types.ToString(), row.Value));
+                        }
+                    }
+                }
+                else
+                {
+                    parsedResults.AddRange(result.Select(row => new KeyValuePair<string, int>(row.Key, row.Value)));
+                }
+
+                foreach (var row in parsedResults)
+                {
+                    chartSales.Series["Items"].Points.AddXY(row.Key, row.Value);
+                }
+            }
+        }
+
+        private void cbItemTypeDiagram_CheckedChanged(object sender, EventArgs e)
+        {
+            cbItemTypesDiagram.Enabled = cbItemTypeDiagram.Checked;
         }
 
         #endregion
@@ -161,12 +247,20 @@ namespace DB3Client.Controls
             dgvResults.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvResults.RowHeadersVisible = false;
 
+            DataGridViewTextBoxColumn c0 = new DataGridViewTextBoxColumn();
+            c0.Name = "name";
+            c0.HeaderText = DataHolder.GetString("firstname_grid");
+            c0.DataPropertyName = "Name";
+            c0.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
+            dgvResults.Columns.Add(c0);
+
             DataGridViewTextBoxColumn c1 = new DataGridViewTextBoxColumn();
             c1.Name = "date";
             c1.HeaderText = DataHolder.GetString("invoice_date");
             c1.DataPropertyName = "Date";
             c1.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
             dgvResults.Columns.Add(c1);
+
 
             DataGridViewTextBoxColumn c2 = new DataGridViewTextBoxColumn();
             c2.Name = "price";
@@ -203,7 +297,10 @@ namespace DB3Client.Controls
             btnExport.Enabled = dgvResults.DataSource != null;
         }
 
+
+
         #endregion
-        
+
+     
     }
 }

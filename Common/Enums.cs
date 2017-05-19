@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Common
 {
@@ -73,6 +74,29 @@ namespace Common
             мл = 3,
             тон = 4,
             бр = 5
+        }
+        public enum DiagramTypeBg
+        {
+            Покупки = 0,
+            Продажби = 1
+        }
+
+        public enum DiagramType
+        {
+            Purchases = 0,
+            Sales = 1
+        }
+
+        public enum DiagramFor
+        {
+            Sum = 0,
+            Quantityes = 1,
+        }
+
+        public enum DiagramForBg
+        {
+            Сума = 0,
+            Количество = 1
         }
 
     }

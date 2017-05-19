@@ -70,7 +70,9 @@
     <Compile Include="Classes\CommonWarehouseItemsPrice.cs" />
     <Compile Include="Classes\CompanyOwner.cs" />
     <Compile Include="Classes\CommonUser.cs" />
+    <Compile Include="Classes\DTOs\DiagramDTO.cs" />
     <Compile Include="Classes\DTOs\ReportDTO.cs" />
+    <Compile Include="Classes\ReportClasses\DiagramBuySell.cs" />
     <Compile Include="Classes\ReportClasses\ReportBuySell.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Enums.cs" />
