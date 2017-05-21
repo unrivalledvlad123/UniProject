@@ -372,8 +372,8 @@
   <data name="partner_Id_grid" xml:space="preserve">
     <value>Partner ID</value>
   </data>
-  <data name="search_by_invoice_id" xml:space="preserve">
-    <value>Search by Invoice ID:</value>
+  <data name="search_by_contract_name" xml:space="preserve">
+    <value>Search by client name</value>
   </data>
   <data name="search_transactions" xml:space="preserve">
     <value>Search Transactions</value>
@@ -533,5 +533,11 @@
   </data>
   <data name="sales_report" xml:space="preserve">
     <value>Report for bought/ sold items</value>
+  </data>
+  <data name="btn_Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="tansactions" xml:space="preserve">
+    <value>Tansactions</value>
   </data>
 </root>

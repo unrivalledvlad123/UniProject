@@ -6,7 +6,6 @@
     <edmx:Diagrams>
       <Diagram DiagramId="8064c1562d344e79ba3cc14c8eecb142" Name="Diagram1">
         <EntityTypeShape EntityType="Model.PurchasedItem" Width="1.5" PointX="10.5" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.SoldItem" Width="1.5" PointX="10.25" PointY="7.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="Model.WarehouseItem" Width="1.5" PointX="14.25" PointY="5.25" />
         <EntityTypeShape EntityType="Model.User" Width="1.5" PointX="2.375" PointY="7.375" />
@@ -17,7 +16,6 @@
         <EntityTypeShape EntityType="Model.Sale" Width="1.5" PointX="7.5" PointY="6.25" />
         <AssociationConnector Association="Model.FK_Sales_Owner" />
         <AssociationConnector Association="Model.FK_Sales_Partner1" />
-        <AssociationConnector Association="Model.FK_SoldItem_Sales1" />
         <EntityTypeShape EntityType="Model.Purchase" Width="1.5" PointX="7.5" PointY="2.375" />
         <AssociationConnector Association="Model.FK_Purchase_Owner" />
         <AssociationConnector Association="Model.FK_Purchase_Partner1" />
@@ -26,8 +24,10 @@
         <EntityTypeShape EntityType="Model.Item" Width="1.5" PointX="12.5" PointY="4.5" />
         <AssociationConnector Association="Model.FK_Sales_Invoice" />
         <AssociationConnector Association="Model.FK_PurchasedItem_Item1" />
-        <AssociationConnector Association="Model.FK_SoldItem_Item1" />
         <AssociationConnector Association="Model.FK_WarehouseItems_Item" />
+        <EntityTypeShape EntityType="Model.SoldItem" Width="1.5" PointX="16.75" PointY="5.625" />
+        <AssociationConnector Association="Model.FK_SoldItem_Item1" />
+        <AssociationConnector Association="Model.FK_SoldItem_Sales1" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -12,11 +12,15 @@ namespace Common.Classes
         public Guid ItemId { get; set; }
         public string Name { get; set; }
         public  int Type { get; set; }
+        public int MeasurmentUnit { get; set; }
         public string Description { get; set; }
         public string ItemCode { get; set; }
+        public int SellingPriceCent { get; set; }
+        public int Quantity { get; set; }
+
         public override string ToString()
         {
-            return this.Name + " (" + this.ItemCode + ")";
+            return this.ItemCode + " (" + this.Name + ")";
         }
     }
 }

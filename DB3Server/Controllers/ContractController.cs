@@ -29,5 +29,10 @@ namespace DB3Server.Controllers
             return BLContract.GetAllPartners(search);
         }
 
+        [System.Web.Http.Route("api/contract/get/{search}")]
+        public CommonContract GetPartnersById(String search)
+        {
+            return BLContract.GetPartnersById(search);
         }
+    }
 }

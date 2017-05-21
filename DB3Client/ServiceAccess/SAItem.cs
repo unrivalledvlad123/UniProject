@@ -38,5 +38,31 @@ namespace DB3Client.ServiceAccess
             }
             return items;
         }
+        public static async Task<CommonItem> GetItemsById(String search)
+        {
+           
+            HttpResponseMessage response;
+
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(DataHolder.ServerAddress);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic");
+
+                try
+                {
+                    response = await client.GetAsync("api/item/get/" + search);
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw new Exception(ex.InnerException.Message);
+                }
+
+                if (response.IsSuccessStatusCode)
+                {
+                     return await response.Content.ReadAsAsync<CommonItem>();
+                }
+            }
+            return null;
+        }
     }
 }

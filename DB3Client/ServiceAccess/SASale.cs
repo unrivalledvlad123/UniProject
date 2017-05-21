@@ -10,9 +10,9 @@ using Common.Classes;
 
 namespace DB3Client.ServiceAccess
 {
-    class SAContract
+    class SASale
     {
-        public static async Task<Guid> PostCreateContract(CommonContract contract)
+        public static async Task<CommonSale> PostCreateDirectSale(CommonSale sales)
         {
             HttpResponseMessage response;
             using (HttpClient client = new HttpClient())
@@ -22,7 +22,7 @@ namespace DB3Client.ServiceAccess
 
                 try
                 {
-                    response = await client.PostAsJsonAsync("api/contract/create", contract);
+                    response = await client.PostAsJsonAsync("api/sales/create-direct", sales);
                 }
                 catch (HttpRequestException ex)
                 {
@@ -31,13 +31,12 @@ namespace DB3Client.ServiceAccess
 
                 if (response.IsSuccessStatusCode)
                 {
-                    return await response.Content.ReadAsAsync<Guid>();
+                    return await response.Content.ReadAsAsync<CommonSale>();
                 }
-                return await response.Content.ReadAsAsync<Guid>();
+                return null;
             }
         }
-
-        public static async Task<bool> PostUpdateContract(CommonContract contract)
+        public static async Task<CommonSale> PostCreateWholeSale(CommonSale sales)
         {
             HttpResponseMessage response;
             using (HttpClient client = new HttpClient())
@@ -47,7 +46,7 @@ namespace DB3Client.ServiceAccess
 
                 try
                 {
-                    response = await client.PostAsJsonAsync("api/contract/update", contract);
+                    response = await client.PostAsJsonAsync("api/sales/create-whole", sales);
                 }
                 catch (HttpRequestException ex)
                 {
@@ -56,15 +55,15 @@ namespace DB3Client.ServiceAccess
 
                 if (response.IsSuccessStatusCode)
                 {
-                    return true;
+                    return await response.Content.ReadAsAsync<CommonSale>();
                 }
-                return await response.Content.ReadAsAsync<bool>();
+                return null;
             }
         }
 
-        public static async Task<List<CommonContract>> GetAllContracts(String search)
+        public static async Task<List<CommonSale>> GetAllSales(String search)
         {
-            List<CommonContract> contracts = new List<CommonContract>();
+            List<CommonSale> allSales = new List<CommonSale>();
             HttpResponseMessage response;
 
             using (HttpClient client = new HttpClient())
@@ -74,7 +73,7 @@ namespace DB3Client.ServiceAccess
 
                 try
                 {
-                    response = await client.GetAsync("api/contract/list" + (String.IsNullOrEmpty(search) ? "" : ("/" + search)));
+                    response = await client.GetAsync("api/sales/list" + (String.IsNullOrEmpty(search) ? "" : ("/" + search)));
                 }
                 catch (HttpRequestException ex)
                 {
@@ -83,38 +82,10 @@ namespace DB3Client.ServiceAccess
 
                 if (response.IsSuccessStatusCode)
                 {
-                   contracts = await response.Content.ReadAsAsync<List<CommonContract>>();
+                    allSales = await response.Content.ReadAsAsync<List<CommonSale>>();
                 }
             }
-            return contracts;
+            return allSales;
         }
-        public static async Task<CommonContract> GetPartnersById(String search)
-        {
-            CommonContract contracts = new CommonContract();
-            HttpResponseMessage response;
-
-            using (HttpClient client = new HttpClient())
-            {
-                client.BaseAddress = new Uri(DataHolder.ServerAddress);
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic");
-
-                try
-                {
-                    response = await client.GetAsync("api/contract/get/" + search);
-                }
-                catch (HttpRequestException ex)
-                {
-                    throw new Exception(ex.InnerException.Message);
-                }
-
-                if (response.IsSuccessStatusCode)
-                {
-                    return await response.Content.ReadAsAsync<CommonContract>();
-                }
-            }
-            return null;
-        }
-
-
     }
 }

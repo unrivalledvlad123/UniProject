@@ -7,7 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Common.Classes;
 using Common.Forms.Base;
+using DB3Client.ServiceAccess;
 
 namespace DB3Client.Forms.TrasactionForms
 {
@@ -17,7 +19,7 @@ namespace DB3Client.Forms.TrasactionForms
         {
             InitializeComponent();
         }
+        
 
-       
     }
 }

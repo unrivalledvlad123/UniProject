@@ -17,6 +17,11 @@ namespace DB3Server.Controllers
         {
             return BLItem.GetAllItems(search);
         }
+        [System.Web.Http.Route("api/item/get/{search}")]
+        public CommonItem GetItemsById(String search)
+        {
+            return BLItem.GetItemsById(search);
+        }
 
     }
 }

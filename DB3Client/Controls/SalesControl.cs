@@ -11,6 +11,7 @@ using Common;
 using Common.Classes;
 using Common.Forms.Base;
 using DB3Client.Forms;
+using DB3Client.Properties;
 using DB3Client.ServiceAccess;
 using MetroFramework.Drawing;
 
@@ -21,6 +22,7 @@ namespace DB3Client.Controls
         public List<CommonItem> AllItems = new List<CommonItem>();
         public List<CommonContract> AllContacts = new List<CommonContract>();
         public List<CommonMol> AllMols = new List<CommonMol>();
+
         public SalesControl()
         {
             InitializeComponent();
@@ -95,6 +97,7 @@ namespace DB3Client.Controls
             {
                 AllItems = await SAItem.GetAllItems(cbSearch.Text);
                 cbSearch.DataSource = AllItems;
+
                 cbSearch.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
                 cbSearch.AutoCompleteSource = AutoCompleteSource.ListItems;
                 cbSearch.DropDownStyle = ComboBoxStyle.DropDown;
@@ -108,7 +111,7 @@ namespace DB3Client.Controls
                 cbChooseMol.AutoCompleteSource = AutoCompleteSource.ListItems;
                 cbChooseMol.DropDownStyle = ComboBoxStyle.DropDown;
                 cbChooseMol.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-                
+
             }
             catch (Exception e)
             {
@@ -122,13 +125,14 @@ namespace DB3Client.Controls
             float s = 0;
             foreach (DataGridViewRow row in dgvSoldGoods.Rows)
             {
-                if (row.Cells[3].Value != null)
+                if (row.Cells[4].Value != null)
                 {
-                    s += (float) row.Cells[3].Value;
+                    s += (float) row.Cells[4].Value;
                 }
             }
             labelTotalAmount.Text = s.ToString();
         }
+
         private void CalculateChange()
         {
             float s = float.Parse(labelCash.Text) - float.Parse(labelTotalAmount.Text);
@@ -144,20 +148,61 @@ namespace DB3Client.Controls
             CommonItem a = ((CommonItem) cbSearch.SelectedItem);
             string name = mlLabel1.Text;
             string quantity = tbQuantity.Text;
+            int measurementUnit = a.MeasurmentUnit;
             string price = mlLabel2.Text;
-            float totalPrice = float.Parse(quantity) * float.Parse(price);
-            dgvSoldGoods.Rows.Add(name, quantity, price, totalPrice);
+            var vat = 1 + (Settings.Default.VatMultiplier / 100);
+            var vatPrice = vat * (decimal) float.Parse(price);
+            float totalPrice = float.Parse(quantity) * (float) vatPrice;
+            dgvSoldGoods.Rows.Add(name, quantity, measurementUnit, price, totalPrice, a.ItemId);
             UpdateTotal();
         }
 
-        private void btnFinish_Click(object sender, EventArgs e)
+        private async void btnFinish_Click(object sender, EventArgs e)
         {
 
+            List<CommonContract> list = await SAContract.GetAllContracts("Direct Sale");
+            if (list.Count > 1 || list.Count == 0)
+            {
+                MessageBox.Show("Can not find direct sale user!");
+                return;
+            }
+
+            CommonSale s = new CommonSale();
+            s.BuyerId = list.First().PartnerId;
+            s.SellerId = (DataHolder.Owner.OwnerId);
+            s.SoldItems = new List<CommonSoldItem>();
+
+            var vat = 1 + (Settings.Default.VatMultiplier / 100);
+            foreach (DataGridViewRow row in dgvSoldGoods.Rows)
+            {
+                var item = new CommonSoldItem();
+                if (row.Cells[5].Value != null)
+                {
+                    item.Price = vat * decimal.Parse(row.Cells[3].Value.ToString());
+                    item.Quantity = int.Parse(row.Cells[1].Value.ToString());
+                    item.ItemId = (Guid) row.Cells[5].Value;
+
+                    s.SoldItems.Add(item);
+                }
+            }
+
+            var sale = await SASale.PostCreateDirectSale(s);
+            if (sale == null)
+            {
+                MessageBox.Show("Not saved!");
+            }
+            else
+            {
+                MessageBox.Show("SAVED!");
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-
+            if (dgvSoldGoods.SelectedRows.Count == 1 && dgvSoldGoods.SelectedRows[0] != null)
+            {
+                dgvSoldGoods.SelectedRows.Clear();
+            }
         }
 
         private void btnDetach_Click(object sender, EventArgs e)
@@ -173,11 +218,42 @@ namespace DB3Client.Controls
         private void cbWholesale_CheckedChanged(object sender, EventArgs e)
         {
             gbClientInfo.Enabled = cbWholesale.Checked;
+            btnFinish.Enabled = !cbWholesale.Checked;
         }
 
-        private void btnGenerateInvoice_Click(object sender, EventArgs e)
+        private async void btnGenerateInvoice_Click(object sender, EventArgs e)
         {
-            InvoiceTemplateForm form = new InvoiceTemplateForm();
+            CommonSale s = new CommonSale();
+            s.BuyerId = ((CommonContract) cbSearchContract.SelectedItem).PartnerId;
+            // to do when FK is removed!!!
+            //        s.SellerId = ((CommonMol) cbChooseMol.SelectedItem).MolId;
+            s.SellerId = (DataHolder.Owner.OwnerId);
+            s.SoldItems = new List<CommonSoldItem>();
+
+            var vat = 1 + (Settings.Default.VatMultiplier / 100);
+            foreach (DataGridViewRow row in dgvSoldGoods.Rows)
+            {
+                var item = new CommonSoldItem();
+                if (row.Cells[5].Value != null)
+                {
+                    item.Price = vat * decimal.Parse(row.Cells[3].Value.ToString());
+                    item.Quantity = int.Parse(row.Cells[1].Value.ToString());
+                    item.ItemId = (Guid) row.Cells[5].Value;
+
+                    s.SoldItems.Add(item);
+                }
+            }
+
+            var sale = await SASale.PostCreateWholeSale(s);
+            if (sale == null)
+            {
+                MessageBox.Show("Sale not saved!");
+                return;
+            }
+
+
+
+            InvoiceTemplateForm form = new InvoiceTemplateForm(sale);
             if (form.ShowDialog() == DialogResult.OK)
             {
 
@@ -186,17 +262,17 @@ namespace DB3Client.Controls
 
         private void mlButton1_Click(object sender, EventArgs e)
         {
-            InvoiceTemplateForm form = new InvoiceTemplateForm();
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-
-            }
+//            InvoiceTemplateForm form = new InvoiceTemplateForm();
+//            if (form.ShowDialog() == DialogResult.OK)
+//            {
+//
+//            }
         }
         private void cbSearch_SelectionChangeCommitted(object sender, EventArgs e)
         {
             mlLabel1.Text = ((CommonItem)cbSearch.SelectedItem).Name;
             mlLabel3.Text = ((CommonItem)cbSearch.SelectedItem).Description;
-            mlLabel2.Text = "10";
+            mlLabel2.Text = ((CommonItem) cbSearch.SelectedItem).SellingPriceCent.ToString();
         }
 
         private void tbAmount_KeyDown(object sender, KeyEventArgs e)
@@ -226,6 +302,9 @@ namespace DB3Client.Controls
 
         private bool isInProgress = false;
 
-        
+        private void tbQuantity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar);
+        }
     }
 }

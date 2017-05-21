@@ -17,9 +17,10 @@ namespace DB3Server
         public decimal Price { get; set; }
         public int Quantity { get; set; }
         public System.Guid ItemId { get; set; }
+        public System.Guid SoldItemId { get; set; }
         public System.Guid SaleId { get; set; }
     
-        public virtual Sale Sale { get; set; }
         public virtual Item Item { get; set; }
+        public virtual Sale Sale { get; set; }
     }
 }

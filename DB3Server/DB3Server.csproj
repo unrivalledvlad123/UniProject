@@ -14,6 +14,8 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -26,10 +28,8 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -161,11 +161,13 @@
     <Compile Include="BusinessLogic\BLItem.cs" />
     <Compile Include="BusinessLogic\BLOwner.cs" />
     <Compile Include="BusinessLogic\BLReports.cs" />
+    <Compile Include="BusinessLogic\BLSales.cs" />
     <Compile Include="Controllers\ContractController.cs" />
     <Compile Include="Controllers\ExampleController.cs" />
     <Compile Include="Controllers\ItemCotroller.cs" />
     <Compile Include="Controllers\OwnerController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
+    <Compile Include="Controllers\SalesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="BD3Service.cs" />
     <Compile Include="Invoice.cs">

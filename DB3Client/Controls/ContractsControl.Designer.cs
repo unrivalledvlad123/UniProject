@@ -33,6 +33,9 @@ namespace DB3Client.Controls
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControlContracts = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new Common.Forms.Base.MLTabPage();
             this.tbSearchContracts = new Common.Forms.Base.MLTextBox();
@@ -41,10 +44,16 @@ namespace DB3Client.Controls
             this.btnAddContract = new Common.Forms.Base.MLButton();
             this.dgvContracts = new MetroFramework.Controls.MetroGrid();
             this.metroTabPage2 = new Common.Forms.Base.MLTabPage();
+            this.metroLabel3 = new Common.Forms.Base.MLLabel();
+            this.btnViewTransactionDetails = new Common.Forms.Base.MLButton();
+            this.dgvTransactions = new MetroFramework.Controls.MetroGrid();
+            this.tbSearchTransactions = new Common.Forms.Base.MLTextBox();
             this.metroTabPage3 = new Common.Forms.Base.MLTabPage();
             this.tabControlContracts.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvContracts)).BeginInit();
+            this.metroTabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTransactions)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlContracts
@@ -55,7 +64,7 @@ namespace DB3Client.Controls
             this.tabControlContracts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlContracts.Location = new System.Drawing.Point(0, 0);
             this.tabControlContracts.Name = "tabControlContracts";
-            this.tabControlContracts.SelectedIndex = 2;
+            this.tabControlContracts.SelectedIndex = 1;
             this.tabControlContracts.Size = new System.Drawing.Size(1064, 460);
             this.tabControlContracts.TabIndex = 0;
             this.tabControlContracts.UseSelectable = true;
@@ -187,6 +196,10 @@ namespace DB3Client.Controls
             // 
             // metroTabPage2
             // 
+            this.metroTabPage2.Controls.Add(this.metroLabel3);
+            this.metroTabPage2.Controls.Add(this.btnViewTransactionDetails);
+            this.metroTabPage2.Controls.Add(this.dgvTransactions);
+            this.metroTabPage2.Controls.Add(this.tbSearchTransactions);
             this.metroTabPage2.HorizontalScrollbarBarColor = true;
             this.metroTabPage2.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.HorizontalScrollbarSize = 10;
@@ -194,10 +207,107 @@ namespace DB3Client.Controls
             this.metroTabPage2.Name = "metroTabPage2";
             this.metroTabPage2.Size = new System.Drawing.Size(1056, 418);
             this.metroTabPage2.TabIndex = 1;
-            this.metroTabPage2.Text = "metroTabPage2";
+            this.metroTabPage2.Text = "tansactions";
             this.metroTabPage2.VerticalScrollbarBarColor = true;
             this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.VerticalScrollbarSize = 10;
+            // 
+            // metroLabel3
+            // 
+            this.metroLabel3.AutoSize = true;
+            this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel3.Location = new System.Drawing.Point(3, 16);
+            this.metroLabel3.Name = "metroLabel3";
+            this.metroLabel3.Size = new System.Drawing.Size(165, 19);
+            this.metroLabel3.TabIndex = 16;
+            this.metroLabel3.Text = "search_by_contract_name";
+            // 
+            // btnViewTransactionDetails
+            // 
+            this.btnViewTransactionDetails.Location = new System.Drawing.Point(3, 69);
+            this.btnViewTransactionDetails.Name = "btnViewTransactionDetails";
+            this.btnViewTransactionDetails.Size = new System.Drawing.Size(196, 23);
+            this.btnViewTransactionDetails.TabIndex = 15;
+            this.btnViewTransactionDetails.Text = "view_transaction_details";
+            this.btnViewTransactionDetails.UseSelectable = true;
+            this.btnViewTransactionDetails.Click += new System.EventHandler(this.btnViewTransactionDetails_Click);
+            // 
+            // dgvTransactions
+            // 
+            this.dgvTransactions.AllowUserToResizeRows = false;
+            this.dgvTransactions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvTransactions.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvTransactions.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvTransactions.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvTransactions.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTransactions.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvTransactions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvTransactions.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvTransactions.EnableHeadersVisualStyles = false;
+            this.dgvTransactions.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.dgvTransactions.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dgvTransactions.Location = new System.Drawing.Point(3, 98);
+            this.dgvTransactions.Name = "dgvTransactions";
+            this.dgvTransactions.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTransactions.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvTransactions.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvTransactions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvTransactions.Size = new System.Drawing.Size(1050, 317);
+            this.dgvTransactions.TabIndex = 12;
+            // 
+            // tbSearchTransactions
+            // 
+            // 
+            // 
+            // 
+            this.tbSearchTransactions.CustomButton.Image = null;
+            this.tbSearchTransactions.CustomButton.Location = new System.Drawing.Point(373, 1);
+            this.tbSearchTransactions.CustomButton.Name = "";
+            this.tbSearchTransactions.CustomButton.Size = new System.Drawing.Size(23, 23);
+            this.tbSearchTransactions.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.tbSearchTransactions.CustomButton.TabIndex = 1;
+            this.tbSearchTransactions.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.tbSearchTransactions.CustomButton.UseSelectable = true;
+            this.tbSearchTransactions.CustomButton.Visible = false;
+            this.tbSearchTransactions.Lines = new string[0];
+            this.tbSearchTransactions.Location = new System.Drawing.Point(3, 38);
+            this.tbSearchTransactions.MaxLength = 32767;
+            this.tbSearchTransactions.Name = "tbSearchTransactions";
+            this.tbSearchTransactions.PasswordChar = '\0';
+            this.tbSearchTransactions.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.tbSearchTransactions.SelectedText = "";
+            this.tbSearchTransactions.SelectionLength = 0;
+            this.tbSearchTransactions.SelectionStart = 0;
+            this.tbSearchTransactions.ShortcutsEnabled = true;
+            this.tbSearchTransactions.Size = new System.Drawing.Size(397, 25);
+            this.tbSearchTransactions.TabIndex = 10;
+            this.tbSearchTransactions.UseSelectable = true;
+            this.tbSearchTransactions.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.tbSearchTransactions.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.tbSearchTransactions.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbSearchTransactions_KeyDown);
             // 
             // metroTabPage3
             // 
@@ -223,6 +333,9 @@ namespace DB3Client.Controls
             this.tabControlContracts.ResumeLayout(false);
             this.metroTabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvContracts)).EndInit();
+            this.metroTabPage2.ResumeLayout(false);
+            this.metroTabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTransactions)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -238,5 +351,9 @@ namespace DB3Client.Controls
         private MLButton btnEditContract;
         private MLButton btnAddContract;
         private MetroFramework.Controls.MetroGrid dgvContracts;
+        private MLLabel metroLabel3;
+        private MLButton btnViewTransactionDetails;
+        private MetroFramework.Controls.MetroGrid dgvTransactions;
+        private MLTextBox tbSearchTransactions;
     }
 }

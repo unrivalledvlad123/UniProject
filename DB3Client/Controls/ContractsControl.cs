@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Common;
 using Common.Classes;
 using DB3Client.Forms.ContractsForms;
+using DB3Client.Forms.TrasactionForms;
 using DB3Client.ServiceAccess;
 
 namespace DB3Client.Controls
@@ -19,7 +20,9 @@ namespace DB3Client.Controls
         public ContractsControl()
         {
             InitializeComponent();
-            LoadData();
+            LoadDataContracts();
+            SetGridColomnsAllSales();
+            LoadDataTransactions();
             SetGridColomnsContracts();
             tabControlContracts.SelectedTab = metroTabPage1;
         }
@@ -30,12 +33,12 @@ namespace DB3Client.Controls
 
             if (editForm.ShowDialog() == DialogResult.OK)
             {
-                LoadData();
+                LoadDataContracts();
             }
            
         }
 
-        private async void LoadData()
+        private async void LoadDataContracts()
         {
             List<CommonContract> list = await SAContract.GetAllContracts(tbSearchContracts.Text);
             dgvContracts.DataSource = list;
@@ -48,7 +51,7 @@ namespace DB3Client.Controls
                 return;
             }
 
-            LoadData();
+            LoadDataContracts();
         }
 
         private async void btnEditContract_Click(object sender, EventArgs e)
@@ -61,7 +64,7 @@ namespace DB3Client.Controls
                 AddEditContractForm form = new AddEditContractForm(selectedItem, mol);
                 if (form.ShowDialog() == DialogResult.OK)
                 {
-                    LoadData();
+                    LoadDataContracts();
                 }
 
             }
@@ -129,10 +132,72 @@ namespace DB3Client.Controls
 
         }
 
+        private void tbSearchTransactions_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode != Keys.Enter)
+            {
+                return;
+            }
 
+            LoadDataTransactions();
+        }
+        private async void LoadDataTransactions()
+        {
+            List<CommonSale> list = await SASale.GetAllSales(tbSearchTransactions.Text);
+            dgvTransactions.DataSource = list;
+        }
+        public void SetGridColomnsAllSales()
+        {
+            dgvTransactions.DataSource = null;
+            dgvTransactions.Columns.Clear();
+            dgvTransactions.AutoGenerateColumns = false;
+            dgvTransactions.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvTransactions.RowHeadersVisible = false;
 
+            
+            DataGridViewTextBoxColumn c1 = new DataGridViewTextBoxColumn();
+            c1.Name = "CompanyName";
+            c1.HeaderText = DataHolder.GetString("company_name");
+            c1.DataPropertyName = "BuyerCompanyName";
+            c1.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
+            dgvTransactions.Columns.Add(c1);
 
+            DataGridViewTextBoxColumn c2 = new DataGridViewTextBoxColumn();
+            c2.Name = "Date";
+            c2.HeaderText = DataHolder.GetString("date");
+            c2.DataPropertyName = "Date";
+            c2.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
+            dgvTransactions.Columns.Add(c2);
 
+            DataGridViewTextBoxColumn c3 = new DataGridViewTextBoxColumn();
+            c3.Name = "InvoiceNumber";
+            c3.HeaderText = DataHolder.GetString("invoice_number");
+            c3.DataPropertyName = "InvoiceNumber";
+            c3.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
+            dgvTransactions.Columns.Add(c3);
+
+            DataGridViewTextBoxColumn c4 = new DataGridViewTextBoxColumn();
+            c4.Name = "totalAmount";
+            c4.HeaderText = DataHolder.GetString("total_amount");
+            c4.DataPropertyName = "TotalPrice";
+            c4.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
+            dgvTransactions.Columns.Add(c4);
+
+        }
+
+        private void btnViewTransactionDetails_Click(object sender, EventArgs e)
+        {
+            if (dgvTransactions.SelectedRows.Count == 1 && dgvTransactions.SelectedRows[0] != null)
+            {
+                CommonSale selectedItem = (CommonSale)dgvTransactions.SelectedRows[0].DataBoundItem;
+                TransactionDetailsForm detailsForm = new TransactionDetailsForm(selectedItem);
+
+                if (detailsForm.ShowDialog() == DialogResult.OK)
+                {
+
+                }
+            }
+        }
     }
 }
 

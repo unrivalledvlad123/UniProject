@@ -169,6 +169,15 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        internal static string btn_Close {
+            get {
+                return ResourceManager.GetString("btn_Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save.
         /// </summary>
         internal static string btn_save_new_price_wharehouse {
@@ -1042,11 +1051,11 @@ namespace Common.Resourses {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Search by Invoice ID:.
+        ///   Looks up a localized string similar to Search by client name.
         /// </summary>
-        internal static string search_by_invoice_id {
+        internal static string search_by_contract_name {
             get {
-                return ResourceManager.GetString("search_by_invoice_id", resourceCulture);
+                return ResourceManager.GetString("search_by_contract_name", resourceCulture);
             }
         }
         
@@ -1137,6 +1146,15 @@ namespace Common.Resourses {
         internal static string tab_reports {
             get {
                 return ResourceManager.GetString("tab_reports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tansactions.
+        /// </summary>
+        internal static string tansactions {
+            get {
+                return ResourceManager.GetString("tansactions", resourceCulture);
             }
         }
         

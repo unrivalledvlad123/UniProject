@@ -67,6 +67,8 @@
     <Compile Include="Classes\CommonItem.cs" />
     <Compile Include="Classes\CommonContract.cs" />
     <Compile Include="Classes\CommonMol.cs" />
+    <Compile Include="Classes\CommonSale.cs" />
+    <Compile Include="Classes\CommonSoldItem.cs" />
     <Compile Include="Classes\CommonWarehouseItemsPrice.cs" />
     <Compile Include="Classes\CompanyOwner.cs" />
     <Compile Include="Classes\CommonUser.cs" />

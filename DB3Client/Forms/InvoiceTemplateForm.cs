@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Common.Classes;
 using Common.Forms.Base;
 using DB3Client.Controls;
 using iTextSharp.text;
@@ -20,10 +21,10 @@ namespace DB3Client.Forms
     {
         public InvoiceControl HolderControl;
 
-        public InvoiceTemplateForm()
+        public InvoiceTemplateForm(CommonSale sale)
         {
             InitializeComponent();
-            InvoiceControl inv = new InvoiceControl {Dock = DockStyle.Fill};
+            InvoiceControl inv = new InvoiceControl (sale){Dock = DockStyle.Fill};
             HolderControl = inv;
             metroPanel1.Controls.Add(inv);
 

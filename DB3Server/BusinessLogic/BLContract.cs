@@ -65,6 +65,25 @@ namespace DB3Server.BusinessLogic
             return allPartners;
         }
 
+        internal static CommonContract GetPartnersById(String search)
+        {
+            DatabaseEntities entities = new DatabaseEntities();
+            Partner dbPartner = entities.Partners.Find(new Guid(search));
+          
+            if (dbPartner != null)
+            {
+                CommonContract contract = new CommonContract();
+                contract.PartnerId = dbPartner.PartnerId;
+                contract.Address = dbPartner.Address;
+                contract.Bulstat = dbPartner.Bulstat;
+                contract.CompanyName = dbPartner.CompanyName;
+                contract.Email = dbPartner.Email;
+                contract.Phone = dbPartner.Phone;
+                contract.VatNumber = dbPartner.VATNumber;
+                return contract;
+            }
+            return null;
+        }
         internal static bool UpdateContract(CommonContract oldPartner)
         {
             DatabaseEntities entities = new DatabaseEntities();

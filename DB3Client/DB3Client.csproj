@@ -213,6 +213,12 @@
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\TrasactionForms\TransactionDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TrasactionForms\TransactionDetailsForm.Designer.cs">
+      <DependentUpon>TransactionDetailsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\WarehouseForms\AddEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -237,6 +243,7 @@
     <Compile Include="ServiceAccess\SAItem.cs" />
     <Compile Include="ServiceAccess\SAOwner.cs" />
     <Compile Include="ServiceAccess\SAReports.cs" />
+    <Compile Include="ServiceAccess\SASale.cs" />
     <Compile Include="ServiceAccess\SAUsers.cs" />
     <EmbeddedResource Include="Controls\AdminControl.resx">
       <DependentUpon>AdminControl.cs</DependentUpon>
@@ -283,6 +290,9 @@
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TrasactionForms\TransactionDetailsForm.resx">
+      <DependentUpon>TransactionDetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\WarehouseForms\AddEditForm.resx">
       <DependentUpon>AddEditForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -305,7 +315,6 @@
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

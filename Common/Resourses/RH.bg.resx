@@ -375,8 +375,8 @@
   <data name="partner_Id_grid" xml:space="preserve">
     <value>Контрагент ID</value>
   </data>
-  <data name="search_by_invoice_id" xml:space="preserve">
-    <value>Търсене по Фактура ID:</value>
+  <data name="search_by_contract_name" xml:space="preserve">
+    <value>Търсене по име на клиент</value>
   </data>
   <data name="search_transactions" xml:space="preserve">
     <value>Търси Транзакции</value>
@@ -536,5 +536,11 @@
   </data>
   <data name="sales_report" xml:space="preserve">
     <value>Отчет за продадени или закупени стоки</value>
+  </data>
+  <data name="btn_Close" xml:space="preserve">
+    <value>Затвори</value>
+  </data>
+  <data name="tansactions" xml:space="preserve">
+    <value>Продажби</value>
   </data>
 </root>

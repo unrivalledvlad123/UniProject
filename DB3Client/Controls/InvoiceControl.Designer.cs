@@ -160,9 +160,9 @@
             this.mlLabel9.Location = new System.Drawing.Point(138, 133);
             this.mlLabel9.MaximumSize = new System.Drawing.Size(231, 60);
             this.mlLabel9.Name = "mlLabel9";
-            this.mlLabel9.Size = new System.Drawing.Size(231, 19);
+            this.mlLabel9.Size = new System.Drawing.Size(64, 19);
             this.mlLabel9.TabIndex = 22;
-            this.mlLabel9.Text = "mlLabel9 fef  fdf df df df df df d fd fd";
+            this.mlLabel9.Text = "mlLabel9";
             this.mlLabel9.WrapToLine = true;
             // 
             // mlLabel10

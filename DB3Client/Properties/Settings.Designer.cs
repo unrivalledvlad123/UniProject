@@ -25,7 +25,7 @@ namespace DB3Client.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.2")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.0")]
         public decimal VatMultiplier {
             get {
                 return ((decimal)(this["VatMultiplier"]));
