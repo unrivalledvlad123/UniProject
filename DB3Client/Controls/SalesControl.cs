@@ -225,8 +225,7 @@ namespace DB3Client.Controls
         {
             CommonSale s = new CommonSale();
             s.BuyerId = ((CommonContract) cbSearchContract.SelectedItem).PartnerId;
-            // to do when FK is removed!!!
-            //        s.SellerId = ((CommonMol) cbChooseMol.SelectedItem).MolId;
+            s.SellerId = ((CommonMol) cbChooseMol.SelectedItem).MolId;
             s.SellerId = (DataHolder.Owner.OwnerId);
             s.SoldItems = new List<CommonSoldItem>();
 
