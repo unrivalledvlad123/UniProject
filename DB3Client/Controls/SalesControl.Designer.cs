@@ -594,6 +594,7 @@ namespace DB3Client.Controls
             // 
             // dgvSoldGoods
             // 
+            this.dgvSoldGoods.AllowUserToAddRows = false;
             this.dgvSoldGoods.AllowUserToResizeRows = false;
             this.dgvSoldGoods.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));

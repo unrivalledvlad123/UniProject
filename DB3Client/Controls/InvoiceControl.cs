@@ -29,7 +29,6 @@ namespace DB3Client.Controls
             Sale = sale;
             InitializeComponent();
             SetGridColumnsItems();
-            SetGridSize();
             LoadDataFromDb();
 
 
@@ -112,25 +111,35 @@ namespace DB3Client.Controls
             mlLabel20.Text = ownerMol.FirstName + " " + ownerMol.LastName;
             mlLabel21.Text = owner.Address;
             double total = 0;
+
+            List<GridItem> items = new List<GridItem>();
             foreach (var soldItem in Sale.SoldItems)
             {
-                var item = await SAItem.GetItemsById(soldItem.ItemId.ToString());
-                string name = item.ToString();
-                string quantity = soldItem.Quantity.ToString();
-                int measurementUnit = item.MeasurmentUnit;
-                string price = soldItem.Price.ToString();
-                
+                CommonItem item = await SAItem.GetItemsById(soldItem.ItemId.ToString());
+                GridItem gridItem = new GridItem();
+                gridItem.Name = item.ToString();
+                gridItem.Quantity = soldItem.Quantity.ToString();
+                if (DataHolder.UserCulture.TwoLetterISOLanguageName == "bg")
+                {
+                    Enums.UnitTypesBg types = (Enums.UnitTypesBg)item.MeasurmentUnit;
+                    gridItem.MeasurementUnitString = types.ToString();
+                }
+                else
+                {
+                    Enums.UnitTypes types = (Enums.UnitTypes)item.MeasurmentUnit;
+                    gridItem.MeasurementUnitString = types.ToString();
+                }
+                gridItem.Price = soldItem.Price;
                 var vatPrice = soldItem.Price;
-
-                float totalPrice = float.Parse(quantity) * (float)vatPrice;
-                total += totalPrice;
-                dgvItems.Rows.Add(name, quantity, measurementUnit, price, totalPrice);
-                
-
-
+                gridItem.Total = soldItem.Quantity * vatPrice;
+                total += (double) (soldItem.Quantity * vatPrice);
+                items.Add(gridItem);
+              
             }
+            dgvItems.DataSource = items;
 
-
+            // do not change set grid size and export method order!
+            SetGridSize();
             ExportInvoiceToPdf();
         }
         public void SetGridColumnsItems()
@@ -143,23 +152,23 @@ namespace DB3Client.Controls
 
 
             DataGridViewTextBoxColumn c1 = new DataGridViewTextBoxColumn();
-            c1.Name = "productName";
+            c1.Name = "Name";
             c1.HeaderText = DataHolder.GetString("name");
-            c1.DataPropertyName = "productName";
+            c1.DataPropertyName = "Name";
             c1.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
             dgvItems.Columns.Add(c1);
 
             DataGridViewTextBoxColumn c2 = new DataGridViewTextBoxColumn();
             c2.Name = "quantity";
             c2.HeaderText = DataHolder.GetString("quantity");
-            c2.DataPropertyName = "quantity";
+            c2.DataPropertyName = "Quantity";
             c2.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
             dgvItems.Columns.Add(c2);
 
             DataGridViewTextBoxColumn c3 = new DataGridViewTextBoxColumn();
             c3.Name = "MeasurementUnit";
             c3.HeaderText = DataHolder.GetString("measurementUnit");
-            c3.DataPropertyName = "MeasuremnetUnit";
+            c3.DataPropertyName = "MeasurementUnitString";
             c3.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
             dgvItems.Columns.Add(c3);
 
@@ -173,12 +182,21 @@ namespace DB3Client.Controls
             DataGridViewTextBoxColumn c5 = new DataGridViewTextBoxColumn();
             c5.Name = "TotalPrice";
             c5.HeaderText = DataHolder.GetString("total_price");
-            c5.DataPropertyName = "Price";
+            c5.DataPropertyName = "Total";
             c5.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
             dgvItems.Columns.Add(c5);
 
 
 
         }
+    }
+
+    public class GridItem
+    {
+        public string Name { get; set; }
+        public string Quantity { get; set; }
+        public string MeasurementUnitString { get; set; }
+        public decimal Price { get; set; }
+        public decimal Total { get; set; }
     }
 }
