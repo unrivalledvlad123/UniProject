@@ -31,8 +31,7 @@ namespace DB3Client.Controls
             tabControlSales.SelectedTab = metroTabPage1;
             cbWholesale.Checked = false;
             gbClientInfo.Enabled = false;
-
-
+            
         }
 
         #region // < ========= Methods =========> //
@@ -187,14 +186,7 @@ namespace DB3Client.Controls
             }
 
             var sale = await SASale.PostCreateDirectSale(s);
-            if (sale == null)
-            {
-                MessageBox.Show("Not saved!");
-            }
-            else
-            {
-                MessageBox.Show("SAVED!");
-            }
+            MessageBox.Show(sale == null ? "Not saved!" : "SAVED!");
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

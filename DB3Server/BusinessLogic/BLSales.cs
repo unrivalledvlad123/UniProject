@@ -47,8 +47,8 @@ namespace DB3Server.BusinessLogic
                 if (isWhole)
                 {
                     var max = entities.Invoices.Max(h => (long?) h.InvoiceId);
-                   long id =  (max == null? 0 : (long) max) + 1;
-                   var invoice = new Invoice();
+                    long id = (max == null ? 0 : (long) max) + 1;
+                    var invoice = new Invoice();
                     invoice.PartnerId = s.BuyerId;
                     invoice.OwnerId = s.SellerId;
                     invoice.SaleId = s.SaleId;
