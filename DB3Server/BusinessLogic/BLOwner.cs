@@ -23,6 +23,8 @@ namespace DB3Server.BusinessLogic
                 owner.Phone = dbOwner.Phone;
                 owner.Bulstat = dbOwner.Bulstat;
                 owner.VatNumber = dbOwner.VATNumber;
+                owner.Bank = dbOwner.Bank;
+                owner.Iban = dbOwner.IBAN;
             }
             return owner;
         }
@@ -38,6 +40,8 @@ namespace DB3Server.BusinessLogic
             dbOwner.Phone = oldOwner.Phone;
             dbOwner.VATNumber = oldOwner.VatNumber;
             dbOwner.Bulstat = oldOwner.Bulstat;
+            dbOwner.Bank = oldOwner.Bank;
+            dbOwner.IBAN = oldOwner.Iban;
 
             entities.Owners.Attach(dbOwner);
             var entry = entities.Entry(dbOwner);
@@ -47,6 +51,8 @@ namespace DB3Server.BusinessLogic
             entry.Property(e => e.Phone).IsModified = true;
             entry.Property(e => e.VATNumber).IsModified = true;
             entry.Property(e => e.Bulstat).IsModified = true;
+            entry.Property(e => e.Bank).IsModified = true;
+            entry.Property(e => e.IBAN).IsModified = true;
             entities.SaveChanges();
             return true;
         }
@@ -62,6 +68,7 @@ namespace DB3Server.BusinessLogic
             mol.LastName = newMol.LastName;
             mol.Phone = newMol.Phone;
             mol.MolId = Guid.NewGuid();
+            mol.IsPrimary = false;
             entities.MOLs.Add(mol);
             entities.SaveChanges();
             return true;
@@ -82,6 +89,7 @@ namespace DB3Server.BusinessLogic
                 mol.LastName = dbMol.LastName;
                 mol.MolId = dbMol.MolId;
                 mol.Phone = dbMol.Phone;
+                mol.IsPrimery = dbMol.IsPrimary;
                 allMols.Add(mol);
             }
             return allMols;
@@ -107,6 +115,41 @@ namespace DB3Server.BusinessLogic
             entry.Property(e => e.LastName).IsModified = true;
             entities.SaveChanges();
             return true;
+        }
+
+        internal static CommonMol ChangePrimary(Guid oldMolId,Guid newMolId)
+        {
+            CommonMol result = new CommonMol();
+            DatabaseEntities entities = new DatabaseEntities();
+            MOL dbMol = entities.MOLs.FirstOrDefault(p => p.MolId == oldMolId);
+            if (dbMol != null)
+            {
+                dbMol.IsPrimary = false;
+                entities.MOLs.Attach(dbMol);
+                var entry = entities.Entry(dbMol);
+                entry.Property(e => e.IsPrimary).IsModified = true;
+                entities.SaveChanges();
+            }
+
+            MOL newPrimeryMol = entities.MOLs.FirstOrDefault(p => p.MolId == newMolId);
+            if (newPrimeryMol != null)
+            {
+                newPrimeryMol.IsPrimary = true;
+                entities.MOLs.Attach(newPrimeryMol);
+                var entry = entities.Entry(newPrimeryMol);
+                entry.Property(e => e.IsPrimary).IsModified = true;
+
+                result.MolId = newPrimeryMol.MolId;
+                result.IsPrimery = newPrimeryMol.IsPrimary;
+                result.OwnerId = newPrimeryMol.OwnerId;
+                result.Address = newPrimeryMol.Address;
+                result.Email = newPrimeryMol.Email;
+                result.FirstName = newPrimeryMol.FirstName;
+                result.LastName = newPrimeryMol.LastName;
+                result.Phone = newPrimeryMol.Phone;
+                entities.SaveChanges();
+            }
+            return result;
         }
 
         internal static bool DeleteMol(Guid molId)

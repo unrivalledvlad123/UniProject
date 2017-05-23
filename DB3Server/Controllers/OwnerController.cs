@@ -47,7 +47,14 @@ namespace DB3Server.Controllers
         {
             return BLOwner.DeleteMol(molId);
         }
+
+        [System.Web.Http.Route("api/owner/changeprimery")]
+        public CommonMol PostChangePrimety([FromBody] List<Guid> molIds)
+        {
+            return BLOwner.ChangePrimary(molIds[0], molIds[1]);
+        }
+        
     }
-   
+
 
 }

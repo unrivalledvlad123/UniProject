@@ -540,4 +540,19 @@
   <data name="tansactions" xml:space="preserve">
     <value>Tansactions</value>
   </data>
+  <data name="all_available_MOLS" xml:space="preserve">
+    <value>All available Acc persons.</value>
+  </data>
+  <data name="primery_MOL" xml:space="preserve">
+    <value>Primery Accountable person. You can have only one</value>
+  </data>
+  <data name="bank" xml:space="preserve">
+    <value>Bank:</value>
+  </data>
+  <data name="iban" xml:space="preserve">
+    <value>IBAN:</value>
+  </data>
+  <data name="manage_mol" xml:space="preserve">
+    <value>Manage Accountable persons</value>
+  </data>
 </root>

@@ -74,7 +74,8 @@ namespace DB3Client.Forms.ContractsForms
             mol.FirstName = tbFirstNameMol.Text;
             mol.LastName = tbLastNameMol.Text;
             mol.Phone = tbPhoneMolContract.Text;
-            bool success = false;
+            mol.IsPrimery = false;
+            bool success;
             if (mol.MolId == Guid.Empty)
             {
                 success = await SAOwner.PostCreateMol(mol);

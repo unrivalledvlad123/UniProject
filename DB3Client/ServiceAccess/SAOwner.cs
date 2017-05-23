@@ -166,5 +166,35 @@ namespace DB3Client.ServiceAccess
             }
         }
 
+        public static async Task<CommonMol> SetPrimery(CommonMol oldMol, CommonMol newMol)
+        {
+            CommonMol mol = new CommonMol();
+            List<Guid>  ids = new List<Guid>();
+            ids.Add(oldMol.MolId);
+            ids.Add(newMol.MolId);
+            HttpResponseMessage response;
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(DataHolder.ServerAddress);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic");
+
+                try
+                {
+                    response = await client.PostAsJsonAsync("api/owner/changeprimery", ids);
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw new Exception(ex.InnerException.Message);
+                }
+
+                if (response.IsSuccessStatusCode)
+                {
+                    mol = await response.Content.ReadAsAsync<CommonMol>();
+                }
+
+            }
+            return mol;
+        }
+
     }
 }

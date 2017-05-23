@@ -234,7 +234,7 @@ namespace DB3Client.Controls
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackgroundImage = global::DB3Client.Properties.Resources.invoice1;
+           // this.pictureBox1.BackgroundImage = global::DB3Client.Properties.Resources.invoice1;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBox1.Location = new System.Drawing.Point(7, 65);
             this.pictureBox1.Name = "pictureBox1";

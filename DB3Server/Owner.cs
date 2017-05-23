@@ -29,6 +29,9 @@ namespace DB3Server
         public string Email { get; set; }
         public string VATNumber { get; set; }
         public string Bulstat { get; set; }
+        public string Bank { get; set; }
+        public string SWIFTCode { get; set; }
+        public string IBAN { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<User> Users { get; set; }

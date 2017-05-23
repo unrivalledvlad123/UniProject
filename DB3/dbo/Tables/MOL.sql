@@ -6,8 +6,11 @@
     [Phone]     VARCHAR (200)    NULL,
     [Email]     VARCHAR (200)    NULL,
     [OwnerId]   UNIQUEIDENTIFIER NOT NULL,
+    [IsPrimary] BIT              NOT NULL,
     CONSTRAINT [PK_MOL] PRIMARY KEY CLUSTERED ([MolId] ASC)
 );
+
+
 
 
 

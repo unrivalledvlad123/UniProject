@@ -74,5 +74,6 @@
     <Build Include="dbo\Tables\Item.sql" />
     <Build Include="dbo\Tables\WarehouseItems.sql" />
     <Build Include="dbo\Tables\Invoice.sql" />
+    <Build Include="dbo\Tables\ItemTypesDDS.sql" />
   </ItemGroup>
 </Project>

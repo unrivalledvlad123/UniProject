@@ -245,6 +245,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
     <Compile Include="ServiceAccess\SAContract.cs" />
     <Compile Include="ServiceAccess\SAItem.cs" />
     <Compile Include="ServiceAccess\SAOwner.cs" />
@@ -311,16 +316,10 @@
     <EmbeddedResource Include="Forms\TrasactionForms\ViewTransactionForm.resx">
       <DependentUpon>ViewTransactionForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
+    <EmbeddedResource Include="Resource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -344,11 +343,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\emptyBasket.jpg" />
+    <None Include="Resources\nav_left_green.png" />
+    <None Include="Resources\nav_right_red.png" />
+    <None Include="Resources\nav_left_green_shadow.png" />
+    <None Include="Resources\nav_right_red_shadow.png" />
+    <None Include="Resources\add2.png" />
+    <None Include="Resources\blueLine.png" />    <None Include="Resources\emptyBasket.jpg" />
     <None Include="Resources\emptyBasket1.jpg" />
     <None Include="Resources\invoice.jpg" />
-    <None Include="Resources\invoice1.jpg" />
-    <Content Include="Resourses\Images\200x200.png" />
+    <None Include="Resources\invoice1.jpg" />    <Content Include="Resourses\Images\200x200.png" />
     <Content Include="Resourses\Images\ico.ico" />
     <Content Include="Resourses\Images\50x400 mainFormLogo.png" />
   </ItemGroup>

@@ -15,6 +15,7 @@ using Common.Classes;
 using DB3Client.Forms;
 using DB3Client.Forms.AdminForms;
 using DB3Client.ServiceAccess;
+using MetroFramework.Properties;
 using Newtonsoft.Json.Linq;
 
 namespace DB3Client.Controls
@@ -23,13 +24,17 @@ namespace DB3Client.Controls
     {
         private static List<CommonUser> AllUsers;
         private static List<CommonMol> AllMols;
+        private static  List<CommonMol> NonPrimeryMols = new List<CommonMol>();
+        private static CommonMol PrimeryMol = new CommonMol();
 
 
         public AdminControl()
         {
             InitializeComponent();
+            NonPrimeryMols.Clear();
             SetGridColomns();
             SetGridColomnsMols();
+            SetGridColomnsMolsPrimary();
             LoadData();
             LoadCompanyData();
             LoadMolList();
@@ -143,6 +148,60 @@ namespace DB3Client.Controls
             dgvMol.Columns.Add(c6);
 
         }
+        public void SetGridColomnsMolsPrimary()
+        {
+            dgvPrimaryMol.DataSource = null;
+            dgvPrimaryMol.Columns.Clear();
+            dgvPrimaryMol.AutoGenerateColumns = false;
+            dgvPrimaryMol.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvPrimaryMol.RowHeadersVisible = false;
+
+
+            DataGridViewTextBoxColumn c1 = new DataGridViewTextBoxColumn();
+            c1.Name = "firstname";
+            c1.HeaderText = DataHolder.GetString("firstname_grid");
+            c1.DataPropertyName = "FirstName";
+            c1.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
+            dgvPrimaryMol.Columns.Add(c1);
+
+            DataGridViewTextBoxColumn c2 = new DataGridViewTextBoxColumn();
+            c2.Name = "lastname";
+            c2.HeaderText = DataHolder.GetString("lastname_grid");
+            c2.DataPropertyName = "LastName";
+            c2.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
+            dgvPrimaryMol.Columns.Add(c2);
+
+            DataGridViewTextBoxColumn c3 = new DataGridViewTextBoxColumn();
+            c3.Name = "phone";
+            c3.HeaderText = DataHolder.GetString("phone_grid");
+            c3.DataPropertyName = "Phone";
+            c3.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
+            dgvPrimaryMol.Columns.Add(c3);
+
+            DataGridViewTextBoxColumn c4 = new DataGridViewTextBoxColumn();
+            c4.Name = "email";
+            c4.HeaderText = DataHolder.GetString("email_grid");
+            c4.DataPropertyName = "Email";
+            c4.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
+            dgvPrimaryMol.Columns.Add(c4);
+
+            DataGridViewTextBoxColumn c5 = new DataGridViewTextBoxColumn();
+            c5.Name = "molId";
+            c5.HeaderText = "MolId";
+            c5.DataPropertyName = "MolId";
+            c5.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
+            c5.Visible = false;
+            dgvPrimaryMol.Columns.Add(c5);
+
+            DataGridViewTextBoxColumn c6 = new DataGridViewTextBoxColumn();
+            c6.Name = "Address";
+            c6.HeaderText = "Address";
+            c6.DataPropertyName = "Address";
+            c6.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
+            c6.Visible = false;
+            dgvPrimaryMol.Columns.Add(c6);
+
+        }
 
         public async void LoadData()
         {
@@ -158,12 +217,29 @@ namespace DB3Client.Controls
             labelPhone.Text = !string.IsNullOrEmpty(DataHolder.Owner.Phone) ? DataHolder.Owner.Phone : "";
             labelBulstat.Text = !string.IsNullOrEmpty(DataHolder.Owner.Bulstat) ? DataHolder.Owner.Bulstat : "";
             labelVAT.Text = !string.IsNullOrEmpty(DataHolder.Owner.VatNumber) ? DataHolder.Owner.VatNumber : "";
+            labelBank.Text = !string.IsNullOrEmpty(DataHolder.Owner.Bank) ? DataHolder.Owner.Bank : "";
+            labelIban.Text = !string.IsNullOrEmpty(DataHolder.Owner.Iban) ? DataHolder.Owner.Iban : "";
         }
 
         public async void LoadMolList()
         {
             AllMols = await SAOwner.getAllMols(DataHolder.Owner.OwnerId);
-            dgvMol.DataSource = AllMols;
+           
+            List<CommonMol> primeryMol = new List<CommonMol>();
+            foreach (var mol in AllMols)
+            {
+                if (mol.IsPrimery)
+                {
+                    primeryMol.Add(mol);
+                    PrimeryMol = mol;
+                }
+                else
+                {
+                    NonPrimeryMols.Add(mol);
+                }
+            }
+            dgvMol.DataSource = NonPrimeryMols;
+            dgvPrimaryMol.DataSource = primeryMol;
         }
 
         public void LoadSettings()
@@ -176,6 +252,7 @@ namespace DB3Client.Controls
 
         #region // < ====== Events =====> //
 
+        #region // < ========== Manage users Events ============ > //
         private void dgvUsers_SelectionChanged(object sender, EventArgs e)
         {
             if (dgvUsers.SelectedRows.Count != 1)
@@ -190,43 +267,13 @@ namespace DB3Client.Controls
             }
         }
 
-        private void dgvMol_SelectionChanged(object sender, EventArgs e)
-        {
-            if (dgvMol.SelectedRows.Count != 1)
-            {
-                btnEditMol.Enabled = false;
-                btnDeleteMol.Enabled = false;
-            }
-            else
-            {
-                btnEditMol.Enabled = true;
-                btnDeleteMol.Enabled = true;
-            }
-        }
-
-        private void btnEditInfo_Click(object sender, EventArgs e)
-        {
-            EditCompanyForm editForm = new EditCompanyForm();
-
-            if (editForm.ShowDialog() == DialogResult.OK)
-            {
-                labelCompanyName.Text = editForm.Owner2.CompanyName;
-                labelAddress.Text = editForm.Owner2.Address;
-                labelEmail.Text = editForm.Owner2.Email;
-                labelPhone.Text = editForm.Owner2.Phone;
-                labelVAT.Text = editForm.Owner2.VatNumber;
-                labelBulstat.Text = editForm.Owner2.Bulstat;
-
-            }
-        }
-
         private void btnAddNewUser_Click(object sender, EventArgs e)
         {
             AddNewUserForm addForm = new AddNewUserForm();
 
             if (addForm.ShowDialog() == DialogResult.OK)
             {
-               LoadData();
+                LoadData();
             }
         }
         private void btnEditUser_Click(object sender, EventArgs e)
@@ -247,7 +294,7 @@ namespace DB3Client.Controls
         {
             if (dgvUsers.SelectedRows.Count == 1 && dgvUsers.SelectedRows[0] != null)
             {
-                CommonUser selectedItem = (CommonUser) dgvUsers.SelectedRows[0].DataBoundItem;
+                CommonUser selectedItem = (CommonUser)dgvUsers.SelectedRows[0].DataBoundItem;
                 if (selectedItem.UserId != DataHolder.CurrnetUserId)
                 {
                     bool success = await SAUsers.PostDeleteUser(selectedItem.UserId);
@@ -257,7 +304,7 @@ namespace DB3Client.Controls
                     }
                     else
                     {
-                        MessageBox.Show( DataHolder.GetString("error_deleting_user"), DataHolder.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(DataHolder.GetString("error_deleting_user"), DataHolder.GetString("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
@@ -267,6 +314,42 @@ namespace DB3Client.Controls
 
             }
         }
+
+        #endregion
+
+        #region // < ========== Manage Company Events ============ > //
+        private void dgvMol_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvMol.SelectedRows.Count != 1)
+            {
+                btnEditMol.Enabled = false;
+                btnDeleteMol.Enabled = false;
+            }
+            else
+            {
+                btnEditMol.Enabled = true;
+                btnDeleteMol.Enabled = true;
+            }
+        }
+        private void btnEditInfo_Click(object sender, EventArgs e)
+        {
+            EditCompanyForm editForm = new EditCompanyForm();
+
+            if (editForm.ShowDialog() == DialogResult.OK)
+            {
+                labelCompanyName.Text = editForm.Owner2.CompanyName;
+                labelAddress.Text = editForm.Owner2.Address;
+                labelEmail.Text = editForm.Owner2.Email;
+                labelPhone.Text = editForm.Owner2.Phone;
+                labelVAT.Text = editForm.Owner2.VatNumber;
+                labelBulstat.Text = editForm.Owner2.Bulstat;
+                labelBank.Text = editForm.Owner2.Bank;
+                labelIban.Text = editForm.Owner2.Iban;
+
+
+            }
+        }
+
         private void btnAddMol_Click(object sender, EventArgs e)
         {
             AddEditMolForm form = new AddEditMolForm(null);
@@ -281,7 +364,7 @@ namespace DB3Client.Controls
         {
             if (dgvMol.SelectedRows.Count == 1 && dgvMol.SelectedRows[0] != null)
             {
-                CommonMol selectedItem = (CommonMol) dgvMol.SelectedRows[0].DataBoundItem;
+                CommonMol selectedItem = (CommonMol)dgvMol.SelectedRows[0].DataBoundItem;
                 AddEditMolForm form = new AddEditMolForm(selectedItem);
 
                 if (form.ShowDialog() == DialogResult.OK)
@@ -308,6 +391,86 @@ namespace DB3Client.Controls
             }
         }
 
+        private async void pictureBoxGreen_Click(object sender, EventArgs e)
+        {
+            if (dgvMol.SelectedRows.Count == 1 && dgvMol.SelectedRows[0] != null)
+            {
+                CommonMol selectedItem = (CommonMol) dgvMol.SelectedRows[0].DataBoundItem;
+                if (DataHolder.PrimeryMol == null)
+                {
+                    CommonMol tempMol = new CommonMol();
+                    tempMol.MolId = Guid.NewGuid();
+
+                    CommonMol newPrimeryMol = await SAOwner.SetPrimery(tempMol, selectedItem);
+                    CommonMol molToRemove = NonPrimeryMols.FirstOrDefault(p => p.MolId == newPrimeryMol.MolId);
+                    NonPrimeryMols.Remove(molToRemove);
+                    List<CommonMol> temp = new List<CommonMol>();
+                    temp.Add(newPrimeryMol);
+                    dgvPrimaryMol.DataSource = null;
+                    dgvPrimaryMol.DataSource = temp;
+
+                    if (PrimeryMol.OwnerId != Guid.Empty)
+                    {
+                        PrimeryMol.IsPrimery = false;
+                        NonPrimeryMols.Add(PrimeryMol);
+                    }
+
+                    dgvMol.DataSource = null;
+                    dgvMol.DataSource = NonPrimeryMols;
+                    PrimeryMol = newPrimeryMol;
+                    DataHolder.PrimeryMol = newPrimeryMol;
+
+                }
+            }
+        }
+
+        private void pictureBoxGreen_MouseEnter(object sender, EventArgs e)
+        {
+            pictureBoxGreen.BackgroundImage = DB3Client.Resource.nav_left_green_shadow;
+        }
+
+        private void pictureBoxGreen_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBoxGreen.BackgroundImage = DB3Client.Resource.nav_left_green;
+        }
+
+        private async void pictureBoxRed_Click(object sender, EventArgs e)
+        {
+            if (dgvPrimaryMol.SelectedRows.Count == 1 && dgvPrimaryMol.SelectedRows[0] != null)
+            {
+                CommonMol selectedItem = (CommonMol) dgvPrimaryMol.SelectedRows[0].DataBoundItem;
+
+                CommonMol tempMol = new CommonMol();
+                tempMol.MolId = Guid.NewGuid();
+
+                CommonMol newNonPrimeryMol = await SAOwner.SetPrimery(selectedItem, tempMol);
+                PrimeryMol = new CommonMol();
+                DataHolder.PrimeryMol = null;
+                selectedItem.IsPrimery = false;
+                NonPrimeryMols.Add(selectedItem);
+                dgvPrimaryMol.DataSource = null;
+                dgvMol.DataSource = null;
+                dgvMol.DataSource = NonPrimeryMols;
+
+            }
+        }
+
+        private void pictureBoxRed_MouseEnter(object sender, EventArgs e)
+        {
+            pictureBoxRed.BackgroundImage = DB3Client.Resource.nav_right_red_shadow;
+        }
+
+        private void pictureBoxRed_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBoxRed.BackgroundImage = DB3Client.Resource.nav_right_red;
+        }
+
+
+
+        #endregion
+
+        #region // < ========== Settings Events ============ > //
+
         private void btnSaveSettings_Click(object sender, EventArgs e)
         {
             try
@@ -327,10 +490,18 @@ namespace DB3Client.Controls
             }
 
         }
+
+
+        #endregion
+
+        #region // < ========= Global events ========== > //
         private void tabControlAdmin_SelectedIndexChanged(object sender, EventArgs e)
         {
             labelErrorSettings.Visible = false;
         }
+
+
+        #endregion
 
         
         #endregion

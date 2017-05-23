@@ -33,12 +33,15 @@ namespace DB3Client.Controls
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle43 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle44 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle45 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControlAdmin = new Common.Forms.Base.MLTabControl();
             this.metroTabPage1 = new Common.Forms.Base.MLTabPage();
             this.dgvUsers = new MetroFramework.Controls.MetroGrid();
@@ -46,10 +49,26 @@ namespace DB3Client.Controls
             this.btnEditUser = new Common.Forms.Base.MLButton();
             this.btnDeleteUser = new Common.Forms.Base.MLButton();
             this.metroTabPage2 = new Common.Forms.Base.MLTabPage();
-            this.mlGroupBox2 = new Common.Forms.Base.MLGroupBox();
             this.mlGroupBox1 = new Common.Forms.Base.MLGroupBox();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.mlGroupBox2 = new Common.Forms.Base.MLGroupBox();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.dgvMol = new MetroFramework.Controls.MetroGrid();
+            this.dgvPrimaryMol = new MetroFramework.Controls.MetroGrid();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.mlLabel8 = new Common.Forms.Base.MLLabel();
+            this.mlLabel9 = new Common.Forms.Base.MLLabel();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnEditInfo = new Common.Forms.Base.MLButton();
             this.btnDeleteMol = new Common.Forms.Base.MLButton();
+            this.btnAddMol = new Common.Forms.Base.MLButton();
+            this.btnEditMol = new Common.Forms.Base.MLButton();
             this.groupBox1 = new Common.Forms.Base.MLGroupBox();
+            this.labelIban = new Common.Forms.Base.MLLabel();
+            this.mlLabel5 = new Common.Forms.Base.MLLabel();
+            this.labelBank = new Common.Forms.Base.MLLabel();
+            this.mlLabel7 = new Common.Forms.Base.MLLabel();
             this.labelBulstat = new Common.Forms.Base.MLLabel();
             this.mlLabel2 = new Common.Forms.Base.MLLabel();
             this.labelVAT = new Common.Forms.Base.MLLabel();
@@ -62,10 +81,6 @@ namespace DB3Client.Controls
             this.metroLabel4 = new Common.Forms.Base.MLLabel();
             this.labelCompanyName = new Common.Forms.Base.MLLabel();
             this.metroLabel1 = new Common.Forms.Base.MLLabel();
-            this.btnEditInfo = new Common.Forms.Base.MLButton();
-            this.btnAddMol = new Common.Forms.Base.MLButton();
-            this.dgvMol = new MetroFramework.Controls.MetroGrid();
-            this.btnEditMol = new Common.Forms.Base.MLButton();
             this.metroTabPage3 = new Common.Forms.Base.MLTabPage();
             this.mlGroupBox3 = new Common.Forms.Base.MLGroupBox();
             this.tbVatMultiplier = new System.Windows.Forms.NumericUpDown();
@@ -74,16 +89,32 @@ namespace DB3Client.Controls
             this.tbPdfSaveLocation = new Common.Forms.Base.MLTextBox();
             this.ff = new Common.Forms.Base.MLLabel();
             this.mlLabel1 = new Common.Forms.Base.MLLabel();
+            this.pictureBoxRed = new System.Windows.Forms.PictureBox();
+            this.pictureBoxGreen = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.mlErrorLabel1 = new Common.Forms.Base.MLErrorLabel();
+            this.mlGroupBox4 = new Common.Forms.Base.MLGroupBox();
             this.tabControlAdmin.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.metroTabPage2.SuspendLayout();
             this.mlGroupBox1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.mlGroupBox2.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMol)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPrimaryMol)).BeginInit();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.metroTabPage3.SuspendLayout();
             this.mlGroupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbVatMultiplier)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRed)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGreen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.mlGroupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlAdmin
@@ -94,8 +125,8 @@ namespace DB3Client.Controls
             this.tabControlAdmin.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlAdmin.Location = new System.Drawing.Point(0, 0);
             this.tabControlAdmin.Name = "tabControlAdmin";
-            this.tabControlAdmin.SelectedIndex = 2;
-            this.tabControlAdmin.Size = new System.Drawing.Size(933, 560);
+            this.tabControlAdmin.SelectedIndex = 1;
+            this.tabControlAdmin.Size = new System.Drawing.Size(932, 560);
             this.tabControlAdmin.TabIndex = 0;
             this.tabControlAdmin.UseSelectable = true;
             this.tabControlAdmin.SelectedIndexChanged += new System.EventHandler(this.tabControlAdmin_SelectedIndexChanged);
@@ -111,7 +142,7 @@ namespace DB3Client.Controls
             this.metroTabPage1.HorizontalScrollbarSize = 10;
             this.metroTabPage1.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage1.Name = "metroTabPage1";
-            this.metroTabPage1.Size = new System.Drawing.Size(925, 518);
+            this.metroTabPage1.Size = new System.Drawing.Size(924, 518);
             this.metroTabPage1.TabIndex = 0;
             this.metroTabPage1.Text = "manage_users";
             this.metroTabPage1.VerticalScrollbarBarColor = true;
@@ -128,23 +159,23 @@ namespace DB3Client.Controls
             this.dgvUsers.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvUsers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvUsers.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle37.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle37.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle37.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle37.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle37.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle37.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle37;
             this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvUsers.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle38.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle38.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle38.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle38.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle38.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle38.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvUsers.DefaultCellStyle = dataGridViewCellStyle38;
             this.dgvUsers.EnableHeadersVisualStyles = false;
             this.dgvUsers.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dgvUsers.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -152,17 +183,17 @@ namespace DB3Client.Controls
             this.dgvUsers.Name = "dgvUsers";
             this.dgvUsers.ReadOnly = true;
             this.dgvUsers.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvUsers.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle39.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle39.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle39.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle39.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle39.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle39.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvUsers.RowHeadersDefaultCellStyle = dataGridViewCellStyle39;
             this.dgvUsers.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvUsers.Size = new System.Drawing.Size(919, 294);
+            this.dgvUsers.Size = new System.Drawing.Size(919, 300);
             this.dgvUsers.TabIndex = 4;
             this.dgvUsers.SelectionChanged += new System.EventHandler(this.dgvUsers_SelectionChanged);
             // 
@@ -198,61 +229,305 @@ namespace DB3Client.Controls
             // 
             // metroTabPage2
             // 
-            this.metroTabPage2.Controls.Add(this.mlGroupBox2);
             this.metroTabPage2.Controls.Add(this.mlGroupBox1);
             this.metroTabPage2.HorizontalScrollbarBarColor = true;
             this.metroTabPage2.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.HorizontalScrollbarSize = 10;
             this.metroTabPage2.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage2.Name = "metroTabPage2";
-            this.metroTabPage2.Size = new System.Drawing.Size(925, 518);
+            this.metroTabPage2.Size = new System.Drawing.Size(924, 518);
             this.metroTabPage2.TabIndex = 1;
             this.metroTabPage2.Text = "manage_company";
             this.metroTabPage2.VerticalScrollbarBarColor = true;
             this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.VerticalScrollbarSize = 10;
             // 
-            // mlGroupBox2
-            // 
-            this.mlGroupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.mlGroupBox2.BackColor = System.Drawing.Color.White;
-            this.mlGroupBox2.Location = new System.Drawing.Point(447, 4);
-            this.mlGroupBox2.Name = "mlGroupBox2";
-            this.mlGroupBox2.Size = new System.Drawing.Size(437, 514);
-            this.mlGroupBox2.TabIndex = 8;
-            this.mlGroupBox2.TabStop = false;
-            // 
             // mlGroupBox1
             // 
-            this.mlGroupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.mlGroupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.mlGroupBox1.BackColor = System.Drawing.Color.White;
-            this.mlGroupBox1.Controls.Add(this.btnDeleteMol);
+            this.mlGroupBox1.Controls.Add(this.tableLayoutPanel3);
             this.mlGroupBox1.Controls.Add(this.groupBox1);
-            this.mlGroupBox1.Controls.Add(this.btnEditInfo);
-            this.mlGroupBox1.Controls.Add(this.btnAddMol);
-            this.mlGroupBox1.Controls.Add(this.dgvMol);
-            this.mlGroupBox1.Controls.Add(this.btnEditMol);
             this.mlGroupBox1.Location = new System.Drawing.Point(4, 4);
             this.mlGroupBox1.Name = "mlGroupBox1";
-            this.mlGroupBox1.Size = new System.Drawing.Size(437, 514);
+            this.mlGroupBox1.Size = new System.Drawing.Size(917, 514);
             this.mlGroupBox1.TabIndex = 7;
             this.mlGroupBox1.TabStop = false;
             // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Controls.Add(this.mlGroupBox2, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.mlGroupBox4, 1, 0);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(6, 190);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 318F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(905, 318);
+            this.tableLayoutPanel3.TabIndex = 8;
+            // 
+            // mlGroupBox2
+            // 
+            this.mlGroupBox2.BackColor = System.Drawing.Color.White;
+            this.mlGroupBox2.Controls.Add(this.tableLayoutPanel5);
+            this.mlGroupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mlGroupBox2.Location = new System.Drawing.Point(3, 3);
+            this.mlGroupBox2.Name = "mlGroupBox2";
+            this.mlGroupBox2.Size = new System.Drawing.Size(446, 312);
+            this.mlGroupBox2.TabIndex = 1;
+            this.mlGroupBox2.TabStop = false;
+            this.mlGroupBox2.Text = "manage_mol";
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 1;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel1, 0, 2);
+            this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel4, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.pictureBox1, 0, 1);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 16);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 3;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 9F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(440, 293);
+            this.tableLayoutPanel5.TabIndex = 0;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 44F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.dgvMol, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.dgvPrimaryMol, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.mlLabel8, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.mlLabel9, 2, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 48);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(434, 242);
+            this.tableLayoutPanel1.TabIndex = 8;
+            // 
+            // dgvMol
+            // 
+            this.dgvMol.AllowUserToResizeRows = false;
+            this.dgvMol.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvMol.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvMol.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvMol.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle40.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle40.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle40.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle40.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle40.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle40.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMol.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle40;
+            this.dgvMol.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle41.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle41.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle41.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle41.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle41.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle41.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle41.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvMol.DefaultCellStyle = dataGridViewCellStyle41;
+            this.dgvMol.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvMol.EnableHeadersVisualStyles = false;
+            this.dgvMol.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.dgvMol.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dgvMol.Location = new System.Drawing.Point(242, 28);
+            this.dgvMol.Name = "dgvMol";
+            this.dgvMol.ReadOnly = true;
+            this.dgvMol.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle42.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle42.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle42.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle42.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle42.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle42.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMol.RowHeadersDefaultCellStyle = dataGridViewCellStyle42;
+            this.dgvMol.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvMol.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvMol.Size = new System.Drawing.Size(189, 220);
+            this.dgvMol.TabIndex = 6;
+            this.dgvMol.SelectionChanged += new System.EventHandler(this.dgvMol_SelectionChanged);
+            // 
+            // dgvPrimaryMol
+            // 
+            this.dgvPrimaryMol.AllowUserToAddRows = false;
+            this.dgvPrimaryMol.AllowUserToResizeRows = false;
+            this.dgvPrimaryMol.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvPrimaryMol.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvPrimaryMol.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvPrimaryMol.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle43.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle43.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle43.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle43.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle43.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle43.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle43.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPrimaryMol.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle43;
+            this.dgvPrimaryMol.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle44.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle44.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle44.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle44.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle44.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle44.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle44.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPrimaryMol.DefaultCellStyle = dataGridViewCellStyle44;
+            this.dgvPrimaryMol.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvPrimaryMol.EnableHeadersVisualStyles = false;
+            this.dgvPrimaryMol.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.dgvPrimaryMol.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dgvPrimaryMol.Location = new System.Drawing.Point(3, 28);
+            this.dgvPrimaryMol.Name = "dgvPrimaryMol";
+            this.dgvPrimaryMol.ReadOnly = true;
+            this.dgvPrimaryMol.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle45.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle45.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle45.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle45.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle45.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle45.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle45.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPrimaryMol.RowHeadersDefaultCellStyle = dataGridViewCellStyle45;
+            this.dgvPrimaryMol.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvPrimaryMol.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPrimaryMol.Size = new System.Drawing.Size(189, 220);
+            this.dgvPrimaryMol.TabIndex = 7;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Controls.Add(this.pictureBoxRed, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.pictureBoxGreen, 0, 1);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(198, 28);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 4;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(38, 220);
+            this.tableLayoutPanel2.TabIndex = 8;
+            // 
+            // mlLabel8
+            // 
+            this.mlLabel8.AutoSize = true;
+            this.mlLabel8.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.mlLabel8.Location = new System.Drawing.Point(3, 0);
+            this.mlLabel8.Name = "mlLabel8";
+            this.mlLabel8.Size = new System.Drawing.Size(93, 19);
+            this.mlLabel8.TabIndex = 9;
+            this.mlLabel8.Text = "primery_MOL";
+            // 
+            // mlLabel9
+            // 
+            this.mlLabel9.AutoSize = true;
+            this.mlLabel9.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.mlLabel9.Location = new System.Drawing.Point(242, 0);
+            this.mlLabel9.Name = "mlLabel9";
+            this.mlLabel9.Size = new System.Drawing.Size(124, 19);
+            this.mlLabel9.TabIndex = 10;
+            this.mlLabel9.Text = "all_available_MOLS";
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel4.ColumnCount = 5;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel4.Controls.Add(this.btnEditInfo, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.btnDeleteMol, 3, 0);
+            this.tableLayoutPanel4.Controls.Add(this.btnAddMol, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.btnEditMol, 2, 0);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(434, 30);
+            this.tableLayoutPanel4.TabIndex = 9;
+            // 
+            // btnEditInfo
+            // 
+            this.btnEditInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditInfo.Location = new System.Drawing.Point(3, 3);
+            this.btnEditInfo.Name = "btnEditInfo";
+            this.btnEditInfo.Size = new System.Drawing.Size(94, 23);
+            this.btnEditInfo.TabIndex = 3;
+            this.btnEditInfo.Text = "edit_company_info";
+            this.btnEditInfo.UseSelectable = true;
+            this.btnEditInfo.Click += new System.EventHandler(this.btnEditInfo_Click);
+            // 
             // btnDeleteMol
             // 
-            this.btnDeleteMol.Location = new System.Drawing.Point(330, 226);
+            this.btnDeleteMol.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDeleteMol.Location = new System.Drawing.Point(303, 3);
             this.btnDeleteMol.Name = "btnDeleteMol";
-            this.btnDeleteMol.Size = new System.Drawing.Size(102, 23);
+            this.btnDeleteMol.Size = new System.Drawing.Size(94, 23);
             this.btnDeleteMol.TabIndex = 7;
             this.btnDeleteMol.Text = "delete_mol";
             this.btnDeleteMol.UseSelectable = true;
             this.btnDeleteMol.Click += new System.EventHandler(this.btnDeleteMol_Click);
             // 
+            // btnAddMol
+            // 
+            this.btnAddMol.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddMol.Location = new System.Drawing.Point(103, 3);
+            this.btnAddMol.Name = "btnAddMol";
+            this.btnAddMol.Size = new System.Drawing.Size(94, 23);
+            this.btnAddMol.TabIndex = 4;
+            this.btnAddMol.Text = "add_mol";
+            this.btnAddMol.UseSelectable = true;
+            this.btnAddMol.Click += new System.EventHandler(this.btnAddMol_Click);
+            // 
+            // btnEditMol
+            // 
+            this.btnEditMol.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditMol.Location = new System.Drawing.Point(203, 3);
+            this.btnEditMol.Name = "btnEditMol";
+            this.btnEditMol.Size = new System.Drawing.Size(94, 23);
+            this.btnEditMol.TabIndex = 5;
+            this.btnEditMol.Text = "edit_mol";
+            this.btnEditMol.UseSelectable = true;
+            this.btnEditMol.Click += new System.EventHandler(this.btnEditMol_Click);
+            // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.BackColor = System.Drawing.Color.White;
+            this.groupBox1.Controls.Add(this.labelIban);
+            this.groupBox1.Controls.Add(this.mlLabel5);
+            this.groupBox1.Controls.Add(this.labelBank);
+            this.groupBox1.Controls.Add(this.mlLabel7);
             this.groupBox1.Controls.Add(this.labelBulstat);
             this.groupBox1.Controls.Add(this.mlLabel2);
             this.groupBox1.Controls.Add(this.labelVAT);
@@ -267,17 +542,56 @@ namespace DB3Client.Controls
             this.groupBox1.Controls.Add(this.metroLabel1);
             this.groupBox1.Location = new System.Drawing.Point(6, 19);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(426, 201);
+            this.groupBox1.Size = new System.Drawing.Size(905, 165);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "company_info";
             // 
+            // labelIban
+            // 
+            this.labelIban.AutoSize = true;
+            this.labelIban.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.labelIban.Location = new System.Drawing.Point(572, 104);
+            this.labelIban.Name = "labelIban";
+            this.labelIban.Size = new System.Drawing.Size(81, 19);
+            this.labelIban.TabIndex = 15;
+            this.labelIban.Text = "160160160";
+            // 
+            // mlLabel5
+            // 
+            this.mlLabel5.AutoSize = true;
+            this.mlLabel5.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.mlLabel5.Location = new System.Drawing.Point(402, 104);
+            this.mlLabel5.Name = "mlLabel5";
+            this.mlLabel5.Size = new System.Drawing.Size(35, 19);
+            this.mlLabel5.TabIndex = 14;
+            this.mlLabel5.Text = "iban";
+            // 
+            // labelBank
+            // 
+            this.labelBank.AutoSize = true;
+            this.labelBank.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.labelBank.Location = new System.Drawing.Point(572, 76);
+            this.labelBank.Name = "labelBank";
+            this.labelBank.Size = new System.Drawing.Size(80, 19);
+            this.labelBank.TabIndex = 13;
+            this.labelBank.Text = "randomVAT";
+            // 
+            // mlLabel7
+            // 
+            this.mlLabel7.AutoSize = true;
+            this.mlLabel7.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.mlLabel7.Location = new System.Drawing.Point(402, 76);
+            this.mlLabel7.Name = "mlLabel7";
+            this.mlLabel7.Size = new System.Drawing.Size(39, 19);
+            this.mlLabel7.TabIndex = 12;
+            this.mlLabel7.Text = "bank";
+            // 
             // labelBulstat
             // 
-            this.labelBulstat.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelBulstat.AutoSize = true;
             this.labelBulstat.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.labelBulstat.Location = new System.Drawing.Point(169, 160);
+            this.labelBulstat.Location = new System.Drawing.Point(572, 48);
             this.labelBulstat.Name = "labelBulstat";
             this.labelBulstat.Size = new System.Drawing.Size(81, 19);
             this.labelBulstat.TabIndex = 11;
@@ -287,7 +601,7 @@ namespace DB3Client.Controls
             // 
             this.mlLabel2.AutoSize = true;
             this.mlLabel2.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.mlLabel2.Location = new System.Drawing.Point(7, 160);
+            this.mlLabel2.Location = new System.Drawing.Point(402, 48);
             this.mlLabel2.Name = "mlLabel2";
             this.mlLabel2.Size = new System.Drawing.Size(105, 19);
             this.mlLabel2.TabIndex = 10;
@@ -295,10 +609,9 @@ namespace DB3Client.Controls
             // 
             // labelVAT
             // 
-            this.labelVAT.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelVAT.AutoSize = true;
             this.labelVAT.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.labelVAT.Location = new System.Drawing.Point(169, 132);
+            this.labelVAT.Location = new System.Drawing.Point(572, 20);
             this.labelVAT.Name = "labelVAT";
             this.labelVAT.Size = new System.Drawing.Size(80, 19);
             this.labelVAT.TabIndex = 9;
@@ -308,7 +621,7 @@ namespace DB3Client.Controls
             // 
             this.mlLabel4.AutoSize = true;
             this.mlLabel4.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.mlLabel4.Location = new System.Drawing.Point(7, 132);
+            this.mlLabel4.Location = new System.Drawing.Point(402, 20);
             this.mlLabel4.Name = "mlLabel4";
             this.mlLabel4.Size = new System.Drawing.Size(82, 19);
             this.mlLabel4.TabIndex = 8;
@@ -316,10 +629,9 @@ namespace DB3Client.Controls
             // 
             // labelEmail
             // 
-            this.labelEmail.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelEmail.AutoSize = true;
             this.labelEmail.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.labelEmail.Location = new System.Drawing.Point(169, 104);
+            this.labelEmail.Location = new System.Drawing.Point(177, 104);
             this.labelEmail.Name = "labelEmail";
             this.labelEmail.Size = new System.Drawing.Size(142, 19);
             this.labelEmail.TabIndex = 7;
@@ -337,10 +649,9 @@ namespace DB3Client.Controls
             // 
             // labelPhone
             // 
-            this.labelPhone.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelPhone.AutoSize = true;
             this.labelPhone.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.labelPhone.Location = new System.Drawing.Point(169, 76);
+            this.labelPhone.Location = new System.Drawing.Point(177, 76);
             this.labelPhone.Name = "labelPhone";
             this.labelPhone.Size = new System.Drawing.Size(96, 19);
             this.labelPhone.TabIndex = 5;
@@ -358,10 +669,9 @@ namespace DB3Client.Controls
             // 
             // labelAddress
             // 
-            this.labelAddress.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelAddress.AutoSize = true;
             this.labelAddress.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.labelAddress.Location = new System.Drawing.Point(169, 48);
+            this.labelAddress.Location = new System.Drawing.Point(177, 48);
             this.labelAddress.Name = "labelAddress";
             this.labelAddress.Size = new System.Drawing.Size(98, 19);
             this.labelAddress.TabIndex = 3;
@@ -379,10 +689,9 @@ namespace DB3Client.Controls
             // 
             // labelCompanyName
             // 
-            this.labelCompanyName.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelCompanyName.AutoSize = true;
             this.labelCompanyName.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.labelCompanyName.Location = new System.Drawing.Point(169, 20);
+            this.labelCompanyName.Location = new System.Drawing.Point(177, 20);
             this.labelCompanyName.Name = "labelCompanyName";
             this.labelCompanyName.Size = new System.Drawing.Size(93, 19);
             this.labelCompanyName.TabIndex = 1;
@@ -398,84 +707,6 @@ namespace DB3Client.Controls
             this.metroLabel1.TabIndex = 0;
             this.metroLabel1.Text = "company_name";
             // 
-            // btnEditInfo
-            // 
-            this.btnEditInfo.Location = new System.Drawing.Point(6, 226);
-            this.btnEditInfo.Name = "btnEditInfo";
-            this.btnEditInfo.Size = new System.Drawing.Size(102, 23);
-            this.btnEditInfo.TabIndex = 3;
-            this.btnEditInfo.Text = "edit_company_info";
-            this.btnEditInfo.UseSelectable = true;
-            this.btnEditInfo.Click += new System.EventHandler(this.btnEditInfo_Click);
-            // 
-            // btnAddMol
-            // 
-            this.btnAddMol.Location = new System.Drawing.Point(114, 226);
-            this.btnAddMol.Name = "btnAddMol";
-            this.btnAddMol.Size = new System.Drawing.Size(102, 23);
-            this.btnAddMol.TabIndex = 4;
-            this.btnAddMol.Text = "add_mol";
-            this.btnAddMol.UseSelectable = true;
-            this.btnAddMol.Click += new System.EventHandler(this.btnAddMol_Click);
-            // 
-            // dgvMol
-            // 
-            this.dgvMol.AllowUserToResizeRows = false;
-            this.dgvMol.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvMol.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvMol.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvMol.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dgvMol.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMol.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvMol.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvMol.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dgvMol.EnableHeadersVisualStyles = false;
-            this.dgvMol.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.dgvMol.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dgvMol.Location = new System.Drawing.Point(6, 255);
-            this.dgvMol.Name = "dgvMol";
-            this.dgvMol.ReadOnly = true;
-            this.dgvMol.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMol.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvMol.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dgvMol.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMol.Size = new System.Drawing.Size(426, 253);
-            this.dgvMol.TabIndex = 6;
-            this.dgvMol.SelectionChanged += new System.EventHandler(this.dgvMol_SelectionChanged);
-            // 
-            // btnEditMol
-            // 
-            this.btnEditMol.Location = new System.Drawing.Point(222, 226);
-            this.btnEditMol.Name = "btnEditMol";
-            this.btnEditMol.Size = new System.Drawing.Size(102, 23);
-            this.btnEditMol.TabIndex = 5;
-            this.btnEditMol.Text = "edit_mol";
-            this.btnEditMol.UseSelectable = true;
-            this.btnEditMol.Click += new System.EventHandler(this.btnEditMol_Click);
-            // 
             // metroTabPage3
             // 
             this.metroTabPage3.Controls.Add(this.mlGroupBox3);
@@ -484,7 +715,7 @@ namespace DB3Client.Controls
             this.metroTabPage3.HorizontalScrollbarSize = 10;
             this.metroTabPage3.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage3.Name = "metroTabPage3";
-            this.metroTabPage3.Size = new System.Drawing.Size(925, 518);
+            this.metroTabPage3.Size = new System.Drawing.Size(924, 518);
             this.metroTabPage3.TabIndex = 2;
             this.metroTabPage3.Text = "settings_tab";
             this.metroTabPage3.VerticalScrollbarBarColor = true;
@@ -504,7 +735,7 @@ namespace DB3Client.Controls
             this.mlGroupBox3.Controls.Add(this.mlLabel1);
             this.mlGroupBox3.Location = new System.Drawing.Point(4, 4);
             this.mlGroupBox3.Name = "mlGroupBox3";
-            this.mlGroupBox3.Size = new System.Drawing.Size(319, 511);
+            this.mlGroupBox3.Size = new System.Drawing.Size(319, 520);
             this.mlGroupBox3.TabIndex = 2;
             this.mlGroupBox3.TabStop = false;
             this.mlGroupBox3.Text = "settings";
@@ -521,7 +752,7 @@ namespace DB3Client.Controls
             this.labelErrorSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelErrorSettings.AutoSize = true;
             this.labelErrorSettings.ForeColor = System.Drawing.Color.Red;
-            this.labelErrorSettings.Location = new System.Drawing.Point(7, 418);
+            this.labelErrorSettings.Location = new System.Drawing.Point(7, 427);
             this.labelErrorSettings.MaximumSize = new System.Drawing.Size(306, 61);
             this.labelErrorSettings.Name = "labelErrorSettings";
             this.labelErrorSettings.Size = new System.Drawing.Size(0, 13);
@@ -531,7 +762,7 @@ namespace DB3Client.Controls
             // btnSaveSettings
             // 
             this.btnSaveSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSaveSettings.Location = new System.Drawing.Point(238, 482);
+            this.btnSaveSettings.Location = new System.Drawing.Point(238, 491);
             this.btnSaveSettings.Name = "btnSaveSettings";
             this.btnSaveSettings.Size = new System.Drawing.Size(75, 23);
             this.btnSaveSettings.TabIndex = 5;
@@ -589,25 +820,95 @@ namespace DB3Client.Controls
             this.mlLabel1.TabIndex = 0;
             this.mlLabel1.Text = "vat_multiplier";
             // 
+            // pictureBoxRed
+            // 
+            this.pictureBoxRed.BackgroundImage = global::DB3Client.Resource.nav_right_red;
+            this.pictureBoxRed.Location = new System.Drawing.Point(3, 113);
+            this.pictureBoxRed.Name = "pictureBoxRed";
+            this.pictureBoxRed.Size = new System.Drawing.Size(32, 30);
+            this.pictureBoxRed.TabIndex = 16;
+            this.pictureBoxRed.TabStop = false;
+            this.pictureBoxRed.Click += new System.EventHandler(this.pictureBoxRed_Click);
+            this.pictureBoxRed.MouseEnter += new System.EventHandler(this.pictureBoxRed_MouseEnter);
+            this.pictureBoxRed.MouseLeave += new System.EventHandler(this.pictureBoxRed_MouseLeave);
+            // 
+            // pictureBoxGreen
+            // 
+            this.pictureBoxGreen.BackgroundImage = global::DB3Client.Resource.nav_left_green;
+            this.pictureBoxGreen.Location = new System.Drawing.Point(3, 77);
+            this.pictureBoxGreen.Name = "pictureBoxGreen";
+            this.pictureBoxGreen.Size = new System.Drawing.Size(32, 30);
+            this.pictureBoxGreen.TabIndex = 11;
+            this.pictureBoxGreen.TabStop = false;
+            this.pictureBoxGreen.Click += new System.EventHandler(this.pictureBoxGreen_Click);
+            this.pictureBoxGreen.MouseEnter += new System.EventHandler(this.pictureBoxGreen_MouseEnter);
+            this.pictureBoxGreen.MouseLeave += new System.EventHandler(this.pictureBoxGreen_MouseLeave);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.BackgroundImage = global::DB3Client.Resource.blueLine;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 39);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(434, 3);
+            this.pictureBox1.TabIndex = 10;
+            this.pictureBox1.TabStop = false;
+            // 
+            // mlErrorLabel1
+            // 
+            this.mlErrorLabel1.AutoSize = true;
+            this.mlErrorLabel1.ForeColor = System.Drawing.Color.Red;
+            this.mlErrorLabel1.Location = new System.Drawing.Point(70, 92);
+            this.mlErrorLabel1.Name = "mlErrorLabel1";
+            this.mlErrorLabel1.Size = new System.Drawing.Size(98, 13);
+            this.mlErrorLabel1.TabIndex = 2;
+            this.mlErrorLabel1.Text = "under development";
+            // 
+            // mlGroupBox4
+            // 
+            this.mlGroupBox4.BackColor = System.Drawing.Color.White;
+            this.mlGroupBox4.Controls.Add(this.mlErrorLabel1);
+            this.mlGroupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mlGroupBox4.Location = new System.Drawing.Point(455, 3);
+            this.mlGroupBox4.Name = "mlGroupBox4";
+            this.mlGroupBox4.Size = new System.Drawing.Size(447, 312);
+            this.mlGroupBox4.TabIndex = 2;
+            this.mlGroupBox4.TabStop = false;
+            this.mlGroupBox4.Text = "mlGroupBox4";
+            // 
             // AdminControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tabControlAdmin);
             this.Name = "AdminControl";
-            this.Size = new System.Drawing.Size(933, 560);
+            this.Size = new System.Drawing.Size(932, 560);
             this.tabControlAdmin.ResumeLayout(false);
             this.metroTabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
             this.metroTabPage2.ResumeLayout(false);
             this.mlGroupBox1.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.mlGroupBox2.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMol)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPrimaryMol)).EndInit();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel4.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMol)).EndInit();
             this.metroTabPage3.ResumeLayout(false);
             this.mlGroupBox3.ResumeLayout(false);
             this.mlGroupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbVatMultiplier)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRed)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGreen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.mlGroupBox4.ResumeLayout(false);
+            this.mlGroupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -637,7 +938,6 @@ namespace DB3Client.Controls
         private MLButton btnDeleteMol;
         private MLButton btnEditUser;
         private MLButton btnDeleteUser;
-        private MLGroupBox mlGroupBox2;
         private MLLabel labelBulstat;
         private MLLabel mlLabel2;
         private MLLabel labelVAT;
@@ -649,5 +949,23 @@ namespace DB3Client.Controls
         private MLButton btnSaveSettings;
         private MLErrorLabel labelErrorSettings;
         private NumericUpDown tbVatMultiplier;
+        private MLLabel labelIban;
+        private MLLabel mlLabel5;
+        private MLLabel labelBank;
+        private MLLabel mlLabel7;
+        private TableLayoutPanel tableLayoutPanel1;
+        private MetroFramework.Controls.MetroGrid dgvPrimaryMol;
+        private TableLayoutPanel tableLayoutPanel2;
+        private MLLabel mlLabel8;
+        private MLLabel mlLabel9;
+        private TableLayoutPanel tableLayoutPanel3;
+        private TableLayoutPanel tableLayoutPanel4;
+        private PictureBox pictureBoxGreen;
+        private PictureBox pictureBoxRed;
+        private MLGroupBox mlGroupBox2;
+        private TableLayoutPanel tableLayoutPanel5;
+        private PictureBox pictureBox1;
+        private MLErrorLabel mlErrorLabel1;
+        private MLGroupBox mlGroupBox4;
     }
 }

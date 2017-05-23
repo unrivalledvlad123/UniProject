@@ -160,11 +160,29 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All available Acc persons..
+        /// </summary>
+        internal static string all_available_MOLS {
+            get {
+                return ResourceManager.GetString("all_available_MOLS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Assigned To.
         /// </summary>
         internal static string assigned_to {
             get {
                 return ResourceManager.GetString("assigned_to", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bank:.
+        /// </summary>
+        internal static string bank {
+            get {
+                return ResourceManager.GetString("bank", resourceCulture);
             }
         }
         
@@ -592,6 +610,15 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to IBAN:.
+        /// </summary>
+        internal static string iban {
+            get {
+                return ResourceManager.GetString("iban", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid parameters! Please fill all fields!.
         /// </summary>
         internal static string invalid_data {
@@ -781,6 +808,15 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Manage Accountable persons.
+        /// </summary>
+        internal static string manage_mol {
+            get {
+                return ResourceManager.GetString("manage_mol", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Manage Users.
         /// </summary>
         internal static string manage_users {
@@ -948,6 +984,15 @@ namespace Common.Resourses {
         internal static string price_per_each_grid_good {
             get {
                 return ResourceManager.GetString("price_per_each_grid_good", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Primery Accountable person. You can have only one.
+        /// </summary>
+        internal static string primery_MOL {
+            get {
+                return ResourceManager.GetString("primery_MOL", resourceCulture);
             }
         }
         
