@@ -44,12 +44,20 @@
             this.labelAddress = new Common.Forms.Base.MLLabel();
             this.tbCompanyName = new Common.Forms.Base.MLTextBox();
             this.labelName = new Common.Forms.Base.MLLabel();
+            this.tbIban = new Common.Forms.Base.MLTextBox();
+            this.mlLabel3 = new Common.Forms.Base.MLLabel();
+            this.tbBank = new Common.Forms.Base.MLTextBox();
+            this.mlLabel4 = new Common.Forms.Base.MLLabel();
             this.mlGroupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // mlGroupBox1
             // 
             this.mlGroupBox1.BackColor = System.Drawing.Color.White;
+            this.mlGroupBox1.Controls.Add(this.tbIban);
+            this.mlGroupBox1.Controls.Add(this.mlLabel3);
+            this.mlGroupBox1.Controls.Add(this.tbBank);
+            this.mlGroupBox1.Controls.Add(this.mlLabel4);
             this.mlGroupBox1.Controls.Add(this.labelError);
             this.mlGroupBox1.Controls.Add(this.tbBulstat);
             this.mlGroupBox1.Controls.Add(this.mlLabel1);
@@ -76,7 +84,7 @@
             // labelError
             // 
             this.labelError.ForeColor = System.Drawing.Color.Red;
-            this.labelError.Location = new System.Drawing.Point(7, 244);
+            this.labelError.Location = new System.Drawing.Point(7, 309);
             this.labelError.MaximumSize = new System.Drawing.Size(346, 62);
             this.labelError.Name = "labelError";
             this.labelError.Size = new System.Drawing.Size(346, 62);
@@ -344,6 +352,86 @@
             this.labelName.TabIndex = 0;
             this.labelName.Text = "company_name";
             // 
+            // tbIban
+            // 
+            // 
+            // 
+            // 
+            this.tbIban.CustomButton.Image = null;
+            this.tbIban.CustomButton.Location = new System.Drawing.Point(175, 1);
+            this.tbIban.CustomButton.Name = "";
+            this.tbIban.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.tbIban.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.tbIban.CustomButton.TabIndex = 1;
+            this.tbIban.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.tbIban.CustomButton.UseSelectable = true;
+            this.tbIban.CustomButton.Visible = false;
+            this.tbIban.Lines = new string[0];
+            this.tbIban.Location = new System.Drawing.Point(156, 283);
+            this.tbIban.MaxLength = 32767;
+            this.tbIban.Name = "tbIban";
+            this.tbIban.PasswordChar = '\0';
+            this.tbIban.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.tbIban.SelectedText = "";
+            this.tbIban.SelectionLength = 0;
+            this.tbIban.SelectionStart = 0;
+            this.tbIban.ShortcutsEnabled = true;
+            this.tbIban.Size = new System.Drawing.Size(197, 23);
+            this.tbIban.TabIndex = 18;
+            this.tbIban.UseSelectable = true;
+            this.tbIban.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.tbIban.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // mlLabel3
+            // 
+            this.mlLabel3.AutoSize = true;
+            this.mlLabel3.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.mlLabel3.Location = new System.Drawing.Point(7, 287);
+            this.mlLabel3.Name = "mlLabel3";
+            this.mlLabel3.Size = new System.Drawing.Size(35, 19);
+            this.mlLabel3.TabIndex = 17;
+            this.mlLabel3.Text = "iban";
+            // 
+            // tbBank
+            // 
+            // 
+            // 
+            // 
+            this.tbBank.CustomButton.Image = null;
+            this.tbBank.CustomButton.Location = new System.Drawing.Point(175, 1);
+            this.tbBank.CustomButton.Name = "";
+            this.tbBank.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.tbBank.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.tbBank.CustomButton.TabIndex = 1;
+            this.tbBank.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.tbBank.CustomButton.UseSelectable = true;
+            this.tbBank.CustomButton.Visible = false;
+            this.tbBank.Lines = new string[0];
+            this.tbBank.Location = new System.Drawing.Point(156, 245);
+            this.tbBank.MaxLength = 32767;
+            this.tbBank.Name = "tbBank";
+            this.tbBank.PasswordChar = '\0';
+            this.tbBank.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.tbBank.SelectedText = "";
+            this.tbBank.SelectionLength = 0;
+            this.tbBank.SelectionStart = 0;
+            this.tbBank.ShortcutsEnabled = true;
+            this.tbBank.Size = new System.Drawing.Size(197, 23);
+            this.tbBank.TabIndex = 16;
+            this.tbBank.UseSelectable = true;
+            this.tbBank.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.tbBank.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // mlLabel4
+            // 
+            this.mlLabel4.AutoSize = true;
+            this.mlLabel4.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.mlLabel4.Location = new System.Drawing.Point(7, 249);
+            this.mlLabel4.Name = "mlLabel4";
+            this.mlLabel4.Size = new System.Drawing.Size(39, 19);
+            this.mlLabel4.TabIndex = 15;
+            this.mlLabel4.Text = "bank";
+            // 
             // EditCompanyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -375,5 +463,9 @@
         private Common.Forms.Base.MLTextBox tbVatNumber;
         private Common.Forms.Base.MLLabel mlLabel2;
         private Common.Forms.Base.MLErrorLabel labelError;
+        private Common.Forms.Base.MLTextBox tbIban;
+        private Common.Forms.Base.MLLabel mlLabel3;
+        private Common.Forms.Base.MLTextBox tbBank;
+        private Common.Forms.Base.MLLabel mlLabel4;
     }
 }

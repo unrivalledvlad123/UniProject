@@ -25,6 +25,14 @@
           <Property Name="MeasurmentUnit" Type="int" />
           <Property Name="ItemCode" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="ItemTypesDDS">
+          <Key>
+            <PropertyRef Name="RowId" />
+          </Key>
+          <Property Name="RowId" Type="int" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="DDSPercent" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
         <EntityType Name="MOL">
           <Key>
             <PropertyRef Name="MolId" />
@@ -36,6 +44,7 @@
           <Property Name="Phone" Type="varchar" MaxLength="200" />
           <Property Name="Email" Type="varchar" MaxLength="200" />
           <Property Name="OwnerId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IsPrimary" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Owner">
           <Key>
@@ -48,6 +57,9 @@
           <Property Name="Email" Type="varchar" MaxLength="50" />
           <Property Name="VATNumber" Type="varchar" MaxLength="50" />
           <Property Name="Bulstat" Type="varchar" MaxLength="50" />
+          <Property Name="Bank" Type="varchar" MaxLength="500" />
+          <Property Name="SWIFTCode" Type="varchar" MaxLength="50" />
+          <Property Name="IBAN" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Partner">
           <Key>
@@ -72,19 +84,15 @@
           <Property Name="InvoiceId" Type="varchar" MaxLength="50" />
           <Property Name="WareHouseReceipt" Type="varchar" MaxLength="50" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'DB3 Sklad.dbo.PurchasedItem' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="PurchasedItem">
           <Key>
-            <PropertyRef Name="Price" />
-            <PropertyRef Name="Quantity" />
-            <PropertyRef Name="PurchaseId" />
-            <PropertyRef Name="ItemId" />
+            <PropertyRef Name="PurchasedItemId" />
           </Key>
           <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="Quantity" Type="int" Nullable="false" />
           <Property Name="PurchaseId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="ItemId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PurchasedItemId" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="Sales">
           <Key>
@@ -273,23 +281,17 @@ warning 6002: The table/view 'DB3 Sklad.dbo.PurchasedItem' does not have a prima
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="Invoice" EntityType="Self.Invoice" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemTypesDDS" EntityType="Self.ItemTypesDDS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MOL" EntityType="Self.MOL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Owner" EntityType="Self.Owner" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Partner" EntityType="Self.Partner" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Purchase" EntityType="Self.Purchase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PurchasedItem" EntityType="Self.PurchasedItem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sales" EntityType="Self.Sales" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SoldItem" EntityType="Self.SoldItem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WarehouseItems" EntityType="Self.WarehouseItems" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PurchasedItem" EntityType="Self.PurchasedItem" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [PurchasedItem].[Price] AS [Price], 
-    [PurchasedItem].[Quantity] AS [Quantity], 
-    [PurchasedItem].[PurchaseId] AS [PurchaseId], 
-    [PurchasedItem].[ItemId] AS [ItemId]
-    FROM [dbo].[PurchasedItem] AS [PurchasedItem]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_Purchase_Owner" Association="Self.FK_Purchase_Owner">
             <End Role="Owner" EntitySet="Owner" />
             <End Role="Purchase" EntitySet="Purchase" />
@@ -339,22 +341,7 @@ warning 6002: The table/view 'DB3 Sklad.dbo.PurchasedItem' does not have a prima
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="PurchasedItem">
-          <Key>
-            <PropertyRef Name="Price" />
-            <PropertyRef Name="Quantity" />
-            <PropertyRef Name="PurchaseId" />
-            <PropertyRef Name="ItemId" />
-          </Key>
-          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Quantity" Type="Int32" Nullable="false" />
-          <Property Name="PurchaseId" Type="Guid" Nullable="false" />
-          <Property Name="ItemId" Type="Guid" Nullable="false" />
-          <NavigationProperty Name="Purchase" Relationship="Model.FK_PurchasedItem_Purchase1" FromRole="PurchasedItem" ToRole="Purchase" />
-          <NavigationProperty Name="Item" Relationship="Model.FK_PurchasedItem_Item1" FromRole="PurchasedItem" ToRole="Item" />
-        </EntityType>
         <EntityContainer Name="DatabaseEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="PurchasedItems" EntityType="Self.PurchasedItem" />
           <EntitySet Name="sysdiagrams" EntityType="Model.sysdiagram" />
           <EntitySet Name="WarehouseItems" EntityType="Model.WarehouseItem" />
           <EntitySet Name="Users" EntityType="Model.User" />
@@ -364,7 +351,6 @@ warning 6002: The table/view 'DB3 Sklad.dbo.PurchasedItem' does not have a prima
             <End Role="Owner" EntitySet="Owners" />
             <End Role="User" EntitySet="Users" />
           </AssociationSet>
-          <EntitySet Name="MOLs" EntityType="Model.MOL" />
           <EntitySet Name="Sales" EntityType="Model.Sale" />
           <AssociationSet Name="FK_Sales_Owner" Association="Model.FK_Sales_Owner">
             <End Role="Owner" EntitySet="Owners" />
@@ -383,19 +369,11 @@ warning 6002: The table/view 'DB3 Sklad.dbo.PurchasedItem' does not have a prima
             <End Role="Partner" EntitySet="Partners" />
             <End Role="Purchase" EntitySet="Purchases" />
           </AssociationSet>
-          <AssociationSet Name="FK_PurchasedItem_Purchase1" Association="Model.FK_PurchasedItem_Purchase1">
-            <End Role="Purchase" EntitySet="Purchases" />
-            <End Role="PurchasedItem" EntitySet="PurchasedItems" />
-          </AssociationSet>
           <EntitySet Name="Invoices" EntityType="Model.Invoice" />
           <EntitySet Name="Items" EntityType="Model.Item" />
           <AssociationSet Name="FK_Sales_Invoice" Association="Model.FK_Sales_Invoice">
             <End Role="Invoice" EntitySet="Invoices" />
             <End Role="Sale" EntitySet="Sales" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PurchasedItem_Item1" Association="Model.FK_PurchasedItem_Item1">
-            <End Role="Item" EntitySet="Items" />
-            <End Role="PurchasedItem" EntitySet="PurchasedItems" />
           </AssociationSet>
           <AssociationSet Name="FK_WarehouseItems_Item" Association="Model.FK_WarehouseItems_Item">
             <End Role="Item" EntitySet="Items" />
@@ -409,6 +387,17 @@ warning 6002: The table/view 'DB3 Sklad.dbo.PurchasedItem' does not have a prima
           <AssociationSet Name="FK_SoldItem_Sales1" Association="Model.FK_SoldItem_Sales1">
             <End Role="Sale" EntitySet="Sales" />
             <End Role="SoldItem" EntitySet="SoldItems" />
+          </AssociationSet>
+          <EntitySet Name="ItemTypesDDS" EntityType="Model.ItemTypesDD" />
+          <EntitySet Name="MOLs" EntityType="Model.MOL" />
+          <EntitySet Name="PurchasedItems" EntityType="Model.PurchasedItem" />
+          <AssociationSet Name="FK_PurchasedItem_Item1" Association="Model.FK_PurchasedItem_Item1">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="PurchasedItem" EntitySet="PurchasedItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchasedItem_Purchase1" Association="Model.FK_PurchasedItem_Purchase1">
+            <End Role="Purchase" EntitySet="Purchases" />
+            <End Role="PurchasedItem" EntitySet="PurchasedItems" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="sysdiagram">
@@ -458,6 +447,9 @@ warning 6002: The table/view 'DB3 Sklad.dbo.PurchasedItem' does not have a prima
           <NavigationProperty Name="Users" Relationship="Model.FK_Users_Owner1" FromRole="Owner" ToRole="User" />
           <NavigationProperty Name="Sales" Relationship="Model.FK_Sales_Owner" FromRole="Owner" ToRole="Sale" />
           <NavigationProperty Name="Purchases" Relationship="Model.FK_Purchase_Owner" FromRole="Owner" ToRole="Purchase" />
+          <Property Name="Bank" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="SWIFTCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IBAN" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Partner">
           <Key>
@@ -485,18 +477,6 @@ warning 6002: The table/view 'DB3 Sklad.dbo.PurchasedItem' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="MOL">
-          <Key>
-            <PropertyRef Name="MolId" />
-          </Key>
-          <Property Name="MolId" Type="Guid" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="LastName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Phone" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="OwnerId" Type="Guid" Nullable="false" />
-        </EntityType>
         <EntityType Name="Sale">
           <Key>
             <PropertyRef Name="SaleId" />
@@ -574,18 +554,6 @@ warning 6002: The table/view 'DB3 Sklad.dbo.PurchasedItem' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PurchasedItem_Purchase1">
-          <End Type="Model.Purchase" Role="Purchase" Multiplicity="1" />
-          <End Type="Model.PurchasedItem" Role="PurchasedItem" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Purchase">
-              <PropertyRef Name="PurchaseId" />
-            </Principal>
-            <Dependent Role="PurchasedItem">
-              <PropertyRef Name="PurchaseId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Invoice">
           <Key>
             <PropertyRef Name="InvoiceId" />
@@ -606,9 +574,9 @@ warning 6002: The table/view 'DB3 Sklad.dbo.PurchasedItem' does not have a prima
           <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="MeasurmentUnit" Type="Int32" />
           <Property Name="ItemCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="PurchasedItems" Relationship="Model.FK_PurchasedItem_Item1" FromRole="Item" ToRole="PurchasedItem" />
           <NavigationProperty Name="WarehouseItem" Relationship="Model.FK_WarehouseItems_Item" FromRole="Item" ToRole="WarehouseItem" />
           <NavigationProperty Name="SoldItems" Relationship="Model.FK_SoldItem_Item1" FromRole="Item" ToRole="SoldItem" />
+          <NavigationProperty Name="PurchasedItems" Relationship="Model.FK_PurchasedItem_Item1" FromRole="Item" ToRole="PurchasedItem" />
         </EntityType>
         <Association Name="FK_Sales_Invoice">
           <End Type="Model.Invoice" Role="Invoice" Multiplicity="0..1" />
@@ -619,18 +587,6 @@ warning 6002: The table/view 'DB3 Sklad.dbo.PurchasedItem' does not have a prima
             </Principal>
             <Dependent Role="Sale">
               <PropertyRef Name="InvoiceId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PurchasedItem_Item1">
-          <End Type="Model.Item" Role="Item" Multiplicity="1" />
-          <End Type="Model.PurchasedItem" Role="PurchasedItem" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Item">
-              <PropertyRef Name="ItemId" />
-            </Principal>
-            <Dependent Role="PurchasedItem">
-              <PropertyRef Name="ItemId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -682,22 +638,69 @@ warning 6002: The table/view 'DB3 Sklad.dbo.PurchasedItem' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="ItemTypesDD">
+          <Key>
+            <PropertyRef Name="RowId" />
+          </Key>
+          <Property Name="RowId" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="DDSPercent" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="MOL">
+          <Key>
+            <PropertyRef Name="MolId" />
+          </Key>
+          <Property Name="MolId" Type="Guid" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerId" Type="Guid" Nullable="false" />
+          <Property Name="IsPrimary" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PurchasedItem">
+          <Key>
+            <PropertyRef Name="PurchasedItemId" />
+          </Key>
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="PurchaseId" Type="Guid" Nullable="false" />
+          <Property Name="ItemId" Type="Guid" Nullable="false" />
+          <Property Name="PurchasedItemId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Item" Relationship="Model.FK_PurchasedItem_Item1" FromRole="PurchasedItem" ToRole="Item" />
+          <NavigationProperty Name="Purchase" Relationship="Model.FK_PurchasedItem_Purchase1" FromRole="PurchasedItem" ToRole="Purchase" />
+        </EntityType>
+        <Association Name="FK_PurchasedItem_Item1">
+          <End Type="Model.Item" Role="Item" Multiplicity="1" />
+          <End Type="Model.PurchasedItem" Role="PurchasedItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="ItemId" />
+            </Principal>
+            <Dependent Role="PurchasedItem">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchasedItem_Purchase1">
+          <End Type="Model.Purchase" Role="Purchase" Multiplicity="1" />
+          <End Type="Model.PurchasedItem" Role="PurchasedItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Purchase">
+              <PropertyRef Name="PurchaseId" />
+            </Principal>
+            <Dependent Role="PurchasedItem">
+              <PropertyRef Name="PurchaseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="DatabaseEntities">
-          <EntitySetMapping Name="PurchasedItems">
-            <EntityTypeMapping TypeName="Model.PurchasedItem">
-              <MappingFragment StoreEntitySet="PurchasedItem">
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="PurchaseId" ColumnName="PurchaseId" />
-                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="Model.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
@@ -735,6 +738,9 @@ warning 6002: The table/view 'DB3 Sklad.dbo.PurchasedItem' does not have a prima
           <EntitySetMapping Name="Owners">
             <EntityTypeMapping TypeName="Model.Owner">
               <MappingFragment StoreEntitySet="Owner">
+                <ScalarProperty Name="IBAN" ColumnName="IBAN" />
+                <ScalarProperty Name="SWIFTCode" ColumnName="SWIFTCode" />
+                <ScalarProperty Name="Bank" ColumnName="Bank" />
                 <ScalarProperty Name="Bulstat" ColumnName="Bulstat" />
                 <ScalarProperty Name="VATNumber" ColumnName="VATNumber" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -755,19 +761,6 @@ warning 6002: The table/view 'DB3 Sklad.dbo.PurchasedItem' does not have a prima
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
                 <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MOLs">
-            <EntityTypeMapping TypeName="Model.MOL">
-              <MappingFragment StoreEntitySet="MOL">
-                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="MolId" ColumnName="MolId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -823,6 +816,40 @@ warning 6002: The table/view 'DB3 Sklad.dbo.PurchasedItem' does not have a prima
                 <ScalarProperty Name="SaleId" ColumnName="SaleId" />
                 <ScalarProperty Name="SoldItemId" ColumnName="SoldItemId" />
                 <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemTypesDDS">
+            <EntityTypeMapping TypeName="Model.ItemTypesDD">
+              <MappingFragment StoreEntitySet="ItemTypesDDS">
+                <ScalarProperty Name="DDSPercent" ColumnName="DDSPercent" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="RowId" ColumnName="RowId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MOLs">
+            <EntityTypeMapping TypeName="Model.MOL">
+              <MappingFragment StoreEntitySet="MOL">
+                <ScalarProperty Name="IsPrimary" ColumnName="IsPrimary" />
+                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MolId" ColumnName="MolId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchasedItems">
+            <EntityTypeMapping TypeName="Model.PurchasedItem">
+              <MappingFragment StoreEntitySet="PurchasedItem">
+                <ScalarProperty Name="PurchasedItemId" ColumnName="PurchasedItemId" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="PurchaseId" ColumnName="PurchaseId" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
               </MappingFragment>

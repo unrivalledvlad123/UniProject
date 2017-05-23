@@ -22,6 +22,9 @@ namespace DB3Client.Forms.AdminForms
             tbCompanyName.Text = !string.IsNullOrEmpty(DataHolder.Owner.CompanyName) ? DataHolder.Owner.CompanyName : "";
             tbEmail.Text = !string.IsNullOrEmpty(DataHolder.Owner.Email) ? DataHolder.Owner.Email : "";
             tbPhone.Text = !string.IsNullOrEmpty(DataHolder.Owner.Phone) ? DataHolder.Owner.Phone : "";
+            tbBank.Text = !string.IsNullOrEmpty(DataHolder.Owner.Bank) ? DataHolder.Owner.Bank : "";
+            tbIban.Text = !string.IsNullOrEmpty(DataHolder.Owner.Iban) ? DataHolder.Owner.Iban : "";
+
         }
 
         private async void btnSave_Click(object sender, EventArgs e)
@@ -33,6 +36,8 @@ namespace DB3Client.Forms.AdminForms
             Owner2.Bulstat = tbBulstat.Text;
             Owner2.VatNumber = tbVatNumber.Text;
             Owner2.OwnerId = DataHolder.Owner.OwnerId;
+            Owner2.Bank = tbBank.Text;
+            Owner2.Iban = tbIban.Text;
             
             bool success = await SAOwner.PostUpdateOwner(Owner2);
             if (success)
@@ -43,6 +48,8 @@ namespace DB3Client.Forms.AdminForms
                 DataHolder.Owner.CompanyName = Owner2.CompanyName;
                 DataHolder.Owner.Email = Owner2.Email;
                 DataHolder.Owner.Phone = Owner2.Phone;
+                DataHolder.Owner.Bank = Owner2.Bank;
+                DataHolder.Owner.Iban = Owner2.Iban;
                 DialogResult = DialogResult.OK;
             }
             else

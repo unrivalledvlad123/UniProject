@@ -15,5 +15,8 @@ namespace Common.Classes
         public string Email { get; set; }
         public string Bulstat { get; set; }
         public string VatNumber { get; set; }
+        public string Bank { get; set; }
+        public string Iban { get; set; }
+        public string SwiftCode { get; set; }
     }
 }

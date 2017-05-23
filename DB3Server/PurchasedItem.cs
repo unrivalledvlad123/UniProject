@@ -18,8 +18,9 @@ namespace DB3Server
         public int Quantity { get; set; }
         public System.Guid PurchaseId { get; set; }
         public System.Guid ItemId { get; set; }
+        public System.Guid PurchasedItemId { get; set; }
     
-        public virtual Purchase Purchase { get; set; }
         public virtual Item Item { get; set; }
+        public virtual Purchase Purchase { get; set; }
     }
 }

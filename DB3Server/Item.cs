@@ -17,8 +17,8 @@ namespace DB3Server
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Item()
         {
-            this.PurchasedItems = new HashSet<PurchasedItem>();
             this.SoldItems = new HashSet<SoldItem>();
+            this.PurchasedItems = new HashSet<PurchasedItem>();
         }
     
         public System.Guid ItemId { get; set; }
@@ -28,10 +28,10 @@ namespace DB3Server
         public Nullable<int> MeasurmentUnit { get; set; }
         public string ItemCode { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PurchasedItem> PurchasedItems { get; set; }
         public virtual WarehouseItem WarehouseItem { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SoldItem> SoldItems { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PurchasedItem> PurchasedItems { get; set; }
     }
 }

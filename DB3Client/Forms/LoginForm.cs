@@ -12,6 +12,7 @@ using Common;
 using Common.Classes;
 using Common.Forms.Base;
 using DB3Client.ServiceAccess;
+using iTextSharp.text;
 
 namespace DB3Client.Forms
 {
@@ -59,6 +60,15 @@ namespace DB3Client.Forms
                         DataHolder.OwnerId = user.OwnerId;
                         DataHolder.Username = user.Username;
                         DataHolder.UserType = user.Role;
+                        List<CommonMol> allMols = await SAOwner.getAllMols(user.OwnerId);
+                        foreach (var mol in allMols)
+                        {
+                            if (mol.IsPrimery)
+                            {
+                                DataHolder.PrimeryMol = mol;
+                                break;
+                            }
+                        }
 
                         MainForm form = new MainForm();
                         Hide();
@@ -78,6 +88,7 @@ namespace DB3Client.Forms
                             DataHolder.Username = string.Empty;
                             DataHolder.UserType = 99;
                             DataHolder.UserCulture = new CultureInfo("en-US");
+                            DataHolder.PrimeryMol = null;
                         }
                     }
                     else

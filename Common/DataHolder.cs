@@ -24,6 +24,7 @@ namespace Common
         private static Guid userId;
         private static int userType;
         private static string serverAddress;
+        private static CommonMol primeryMol;
 
         #endregion
 
@@ -33,6 +34,12 @@ namespace Common
         {
             get { return ownerId; }
             set { ownerId = value; }
+        }
+
+        public static CommonMol PrimeryMol
+        {
+            get { return primeryMol; }
+            set { primeryMol = value; }
         }
 
         public static CompanyOwner Owner

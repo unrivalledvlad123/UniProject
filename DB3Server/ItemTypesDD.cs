@@ -12,15 +12,10 @@ namespace DB3Server
     using System;
     using System.Collections.Generic;
     
-    public partial class MOL
+    public partial class ItemTypesDD
     {
-        public System.Guid MolId { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Address { get; set; }
-        public string Phone { get; set; }
-        public string Email { get; set; }
-        public System.Guid OwnerId { get; set; }
-        public bool IsPrimary { get; set; }
+        public int RowId { get; set; }
+        public int Type { get; set; }
+        public decimal DDSPercent { get; set; }
     }
 }

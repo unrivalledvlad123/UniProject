@@ -79,6 +79,12 @@
     <Compile Include="Constants.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="DataHolder.cs" />
+    <Compile Include="Forms\Base\MLButtonCancel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Base\MLButtonOk.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Forms\Base\MLButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -125,9 +131,7 @@
       <DependentUpon>RH.resx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Images\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
