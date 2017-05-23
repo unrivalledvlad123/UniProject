@@ -24,5 +24,7 @@ namespace Common.Forms.Base
 		public MLButton()
 		{
 		}
-	}
+
+
+    }
 }

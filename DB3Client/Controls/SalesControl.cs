@@ -11,6 +11,7 @@ using Common;
 using Common.Classes;
 using Common.Forms.Base;
 using DB3Client.Forms;
+using DB3Client.Forms.SalesForms;
 using DB3Client.Properties;
 using DB3Client.ServiceAccess;
 using MetroFramework.Drawing;
@@ -22,7 +23,7 @@ namespace DB3Client.Controls
         public List<CommonItem> AllItems = new List<CommonItem>();
         public List<CommonContract> AllContacts = new List<CommonContract>();
         public List<CommonMol> AllMols = new List<CommonMol>();
-
+        public bool trigger = true;
         public SalesControl()
         {
             InitializeComponent();
@@ -95,7 +96,17 @@ namespace DB3Client.Controls
             try
             {
                 AllItems = await SAItem.GetAllItems(cbSearch.Text);
-                cbSearch.DataSource = AllItems;
+                List<CommonItem> k = new List<CommonItem>();
+                k.Add(new CommonItem());
+                foreach (CommonItem Item in AllItems)
+                {
+                    
+                    decimal temp = Item.SellingPriceCent;
+                    Item.ParcePrice = temp / 100;
+                    k.Add(Item);
+                }
+               
+                cbSearch.DataSource = k;
 
                 cbSearch.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
                 cbSearch.AutoCompleteSource = AutoCompleteSource.ListItems;
@@ -144,16 +155,25 @@ namespace DB3Client.Controls
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            CommonItem a = ((CommonItem) cbSearch.SelectedItem);
-            string name = mlLabel1.Text;
-            string quantity = tbQuantity.Text;
-            int measurementUnit = a.MeasurmentUnit;
-            string price = mlLabel2.Text;
-            var vat = 1 + (Settings.Default.VatMultiplier / 100);
-            var vatPrice = vat * (decimal) float.Parse(price);
-            float totalPrice = float.Parse(quantity) * (float) vatPrice;
-            dgvSoldGoods.Rows.Add(name, quantity, measurementUnit, price, totalPrice, a.ItemId);
-            UpdateTotal();
+            if (!string.IsNullOrEmpty(tbQuantity.Text))
+            {
+                CommonItem a = ((CommonItem) cbSearch.SelectedItem);
+                string name = mlLabel1.Text;
+                string quantity = tbQuantity.Text;
+                int measurementUnit = a.MeasurmentUnit;
+                string price = mlLabel2.Text;
+                var vat = 1 + (Settings.Default.VatMultiplier / 100);
+                var vatPrice = vat * (decimal) float.Parse(price);
+                float totalPrice = float.Parse(quantity) * (float) vatPrice;
+                dgvSoldGoods.Rows.Add(name, quantity, measurementUnit, price, totalPrice, a.ItemId);
+                UpdateTotal();
+            }
+            else
+            {
+                MessageBox.Show("Fill quantity!!!");
+               
+            }
+
         }
 
         private async void btnFinish_Click(object sender, EventArgs e)
@@ -197,15 +217,25 @@ namespace DB3Client.Controls
             }
         }
 
+        
         private void btnDetach_Click(object sender, EventArgs e)
         {
+           
+            SalesClientForm f = new SalesClientForm();
+
+            if(trigger)
+            {
+                trigger = false;
+                f.Show();
+            }else
+            {
+                trigger = true;
+                f.Hide();
+            }
 
         }
 
-        private void btnAddNewCompany_Click(object sender, EventArgs e)
-        {
-
-        }
+  
 
         private void cbWholesale_CheckedChanged(object sender, EventArgs e)
         {
@@ -251,23 +281,18 @@ namespace DB3Client.Controls
             }
         }
 
-        private void mlButton1_Click(object sender, EventArgs e)
-        {
-//            InvoiceTemplateForm form = new InvoiceTemplateForm();
-//            if (form.ShowDialog() == DialogResult.OK)
-//            {
-//
-//            }
-        }
+       
         private void cbSearch_SelectionChangeCommitted(object sender, EventArgs e)
         {
             mlLabel1.Text = ((CommonItem)cbSearch.SelectedItem).Name;
             mlLabel3.Text = ((CommonItem)cbSearch.SelectedItem).Description;
-            mlLabel2.Text = ((CommonItem) cbSearch.SelectedItem).SellingPriceCent.ToString();
+            mlLabel2.Text = ((CommonItem) cbSearch.SelectedItem).ParcePrice.ToString();
         }
 
+        
         private void tbAmount_KeyDown(object sender, KeyEventArgs e)
         {
+         
             if (e.KeyCode != Keys.Enter)
             {
                 return;
@@ -275,7 +300,7 @@ namespace DB3Client.Controls
             labelCash.Text = tbAmount.Text;
             CalculateChange();
         }
-
+        
         private async void cbSearchContract_SelectionChangeCommitted(object sender, EventArgs e)
         {
             mlLabel11.Text = ((CommonContract)cbSearchContract.SelectedItem).CompanyName;
@@ -297,5 +322,12 @@ namespace DB3Client.Controls
         {
             e.Handled = !char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar);
         }
+
+        private void tbAmount_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar);
+        }
+
+
     }
 }
