@@ -35,13 +35,13 @@
             this.mlLabel5 = new Common.Forms.Base.MLLabel();
             this.mlLabel4 = new Common.Forms.Base.MLLabel();
             this.mlGroupBox4 = new Common.Forms.Base.MLGroupBox();
-            this.labelChange = new Common.Forms.Base.MLLabel();
-            this.labelCash = new Common.Forms.Base.MLLabel();
-            this.labelTotalAmount = new Common.Forms.Base.MLLabel();
-            this.dgvSoldGoods = new MetroFramework.Controls.MetroGrid();
+            this.labelChangeClient = new Common.Forms.Base.MLLabel();
+            this.labelCashClient = new Common.Forms.Base.MLLabel();
+            this.labelTotalAmountClient = new Common.Forms.Base.MLLabel();
+            this.dgvSoldGoodsClient = new MetroFramework.Controls.MetroGrid();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.mlGroupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSoldGoods)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSoldGoodsClient)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,9 +78,9 @@
             // mlGroupBox4
             // 
             this.mlGroupBox4.BackColor = System.Drawing.Color.White;
-            this.mlGroupBox4.Controls.Add(this.labelChange);
-            this.mlGroupBox4.Controls.Add(this.labelCash);
-            this.mlGroupBox4.Controls.Add(this.labelTotalAmount);
+            this.mlGroupBox4.Controls.Add(this.labelChangeClient);
+            this.mlGroupBox4.Controls.Add(this.labelCashClient);
+            this.mlGroupBox4.Controls.Add(this.labelTotalAmountClient);
             this.mlGroupBox4.Controls.Add(this.mlLabel6);
             this.mlGroupBox4.Controls.Add(this.mlLabel5);
             this.mlGroupBox4.Controls.Add(this.mlLabel4);
@@ -90,49 +90,49 @@
             this.mlGroupBox4.TabIndex = 2;
             this.mlGroupBox4.TabStop = false;
             // 
-            // labelChange
+            // labelChangeClient
             // 
-            this.labelChange.AutoSize = true;
-            this.labelChange.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.labelChange.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.labelChange.Location = new System.Drawing.Point(136, 89);
-            this.labelChange.Name = "labelChange";
-            this.labelChange.Size = new System.Drawing.Size(22, 25);
-            this.labelChange.TabIndex = 5;
-            this.labelChange.Text = "0";
+            this.labelChangeClient.AutoSize = true;
+            this.labelChangeClient.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.labelChangeClient.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.labelChangeClient.Location = new System.Drawing.Point(136, 89);
+            this.labelChangeClient.Name = "labelChangeClient";
+            this.labelChangeClient.Size = new System.Drawing.Size(22, 25);
+            this.labelChangeClient.TabIndex = 5;
+            this.labelChangeClient.Text = "0";
             // 
-            // labelCash
+            // labelCashClient
             // 
-            this.labelCash.AutoSize = true;
-            this.labelCash.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.labelCash.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.labelCash.Location = new System.Drawing.Point(136, 51);
-            this.labelCash.Name = "labelCash";
-            this.labelCash.Size = new System.Drawing.Size(22, 25);
-            this.labelCash.TabIndex = 4;
-            this.labelCash.Text = "0";
+            this.labelCashClient.AutoSize = true;
+            this.labelCashClient.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.labelCashClient.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.labelCashClient.Location = new System.Drawing.Point(136, 51);
+            this.labelCashClient.Name = "labelCashClient";
+            this.labelCashClient.Size = new System.Drawing.Size(22, 25);
+            this.labelCashClient.TabIndex = 4;
+            this.labelCashClient.Text = "0";
             // 
-            // labelTotalAmount
+            // labelTotalAmountClient
             // 
-            this.labelTotalAmount.AutoSize = true;
-            this.labelTotalAmount.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.labelTotalAmount.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.labelTotalAmount.Location = new System.Drawing.Point(136, 10);
-            this.labelTotalAmount.Name = "labelTotalAmount";
-            this.labelTotalAmount.Size = new System.Drawing.Size(22, 25);
-            this.labelTotalAmount.TabIndex = 3;
-            this.labelTotalAmount.Text = "0";
+            this.labelTotalAmountClient.AutoSize = true;
+            this.labelTotalAmountClient.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.labelTotalAmountClient.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.labelTotalAmountClient.Location = new System.Drawing.Point(136, 10);
+            this.labelTotalAmountClient.Name = "labelTotalAmountClient";
+            this.labelTotalAmountClient.Size = new System.Drawing.Size(22, 25);
+            this.labelTotalAmountClient.TabIndex = 3;
+            this.labelTotalAmountClient.Text = "0";
             // 
-            // dgvSoldGoods
+            // dgvSoldGoodsClient
             // 
-            this.dgvSoldGoods.AllowUserToAddRows = false;
-            this.dgvSoldGoods.AllowUserToResizeRows = false;
-            this.dgvSoldGoods.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dgvSoldGoodsClient.AllowUserToAddRows = false;
+            this.dgvSoldGoodsClient.AllowUserToResizeRows = false;
+            this.dgvSoldGoodsClient.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.dgvSoldGoods.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvSoldGoods.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvSoldGoods.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dgvSoldGoods.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvSoldGoodsClient.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvSoldGoodsClient.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvSoldGoodsClient.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvSoldGoodsClient.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -140,8 +140,8 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSoldGoods.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvSoldGoods.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSoldGoodsClient.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvSoldGoodsClient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -149,13 +149,13 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSoldGoods.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvSoldGoods.EnableHeadersVisualStyles = false;
-            this.dgvSoldGoods.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.dgvSoldGoods.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dgvSoldGoods.Location = new System.Drawing.Point(7, 189);
-            this.dgvSoldGoods.Name = "dgvSoldGoods";
-            this.dgvSoldGoods.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvSoldGoodsClient.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvSoldGoodsClient.EnableHeadersVisualStyles = false;
+            this.dgvSoldGoodsClient.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.dgvSoldGoodsClient.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dgvSoldGoodsClient.Location = new System.Drawing.Point(7, 189);
+            this.dgvSoldGoodsClient.Name = "dgvSoldGoodsClient";
+            this.dgvSoldGoodsClient.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -163,16 +163,16 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSoldGoods.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvSoldGoods.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dgvSoldGoods.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSoldGoods.Size = new System.Drawing.Size(582, 309);
-            this.dgvSoldGoods.TabIndex = 3;
+            this.dgvSoldGoodsClient.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvSoldGoodsClient.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvSoldGoodsClient.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvSoldGoodsClient.Size = new System.Drawing.Size(582, 309);
+            this.dgvSoldGoodsClient.TabIndex = 3;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-           // this.pictureBox1.BackgroundImage = global::DB3Client.Properties.Resources.emptyBasket1;
+            this.pictureBox1.BackgroundImage = global::DB3Client.Resource.emptyBasket1;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBox1.ImageLocation = "";
             this.pictureBox1.Location = new System.Drawing.Point(233, 11);
@@ -187,12 +187,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(598, 506);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.dgvSoldGoods);
+            this.Controls.Add(this.dgvSoldGoodsClient);
             this.Controls.Add(this.mlGroupBox4);
             this.Name = "SalesClientForm";
+            this.Load += new System.EventHandler(this.SalesClientForm_Load);
             this.mlGroupBox4.ResumeLayout(false);
             this.mlGroupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSoldGoods)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSoldGoodsClient)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -200,14 +201,14 @@
 
         #endregion
 
-        private Common.Forms.Base.MLLabel mlLabel6;
-        private Common.Forms.Base.MLLabel mlLabel5;
-        private Common.Forms.Base.MLLabel mlLabel4;
-        private Common.Forms.Base.MLGroupBox mlGroupBox4;
-        private Common.Forms.Base.MLLabel labelChange;
-        private Common.Forms.Base.MLLabel labelCash;
-        private Common.Forms.Base.MLLabel labelTotalAmount;
-        private MetroFramework.Controls.MetroGrid dgvSoldGoods;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        public Common.Forms.Base.MLLabel mlLabel6;
+        public Common.Forms.Base.MLLabel mlLabel5;
+        public Common.Forms.Base.MLLabel mlLabel4;
+        public Common.Forms.Base.MLGroupBox mlGroupBox4;
+        public Common.Forms.Base.MLLabel labelChangeClient;
+        public Common.Forms.Base.MLLabel labelCashClient;
+        public Common.Forms.Base.MLLabel labelTotalAmountClient;
+        public MetroFramework.Controls.MetroGrid dgvSoldGoodsClient;
+        public System.Windows.Forms.PictureBox pictureBox1;
     }
 }

@@ -348,10 +348,18 @@
     <None Include="Resources\nav_left_green_shadow.png" />
     <None Include="Resources\nav_right_red_shadow.png" />
     <None Include="Resources\add2.png" />
-    <None Include="Resources\blueLine.png" />    <None Include="Resources\emptyBasket.jpg" />
+    <None Include="Resources\blueLine.png" />
+    <None Include="Resources\emptyBasket.jpg" />
     <None Include="Resources\emptyBasket1.jpg" />
     <None Include="Resources\invoice.jpg" />
-    <None Include="Resources\invoice1.jpg" />    <Content Include="Resourses\Images\200x200.png" />
+    <None Include="Resources\invoice1.jpg" />
+    <None Include="Resources\invoice2.jpg" />
+    <None Include="Resources\full_shoppingcart.jpg" />
+    <None Include="Resources\Search.jpg" />
+    <None Include="Resources\Search1.jpg" />
+    <None Include="Resources\agree.png" />
+    <None Include="Resources\Search2.jpg" />
+    <Content Include="Resourses\Images\200x200.png" />
     <Content Include="Resourses\Images\ico.ico" />
     <Content Include="Resourses\Images\50x400 mainFormLogo.png" />
   </ItemGroup>

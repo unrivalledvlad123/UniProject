@@ -40,7 +40,14 @@ namespace DB3Client.Forms.ContractsForms
         
         private async void btnSaveContract_Click(object sender, EventArgs e)
         {
-
+            if (String.IsNullOrEmpty(tbAdressContract.Text) || String.IsNullOrEmpty(tbBulstatNumberContract.Text) || String.IsNullOrEmpty(tbCompanyNameContract.Text)
+                || String.IsNullOrEmpty(tbEmailContract.Text) || String.IsNullOrEmpty(tbPhoneContract.Text) || String.IsNullOrEmpty(tbVatNumberContract.Text)
+                || String.IsNullOrEmpty(tbAdressMolContract.Text) || String.IsNullOrEmpty(tbEmailMolContract.Text) || String.IsNullOrEmpty(tbFirstNameMol.Text)
+                || String.IsNullOrEmpty(tbLastNameMol.Text) || String.IsNullOrEmpty(tbPhoneMolContract.Text))
+            {
+                MessageBox.Show("Fill all fields!");
+                return;
+            }
             contract.Address = tbAdressContract.Text;
             contract.Bulstat = tbBulstatNumberContract.Text;
             contract.CompanyName = tbCompanyNameContract.Text;
