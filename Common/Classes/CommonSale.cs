@@ -15,7 +15,7 @@ namespace Common.Classes
         public int Type { get; set; }
         public string InvoiceId { get; set; }
         public List<CommonSoldItem> SoldItems { get; set; }
-
+        public string ParsePrice { get; set; }
         public double TotalPrice
         {
             get

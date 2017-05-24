@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Common;
 using Common.Classes;
+using DB3Client.Forms;
 using DB3Client.Forms.ContractsForms;
 using DB3Client.Forms.TrasactionForms;
 using DB3Client.ServiceAccess;
@@ -144,7 +145,15 @@ namespace DB3Client.Controls
         private async void LoadDataTransactions()
         {
             List<CommonSale> list = await SASale.GetAllSales(tbSearchTransactions.Text);
+            foreach(CommonSale Item in list)
+                {
+
+                double temp = Item.TotalPrice;
+                Item.ParsePrice = (temp / 100).ToString();
+            
+            }
             dgvTransactions.DataSource = list;
+
         }
         public void SetGridColomnsAllSales()
         {
@@ -179,7 +188,7 @@ namespace DB3Client.Controls
             DataGridViewTextBoxColumn c4 = new DataGridViewTextBoxColumn();
             c4.Name = "totalAmount";
             c4.HeaderText = DataHolder.GetString("total_amount");
-            c4.DataPropertyName = "TotalPrice";
+            c4.DataPropertyName = "ParsePrice";
             c4.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
             dgvTransactions.Columns.Add(c4);
 
@@ -196,6 +205,31 @@ namespace DB3Client.Controls
                 {
 
                 }
+            }
+         
+        }
+
+        private void btnViewInvoice_Click(object sender, EventArgs e)
+        {
+            if (dgvTransactions.SelectedRows.Count == 1 && dgvTransactions.SelectedRows[0] != null)
+            {
+                
+                CommonSale selectedItem = (CommonSale)dgvTransactions.SelectedRows[0].DataBoundItem;
+
+                if (!string.IsNullOrEmpty(selectedItem.InvoiceId))
+                {
+                    InvoiceTemplateForm form = new InvoiceTemplateForm(selectedItem, false);
+
+                    if (form.ShowDialog() == DialogResult.OK)
+                    {
+
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Няма издадена Фактура към продажбата!");
+                }
+
             }
         }
     }

@@ -21,14 +21,15 @@ namespace DB3Client.Forms
     {
         public InvoiceControl HolderControl;
 
-        public InvoiceTemplateForm(CommonSale sale)
+        public InvoiceTemplateForm(CommonSale sale, bool savePdf = true)
         {
             InitializeComponent();
-            InvoiceControl inv = new InvoiceControl (sale){Dock = DockStyle.Fill};
+            InvoiceControl inv = new InvoiceControl (sale){Dock = DockStyle.Fill, SavePdf = savePdf};
             HolderControl = inv;
             metroPanel1.Controls.Add(inv);
 
         }
 
+        
     }
 }

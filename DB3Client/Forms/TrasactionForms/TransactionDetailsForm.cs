@@ -35,9 +35,8 @@ namespace DB3Client.Forms.TrasactionForms
                 string name = item.ToString();
                 string quantity = soldItem.Quantity.ToString();
                 int measurementUnit = item.MeasurmentUnit;
-                string price = soldItem.Price.ToString();
-
-                var vatPrice = soldItem.Price;
+                string price = (soldItem.Price / 100).ToString();
+                var vatPrice = (soldItem.Price / 100);
 
                 float totalPrice = float.Parse(quantity) * (float)vatPrice;
 
@@ -89,7 +88,7 @@ namespace DB3Client.Forms.TrasactionForms
             DataGridViewTextBoxColumn c5 = new DataGridViewTextBoxColumn();
             c5.Name = "TotalPrice";
             c5.HeaderText = DataHolder.GetString("total_price");
-            c5.DataPropertyName = "Price";
+            c5.DataPropertyName = "P";
             c5.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
             dgvDetailsTransaction.Columns.Add(c5);
 
@@ -97,6 +96,7 @@ namespace DB3Client.Forms.TrasactionForms
 
         }
 
+       
     }
 
 }
