@@ -285,7 +285,133 @@ namespace DB3Server.BusinessLogic
             return results;
         }
 
-        
+        internal static List<ReportMovement> GenerateDiagramMovement(DiagramDTO dto)
+        {
+            DatabaseEntities entities = new DatabaseEntities();
+            List<ReportMovement> results = new List<ReportMovement>();
+            if (!dto.IsType)
+            {
+                foreach (var type in entities.ItemTypesDDS)
+                {
+                    ReportMovement temp = new ReportMovement();
+                    temp.Name = type.Type.ToString();
+                    temp.QuantityesList = new Dictionary<DateTime, int>();
+                    for (var dt = dto.FromDate.Date; dt <= dto.ToDate.Date; dt = dt.AddDays(1))
+                    {
+                        temp.QuantityesList.Add(dt, 0);
+                    }
+                    results.Add(temp);
+                }
+            }
+            else
+            {
+                List<Item> allItems = entities.Items.Where(p => p.Type.Value == dto.ItemType).ToList();
+                foreach (var item in allItems)
+                {
+                    ReportMovement temp = new ReportMovement();
+                    temp.Name = item.Name;
+                    temp.QuantityesList = new Dictionary<DateTime, int>();
+                    for (var dt = dto.FromDate.Date; dt <= dto.ToDate.Date; dt = dt.AddDays(1))
+                    {
+                        temp.QuantityesList.Add(dt, 0);
+                    }
+                    results.Add(temp);
+                }
+            }
+
+            if (dto.ReportType == 0)
+            {
+                List<Purchase> dbSet = new List<Purchase>(entities.Purchases.Where(p => p.Date >= dto.FromDate && p.Date <= dto.ToDate));
+                foreach (Purchase purchase in dbSet)
+                {
+                    if (!dto.IsType) // for all
+                    {
+                        foreach (var item in purchase.PurchasedItems)
+                        {
+                            Item dbItem = entities.Items.FirstOrDefault(p => p.ItemId == item.ItemId);
+                            ReportMovement element = results.FirstOrDefault(p => p.Name == dbItem.Type.Value.ToString());
+                            if (element != null && dbItem != null && element.QuantityesList.ContainsKey(purchase.Date.Date))
+                            {
+                                element.QuantityesList[purchase.Date.Date] = element.QuantityesList[purchase.Date.Date] + item.Quantity;
+                            }
+                            else
+                            {
+                                element.QuantityesList[purchase.Date.Date] = element.QuantityesList[purchase.Date.Date] + item.Quantity;
+                            }
+                        }
+                    }
+                    else // specific type
+                    {
+                        foreach (var item in purchase.PurchasedItems)
+                        {
+                            Item dbItem = entities.Items.FirstOrDefault(p => p.ItemId == item.ItemId);
+                            ReportMovement element = results.FirstOrDefault(p => p.Name == dbItem.Name);
+                            if (dbItem != null &&element!=null && dbItem.Type == dto.ItemType)
+                            {
+                                if (element.QuantityesList.ContainsKey(purchase.Date.Date))
+                                {
+                                    element.QuantityesList[purchase.Date.Date] = element.QuantityesList[purchase.Date.Date] + item.Quantity;
+                                }
+                                else
+                                {
+                                    element.QuantityesList[purchase.Date.Date] = element.QuantityesList[purchase.Date.Date] + item.Quantity;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else if (dto.ReportType == 1)
+            {
+                List<Sale> dbSet = new List<Sale>(entities.Sales.Where(p => p.Date >= dto.FromDate && p.Date <= dto.ToDate));
+                foreach (Sale sale in dbSet)
+                {
+                    if (!dto.IsType) // for all
+                    {
+                        foreach (var item in sale.SoldItems)
+                        {
+                            Item dbItem = entities.Items.FirstOrDefault(p => p.ItemId == item.ItemId);
+                            ReportMovement element = results.FirstOrDefault(p => p.Name == dbItem.Type.Value.ToString());
+                            if (element != null && dbItem != null && element.QuantityesList.ContainsKey(sale.Date.Date))
+                            {
+                                element.QuantityesList[sale.Date.Date] = element.QuantityesList[sale.Date.Date] + item.Quantity;
+                            }
+                            else
+                            {
+                                element.QuantityesList[sale.Date.Date] = element.QuantityesList[sale.Date.Date] + item.Quantity;
+                            }
+                        }
+                    }
+                    else // specific type
+                    {
+                        foreach (var item in sale.SoldItems)
+                        {
+                            Item dbItem = entities.Items.FirstOrDefault(p => p.ItemId == item.ItemId);
+                            ReportMovement element = results.FirstOrDefault(p => p.Name == dbItem.Name);
+                            if (dbItem != null && element != null && dbItem.Type == dto.ItemType)
+                            {
+                                if (element.QuantityesList.ContainsKey(sale.Date.Date))
+                                {
+                                    element.QuantityesList[sale.Date.Date] = element.QuantityesList[sale.Date.Date] + item.Quantity;
+                                }
+                                else
+                                {
+                                    element.QuantityesList[sale.Date.Date] = element.QuantityesList[sale.Date.Date] + item.Quantity;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                return null;
+            }
+
+            return results;
+        }
+
+
 
     }
 }

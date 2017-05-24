@@ -555,4 +555,7 @@
   <data name="manage_mol" xml:space="preserve">
     <value>Manage Accountable persons</value>
   </data>
+  <data name="report_for_goods_movement" xml:space="preserve">
+    <value>Goods movement report</value>
+  </data>
 </root>

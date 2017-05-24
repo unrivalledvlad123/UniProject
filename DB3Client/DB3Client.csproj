@@ -147,6 +147,18 @@
     <Compile Include="Controls\OrdersControl.Designer.cs">
       <DependentUpon>OrdersControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ReportControls\ReportBuySellControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ReportControls\ReportBuySellControl.Designer.cs">
+      <DependentUpon>ReportBuySellControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ReportControls\ReportGoodsMovementControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ReportControls\ReportGoodsMovementControl.Designer.cs">
+      <DependentUpon>ReportGoodsMovementControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ReportsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -268,6 +280,12 @@
     <EmbeddedResource Include="Controls\OrdersControl.resx">
       <DependentUpon>OrdersControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ReportControls\ReportBuySellControl.resx">
+      <DependentUpon>ReportBuySellControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ReportControls\ReportGoodsMovementControl.resx">
+      <DependentUpon>ReportGoodsMovementControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\ReportsControl.resx">
       <DependentUpon>ReportsControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -348,10 +366,16 @@
     <None Include="Resources\nav_left_green_shadow.png" />
     <None Include="Resources\nav_right_red_shadow.png" />
     <None Include="Resources\add2.png" />
-    <None Include="Resources\blueLine.png" />    <None Include="Resources\emptyBasket.jpg" />
+    <None Include="Resources\blueLine.png" />
+    <None Include="Resources\emptyBasket.jpg" />
     <None Include="Resources\emptyBasket1.jpg" />
     <None Include="Resources\invoice.jpg" />
-    <None Include="Resources\invoice1.jpg" />    <Content Include="Resourses\Images\200x200.png" />
+    <None Include="Resources\invoice1.jpg" />
+    <None Include="Resources\apps_kchart_report.png" />
+    <None Include="Resources\apps_kchart_report _shadow.png" />
+    <None Include="Resources\1495654881_bar_chart.png" />
+    <None Include="Resources\1495654881_bar_chart_shadow.png" />
+    <Content Include="Resourses\Images\200x200.png" />
     <Content Include="Resourses\Images\ico.ico" />
     <Content Include="Resourses\Images\50x400 mainFormLogo.png" />
   </ItemGroup>

@@ -76,6 +76,7 @@
     <Compile Include="Classes\DTOs\ReportDTO.cs" />
     <Compile Include="Classes\ReportClasses\DiagramBuySell.cs" />
     <Compile Include="Classes\ReportClasses\ReportBuySell.cs" />
+    <Compile Include="Classes\ReportClasses\ReportMovement.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="DataHolder.cs" />

@@ -63,9 +63,49 @@ namespace DB3Client {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _1495654881_bar_chart {
+            get {
+                object obj = ResourceManager.GetObject("1495654881_bar_chart", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _1495654881_bar_chart_shadow {
+            get {
+                object obj = ResourceManager.GetObject("1495654881_bar_chart_shadow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap add2 {
             get {
                 object obj = ResourceManager.GetObject("add2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap apps_kchart_report {
+            get {
+                object obj = ResourceManager.GetObject("apps_kchart_report", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap apps_kchart_report__shadow {
+            get {
+                object obj = ResourceManager.GetObject("apps_kchart_report _shadow", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

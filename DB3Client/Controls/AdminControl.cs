@@ -224,6 +224,7 @@ namespace DB3Client.Controls
         public async void LoadMolList()
         {
             AllMols = await SAOwner.getAllMols(DataHolder.Owner.OwnerId);
+            NonPrimeryMols.Clear();
            
             List<CommonMol> primeryMol = new List<CommonMol>();
             foreach (var mol in AllMols)
@@ -238,6 +239,7 @@ namespace DB3Client.Controls
                     NonPrimeryMols.Add(mol);
                 }
             }
+            dgvMol.DataSource = null;
             dgvMol.DataSource = NonPrimeryMols;
             dgvPrimaryMol.DataSource = primeryMol;
         }

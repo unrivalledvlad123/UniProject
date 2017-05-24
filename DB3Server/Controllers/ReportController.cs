@@ -24,6 +24,10 @@ namespace DB3Server.Controllers
         {
            return BLReports.GenerateDiagram(dto);
         }
-
+        [System.Web.Http.Route("api/reports/generatediagrammovement")]
+        public List<ReportMovement> PostGenerateDiagramMovement([FromBody] DiagramDTO dto)
+        {
+            return BLReports.GenerateDiagramMovement(dto);
+        }
     }
 }

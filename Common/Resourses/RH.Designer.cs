@@ -1042,6 +1042,15 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Goods movement report.
+        /// </summary>
+        internal static string report_for_goods_movement {
+            get {
+                return ResourceManager.GetString("report_for_goods_movement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Diagram by:.
         /// </summary>
         internal static string report_unit {

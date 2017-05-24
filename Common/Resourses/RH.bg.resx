@@ -558,4 +558,7 @@
   <data name="manage_mol" xml:space="preserve">
     <value>Управление на Материално отговорните лица</value>
   </data>
+  <data name="report_for_goods_movement" xml:space="preserve">
+    <value>Отчет за движение на стоки</value>
+  </data>
 </root>
