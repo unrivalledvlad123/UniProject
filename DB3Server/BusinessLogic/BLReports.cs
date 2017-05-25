@@ -289,6 +289,10 @@ namespace DB3Server.BusinessLogic
         {
             DatabaseEntities entities = new DatabaseEntities();
             List<ReportMovement> results = new List<ReportMovement>();
+            if (dto.ToDate <= dto.FromDate)
+            {
+                return new List<ReportMovement>();
+            }
             if (!dto.IsType)
             {
                 foreach (var type in entities.ItemTypesDDS)
@@ -405,7 +409,7 @@ namespace DB3Server.BusinessLogic
             }
             else
             {
-                return null;
+                return new List<ReportMovement>();
             }
 
             return results;

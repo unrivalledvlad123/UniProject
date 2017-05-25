@@ -1,6 +1,6 @@
 ﻿namespace DB3Client.Controls.ReportControls
 {
-    partial class ReportGoodsMovementControl
+    partial class DiagramBuySellControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.mlGroupBox1 = new Common.Forms.Base.MLGroupBox();
             this.cbItemTypeDiagram = new Common.Forms.Base.MLCheckBox();
             this.cbItemTypesDiagram = new Common.Forms.Base.MLComboBox();
             this.btnGenerateDiagram = new Common.Forms.Base.MLButton();
+            this.chartSales = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.labelErrorDiagram = new Common.Forms.Base.MLErrorLabel();
             this.mlLabel5 = new Common.Forms.Base.MLLabel();
             this.mlLabel6 = new Common.Forms.Base.MLLabel();
@@ -41,9 +43,8 @@
             this.dtFromDiagram = new MetroFramework.Controls.MetroDateTime();
             this.mlLabel4 = new Common.Forms.Base.MLLabel();
             this.cbDiagramType = new Common.Forms.Base.MLComboBox();
-            this.chartMovement = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.mlGroupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartMovement)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartSales)).BeginInit();
             this.SuspendLayout();
             // 
             // mlGroupBox1
@@ -52,6 +53,7 @@
             this.mlGroupBox1.Controls.Add(this.cbItemTypeDiagram);
             this.mlGroupBox1.Controls.Add(this.cbItemTypesDiagram);
             this.mlGroupBox1.Controls.Add(this.btnGenerateDiagram);
+            this.mlGroupBox1.Controls.Add(this.chartSales);
             this.mlGroupBox1.Controls.Add(this.labelErrorDiagram);
             this.mlGroupBox1.Controls.Add(this.mlLabel5);
             this.mlGroupBox1.Controls.Add(this.mlLabel6);
@@ -59,14 +61,13 @@
             this.mlGroupBox1.Controls.Add(this.dtFromDiagram);
             this.mlGroupBox1.Controls.Add(this.mlLabel4);
             this.mlGroupBox1.Controls.Add(this.cbDiagramType);
-            this.mlGroupBox1.Controls.Add(this.chartMovement);
             this.mlGroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mlGroupBox1.Location = new System.Drawing.Point(0, 0);
             this.mlGroupBox1.Name = "mlGroupBox1";
-            this.mlGroupBox1.Size = new System.Drawing.Size(1088, 554);
-            this.mlGroupBox1.TabIndex = 1;
+            this.mlGroupBox1.Size = new System.Drawing.Size(1068, 601);
+            this.mlGroupBox1.TabIndex = 3;
             this.mlGroupBox1.TabStop = false;
-            this.mlGroupBox1.Text = "report_for_goods_movement";
+            this.mlGroupBox1.Text = "sales_diagram";
             // 
             // cbItemTypeDiagram
             // 
@@ -74,7 +75,7 @@
             this.cbItemTypeDiagram.Location = new System.Drawing.Point(315, 20);
             this.cbItemTypeDiagram.Name = "cbItemTypeDiagram";
             this.cbItemTypeDiagram.Size = new System.Drawing.Size(75, 15);
-            this.cbItemTypeDiagram.TabIndex = 32;
+            this.cbItemTypeDiagram.TabIndex = 22;
             this.cbItemTypeDiagram.Text = "item_type";
             this.cbItemTypeDiagram.UseSelectable = true;
             this.cbItemTypeDiagram.CheckedChanged += new System.EventHandler(this.cbItemTypeDiagram_CheckedChanged);
@@ -86,7 +87,7 @@
             this.cbItemTypesDiagram.Location = new System.Drawing.Point(315, 42);
             this.cbItemTypesDiagram.Name = "cbItemTypesDiagram";
             this.cbItemTypesDiagram.Size = new System.Drawing.Size(249, 29);
-            this.cbItemTypesDiagram.TabIndex = 31;
+            this.cbItemTypesDiagram.TabIndex = 21;
             this.cbItemTypesDiagram.UseSelectable = true;
             // 
             // btnGenerateDiagram
@@ -94,19 +95,41 @@
             this.btnGenerateDiagram.Location = new System.Drawing.Point(463, 131);
             this.btnGenerateDiagram.Name = "btnGenerateDiagram";
             this.btnGenerateDiagram.Size = new System.Drawing.Size(101, 23);
-            this.btnGenerateDiagram.TabIndex = 30;
+            this.btnGenerateDiagram.TabIndex = 18;
             this.btnGenerateDiagram.Text = "generate";
             this.btnGenerateDiagram.UseSelectable = true;
             this.btnGenerateDiagram.Click += new System.EventHandler(this.btnGenerateDiagram_Click);
+            // 
+            // chartSales
+            // 
+            this.chartSales.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.chartSales.AntiAliasing = System.Windows.Forms.DataVisualization.Charting.AntiAliasingStyles.Text;
+            chartArea1.BackColor = System.Drawing.Color.White;
+            chartArea1.Name = "ChartArea1";
+            this.chartSales.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartSales.Legends.Add(legend1);
+            this.chartSales.Location = new System.Drawing.Point(3, 160);
+            this.chartSales.Name = "chartSales";
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Legend = "Legend1";
+            series1.Name = "Items";
+            this.chartSales.Series.Add(series1);
+            this.chartSales.Size = new System.Drawing.Size(1059, 435);
+            this.chartSales.TabIndex = 17;
+            this.chartSales.Text = "chartSales";
             // 
             // labelErrorDiagram
             // 
             this.labelErrorDiagram.AutoSize = true;
             this.labelErrorDiagram.ForeColor = System.Drawing.Color.Red;
-            this.labelErrorDiagram.Location = new System.Drawing.Point(3, 131);
+            this.labelErrorDiagram.Location = new System.Drawing.Point(6, 131);
             this.labelErrorDiagram.Name = "labelErrorDiagram";
             this.labelErrorDiagram.Size = new System.Drawing.Size(64, 13);
-            this.labelErrorDiagram.TabIndex = 29;
+            this.labelErrorDiagram.TabIndex = 16;
             this.labelErrorDiagram.Text = "invalid_data";
             this.labelErrorDiagram.Visible = false;
             // 
@@ -117,7 +140,7 @@
             this.mlLabel5.Location = new System.Drawing.Point(315, 74);
             this.mlLabel5.Name = "mlLabel5";
             this.mlLabel5.Size = new System.Drawing.Size(55, 19);
-            this.mlLabel5.TabIndex = 28;
+            this.mlLabel5.TabIndex = 15;
             this.mlLabel5.Text = "to_date";
             // 
             // mlLabel6
@@ -127,7 +150,7 @@
             this.mlLabel6.Location = new System.Drawing.Point(6, 74);
             this.mlLabel6.Name = "mlLabel6";
             this.mlLabel6.Size = new System.Drawing.Size(71, 19);
-            this.mlLabel6.TabIndex = 27;
+            this.mlLabel6.TabIndex = 14;
             this.mlLabel6.Text = "from_date";
             // 
             // dtToDiagram
@@ -136,7 +159,7 @@
             this.dtToDiagram.MinimumSize = new System.Drawing.Size(0, 29);
             this.dtToDiagram.Name = "dtToDiagram";
             this.dtToDiagram.Size = new System.Drawing.Size(249, 29);
-            this.dtToDiagram.TabIndex = 26;
+            this.dtToDiagram.TabIndex = 13;
             // 
             // dtFromDiagram
             // 
@@ -144,7 +167,7 @@
             this.dtFromDiagram.MinimumSize = new System.Drawing.Size(0, 29);
             this.dtFromDiagram.Name = "dtFromDiagram";
             this.dtFromDiagram.Size = new System.Drawing.Size(250, 29);
-            this.dtFromDiagram.TabIndex = 25;
+            this.dtFromDiagram.TabIndex = 12;
             // 
             // mlLabel4
             // 
@@ -153,7 +176,7 @@
             this.mlLabel4.Location = new System.Drawing.Point(6, 16);
             this.mlLabel4.Name = "mlLabel4";
             this.mlLabel4.Size = new System.Drawing.Size(70, 19);
-            this.mlLabel4.TabIndex = 24;
+            this.mlLabel4.TabIndex = 5;
             this.mlLabel4.Text = "report_for";
             // 
             // cbDiagramType
@@ -163,44 +186,31 @@
             this.cbDiagramType.Location = new System.Drawing.Point(5, 42);
             this.cbDiagramType.Name = "cbDiagramType";
             this.cbDiagramType.Size = new System.Drawing.Size(249, 29);
-            this.cbDiagramType.TabIndex = 23;
+            this.cbDiagramType.TabIndex = 4;
             this.cbDiagramType.UseSelectable = true;
             // 
-            // chartMovement
-            // 
-            this.chartMovement.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea2.Name = "ChartArea1";
-            this.chartMovement.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chartMovement.Legends.Add(legend2);
-            this.chartMovement.Location = new System.Drawing.Point(6, 160);
-            this.chartMovement.Name = "chartMovement";
-            this.chartMovement.Size = new System.Drawing.Size(1076, 388);
-            this.chartMovement.TabIndex = 0;
-            // 
-            // ReportGoodsMovementControl
+            // ReportBuySellControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.mlGroupBox1);
-            this.Name = "ReportGoodsMovementControl";
-            this.Size = new System.Drawing.Size(1088, 554);
+            this.Name = "ReportBuySellControl";
+            this.Size = new System.Drawing.Size(1068, 601);
             this.mlGroupBox1.ResumeLayout(false);
             this.mlGroupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartMovement)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartSales)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartMovement;
         private Common.Forms.Base.MLGroupBox mlGroupBox1;
         private Common.Forms.Base.MLCheckBox cbItemTypeDiagram;
         private Common.Forms.Base.MLComboBox cbItemTypesDiagram;
         private Common.Forms.Base.MLButton btnGenerateDiagram;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartSales;
         private Common.Forms.Base.MLErrorLabel labelErrorDiagram;
         private Common.Forms.Base.MLLabel mlLabel5;
         private Common.Forms.Base.MLLabel mlLabel6;

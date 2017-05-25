@@ -147,17 +147,23 @@
     <Compile Include="Controls\OrdersControl.Designer.cs">
       <DependentUpon>OrdersControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\ReportControls\ReportBuySellControl.cs">
+    <Compile Include="Controls\ReportControls\Diagrams\DiagramBuySellControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\ReportControls\ReportBuySellControl.Designer.cs">
+    <Compile Include="Controls\ReportControls\Diagrams\DiagramBuySellControl.Designer.cs">
+      <DependentUpon>DiagramBuySellControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ReportControls\Diagrams\DiagramGoodsMovementControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ReportControls\Diagrams\DiagramGoodsMovementControl.Designer.cs">
+      <DependentUpon>DiagramGoodsMovementControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ReportControls\Reports\ReportBuySellControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ReportControls\Reports\ReportBuySellControl.Designer.cs">
       <DependentUpon>ReportBuySellControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ReportControls\ReportGoodsMovementControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\ReportControls\ReportGoodsMovementControl.Designer.cs">
-      <DependentUpon>ReportGoodsMovementControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\ReportsControl.cs">
       <SubType>UserControl</SubType>
@@ -280,11 +286,14 @@
     <EmbeddedResource Include="Controls\OrdersControl.resx">
       <DependentUpon>OrdersControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\ReportControls\ReportBuySellControl.resx">
-      <DependentUpon>ReportBuySellControl.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\ReportControls\Diagrams\DiagramBuySellControl.resx">
+      <DependentUpon>DiagramBuySellControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\ReportControls\ReportGoodsMovementControl.resx">
-      <DependentUpon>ReportGoodsMovementControl.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\ReportControls\Diagrams\DiagramGoodsMovementControl.resx">
+      <DependentUpon>DiagramGoodsMovementControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ReportControls\Reports\ReportBuySellControl.resx">
+      <DependentUpon>ReportBuySellControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ReportsControl.resx">
       <DependentUpon>ReportsControl.cs</DependentUpon>
@@ -385,6 +394,8 @@
     <None Include="Resources\1495654881_bar_chart1.png" />
     <None Include="Resources\1495654881_bar_chart_shadow1.png" />
     <None Include="Resources\apps_kchart_report _shadow1.png" />
+    <None Include="Resources\report_sales.jpg" />
+    <None Include="Resources\report_sales_shadow.jpg" />
     <Content Include="Resourses\Images\200x200.png" />
     <Content Include="Resourses\Images\ico.ico" />
     <Content Include="Resourses\Images\50x400 mainFormLogo.png" />

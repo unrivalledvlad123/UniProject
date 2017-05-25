@@ -9,13 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Common;
 using Common.Classes.DTOs;
+using Common.Classes.ReportClasses;
 using DB3Client.ServiceAccess;
 
 namespace DB3Client.Controls.ReportControls
 {
-    public partial class ReportBuySellControl : MetroFramework.Controls.MetroUserControl
+    public partial class DiagramGoodsMovementControl : MetroFramework.Controls.MetroUserControl
     {
-        public ReportBuySellControl()
+        public DiagramGoodsMovementControl()
         {
             InitializeComponent();
 
@@ -31,13 +32,12 @@ namespace DB3Client.Controls.ReportControls
                 cbDiagramType.DataSource = Enum.GetValues(typeof(Enums.DiagramType));
                 cbItemTypesDiagram.DataSource = Enum.GetValues(typeof(Enums.ItemTypes));
             }
-
         }
 
         private async void btnGenerateDiagram_Click(object sender, EventArgs e)
         {
             labelErrorDiagram.Visible = false;
-            chartSales.Series["Items"].Points.Clear();
+            chartMovement.Series.Clear();
             int diagram;
             int temp1;
             if (DataHolder.UserCulture.TwoLetterISOLanguageName == "bg")
@@ -67,43 +67,61 @@ namespace DB3Client.Controls.ReportControls
                 ItemType = temp1
 
             };
-            Dictionary<string, int> result = await SAReports.PostGenerateDiagram(dto);
-            if (result == null || result.Count == 0)
+            List<ReportMovement> result = await SAReports.PostGenerateDiagramMovement(dto);
+            var counter = result.SelectMany(row => row.QuantityesList).Aggregate(0, (current, n) => current + n.Value);
+                // check if everywhere is 0(empty result)
+            if (counter == 0)
             {
                 labelErrorDiagram.Visible = true;
                 labelErrorDiagram.Text = DataHolder.GetString("no_results_found");
             }
             else
             {
-                List<KeyValuePair<string, int>> parsedResults = new List<KeyValuePair<string, int>>();
+                List<ReportMovement> parsedResults = new List<ReportMovement>();
                 if (!cbItemTypeDiagram.Checked)
                 {
-                    foreach (KeyValuePair<string, int> row in result)
+                    foreach (ReportMovement row in result)
                     {
                         if (DataHolder.UserCulture.TwoLetterISOLanguageName == "bg")
                         {
                             int value;
-                            int.TryParse(row.Key, out value);
+                            int.TryParse(row.Name, out value);
                             Enums.ItemTypesBg types = (Enums.ItemTypesBg) value;
-                            parsedResults.Add(new KeyValuePair<string, int>(types.ToString(), row.Value));
+                            ReportMovement element = new ReportMovement();
+                            element.Name = types.ToString();
+                            element.QuantityesList = row.QuantityesList;
+                            parsedResults.Add(element);
                         }
                         else
                         {
                             int value;
-                            int.TryParse(row.Key, out value);
+                            int.TryParse(row.Name, out value);
                             Enums.ItemTypes types = (Enums.ItemTypes) value;
-                            parsedResults.Add(new KeyValuePair<string, int>(types.ToString(), row.Value));
+                            ReportMovement element = new ReportMovement();
+                            element.Name = types.ToString();
+                            element.QuantityesList = row.QuantityesList;
+                            parsedResults.Add(element);
+                        }
+                    }
+                    foreach (var row in parsedResults)
+                    {
+                        chartMovement.Series.Add(row.Name);
+                        foreach (var rowvalue in row.QuantityesList)
+                        {
+                            chartMovement.Series[row.Name].Points.AddXY(rowvalue.Key, rowvalue.Value);
                         }
                     }
                 }
                 else
                 {
-                    parsedResults.AddRange(result.Select(row => new KeyValuePair<string, int>(row.Key, row.Value)));
-                }
-
-                foreach (var row in parsedResults)
-                {
-                    chartSales.Series["Items"].Points.AddXY(row.Key, row.Value);
+                    foreach (var row in result)
+                    {
+                        chartMovement.Series.Add(row.Name);
+                        foreach (var rowvalue in row.QuantityesList)
+                        {
+                            chartMovement.Series[row.Name].Points.AddXY(rowvalue.Key, rowvalue.Value);
+                        }
+                    }
                 }
             }
         }
@@ -112,6 +130,5 @@ namespace DB3Client.Controls.ReportControls
         {
             cbItemTypesDiagram.Enabled = cbItemTypeDiagram.Checked;
         }
-
     }
 }
