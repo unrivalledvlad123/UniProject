@@ -558,4 +558,58 @@
   <data name="manage_mol" xml:space="preserve">
     <value>Управление на Материално отговорните лица</value>
   </data>
+  <data name="add_new_parthner" xml:space="preserve">
+    <value>нов контрагент</value>
+  </data>
+  <data name="company_address_orders" xml:space="preserve">
+    <value>Адрес </value>
+  </data>
+  <data name="company_bulstat" xml:space="preserve">
+    <value>Булстат Номер:</value>
+  </data>
+  <data name="company_email_orders" xml:space="preserve">
+    <value>Имейл:</value>
+  </data>
+  <data name="company_name_orders" xml:space="preserve">
+    <value>Име на фирма</value>
+  </data>
+  <data name="company_phone_orders" xml:space="preserve">
+    <value>Телефон</value>
+  </data>
+  <data name="company_vat_number" xml:space="preserve">
+    <value>ДДС Номер:</value>
+  </data>
+  <data name="invoice_order" xml:space="preserve">
+    <value>Номер на фактура</value>
+  </data>
+  <data name="item_info_order" xml:space="preserve">
+    <value>Информация за стоки</value>
+  </data>
+  <data name="purchased_date" xml:space="preserve">
+    <value>Дата на поръчка:</value>
+  </data>
+  <data name="purchased_date_order" xml:space="preserve">
+    <value>Дата на поръчка:</value>
+  </data>
+  <data name="purchase_data_order" xml:space="preserve">
+    <value>Въведете информация за поручка</value>
+  </data>
+  <data name="purchase_info" xml:space="preserve">
+    <value>Информация за поръчки</value>
+  </data>
+  <data name="search_info_order" xml:space="preserve">
+    <value>Търсене по име на компания</value>
+  </data>
+  <data name="search_item_order" xml:space="preserve">
+    <value>Търсене по номер или име на стока</value>
+  </data>
+  <data name="tp_orders" xml:space="preserve">
+    <value>Поръчки</value>
+  </data>
+  <data name="warehouse_recepit_order" xml:space="preserve">
+    <value>Номер на касова бележка</value>
+  </data>
+  <data name="add_parthners" xml:space="preserve">
+    <value>нов контрагент</value>
+  </data>
 </root>

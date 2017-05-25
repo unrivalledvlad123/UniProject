@@ -115,11 +115,29 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to new parthner.
+        /// </summary>
+        internal static string add_new_parthner {
+            get {
+                return ResourceManager.GetString("add_new_parthner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add User.
         /// </summary>
         internal static string add_new_user {
             get {
                 return ResourceManager.GetString("add_new_user", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to new parthner.
+        /// </summary>
+        internal static string add_parthners {
+            get {
+                return ResourceManager.GetString("add_parthners", resourceCulture);
             }
         }
         
@@ -268,6 +286,33 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Аddress:.
+        /// </summary>
+        internal static string company_address_orders {
+            get {
+                return ResourceManager.GetString("company_address_orders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bulstat Number:.
+        /// </summary>
+        internal static string company_bulstat {
+            get {
+                return ResourceManager.GetString("company_bulstat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email:.
+        /// </summary>
+        internal static string company_email_orders {
+            get {
+                return ResourceManager.GetString("company_email_orders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Company Info.
         /// </summary>
         internal static string company_info {
@@ -282,6 +327,33 @@ namespace Common.Resourses {
         internal static string company_name {
             get {
                 return ResourceManager.GetString("company_name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Partner&apos;s name:.
+        /// </summary>
+        internal static string company_name_orders {
+            get {
+                return ResourceManager.GetString("company_name_orders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Telephone:.
+        /// </summary>
+        internal static string company_phone_orders {
+            get {
+                return ResourceManager.GetString("company_phone_orders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Number:.
+        /// </summary>
+        internal static string company_vat_number {
+            get {
+                return ResourceManager.GetString("company_vat_number", resourceCulture);
             }
         }
         
@@ -682,11 +754,29 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invoice number:.
+        /// </summary>
+        internal static string invoice_order {
+            get {
+                return ResourceManager.GetString("invoice_order", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Description.
         /// </summary>
         internal static string item_description_wharehouse {
             get {
                 return ResourceManager.GetString("item_description_wharehouse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Goods infromation.
+        /// </summary>
+        internal static string item_info_order {
+            get {
+                return ResourceManager.GetString("item_info_order", resourceCulture);
             }
         }
         
@@ -1006,6 +1096,42 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter information for orders.
+        /// </summary>
+        internal static string purchase_data_order {
+            get {
+                return ResourceManager.GetString("purchase_data_order", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Purchase Info.
+        /// </summary>
+        internal static string purchase_info {
+            get {
+                return ResourceManager.GetString("purchase_info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date of purchase:.
+        /// </summary>
+        internal static string purchased_date {
+            get {
+                return ResourceManager.GetString("purchased_date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date of purchase:.
+        /// </summary>
+        internal static string purchased_date_order {
+            get {
+                return ResourceManager.GetString("purchased_date_order", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Quantity.
         /// </summary>
         internal static string quantity {
@@ -1119,6 +1245,24 @@ namespace Common.Resourses {
         internal static string search_info {
             get {
                 return ResourceManager.GetString("search_info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search by company name.
+        /// </summary>
+        internal static string search_info_order {
+            get {
+                return ResourceManager.GetString("search_info_order", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search by numer or name of good.
+        /// </summary>
+        internal static string search_item_order {
+            get {
+                return ResourceManager.GetString("search_item_order", resourceCulture);
             }
         }
         
@@ -1258,6 +1402,15 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Orders.
+        /// </summary>
+        internal static string tp_orders {
+            get {
+                return ResourceManager.GetString("tp_orders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Type.
         /// </summary>
         internal static string type_goods_pricelist {
@@ -1353,6 +1506,15 @@ namespace Common.Resourses {
         internal static string view_transactions {
             get {
                 return ResourceManager.GetString("view_transactions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recepit number:.
+        /// </summary>
+        internal static string warehouse_recepit_order {
+            get {
+                return ResourceManager.GetString("warehouse_recepit_order", resourceCulture);
             }
         }
         

@@ -555,4 +555,58 @@
   <data name="manage_mol" xml:space="preserve">
     <value>Manage Accountable persons</value>
   </data>
+  <data name="add_new_parthner" xml:space="preserve">
+    <value>new parthner</value>
+  </data>
+  <data name="company_address_orders" xml:space="preserve">
+    <value>Аddress:</value>
+  </data>
+  <data name="company_bulstat" xml:space="preserve">
+    <value>Bulstat Number:</value>
+  </data>
+  <data name="company_email_orders" xml:space="preserve">
+    <value>Email:</value>
+  </data>
+  <data name="company_name_orders" xml:space="preserve">
+    <value>Partner's name:</value>
+  </data>
+  <data name="company_phone_orders" xml:space="preserve">
+    <value>Telephone:</value>
+  </data>
+  <data name="company_vat_number" xml:space="preserve">
+    <value>VAT Number:</value>
+  </data>
+  <data name="invoice_order" xml:space="preserve">
+    <value>Invoice number:</value>
+  </data>
+  <data name="item_info_order" xml:space="preserve">
+    <value>Goods infromation</value>
+  </data>
+  <data name="purchased_date" xml:space="preserve">
+    <value>Date of purchase:</value>
+  </data>
+  <data name="purchased_date_order" xml:space="preserve">
+    <value>Date of purchase:</value>
+  </data>
+  <data name="purchase_data_order" xml:space="preserve">
+    <value>Enter information for orders</value>
+  </data>
+  <data name="purchase_info" xml:space="preserve">
+    <value>Purchase Info</value>
+  </data>
+  <data name="search_info_order" xml:space="preserve">
+    <value>Search by company name</value>
+  </data>
+  <data name="search_item_order" xml:space="preserve">
+    <value>Search by numer or name of good</value>
+  </data>
+  <data name="tp_orders" xml:space="preserve">
+    <value>Orders</value>
+  </data>
+  <data name="warehouse_recepit_order" xml:space="preserve">
+    <value>Recepit number:</value>
+  </data>
+  <data name="add_parthners" xml:space="preserve">
+    <value>new parthner</value>
+  </data>
 </root>
