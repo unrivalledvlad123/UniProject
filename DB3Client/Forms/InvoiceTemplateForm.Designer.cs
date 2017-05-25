@@ -39,17 +39,18 @@
             this.metroPanel1.HorizontalScrollbarSize = 10;
             this.metroPanel1.Location = new System.Drawing.Point(20, 60);
             this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(800, 1012);
+            this.metroPanel1.Size = new System.Drawing.Size(800, 740);
             this.metroPanel1.TabIndex = 0;
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
+         
             // 
             // InvoiceTemplateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(840, 1092);
+            this.ClientSize = new System.Drawing.Size(840, 820);
             this.Controls.Add(this.metroPanel1);
             this.Name = "InvoiceTemplateForm";
             this.ResumeLayout(false);

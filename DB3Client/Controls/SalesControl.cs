@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using Common;
 using Common.Classes;
 using Common.Forms.Base;
@@ -23,16 +24,19 @@ namespace DB3Client.Controls
         public List<CommonItem> AllItems = new List<CommonItem>();
         public List<CommonContract> AllContacts = new List<CommonContract>();
         public List<CommonMol> AllMols = new List<CommonMol>();
-        public bool trigger = true;
+        public bool trigger = false;
+
+        SalesClientForm f = new SalesClientForm();
         public SalesControl()
         {
             InitializeComponent();
             SetGridColomns();
             LoadDataAsync();
+
             tabControlSales.SelectedTab = metroTabPage1;
             cbWholesale.Checked = false;
             gbClientInfo.Enabled = false;
-            
+
         }
 
         #region // < ========= Methods =========> //
@@ -89,38 +93,46 @@ namespace DB3Client.Controls
             c6.Visible = false;
             dgvSoldGoods.Columns.Add(c6);
 
+            DataGridViewTextBoxColumn c7 = new DataGridViewTextBoxColumn();
+            c7.Name = "type";
+            c7.HeaderText = "type";
+            c7.DataPropertyName = "Type";
+            c7.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
+            c7.Visible = false;
+            dgvSoldGoods.Columns.Add(c7);
+
+            f.dgvSoldGoodsClient.DataSource = dgvSoldGoods.DataSource;
         }
 
         public async void LoadDataAsync()
         {
+           // cbSearch.SelectedIndex = -1;
             try
             {
                 AllItems = await SAItem.GetAllItems(cbSearch.Text);
                 List<CommonItem> k = new List<CommonItem>();
-                k.Add(new CommonItem());
                 foreach (CommonItem Item in AllItems)
                 {
-                    
+
                     decimal temp = Item.SellingPriceCent;
                     Item.ParcePrice = temp / 100;
-                    k.Add(Item);
+                    
                 }
-               
-                cbSearch.DataSource = k;
 
+                cbSearch.DataSource = AllItems;
+                cbSearch.SelectedIndex = -1;
                 cbSearch.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
                 cbSearch.AutoCompleteSource = AutoCompleteSource.ListItems;
                 cbSearch.DropDownStyle = ComboBoxStyle.DropDown;
                 AllContacts = await SAContract.GetAllContracts(cbSearchContract.Text);
                 cbSearchContract.DataSource = AllContacts;
+                cbSearchContract.SelectedIndex = -1;
                 cbSearchContract.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
                 cbSearchContract.AutoCompleteSource = AutoCompleteSource.ListItems;
                 cbSearchContract.DropDownStyle = ComboBoxStyle.DropDown;
-                AllMols = await SAOwner.getAllMols(DataHolder.Owner.OwnerId);
-                cbChooseMol.DataSource = AllMols;
-                cbChooseMol.AutoCompleteSource = AutoCompleteSource.ListItems;
-                cbChooseMol.DropDownStyle = ComboBoxStyle.DropDown;
-                cbChooseMol.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+              // AllMols = await SAOwner.getAllMols(DataHolder.Owner.OwnerId);
+                CommonMol primeryMol = DataHolder.PrimeryMol;
+
 
             }
             catch (Exception e)
@@ -137,35 +149,70 @@ namespace DB3Client.Controls
             {
                 if (row.Cells[4].Value != null)
                 {
-                    s += (float) row.Cells[4].Value;
+                    s += (float)row.Cells[4].Value;
                 }
             }
             labelTotalAmount.Text = s.ToString();
+            f.labelTotalAmountClient.Text = labelTotalAmount.Text;
         }
 
         private void CalculateChange()
         {
             float s = float.Parse(labelCash.Text) - float.Parse(labelTotalAmount.Text);
             labelChange.Text = s.ToString();
+            f.labelChangeClient.Text = labelChange.Text;
+            f.labelCashClient.Text = labelCash.Text;
         }
 
         #endregion
 
         #region // < ========= Events =========> //
+        List<CommonItem> k = new List<CommonItem>();
+        private void ClearSelection()
+        {
+            mlLabel1.Text = "-";
+            tbQuantity.Text = "";
+            mlLabel2.Text = "-";
+            mlLabel3.Text = "-";
+            cbSearch.SelectedIndex = -1;
+        }
+
+        private void ClearAll()
+        {
+            ClearSelection();
+            dgvSoldGoods.Rows.Clear();
+           f.dgvSoldGoodsClient.Rows.Clear();
+            cbSearchContract.SelectedIndex = -1;
+            labelTotalAmount.Text = "0";
+            labelCash.Text = "0";
+            labelChange.Text = "0";
+            f.labelTotalAmountClient.Text = "0";
+            f.labelCashClient.Text = "0";
+            f.labelChangeClient.Text = "0";
+            mlLabel11.Text = "-";
+            mlLabel12.Text = "-";
+            mlLabel14.Text = "-";
+            mlLabel13.Text = "-";
+            mlLabel16.Text = "-";
+
+        }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(tbQuantity.Text))
             {
                 CommonItem a = ((CommonItem) cbSearch.SelectedItem);
+                KeyValuePair<int,decimal> temp = DataHolder.Settings.VatSettingsByGroup.FirstOrDefault(p => p.Key == a.Type);
                 string name = mlLabel1.Text;
                 string quantity = tbQuantity.Text;
                 int measurementUnit = a.MeasurmentUnit;
                 string price = mlLabel2.Text;
-                var vat = 1 + (Settings.Default.VatMultiplier / 100);
+                var vat = 1 + temp.Value;
                 var vatPrice = vat * (decimal) float.Parse(price);
                 float totalPrice = float.Parse(quantity) * (float) vatPrice;
-                dgvSoldGoods.Rows.Add(name, quantity, measurementUnit, price, totalPrice, a.ItemId);
+                f.dgvSoldGoodsClient.Rows.Add(name, quantity, measurementUnit, price, totalPrice);
+                dgvSoldGoods.Rows.Add(name, quantity, measurementUnit, price, totalPrice, a.ItemId, a.Type);
+              
                 UpdateTotal();
             }
             else
@@ -173,6 +220,7 @@ namespace DB3Client.Controls
                 MessageBox.Show("Fill quantity!!!");
                
             }
+            ClearSelection();
 
         }
 
@@ -191,13 +239,15 @@ namespace DB3Client.Controls
             s.SellerId = (DataHolder.Owner.OwnerId);
             s.SoldItems = new List<CommonSoldItem>();
 
-            var vat = 1 + (Settings.Default.VatMultiplier / 100);
+            
             foreach (DataGridViewRow row in dgvSoldGoods.Rows)
             {
+                var index = (int)row.Cells[6].Value;
+                KeyValuePair<int, decimal> pair = DataHolder.Settings.VatSettingsByGroup.FirstOrDefault(p => p.Key == index);
                 var item = new CommonSoldItem();
                 if (row.Cells[5].Value != null)
                 {
-                    item.Price = vat * decimal.Parse(row.Cells[3].Value.ToString());
+                    item.Price = 1 + pair.Key * decimal.Parse(row.Cells[3].Value.ToString());
                     item.Quantity = int.Parse(row.Cells[1].Value.ToString());
                     item.ItemId = (Guid) row.Cells[5].Value;
 
@@ -207,29 +257,39 @@ namespace DB3Client.Controls
 
             var sale = await SASale.PostCreateDirectSale(s);
             MessageBox.Show(sale == null ? "Not saved!" : "SAVED!");
+            if(sale != null)
+            {
+                ClearAll();
+            }
         }
+        
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (dgvSoldGoods.SelectedRows.Count == 1 && dgvSoldGoods.SelectedRows[0] != null)
             {
-                dgvSoldGoods.SelectedRows.Clear();
+                int index = dgvSoldGoods.SelectedRows[0].Index;
+                dgvSoldGoods.Rows.RemoveAt(index);
+                f.dgvSoldGoodsClient.Rows.RemoveAt(index);
+                UpdateTotal();
             }
+            
         }
 
         
         private void btnDetach_Click(object sender, EventArgs e)
         {
            
-            SalesClientForm f = new SalesClientForm();
+           
 
-            if(trigger)
+
+            if(!trigger)
             {
-                trigger = false;
+                trigger = true;
                 f.Show();
             }else
             {
-                trigger = true;
+                trigger = false;
                 f.Hide();
             }
 
@@ -245,19 +305,21 @@ namespace DB3Client.Controls
 
         private async void btnGenerateInvoice_Click(object sender, EventArgs e)
         {
+            //cbSearchContract.SelectedIndex = -1;
             CommonSale s = new CommonSale();
             s.BuyerId = ((CommonContract) cbSearchContract.SelectedItem).PartnerId;
-            s.SellerId = ((CommonMol) cbChooseMol.SelectedItem).MolId;
+            s.SellerId = DataHolder.PrimeryMol.MolId;
             s.SellerId = (DataHolder.Owner.OwnerId);
             s.SoldItems = new List<CommonSoldItem>();
 
-            var vat = 1 + (Settings.Default.VatMultiplier / 100);
             foreach (DataGridViewRow row in dgvSoldGoods.Rows)
             {
+                var index = (int) row.Cells[6].Value;
+                KeyValuePair<int, decimal> pair = DataHolder.Settings.VatSettingsByGroup.FirstOrDefault(p => p.Key == index);
                 var item = new CommonSoldItem();
                 if (row.Cells[5].Value != null)
                 {
-                    item.Price = vat * decimal.Parse(row.Cells[3].Value.ToString());
+                    item.Price = 1 + pair.Key * decimal.Parse(row.Cells[3].Value.ToString());
                     item.Quantity = int.Parse(row.Cells[1].Value.ToString());
                     item.ItemId = (Guid) row.Cells[5].Value;
 
@@ -270,7 +332,9 @@ namespace DB3Client.Controls
             {
                 MessageBox.Show("Sale not saved!");
                 return;
+                
             }
+            ClearAll();
 
 
 
@@ -328,6 +392,9 @@ namespace DB3Client.Controls
             e.Handled = !char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar);
         }
 
+        private void gbClientInfo_Enter(object sender, EventArgs e)
+        {
 
+        }
     }
 }

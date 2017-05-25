@@ -30,57 +30,94 @@ namespace DB3Client.Controls
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            this.panelReports = new MetroFramework.Controls.MetroPanel();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.tabControlReports = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new Common.Forms.Base.MLTabPage();
-            this.mlGroupBox2 = new Common.Forms.Base.MLGroupBox();
-            this.btnExport = new Common.Forms.Base.MLButton();
-            this.labelError = new Common.Forms.Base.MLErrorLabel();
-            this.rbItemType = new Common.Forms.Base.MLRadioButton();
-            this.cbItemType = new Common.Forms.Base.MLComboBox();
-            this.rbSpecificItem = new Common.Forms.Base.MLRadioButton();
-            this.btnGenerate = new Common.Forms.Base.MLButton();
-            this.tbSpecificItem = new Common.Forms.Base.MLTextBox();
-            this.dgvResults = new MetroFramework.Controls.MetroGrid();
-            this.mlLabel3 = new Common.Forms.Base.MLLabel();
-            this.mlLabel2 = new Common.Forms.Base.MLLabel();
-            this.dtTo = new MetroFramework.Controls.MetroDateTime();
-            this.dtFrom = new MetroFramework.Controls.MetroDateTime();
-            this.mlLabel1 = new Common.Forms.Base.MLLabel();
-            this.cbReportType = new Common.Forms.Base.MLComboBox();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.panelReportsNew = new MetroFramework.Controls.MetroPanel();
             this.metroTabPage2 = new Common.Forms.Base.MLTabPage();
-            this.mlGroupBox1 = new Common.Forms.Base.MLGroupBox();
-            this.cbItemTypeDiagram = new Common.Forms.Base.MLCheckBox();
-            this.cbItemTypesDiagram = new Common.Forms.Base.MLComboBox();
-            this.btnGenerateDiagram = new Common.Forms.Base.MLButton();
-            this.chartSales = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.labelErrorDiagram = new Common.Forms.Base.MLErrorLabel();
-            this.mlLabel5 = new Common.Forms.Base.MLLabel();
-            this.mlLabel6 = new Common.Forms.Base.MLLabel();
-            this.dtToDiagram = new MetroFramework.Controls.MetroDateTime();
-            this.dtFromDiagram = new MetroFramework.Controls.MetroDateTime();
-            this.mlLabel4 = new Common.Forms.Base.MLLabel();
-            this.cbDiagramType = new Common.Forms.Base.MLComboBox();
-            this.metroTabPage3 = new Common.Forms.Base.MLTabPage();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panelDiagrams = new MetroFramework.Controls.MetroPanel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.mlToolTp1 = new Common.Forms.Base.MLToolTp();
+            this.mlLabel1 = new Common.Forms.Base.MLLabel();
+            this.mlLabel2 = new Common.Forms.Base.MLLabel();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.tabControlReports.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
-            this.mlGroupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvResults)).BeginInit();
+            this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            this.tableLayoutPanel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.metroTabPage2.SuspendLayout();
-            this.mlGroupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartSales)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
+            // 
+            // panelReports
+            // 
+            this.panelReports.HorizontalScrollbarBarColor = true;
+            this.panelReports.HorizontalScrollbarHighlightOnWheel = false;
+            this.panelReports.HorizontalScrollbarSize = 10;
+            this.panelReports.Location = new System.Drawing.Point(0, 0);
+            this.panelReports.Name = "panelReports";
+            this.panelReports.Size = new System.Drawing.Size(200, 100);
+            this.panelReports.TabIndex = 0;
+            this.panelReports.VerticalScrollbarBarColor = true;
+            this.panelReports.VerticalScrollbarHighlightOnWheel = false;
+            this.panelReports.VerticalScrollbarSize = 10;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.BackColor = System.Drawing.Color.White;
+            this.tableLayoutPanel4.ColumnCount = 4;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(1222, 70);
+            this.tableLayoutPanel4.TabIndex = 6;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox4.TabIndex = 0;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.BackgroundImage = global::DB3Client.Resource.blueLine;
+            this.pictureBox6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox6.Location = new System.Drawing.Point(3, 79);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(1222, 3);
+            this.pictureBox6.TabIndex = 7;
+            this.pictureBox6.TabStop = false;
             // 
             // tabControlReports
             // 
             this.tabControlReports.Controls.Add(this.metroTabPage1);
             this.tabControlReports.Controls.Add(this.metroTabPage2);
-            this.tabControlReports.Controls.Add(this.metroTabPage3);
             this.tabControlReports.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlReports.Location = new System.Drawing.Point(0, 0);
             this.tabControlReports.Name = "tabControlReports";
@@ -88,248 +125,99 @@ namespace DB3Client.Controls
             this.tabControlReports.Size = new System.Drawing.Size(1236, 601);
             this.tabControlReports.TabIndex = 0;
             this.tabControlReports.UseSelectable = true;
-            this.tabControlReports.SelectedIndexChanged += new System.EventHandler(this.tabControlReports_SelectedIndexChanged);
             // 
             // metroTabPage1
             // 
-            this.metroTabPage1.Controls.Add(this.mlGroupBox2);
+            this.metroTabPage1.Controls.Add(this.mlLabel1);
+            this.metroTabPage1.Controls.Add(this.tableLayoutPanel3);
             this.metroTabPage1.HorizontalScrollbarBarColor = true;
             this.metroTabPage1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.HorizontalScrollbarSize = 10;
-            this.metroTabPage1.Location = new System.Drawing.Point(4, 35);
+            this.metroTabPage1.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage1.Name = "metroTabPage1";
-            this.metroTabPage1.Size = new System.Drawing.Size(1228, 562);
+            this.metroTabPage1.Size = new System.Drawing.Size(1228, 559);
             this.metroTabPage1.TabIndex = 0;
             this.metroTabPage1.Text = "tab_reports";
             this.metroTabPage1.VerticalScrollbarBarColor = true;
             this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.VerticalScrollbarSize = 10;
             // 
-            // mlGroupBox2
+            // tableLayoutPanel3
             // 
-            this.mlGroupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.mlGroupBox2.BackColor = System.Drawing.Color.White;
-            this.mlGroupBox2.Controls.Add(this.btnExport);
-            this.mlGroupBox2.Controls.Add(this.labelError);
-            this.mlGroupBox2.Controls.Add(this.rbItemType);
-            this.mlGroupBox2.Controls.Add(this.cbItemType);
-            this.mlGroupBox2.Controls.Add(this.rbSpecificItem);
-            this.mlGroupBox2.Controls.Add(this.btnGenerate);
-            this.mlGroupBox2.Controls.Add(this.tbSpecificItem);
-            this.mlGroupBox2.Controls.Add(this.dgvResults);
-            this.mlGroupBox2.Controls.Add(this.mlLabel3);
-            this.mlGroupBox2.Controls.Add(this.mlLabel2);
-            this.mlGroupBox2.Controls.Add(this.dtTo);
-            this.mlGroupBox2.Controls.Add(this.dtFrom);
-            this.mlGroupBox2.Controls.Add(this.mlLabel1);
-            this.mlGroupBox2.Controls.Add(this.cbReportType);
-            this.mlGroupBox2.Location = new System.Drawing.Point(3, 3);
-            this.mlGroupBox2.Name = "mlGroupBox2";
-            this.mlGroupBox2.Size = new System.Drawing.Size(574, 560);
-            this.mlGroupBox2.TabIndex = 5;
-            this.mlGroupBox2.TabStop = false;
-            this.mlGroupBox2.Text = "sales_report";
-            // 
-            // btnExport
-            // 
-            this.btnExport.Location = new System.Drawing.Point(359, 239);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(101, 23);
-            this.btnExport.TabIndex = 12;
-            this.btnExport.Text = "export_to_csv";
-            this.btnExport.UseSelectable = true;
-            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
-            // 
-            // labelError
-            // 
-            this.labelError.AutoSize = true;
-            this.labelError.ForeColor = System.Drawing.Color.Red;
-            this.labelError.Location = new System.Drawing.Point(10, 205);
-            this.labelError.Name = "labelError";
-            this.labelError.Size = new System.Drawing.Size(64, 13);
-            this.labelError.TabIndex = 11;
-            this.labelError.Text = "invalid_data";
-            this.labelError.Visible = false;
-            // 
-            // rbItemType
-            // 
-            this.rbItemType.AutoSize = true;
-            this.rbItemType.Location = new System.Drawing.Point(318, 88);
-            this.rbItemType.Name = "rbItemType";
-            this.rbItemType.Size = new System.Drawing.Size(75, 15);
-            this.rbItemType.TabIndex = 1;
-            this.rbItemType.Text = "item_type";
-            this.rbItemType.UseSelectable = true;
-            this.rbItemType.CheckedChanged += new System.EventHandler(this.rbItemType_CheckedChanged);
-            // 
-            // cbItemType
-            // 
-            this.cbItemType.FormattingEnabled = true;
-            this.cbItemType.ItemHeight = 23;
-            this.cbItemType.Location = new System.Drawing.Point(318, 109);
-            this.cbItemType.Name = "cbItemType";
-            this.cbItemType.Size = new System.Drawing.Size(250, 29);
-            this.cbItemType.TabIndex = 3;
-            this.cbItemType.UseSelectable = true;
-            // 
-            // rbSpecificItem
-            // 
-            this.rbSpecificItem.AutoSize = true;
-            this.rbSpecificItem.Location = new System.Drawing.Point(13, 88);
-            this.rbSpecificItem.Name = "rbSpecificItem";
-            this.rbSpecificItem.Size = new System.Drawing.Size(92, 15);
-            this.rbSpecificItem.TabIndex = 0;
-            this.rbSpecificItem.Text = "specific_item";
-            this.rbSpecificItem.UseSelectable = true;
-            this.rbSpecificItem.CheckedChanged += new System.EventHandler(this.rbSpecificItem_CheckedChanged);
-            // 
-            // btnGenerate
-            // 
-            this.btnGenerate.Location = new System.Drawing.Point(466, 239);
-            this.btnGenerate.Name = "btnGenerate";
-            this.btnGenerate.Size = new System.Drawing.Size(101, 23);
-            this.btnGenerate.TabIndex = 10;
-            this.btnGenerate.Text = "generate";
-            this.btnGenerate.UseSelectable = true;
-            this.btnGenerate.Click += new System.EventHandler(this.btnGenerate_Click);
-            // 
-            // tbSpecificItem
-            // 
-            // 
-            // 
-            // 
-            this.tbSpecificItem.CustomButton.Image = null;
-            this.tbSpecificItem.CustomButton.Location = new System.Drawing.Point(222, 1);
-            this.tbSpecificItem.CustomButton.Name = "";
-            this.tbSpecificItem.CustomButton.Size = new System.Drawing.Size(27, 27);
-            this.tbSpecificItem.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.tbSpecificItem.CustomButton.TabIndex = 1;
-            this.tbSpecificItem.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.tbSpecificItem.CustomButton.UseSelectable = true;
-            this.tbSpecificItem.CustomButton.Visible = false;
-            this.tbSpecificItem.Lines = new string[0];
-            this.tbSpecificItem.Location = new System.Drawing.Point(13, 109);
-            this.tbSpecificItem.MaxLength = 32767;
-            this.tbSpecificItem.Name = "tbSpecificItem";
-            this.tbSpecificItem.PasswordChar = '\0';
-            this.tbSpecificItem.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.tbSpecificItem.SelectedText = "";
-            this.tbSpecificItem.SelectionLength = 0;
-            this.tbSpecificItem.SelectionStart = 0;
-            this.tbSpecificItem.ShortcutsEnabled = true;
-            this.tbSpecificItem.Size = new System.Drawing.Size(250, 29);
-            this.tbSpecificItem.TabIndex = 2;
-            this.tbSpecificItem.UseSelectable = true;
-            this.tbSpecificItem.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.tbSpecificItem.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // dgvResults
-            // 
-            this.dgvResults.AllowUserToResizeRows = false;
-            this.dgvResults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvResults.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvResults.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvResults.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dgvResults.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvResults.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvResults.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvResults.EnableHeadersVisualStyles = false;
-            this.dgvResults.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.dgvResults.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dgvResults.Location = new System.Drawing.Point(6, 268);
-            this.dgvResults.Name = "dgvResults";
-            this.dgvResults.ReadOnly = true;
-            this.dgvResults.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvResults.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvResults.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dgvResults.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvResults.Size = new System.Drawing.Size(562, 286);
-            this.dgvResults.TabIndex = 9;
+            this.tableLayoutPanel3.BackColor = System.Drawing.Color.White;
+            this.tableLayoutPanel3.ColumnCount = 1;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Controls.Add(this.pictureBox5, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel5, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.panelReportsNew, 0, 2);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 13);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 3;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 76F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 9F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1228, 546);
+            this.tableLayoutPanel3.TabIndex = 2;
             // 
-            // mlLabel3
+            // pictureBox5
             // 
-            this.mlLabel3.AutoSize = true;
-            this.mlLabel3.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.mlLabel3.Location = new System.Drawing.Point(318, 151);
-            this.mlLabel3.Name = "mlLabel3";
-            this.mlLabel3.Size = new System.Drawing.Size(55, 19);
-            this.mlLabel3.TabIndex = 8;
-            this.mlLabel3.Text = "to_date";
+            this.pictureBox5.BackgroundImage = global::DB3Client.Resource.blueLine;
+            this.pictureBox5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox5.Location = new System.Drawing.Point(3, 79);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(1222, 3);
+            this.pictureBox5.TabIndex = 3;
+            this.pictureBox5.TabStop = false;
             // 
-            // mlLabel2
+            // tableLayoutPanel5
             // 
-            this.mlLabel2.AutoSize = true;
-            this.mlLabel2.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.mlLabel2.Location = new System.Drawing.Point(13, 151);
-            this.mlLabel2.Name = "mlLabel2";
-            this.mlLabel2.Size = new System.Drawing.Size(71, 19);
-            this.mlLabel2.TabIndex = 7;
-            this.mlLabel2.Text = "from_date";
+            this.tableLayoutPanel5.ColumnCount = 2;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.Controls.Add(this.pictureBox7, 0, 0);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 1;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(1222, 70);
+            this.tableLayoutPanel5.TabIndex = 0;
             // 
-            // dtTo
+            // pictureBox7
             // 
-            this.dtTo.Location = new System.Drawing.Point(318, 173);
-            this.dtTo.MinimumSize = new System.Drawing.Size(4, 29);
-            this.dtTo.Name = "dtTo";
-            this.dtTo.Size = new System.Drawing.Size(249, 29);
-            this.dtTo.TabIndex = 6;
+            this.pictureBox7.BackgroundImage = global::DB3Client.Resource.report_sales;
+            this.pictureBox7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox7.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(64, 64);
+            this.pictureBox7.TabIndex = 0;
+            this.pictureBox7.TabStop = false;
+            this.mlToolTp1.SetToolTip(this.pictureBox7, "sales_report");
+            this.pictureBox7.Click += new System.EventHandler(this.pictureBox7_Click);
+            this.pictureBox7.MouseEnter += new System.EventHandler(this.pictureBox7_MouseEnter);
+            this.pictureBox7.MouseLeave += new System.EventHandler(this.pictureBox7_MouseLeave);
             // 
-            // dtFrom
+            // panelReportsNew
             // 
-            this.dtFrom.Location = new System.Drawing.Point(12, 173);
-            this.dtFrom.MinimumSize = new System.Drawing.Size(4, 29);
-            this.dtFrom.Name = "dtFrom";
-            this.dtFrom.Size = new System.Drawing.Size(250, 29);
-            this.dtFrom.TabIndex = 5;
-            // 
-            // mlLabel1
-            // 
-            this.mlLabel1.AutoSize = true;
-            this.mlLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.mlLabel1.Location = new System.Drawing.Point(12, 16);
-            this.mlLabel1.Name = "mlLabel1";
-            this.mlLabel1.Size = new System.Drawing.Size(70, 19);
-            this.mlLabel1.TabIndex = 3;
-            this.mlLabel1.Text = "report_for";
-            // 
-            // cbReportType
-            // 
-            this.cbReportType.FormattingEnabled = true;
-            this.cbReportType.ItemHeight = 23;
-            this.cbReportType.Location = new System.Drawing.Point(13, 42);
-            this.cbReportType.Name = "cbReportType";
-            this.cbReportType.Size = new System.Drawing.Size(249, 29);
-            this.cbReportType.TabIndex = 2;
-            this.cbReportType.UseSelectable = true;
+            this.panelReportsNew.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelReportsNew.HorizontalScrollbarBarColor = true;
+            this.panelReportsNew.HorizontalScrollbarHighlightOnWheel = false;
+            this.panelReportsNew.HorizontalScrollbarSize = 10;
+            this.panelReportsNew.Location = new System.Drawing.Point(3, 88);
+            this.panelReportsNew.Name = "panelReportsNew";
+            this.panelReportsNew.Size = new System.Drawing.Size(1222, 455);
+            this.panelReportsNew.TabIndex = 4;
+            this.panelReportsNew.VerticalScrollbarBarColor = true;
+            this.panelReportsNew.VerticalScrollbarHighlightOnWheel = false;
+            this.panelReportsNew.VerticalScrollbarSize = 10;
             // 
             // metroTabPage2
             // 
-            this.metroTabPage2.Controls.Add(this.mlGroupBox1);
+            this.metroTabPage2.Controls.Add(this.mlLabel2);
+            this.metroTabPage2.Controls.Add(this.tableLayoutPanel1);
             this.metroTabPage2.HorizontalScrollbarBarColor = true;
             this.metroTabPage2.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.HorizontalScrollbarSize = 10;
@@ -342,161 +230,120 @@ namespace DB3Client.Controls
             this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.VerticalScrollbarSize = 10;
             // 
-            // mlGroupBox1
+            // tableLayoutPanel1
             // 
-            this.mlGroupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.mlGroupBox1.BackColor = System.Drawing.Color.White;
-            this.mlGroupBox1.Controls.Add(this.cbItemTypeDiagram);
-            this.mlGroupBox1.Controls.Add(this.cbItemTypesDiagram);
-            this.mlGroupBox1.Controls.Add(this.btnGenerateDiagram);
-            this.mlGroupBox1.Controls.Add(this.chartSales);
-            this.mlGroupBox1.Controls.Add(this.labelErrorDiagram);
-            this.mlGroupBox1.Controls.Add(this.mlLabel5);
-            this.mlGroupBox1.Controls.Add(this.mlLabel6);
-            this.mlGroupBox1.Controls.Add(this.dtToDiagram);
-            this.mlGroupBox1.Controls.Add(this.dtFromDiagram);
-            this.mlGroupBox1.Controls.Add(this.mlLabel4);
-            this.mlGroupBox1.Controls.Add(this.cbDiagramType);
-            this.mlGroupBox1.Location = new System.Drawing.Point(3, 3);
-            this.mlGroupBox1.Name = "mlGroupBox1";
-            this.mlGroupBox1.Size = new System.Drawing.Size(574, 556);
-            this.mlGroupBox1.TabIndex = 2;
-            this.mlGroupBox1.TabStop = false;
-            this.mlGroupBox1.Text = "sales_diagram";
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.White;
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.panelDiagrams, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.pictureBox3, 0, 1);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 13);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 76F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 9F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1228, 546);
+            this.tableLayoutPanel1.TabIndex = 3;
             // 
-            // cbItemTypeDiagram
+            // panelDiagrams
             // 
-            this.cbItemTypeDiagram.AutoSize = true;
-            this.cbItemTypeDiagram.Location = new System.Drawing.Point(318, 20);
-            this.cbItemTypeDiagram.Name = "cbItemTypeDiagram";
-            this.cbItemTypeDiagram.Size = new System.Drawing.Size(75, 15);
-            this.cbItemTypeDiagram.TabIndex = 22;
-            this.cbItemTypeDiagram.Text = "item_type";
-            this.cbItemTypeDiagram.UseSelectable = true;
-            this.cbItemTypeDiagram.CheckedChanged += new System.EventHandler(this.cbItemTypeDiagram_CheckedChanged);
+            this.panelDiagrams.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelDiagrams.HorizontalScrollbarBarColor = true;
+            this.panelDiagrams.HorizontalScrollbarHighlightOnWheel = false;
+            this.panelDiagrams.HorizontalScrollbarSize = 10;
+            this.panelDiagrams.Location = new System.Drawing.Point(3, 88);
+            this.panelDiagrams.Name = "panelDiagrams";
+            this.panelDiagrams.Size = new System.Drawing.Size(1222, 455);
+            this.panelDiagrams.TabIndex = 0;
+            this.panelDiagrams.VerticalScrollbarBarColor = true;
+            this.panelDiagrams.VerticalScrollbarHighlightOnWheel = false;
+            this.panelDiagrams.VerticalScrollbarSize = 10;
             // 
-            // cbItemTypesDiagram
+            // tableLayoutPanel2
             // 
-            this.cbItemTypesDiagram.FormattingEnabled = true;
-            this.cbItemTypesDiagram.ItemHeight = 23;
-            this.cbItemTypesDiagram.Location = new System.Drawing.Point(318, 42);
-            this.cbItemTypesDiagram.Name = "cbItemTypesDiagram";
-            this.cbItemTypesDiagram.Size = new System.Drawing.Size(249, 29);
-            this.cbItemTypesDiagram.TabIndex = 21;
-            this.cbItemTypesDiagram.UseSelectable = true;
+            this.tableLayoutPanel2.BackColor = System.Drawing.Color.White;
+            this.tableLayoutPanel2.ColumnCount = 4;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Controls.Add(this.pictureBox1, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.pictureBox2, 1, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1222, 70);
+            this.tableLayoutPanel2.TabIndex = 1;
             // 
-            // btnGenerateDiagram
+            // pictureBox1
             // 
-            this.btnGenerateDiagram.Location = new System.Drawing.Point(466, 131);
-            this.btnGenerateDiagram.Name = "btnGenerateDiagram";
-            this.btnGenerateDiagram.Size = new System.Drawing.Size(101, 23);
-            this.btnGenerateDiagram.TabIndex = 18;
-            this.btnGenerateDiagram.Text = "generate";
-            this.btnGenerateDiagram.UseSelectable = true;
-            this.btnGenerateDiagram.Click += new System.EventHandler(this.btnGenerateDiagram_Click);
+            this.pictureBox1.BackgroundImage = global::DB3Client.Resource.apps_kchart_report;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(64, 64);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            this.mlToolTp1.SetToolTip(this.pictureBox1, "sales_diagram");
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.pictureBox1.MouseEnter += new System.EventHandler(this.pictureBox1_MouseEnter);
+            this.pictureBox1.MouseLeave += new System.EventHandler(this.pictureBox1_MouseLeave);
             // 
-            // chartSales
+            // pictureBox2
             // 
-            this.chartSales.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.chartSales.AntiAliasing = System.Windows.Forms.DataVisualization.Charting.AntiAliasingStyles.Text;
-            chartArea1.BackColor = System.Drawing.Color.White;
-            chartArea1.Name = "ChartArea1";
-            this.chartSales.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartSales.Legends.Add(legend1);
-            this.chartSales.Location = new System.Drawing.Point(3, 160);
-            this.chartSales.Name = "chartSales";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.Legend = "Legend1";
-            series1.Name = "Items";
-            this.chartSales.Series.Add(series1);
-            this.chartSales.Size = new System.Drawing.Size(564, 393);
-            this.chartSales.TabIndex = 17;
-            this.chartSales.Text = "chartSales";
+            this.pictureBox2.BackgroundImage = global::DB3Client.Resource._1495654881_bar_chart;
+            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox2.Location = new System.Drawing.Point(73, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(64, 64);
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
+            this.mlToolTp1.SetToolTip(this.pictureBox2, "report_for_goods_movement");
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            this.pictureBox2.MouseEnter += new System.EventHandler(this.pictureBox2_MouseEnter);
+            this.pictureBox2.MouseLeave += new System.EventHandler(this.pictureBox2_MouseLeave);
             // 
-            // labelErrorDiagram
+            // pictureBox3
             // 
-            this.labelErrorDiagram.AutoSize = true;
-            this.labelErrorDiagram.ForeColor = System.Drawing.Color.Red;
-            this.labelErrorDiagram.Location = new System.Drawing.Point(6, 131);
-            this.labelErrorDiagram.Name = "labelErrorDiagram";
-            this.labelErrorDiagram.Size = new System.Drawing.Size(64, 13);
-            this.labelErrorDiagram.TabIndex = 16;
-            this.labelErrorDiagram.Text = "invalid_data";
-            this.labelErrorDiagram.Visible = false;
+            this.pictureBox3.BackgroundImage = global::DB3Client.Resource.blueLine;
+            this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox3.Location = new System.Drawing.Point(3, 79);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(1222, 3);
+            this.pictureBox3.TabIndex = 2;
+            this.pictureBox3.TabStop = false;
             // 
-            // mlLabel5
+            // mlToolTp1
             // 
-            this.mlLabel5.AutoSize = true;
-            this.mlLabel5.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.mlLabel5.Location = new System.Drawing.Point(318, 74);
-            this.mlLabel5.Name = "mlLabel5";
-            this.mlLabel5.Size = new System.Drawing.Size(55, 19);
-            this.mlLabel5.TabIndex = 15;
-            this.mlLabel5.Text = "to_date";
+            this.mlToolTp1.Style = MetroFramework.MetroColorStyle.Default;
+            this.mlToolTp1.StyleManager = null;
+            this.mlToolTp1.Theme = MetroFramework.MetroThemeStyle.Default;
             // 
-            // mlLabel6
+            // mlLabel1
             // 
-            this.mlLabel6.AutoSize = true;
-            this.mlLabel6.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.mlLabel6.Location = new System.Drawing.Point(9, 74);
-            this.mlLabel6.Name = "mlLabel6";
-            this.mlLabel6.Size = new System.Drawing.Size(71, 19);
-            this.mlLabel6.TabIndex = 14;
-            this.mlLabel6.Text = "from_date";
+            this.mlLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.mlLabel1.Location = new System.Drawing.Point(0, 0);
+            this.mlLabel1.MaximumSize = new System.Drawing.Size(100, 10);
+            this.mlLabel1.MinimumSize = new System.Drawing.Size(100, 10);
+            this.mlLabel1.Name = "mlLabel1";
+            this.mlLabel1.Size = new System.Drawing.Size(100, 10);
+            this.mlLabel1.TabIndex = 3;
             // 
-            // dtToDiagram
+            // mlLabel2
             // 
-            this.dtToDiagram.Location = new System.Drawing.Point(318, 96);
-            this.dtToDiagram.MinimumSize = new System.Drawing.Size(0, 29);
-            this.dtToDiagram.Name = "dtToDiagram";
-            this.dtToDiagram.Size = new System.Drawing.Size(249, 29);
-            this.dtToDiagram.TabIndex = 13;
-            // 
-            // dtFromDiagram
-            // 
-            this.dtFromDiagram.Location = new System.Drawing.Point(8, 96);
-            this.dtFromDiagram.MinimumSize = new System.Drawing.Size(0, 29);
-            this.dtFromDiagram.Name = "dtFromDiagram";
-            this.dtFromDiagram.Size = new System.Drawing.Size(250, 29);
-            this.dtFromDiagram.TabIndex = 12;
-            // 
-            // mlLabel4
-            // 
-            this.mlLabel4.AutoSize = true;
-            this.mlLabel4.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.mlLabel4.Location = new System.Drawing.Point(9, 16);
-            this.mlLabel4.Name = "mlLabel4";
-            this.mlLabel4.Size = new System.Drawing.Size(70, 19);
-            this.mlLabel4.TabIndex = 5;
-            this.mlLabel4.Text = "report_for";
-            // 
-            // cbDiagramType
-            // 
-            this.cbDiagramType.FormattingEnabled = true;
-            this.cbDiagramType.ItemHeight = 23;
-            this.cbDiagramType.Location = new System.Drawing.Point(8, 42);
-            this.cbDiagramType.Name = "cbDiagramType";
-            this.cbDiagramType.Size = new System.Drawing.Size(249, 29);
-            this.cbDiagramType.TabIndex = 4;
-            this.cbDiagramType.UseSelectable = true;
-            // 
-            // metroTabPage3
-            // 
-            this.metroTabPage3.HorizontalScrollbarBarColor = true;
-            this.metroTabPage3.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPage3.HorizontalScrollbarSize = 10;
-            this.metroTabPage3.Location = new System.Drawing.Point(4, 35);
-            this.metroTabPage3.Name = "metroTabPage3";
-            this.metroTabPage3.Size = new System.Drawing.Size(1228, 562);
-            this.metroTabPage3.TabIndex = 2;
-            this.metroTabPage3.Text = "metroTabPage3";
-            this.metroTabPage3.VerticalScrollbarBarColor = true;
-            this.metroTabPage3.VerticalScrollbarHighlightOnWheel = false;
-            this.metroTabPage3.VerticalScrollbarSize = 10;
+            this.mlLabel2.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.mlLabel2.Location = new System.Drawing.Point(6, 0);
+            this.mlLabel2.MinimumSize = new System.Drawing.Size(100, 10);
+            this.mlLabel2.Name = "mlLabel2";
+            this.mlLabel2.Size = new System.Drawing.Size(100, 10);
+            this.mlLabel2.TabIndex = 4;
             // 
             // ReportsControl
             // 
@@ -505,15 +352,20 @@ namespace DB3Client.Controls
             this.Controls.Add(this.tabControlReports);
             this.Name = "ReportsControl";
             this.Size = new System.Drawing.Size(1236, 601);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.tabControlReports.ResumeLayout(false);
             this.metroTabPage1.ResumeLayout(false);
-            this.mlGroupBox2.ResumeLayout(false);
-            this.mlGroupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvResults)).EndInit();
+            this.tableLayoutPanel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            this.tableLayoutPanel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.metroTabPage2.ResumeLayout(false);
-            this.mlGroupBox1.ResumeLayout(false);
-            this.mlGroupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartSales)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -521,35 +373,25 @@ namespace DB3Client.Controls
         #endregion
 
         private MetroFramework.Controls.MetroTabControl tabControlReports;
-        private MLTabPage metroTabPage1;
         private MLTabPage metroTabPage2;
-        private MLTabPage metroTabPage3;
-        private MLGroupBox mlGroupBox2;
-        private MetroFramework.Controls.MetroDateTime dtTo;
-        private MetroFramework.Controls.MetroDateTime dtFrom;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private MetroFramework.Controls.MetroPanel panelDiagrams;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private MLTabPage metroTabPage1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private MetroFramework.Controls.MetroPanel panelReports;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.PictureBox pictureBox7;
+        private MetroFramework.Controls.MetroPanel panelReportsNew;
+        private MLToolTp mlToolTp1;
         private MLLabel mlLabel1;
-        private MLTextBox tbSpecificItem;
-        private MLRadioButton rbItemType;
-        private MLRadioButton rbSpecificItem;
-        private MLComboBox cbReportType;
-        private MLComboBox cbItemType;
-        private MetroFramework.Controls.MetroGrid dgvResults;
-        private MLLabel mlLabel3;
         private MLLabel mlLabel2;
-        private MLButton btnGenerate;
-        private MLErrorLabel labelError;
-        private MLButton btnExport;
-        private MLGroupBox mlGroupBox1;
-        private MLErrorLabel labelErrorDiagram;
-        private MLLabel mlLabel5;
-        private MLLabel mlLabel6;
-        private MetroFramework.Controls.MetroDateTime dtToDiagram;
-        private MetroFramework.Controls.MetroDateTime dtFromDiagram;
-        private MLLabel mlLabel4;
-        private MLComboBox cbDiagramType;
-        private MLButton btnGenerateDiagram;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartSales;
-        private MLComboBox cbItemTypesDiagram;
-        private MLCheckBox cbItemTypeDiagram;
     }
 }

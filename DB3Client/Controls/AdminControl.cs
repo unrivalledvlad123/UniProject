@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Common;
 using Common.Classes;
+using DB3Client.Controls.AdminControls;
 using DB3Client.Forms;
 using DB3Client.Forms.AdminForms;
 using DB3Client.ServiceAccess;
@@ -20,11 +21,11 @@ using Newtonsoft.Json.Linq;
 
 namespace DB3Client.Controls
 {
-    public partial class AdminControl : MetroFramework.Controls.MetroUserControl
+    public partial class AdminControl : UserControl
     {
         private static List<CommonUser> AllUsers;
         private static List<CommonMol> AllMols;
-        private static  List<CommonMol> NonPrimeryMols = new List<CommonMol>();
+        private static List<CommonMol> NonPrimeryMols = new List<CommonMol>();
         private static CommonMol PrimeryMol = new CommonMol();
 
 
@@ -38,8 +39,6 @@ namespace DB3Client.Controls
             LoadData();
             LoadCompanyData();
             LoadMolList();
-            LoadSettings();
-           
 
             tabControlAdmin.SelectedTab = metroTabPage1;
         }
@@ -47,6 +46,7 @@ namespace DB3Client.Controls
 
 
         #region // <====== Utility Methodts ======> //
+
         public void SetGridColomns()
         {
             dgvUsers.DataSource = null;
@@ -148,6 +148,7 @@ namespace DB3Client.Controls
             dgvMol.Columns.Add(c6);
 
         }
+
         public void SetGridColomnsMolsPrimary()
         {
             dgvPrimaryMol.DataSource = null;
@@ -224,7 +225,8 @@ namespace DB3Client.Controls
         public async void LoadMolList()
         {
             AllMols = await SAOwner.getAllMols(DataHolder.Owner.OwnerId);
-           
+            NonPrimeryMols.Clear();
+
             List<CommonMol> primeryMol = new List<CommonMol>();
             foreach (var mol in AllMols)
             {
@@ -238,14 +240,9 @@ namespace DB3Client.Controls
                     NonPrimeryMols.Add(mol);
                 }
             }
+            dgvMol.DataSource = null;
             dgvMol.DataSource = NonPrimeryMols;
             dgvPrimaryMol.DataSource = primeryMol;
-        }
-
-        public void LoadSettings()
-        {
-            tbVatMultiplier.Text = Properties.Settings.Default.VatMultiplier.ToString();
-            tbPdfSaveLocation.Text = Properties.Settings.Default.InvoiceSaveLocation;
         }
 
         #endregion
@@ -253,6 +250,7 @@ namespace DB3Client.Controls
         #region // < ====== Events =====> //
 
         #region // < ========== Manage users Events ============ > //
+
         private void dgvUsers_SelectionChanged(object sender, EventArgs e)
         {
             if (dgvUsers.SelectedRows.Count != 1)
@@ -276,11 +274,12 @@ namespace DB3Client.Controls
                 LoadData();
             }
         }
+
         private void btnEditUser_Click(object sender, EventArgs e)
         {
             if (dgvUsers.SelectedRows.Count == 1 && dgvUsers.SelectedRows[0] != null)
             {
-                CommonUser selectedItem = (CommonUser)dgvUsers.SelectedRows[0].DataBoundItem;
+                CommonUser selectedItem = (CommonUser) dgvUsers.SelectedRows[0].DataBoundItem;
                 EditUserForm form = new EditUserForm(selectedItem);
                 if (form.ShowDialog() == DialogResult.OK)
                 {
@@ -294,7 +293,7 @@ namespace DB3Client.Controls
         {
             if (dgvUsers.SelectedRows.Count == 1 && dgvUsers.SelectedRows[0] != null)
             {
-                CommonUser selectedItem = (CommonUser)dgvUsers.SelectedRows[0].DataBoundItem;
+                CommonUser selectedItem = (CommonUser) dgvUsers.SelectedRows[0].DataBoundItem;
                 if (selectedItem.UserId != DataHolder.CurrnetUserId)
                 {
                     bool success = await SAUsers.PostDeleteUser(selectedItem.UserId);
@@ -318,6 +317,7 @@ namespace DB3Client.Controls
         #endregion
 
         #region // < ========== Manage Company Events ============ > //
+
         private void dgvMol_SelectionChanged(object sender, EventArgs e)
         {
             if (dgvMol.SelectedRows.Count != 1)
@@ -331,6 +331,7 @@ namespace DB3Client.Controls
                 btnDeleteMol.Enabled = true;
             }
         }
+
         private void btnEditInfo_Click(object sender, EventArgs e)
         {
             EditCompanyForm editForm = new EditCompanyForm();
@@ -364,7 +365,7 @@ namespace DB3Client.Controls
         {
             if (dgvMol.SelectedRows.Count == 1 && dgvMol.SelectedRows[0] != null)
             {
-                CommonMol selectedItem = (CommonMol)dgvMol.SelectedRows[0].DataBoundItem;
+                CommonMol selectedItem = (CommonMol) dgvMol.SelectedRows[0].DataBoundItem;
                 AddEditMolForm form = new AddEditMolForm(selectedItem);
 
                 if (form.ShowDialog() == DialogResult.OK)
@@ -378,7 +379,7 @@ namespace DB3Client.Controls
         {
             if (dgvMol.SelectedRows.Count == 1 && dgvMol.SelectedRows[0] != null)
             {
-                CommonMol selectedItem = (CommonMol)dgvMol.SelectedRows[0].DataBoundItem;
+                CommonMol selectedItem = (CommonMol) dgvMol.SelectedRows[0].DataBoundItem;
                 bool success = await SAOwner.PostDeleteMol(selectedItem.MolId);
                 if (success)
                 {
@@ -466,44 +467,25 @@ namespace DB3Client.Controls
         }
 
 
-
         #endregion
 
-        #region // < ========== Settings Events ============ > //
-
-        private void btnSaveSettings_Click(object sender, EventArgs e)
+        #region  // < =========== Settings Events =============> //
+        private void btnVatSettings_Click(object sender, EventArgs e)
         {
-            try
-            {
-                Properties.Settings.Default.VatMultiplier = tbVatMultiplier.Value;
-                Properties.Settings.Default.InvoiceSaveLocation = tbPdfSaveLocation.Text;
-                labelErrorSettings.Text = "success_error_settings";
-                labelErrorSettings.ForeColor = Color.Green;
-                labelErrorSettings.Visible = true;
-                Properties.Settings.Default.Save();
-            }
-            catch (Exception)
-            {
-                labelErrorSettings.Text = "fail_error_settings";
-                labelErrorSettings.ForeColor = Color.Red;
-                labelErrorSettings.Visible = true;
-            }
-
+            VatControl control = new VatControl() { Dock = DockStyle.Fill };
+            panelSettings.Controls.Clear();
+            panelSettings.Controls.Add(control);
         }
 
-
-        #endregion
-
-        #region // < ========= Global events ========== > //
-        private void tabControlAdmin_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnDirectorySettings_Click(object sender, EventArgs e)
         {
-            labelErrorSettings.Visible = false;
+            DirectoryLocationControl control = new DirectoryLocationControl {Dock = DockStyle.Fill};
+            panelSettings.Controls.Clear();
+            panelSettings.Controls.Add(control);
         }
 
-
         #endregion
 
-        
         #endregion
 
 

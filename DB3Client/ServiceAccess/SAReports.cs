@@ -63,5 +63,30 @@ namespace DB3Client.ServiceAccess
                 return null;
             }
         }
+
+        public static async Task<List<ReportMovement>> PostGenerateDiagramMovement(DiagramDTO dto)
+        {
+            HttpResponseMessage response;
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(DataHolder.ServerAddress);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic");
+
+                try
+                {
+                    response = await client.PostAsJsonAsync("api/reports/generatediagrammovement", dto);
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw new Exception(ex.InnerException.Message);
+                }
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return await response.Content.ReadAsAsync<List<ReportMovement>>();
+                }
+                return null;
+            }
+        }
     }
 }

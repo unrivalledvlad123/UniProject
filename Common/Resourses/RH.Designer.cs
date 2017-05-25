@@ -187,6 +187,15 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Amount:.
+        /// </summary>
+        internal static string amount {
+            get {
+                return ResourceManager.GetString("amount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Assigned To.
         /// </summary>
         internal static string assigned_to {
@@ -201,6 +210,15 @@ namespace Common.Resourses {
         internal static string bank {
             get {
                 return ResourceManager.GetString("bank", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bank Transfer.
+        /// </summary>
+        internal static string bank_transfer {
+            get {
+                return ResourceManager.GetString("bank_transfer", resourceCulture);
             }
         }
         
@@ -417,6 +435,24 @@ namespace Common.Resourses {
         internal static string current_price_list_warehouse {
             get {
                 return ResourceManager.GetString("current_price_list_warehouse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Customer:.
+        /// </summary>
+        internal static string customer {
+            get {
+                return ResourceManager.GetString("customer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vat:.
+        /// </summary>
+        internal static string DDS {
+            get {
+                return ResourceManager.GetString("DDS", resourceCulture);
             }
         }
         
@@ -862,6 +898,15 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to List of purchased items:.
+        /// </summary>
+        internal static string list_with_items {
+            get {
+                return ResourceManager.GetString("list_with_items", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You are logged on as:.
         /// </summary>
         internal static string logged_as_current_user {
@@ -1024,6 +1069,24 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Total Amount:.
+        /// </summary>
+        internal static string payment_amount {
+            get {
+                return ResourceManager.GetString("payment_amount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Payment Type:.
+        /// </summary>
+        internal static string payment_type {
+            get {
+                return ResourceManager.GetString("payment_type", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save invoices to:.
         /// </summary>
         internal static string pdf_save_location {
@@ -1150,6 +1213,24 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Рecipient.
+        /// </summary>
+        internal static string recipient {
+            get {
+                return ResourceManager.GetString("recipient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recipient Acc. Person:.
+        /// </summary>
+        internal static string recipient_mol {
+            get {
+                return ResourceManager.GetString("recipient_mol", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Repeat password.
         /// </summary>
         internal static string repeat_password {
@@ -1164,6 +1245,15 @@ namespace Common.Resourses {
         internal static string report_for {
             get {
                 return ResourceManager.GetString("report_for", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Goods movement report.
+        /// </summary>
+        internal static string report_for_goods_movement {
+            get {
+                return ResourceManager.GetString("report_for_goods_movement", resourceCulture);
             }
         }
         
@@ -1312,6 +1402,24 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Supplier Acc. Person:.
+        /// </summary>
+        internal static string supplier_mol {
+            get {
+                return ResourceManager.GetString("supplier_mol", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Supplier.
+        /// </summary>
+        internal static string supplyer {
+            get {
+                return ResourceManager.GetString("supplyer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Diagrams.
         /// </summary>
         internal static string tab_diagrams {
@@ -1362,6 +1470,15 @@ namespace Common.Resourses {
         internal static string tb_under_development_wharehouse {
             get {
                 return ResourceManager.GetString("tb_under_development_wharehouse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is no Invoice for this sale!.
+        /// </summary>
+        internal static string there_is_no_invoice {
+            get {
+                return ResourceManager.GetString("there_is_no_invoice", resourceCulture);
             }
         }
         
@@ -1488,6 +1605,15 @@ namespace Common.Resourses {
         internal static string vatnumber_grid {
             get {
                 return ResourceManager.GetString("vatnumber_grid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View Invoice.
+        /// </summary>
+        internal static string view_invoice {
+            get {
+                return ResourceManager.GetString("view_invoice", resourceCulture);
             }
         }
         

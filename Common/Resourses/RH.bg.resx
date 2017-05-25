@@ -388,7 +388,7 @@
     <value>ДДС Номер</value>
   </data>
   <data name="view_transaction_details" xml:space="preserve">
-    <value>Покажи Детайли на Транзакцията:</value>
+    <value>Покажи Детайли на Транзакцията</value>
   </data>
   <data name="cash" xml:space="preserve">
     <value>В брой:</value>
@@ -558,7 +558,7 @@
   <data name="manage_mol" xml:space="preserve">
     <value>Управление на Материално отговорните лица</value>
   </data>
-  <data name="add_new_parthner" xml:space="preserve">
+ <data name="add_new_parthner" xml:space="preserve">
     <value>нов контрагент</value>
   </data>
   <data name="company_address_orders" xml:space="preserve">
@@ -611,5 +611,42 @@
   </data>
   <data name="add_parthners" xml:space="preserve">
     <value>нов контрагент</value>
+  </data> <data name="amount" xml:space="preserve">
+    <value>Сума:</value>
   </data>
-</root>
+  <data name="bank_transfer" xml:space="preserve">
+    <value>Банков Превод</value>
+  </data>
+  <data name="customer" xml:space="preserve">
+    <value>Клиент:</value>
+  </data>
+  <data name="DDS" xml:space="preserve">
+    <value>ДДС:</value>
+  </data>
+  <data name="list_with_items" xml:space="preserve">
+    <value>Списък на закупената стока:</value>
+  </data>
+  <data name="payment_amount" xml:space="preserve">
+    <value>Обща Сума:</value>
+  </data>
+  <data name="payment_type" xml:space="preserve">
+    <value>Вид Плащане:</value>
+  </data>
+  <data name="recipient" xml:space="preserve">
+    <value>Получател</value>
+  </data>
+  <data name="recipient_mol" xml:space="preserve">
+    <value>Мол на Получател:</value>
+  </data>
+  <data name="supplier_mol" xml:space="preserve">
+    <value>Мол на Доставчик:</value>
+  </data>
+  <data name="supplyer" xml:space="preserve">
+    <value>Доставчик</value>
+  </data>
+  <data name="there_is_no_invoice" xml:space="preserve">
+    <value>Няма издадена Фактура към продажбата!</value>
+  </data>
+  <data name="view_invoice" xml:space="preserve">
+    <value>Покажи Фактура</value>
+  </data></root>

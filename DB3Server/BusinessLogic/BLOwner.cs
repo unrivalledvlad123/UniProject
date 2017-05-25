@@ -25,6 +25,7 @@ namespace DB3Server.BusinessLogic
                 owner.VatNumber = dbOwner.VATNumber;
                 owner.Bank = dbOwner.Bank;
                 owner.Iban = dbOwner.IBAN;
+                owner.SwiftCode = dbOwner.SWIFTCode;
             }
             return owner;
         }
@@ -42,6 +43,7 @@ namespace DB3Server.BusinessLogic
             dbOwner.Bulstat = oldOwner.Bulstat;
             dbOwner.Bank = oldOwner.Bank;
             dbOwner.IBAN = oldOwner.Iban;
+            dbOwner.SWIFTCode = oldOwner.SwiftCode;
 
             entities.Owners.Attach(dbOwner);
             var entry = entities.Entry(dbOwner);
@@ -53,6 +55,7 @@ namespace DB3Server.BusinessLogic
             entry.Property(e => e.Bulstat).IsModified = true;
             entry.Property(e => e.Bank).IsModified = true;
             entry.Property(e => e.IBAN).IsModified = true;
+            entry.Property(e => e.SWIFTCode).IsModified = true;
             entities.SaveChanges();
             return true;
         }

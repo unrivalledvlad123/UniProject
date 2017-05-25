@@ -21,7 +21,10 @@ namespace Common.Classes
 
         public override string ToString()
         {
-            return this.ItemCode + " (" + this.Name + ")";
+          
+                return this.ItemCode + " (" + this.Name + ")";
+          
+
         }
     }
 }

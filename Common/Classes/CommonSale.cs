@@ -15,7 +15,7 @@ namespace Common.Classes
         public int Type { get; set; }
         public string InvoiceId { get; set; }
         public List<CommonSoldItem> SoldItems { get; set; }
-
+        public string ParsePrice { get; set; }
         public double TotalPrice
         {
             get
@@ -42,7 +42,7 @@ namespace Common.Classes
                 {
                     return "";
                 }
-                return InvoiceId.PadLeft(20, '0');
+                return InvoiceId.PadLeft(10, '0');
             }
         }
     }
