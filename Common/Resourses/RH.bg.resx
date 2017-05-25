@@ -402,8 +402,8 @@
   <data name="delete" xml:space="preserve">
     <value>Изтриване</value>
   </data>
-  <data name="detach" xml:space="preserve">
-    <value>Разкачи</value>
+  <data name="att_detach" xml:space="preserve">
+    <value>Закачи/Разкачи</value>
   </data>
   <data name="finish" xml:space="preserve">
     <value>Приключване</value>
@@ -558,7 +558,7 @@
   <data name="manage_mol" xml:space="preserve">
     <value>Управление на Материално отговорните лица</value>
   </data>
- <data name="add_new_parthner" xml:space="preserve">
+  <data name="add_new_parthner" xml:space="preserve">
     <value>нов контрагент</value>
   </data>
   <data name="company_address_orders" xml:space="preserve">
@@ -611,7 +611,8 @@
   </data>
   <data name="add_parthners" xml:space="preserve">
     <value>нов контрагент</value>
-  </data> <data name="amount" xml:space="preserve">
+  </data>
+  <data name="amount" xml:space="preserve">
     <value>Сума:</value>
   </data>
   <data name="bank_transfer" xml:space="preserve">
@@ -649,4 +650,5 @@
   </data>
   <data name="view_invoice" xml:space="preserve">
     <value>Покажи Фактура</value>
-  </data></root>
+  </data>
+</root>

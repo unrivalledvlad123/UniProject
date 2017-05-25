@@ -12,6 +12,7 @@ using Common;
 using Common.Classes;
 using Common.Forms.Base;
 using DB3Client.Forms;
+using DB3Client.Forms.ContractsForms;
 using DB3Client.Forms.SalesForms;
 using DB3Client.Properties;
 using DB3Client.ServiceAccess;
@@ -395,6 +396,16 @@ namespace DB3Client.Controls
         private void gbClientInfo_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAddContractS_Click(object sender, EventArgs e)
+        {
+            AddEditContractForm editForm = new AddEditContractForm(new CommonContract(), new CommonMol());
+
+            if (editForm.ShowDialog() == DialogResult.OK)
+            {
+                
+            }
         }
     }
 }
