@@ -93,6 +93,14 @@ namespace DB3Client.Controls
             c6.Visible = false;
             dgvSoldGoods.Columns.Add(c6);
 
+            DataGridViewTextBoxColumn c7 = new DataGridViewTextBoxColumn();
+            c7.Name = "type";
+            c7.HeaderText = "type";
+            c7.DataPropertyName = "Type";
+            c7.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
+            c7.Visible = false;
+            dgvSoldGoods.Columns.Add(c7);
+
             f.dgvSoldGoodsClient.DataSource = dgvSoldGoods.DataSource;
         }
 
@@ -194,15 +202,16 @@ namespace DB3Client.Controls
             if (!string.IsNullOrEmpty(tbQuantity.Text))
             {
                 CommonItem a = ((CommonItem) cbSearch.SelectedItem);
+                KeyValuePair<int,decimal> temp = DataHolder.Settings.VatSettingsByGroup.FirstOrDefault(p => p.Key == a.Type);
                 string name = mlLabel1.Text;
                 string quantity = tbQuantity.Text;
                 int measurementUnit = a.MeasurmentUnit;
                 string price = mlLabel2.Text;
-                var vat = 1 + (Settings.Default.VatMultiplier / 100);
+                var vat = 1 + temp.Value;
                 var vatPrice = vat * (decimal) float.Parse(price);
                 float totalPrice = float.Parse(quantity) * (float) vatPrice;
                 f.dgvSoldGoodsClient.Rows.Add(name, quantity, measurementUnit, price, totalPrice);
-                dgvSoldGoods.Rows.Add(name, quantity, measurementUnit, price, totalPrice, a.ItemId);
+                dgvSoldGoods.Rows.Add(name, quantity, measurementUnit, price, totalPrice, a.ItemId, a.Type);
               
                 UpdateTotal();
             }
@@ -230,13 +239,15 @@ namespace DB3Client.Controls
             s.SellerId = (DataHolder.Owner.OwnerId);
             s.SoldItems = new List<CommonSoldItem>();
 
-            var vat = 1 + (Settings.Default.VatMultiplier / 100);
+            
             foreach (DataGridViewRow row in dgvSoldGoods.Rows)
             {
+                var index = (int)row.Cells[6].Value;
+                KeyValuePair<int, decimal> pair = DataHolder.Settings.VatSettingsByGroup.FirstOrDefault(p => p.Key == index);
                 var item = new CommonSoldItem();
                 if (row.Cells[5].Value != null)
                 {
-                    item.Price = vat * decimal.Parse(row.Cells[3].Value.ToString());
+                    item.Price = 1 + pair.Key * decimal.Parse(row.Cells[3].Value.ToString());
                     item.Quantity = int.Parse(row.Cells[1].Value.ToString());
                     item.ItemId = (Guid) row.Cells[5].Value;
 
@@ -301,13 +312,14 @@ namespace DB3Client.Controls
             s.SellerId = (DataHolder.Owner.OwnerId);
             s.SoldItems = new List<CommonSoldItem>();
 
-            var vat = 1 + (Settings.Default.VatMultiplier / 100);
             foreach (DataGridViewRow row in dgvSoldGoods.Rows)
             {
+                var index = (int) row.Cells[6].Value;
+                KeyValuePair<int, decimal> pair = DataHolder.Settings.VatSettingsByGroup.FirstOrDefault(p => p.Key == index);
                 var item = new CommonSoldItem();
                 if (row.Cells[5].Value != null)
                 {
-                    item.Price = vat * decimal.Parse(row.Cells[3].Value.ToString());
+                    item.Price = 1 + pair.Key * decimal.Parse(row.Cells[3].Value.ToString());
                     item.Quantity = int.Parse(row.Cells[1].Value.ToString());
                     item.ItemId = (Guid) row.Cells[5].Value;
 

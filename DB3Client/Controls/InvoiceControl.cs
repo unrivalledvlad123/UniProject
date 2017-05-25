@@ -122,7 +122,6 @@ namespace DB3Client.Controls
             mlLabel28.Text = mlLabel20.Text;
             
             //mlLabel34.Text = Sale.TotalPrice.ToString();
-           // var vat = 1 + (Settings.Default.VatMultiplier / 100);
            // var vatPrice = Sale.TotalPrice / (double) vat;
            // mlLabel36.Text = vatPrice.ToString();
            // mlLabel38.Text = (Sale.TotalPrice - vatPrice).ToString();

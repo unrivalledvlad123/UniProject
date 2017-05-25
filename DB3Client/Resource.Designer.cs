@@ -133,6 +133,16 @@ namespace DB3Client {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap blueLineUp {
+            get {
+                object obj = ResourceManager.GetObject("blueLineUp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap emptyBasket1 {
             get {
                 object obj = ResourceManager.GetObject("emptyBasket1", resourceCulture);

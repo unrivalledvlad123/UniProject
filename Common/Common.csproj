@@ -68,6 +68,7 @@
     <Compile Include="Classes\CommonContract.cs" />
     <Compile Include="Classes\CommonMol.cs" />
     <Compile Include="Classes\CommonSale.cs" />
+    <Compile Include="Classes\CommonSettings.cs" />
     <Compile Include="Classes\CommonSoldItem.cs" />
     <Compile Include="Classes\CommonWarehouseItemsPrice.cs" />
     <Compile Include="Classes\CompanyOwner.cs" />
@@ -80,6 +81,9 @@
     <Compile Include="Constants.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="DataHolder.cs" />
+    <Compile Include="Forms\Base\MLTooltip.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Forms\Base\MLButtonCancel.cs">
       <SubType>Component</SubType>
     </Compile>

@@ -129,6 +129,18 @@
     <Compile Include="Controls\AdminControl.Designer.cs">
       <DependentUpon>AdminControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\AdminControls\DirectoryLocationControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\AdminControls\DirectoryLocationControl.Designer.cs">
+      <DependentUpon>DirectoryLocationControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AdminControls\VatControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\AdminControls\VatControl.Designer.cs">
+      <DependentUpon>VatControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ContractsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -273,9 +285,16 @@
     <Compile Include="ServiceAccess\SAOwner.cs" />
     <Compile Include="ServiceAccess\SAReports.cs" />
     <Compile Include="ServiceAccess\SASale.cs" />
+    <Compile Include="ServiceAccess\SASettings.cs" />
     <Compile Include="ServiceAccess\SAUsers.cs" />
     <EmbeddedResource Include="Controls\AdminControl.resx">
       <DependentUpon>AdminControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\AdminControls\DirectoryLocationControl.resx">
+      <DependentUpon>DirectoryLocationControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\AdminControls\VatControl.resx">
+      <DependentUpon>VatControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ContractsControl.resx">
       <DependentUpon>ContractsControl.cs</DependentUpon>
@@ -396,6 +415,7 @@
     <None Include="Resources\apps_kchart_report _shadow1.png" />
     <None Include="Resources\report_sales.jpg" />
     <None Include="Resources\report_sales_shadow.jpg" />
+    <None Include="Resources\blueLineUp.png" />
     <Content Include="Resourses\Images\200x200.png" />
     <Content Include="Resourses\Images\ico.ico" />
     <Content Include="Resourses\Images\50x400 mainFormLogo.png" />

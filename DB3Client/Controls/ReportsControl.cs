@@ -83,6 +83,7 @@ namespace DB3Client.Controls
             pictureBox7.BackgroundImage = Resource.report_sales;
         }
 
+        
         #endregion
 
 

@@ -10,7 +10,7 @@ using Common.Classes;
 
 namespace DB3Client.ServiceAccess
 {
-    class SAOwner
+     class SAOwner
     {
         public static async Task<CompanyOwner> getOwner(Guid ownerId)
         {
@@ -34,7 +34,7 @@ namespace DB3Client.ServiceAccess
                 {
                     owner = await response.Content.ReadAsAsync<CompanyOwner>();
                 }
-                
+
             }
             return owner;
         }
@@ -169,7 +169,7 @@ namespace DB3Client.ServiceAccess
         public static async Task<CommonMol> SetPrimery(CommonMol oldMol, CommonMol newMol)
         {
             CommonMol mol = new CommonMol();
-            List<Guid>  ids = new List<Guid>();
+            List<Guid> ids = new List<Guid>();
             ids.Add(oldMol.MolId);
             ids.Add(newMol.MolId);
             HttpResponseMessage response;

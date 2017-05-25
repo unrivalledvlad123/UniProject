@@ -162,9 +162,15 @@ namespace DB3Client.Controls.ReportControls.Reports
                     {
                         foreach (var row in result)
                         {
-                            Enums.UnitTypes types = (Enums.UnitTypes)row.Unit;
+                            Enums.UnitTypes types = (Enums.UnitTypes) row.Unit;
                             row.UnitString = types.ToString();
                         }
+                    }
+
+                    foreach (var row in result)
+                    {
+                        row.PriceEach = row.PriceEach / 100;
+                        row.Total = row.Total / 100;
                     }
                     dgvResults.DataSource = result;
                     ReportResult = result;

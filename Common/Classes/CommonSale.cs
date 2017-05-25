@@ -42,7 +42,7 @@ namespace Common.Classes
                 {
                     return "";
                 }
-                return InvoiceId.PadLeft(20, '0');
+                return InvoiceId.PadLeft(10, '0');
             }
         }
     }
