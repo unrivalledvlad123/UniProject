@@ -30,19 +30,20 @@ namespace DB3Client.Controls
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControlOrders = new MetroFramework.Controls.MetroTabControl();
             this.btnAddGoodOrders = new Common.Forms.Base.MLTabPage();
+            this.lbTotalOrders = new Common.Forms.Base.MLLabel();
+            this.lbTotal = new Common.Forms.Base.MLLabel();
+            this.mlLabel1 = new Common.Forms.Base.MLLabel();
+            this.cbSearchGoodsOrders = new System.Windows.Forms.ComboBox();
             this.tbAmountOrders = new Common.Forms.Base.MLTextBox();
             this.btnSaveItemOrders = new Common.Forms.Base.MLButton();
             this.btnDeleteOrders = new Common.Forms.Base.MLButton();
             this.btnAddItemsOrders = new Common.Forms.Base.MLButton();
             this.dgvPurchase = new MetroFramework.Controls.MetroGrid();
-            this.gbItemOrder = new Common.Forms.Base.MLGroupBox();
-            this.cbSearchItemNameCode = new Common.Forms.Base.MLComboBox();
-            this.search_item_order = new Common.Forms.Base.MLLabel();
             this.mlGroupBox2 = new Common.Forms.Base.MLGroupBox();
             this.tbWarehouseReceiptOrders = new Common.Forms.Base.MLTextBox();
             this.mlLabel5 = new Common.Forms.Base.MLLabel();
@@ -51,6 +52,7 @@ namespace DB3Client.Controls
             this.dtDatePurchase = new MetroFramework.Controls.MetroDateTime();
             this.purchase_date = new Common.Forms.Base.MLLabel();
             this.mlGroupBox1 = new Common.Forms.Base.MLGroupBox();
+            this.cbSearchOrders = new System.Windows.Forms.ComboBox();
             this.btnAddParthners = new Common.Forms.Base.MLButton();
             this.lbBulstatHidden = new Common.Forms.Base.MLLabel();
             this.lbVatHidden = new Common.Forms.Base.MLLabel();
@@ -61,12 +63,9 @@ namespace DB3Client.Controls
             this.metroTabPage2 = new Common.Forms.Base.MLTabPage();
             this.metroTabPage3 = new Common.Forms.Base.MLTabPage();
             this.metroTabPage4 = new Common.Forms.Base.MLTabPage();
-            this.cbSearchGoodsOrders = new System.Windows.Forms.ComboBox();
-            this.cbSearchOrders = new System.Windows.Forms.ComboBox();
             this.tabControlOrders.SuspendLayout();
             this.btnAddGoodOrders.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPurchase)).BeginInit();
-            this.gbItemOrder.SuspendLayout();
             this.mlGroupBox2.SuspendLayout();
             this.mlGroupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -87,13 +86,15 @@ namespace DB3Client.Controls
             // 
             // btnAddGoodOrders
             // 
+            this.btnAddGoodOrders.Controls.Add(this.lbTotalOrders);
+            this.btnAddGoodOrders.Controls.Add(this.lbTotal);
+            this.btnAddGoodOrders.Controls.Add(this.mlLabel1);
             this.btnAddGoodOrders.Controls.Add(this.cbSearchGoodsOrders);
             this.btnAddGoodOrders.Controls.Add(this.tbAmountOrders);
             this.btnAddGoodOrders.Controls.Add(this.btnSaveItemOrders);
             this.btnAddGoodOrders.Controls.Add(this.btnDeleteOrders);
             this.btnAddGoodOrders.Controls.Add(this.btnAddItemsOrders);
             this.btnAddGoodOrders.Controls.Add(this.dgvPurchase);
-            this.btnAddGoodOrders.Controls.Add(this.gbItemOrder);
             this.btnAddGoodOrders.Controls.Add(this.mlGroupBox2);
             this.btnAddGoodOrders.Controls.Add(this.mlGroupBox1);
             this.btnAddGoodOrders.HorizontalScrollbarBarColor = true;
@@ -107,6 +108,43 @@ namespace DB3Client.Controls
             this.btnAddGoodOrders.VerticalScrollbarBarColor = true;
             this.btnAddGoodOrders.VerticalScrollbarHighlightOnWheel = false;
             this.btnAddGoodOrders.VerticalScrollbarSize = 10;
+            // 
+            // lbTotalOrders
+            // 
+            this.lbTotalOrders.AutoSize = true;
+            this.lbTotalOrders.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lbTotalOrders.Location = new System.Drawing.Point(989, 292);
+            this.lbTotalOrders.Name = "lbTotalOrders";
+            this.lbTotalOrders.Size = new System.Drawing.Size(17, 19);
+            this.lbTotalOrders.TabIndex = 14;
+            this.lbTotalOrders.Text = "0";
+            // 
+            // lbTotal
+            // 
+            this.lbTotal.AutoSize = true;
+            this.lbTotal.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lbTotal.Location = new System.Drawing.Point(815, 269);
+            this.lbTotal.Name = "lbTotal";
+            this.lbTotal.Size = new System.Drawing.Size(0, 0);
+            this.lbTotal.TabIndex = 13;
+            // 
+            // mlLabel1
+            // 
+            this.mlLabel1.AutoSize = true;
+            this.mlLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.mlLabel1.Location = new System.Drawing.Point(881, 292);
+            this.mlLabel1.Name = "mlLabel1";
+            this.mlLabel1.Size = new System.Drawing.Size(91, 19);
+            this.mlLabel1.TabIndex = 12;
+            this.mlLabel1.Text = "total_amount";
+            // 
+            // cbSearchGoodsOrders
+            // 
+            this.cbSearchGoodsOrders.FormattingEnabled = true;
+            this.cbSearchGoodsOrders.Location = new System.Drawing.Point(11, 239);
+            this.cbSearchGoodsOrders.Name = "cbSearchGoodsOrders";
+            this.cbSearchGoodsOrders.Size = new System.Drawing.Size(628, 21);
+            this.cbSearchGoodsOrders.TabIndex = 11;
             // 
             // tbAmountOrders
             // 
@@ -155,6 +193,7 @@ namespace DB3Client.Controls
             this.btnDeleteOrders.TabIndex = 8;
             this.btnDeleteOrders.Text = "delete";
             this.btnDeleteOrders.UseSelectable = true;
+            this.btnDeleteOrders.Click += new System.EventHandler(this.btnDeleteOrders_Click);
             // 
             // btnAddItemsOrders
             // 
@@ -164,6 +203,7 @@ namespace DB3Client.Controls
             this.btnAddItemsOrders.TabIndex = 7;
             this.btnAddItemsOrders.Text = "add";
             this.btnAddItemsOrders.UseSelectable = true;
+            this.btnAddItemsOrders.Click += new System.EventHandler(this.btnAddItemsOrders_Click);
             // 
             // dgvPurchase
             // 
@@ -175,73 +215,41 @@ namespace DB3Client.Controls
             this.dgvPurchase.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvPurchase.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvPurchase.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPurchase.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPurchase.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvPurchase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPurchase.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPurchase.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvPurchase.EnableHeadersVisualStyles = false;
             this.dgvPurchase.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dgvPurchase.GridColor = System.Drawing.Color.White;
-            this.dgvPurchase.Location = new System.Drawing.Point(3, 274);
+            this.dgvPurchase.Location = new System.Drawing.Point(3, 314);
             this.dgvPurchase.Name = "dgvPurchase";
             this.dgvPurchase.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPurchase.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPurchase.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvPurchase.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvPurchase.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPurchase.Size = new System.Drawing.Size(1050, 226);
+            this.dgvPurchase.Size = new System.Drawing.Size(1050, 186);
             this.dgvPurchase.TabIndex = 5;
-            // 
-            // gbItemOrder
-            // 
-            this.gbItemOrder.BackColor = System.Drawing.Color.White;
-            this.gbItemOrder.Controls.Add(this.cbSearchItemNameCode);
-            this.gbItemOrder.Controls.Add(this.search_item_order);
-            this.gbItemOrder.Location = new System.Drawing.Point(645, 4);
-            this.gbItemOrder.Name = "gbItemOrder";
-            this.gbItemOrder.Size = new System.Drawing.Size(408, 228);
-            this.gbItemOrder.TabIndex = 4;
-            this.gbItemOrder.TabStop = false;
-            this.gbItemOrder.Text = "item_info_order";
-            // 
-            // cbSearchItemNameCode
-            // 
-            this.cbSearchItemNameCode.FormattingEnabled = true;
-            this.cbSearchItemNameCode.ItemHeight = 23;
-            this.cbSearchItemNameCode.Location = new System.Drawing.Point(6, 38);
-            this.cbSearchItemNameCode.Name = "cbSearchItemNameCode";
-            this.cbSearchItemNameCode.Size = new System.Drawing.Size(228, 29);
-            this.cbSearchItemNameCode.TabIndex = 1;
-            this.cbSearchItemNameCode.UseSelectable = true;
-            // 
-            // search_item_order
-            // 
-            this.search_item_order.AutoSize = true;
-            this.search_item_order.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.search_item_order.Location = new System.Drawing.Point(6, 16);
-            this.search_item_order.Name = "search_item_order";
-            this.search_item_order.Size = new System.Drawing.Size(120, 19);
-            this.search_item_order.TabIndex = 0;
-            this.search_item_order.Text = "search_item_order";
             // 
             // mlGroupBox2
             // 
@@ -252,9 +260,9 @@ namespace DB3Client.Controls
             this.mlGroupBox2.Controls.Add(this.invoice_order);
             this.mlGroupBox2.Controls.Add(this.dtDatePurchase);
             this.mlGroupBox2.Controls.Add(this.purchase_date);
-            this.mlGroupBox2.Location = new System.Drawing.Point(322, 4);
+            this.mlGroupBox2.Location = new System.Drawing.Point(651, 4);
             this.mlGroupBox2.Name = "mlGroupBox2";
-            this.mlGroupBox2.Size = new System.Drawing.Size(317, 228);
+            this.mlGroupBox2.Size = new System.Drawing.Size(402, 228);
             this.mlGroupBox2.TabIndex = 3;
             this.mlGroupBox2.TabStop = false;
             this.mlGroupBox2.Text = "purchase_data_order";
@@ -370,10 +378,19 @@ namespace DB3Client.Controls
             this.mlGroupBox1.Controls.Add(this.search_info_order);
             this.mlGroupBox1.Location = new System.Drawing.Point(4, 4);
             this.mlGroupBox1.Name = "mlGroupBox1";
-            this.mlGroupBox1.Size = new System.Drawing.Size(312, 228);
+            this.mlGroupBox1.Size = new System.Drawing.Size(635, 228);
             this.mlGroupBox1.TabIndex = 2;
             this.mlGroupBox1.TabStop = false;
             this.mlGroupBox1.Text = "purchase_info";
+            // 
+            // cbSearchOrders
+            // 
+            this.cbSearchOrders.FormattingEnabled = true;
+            this.cbSearchOrders.Location = new System.Drawing.Point(7, 38);
+            this.cbSearchOrders.Name = "cbSearchOrders";
+            this.cbSearchOrders.Size = new System.Drawing.Size(218, 21);
+            this.cbSearchOrders.TabIndex = 9;
+            this.cbSearchOrders.SelectedIndexChanged += new System.EventHandler(this.cbSearchOrders_SelectionChangeCommitted);
             // 
             // btnAddParthners
             // 
@@ -488,22 +505,6 @@ namespace DB3Client.Controls
             this.metroTabPage4.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage4.VerticalScrollbarSize = 10;
             // 
-            // cbSearchGoodsOrders
-            // 
-            this.cbSearchGoodsOrders.FormattingEnabled = true;
-            this.cbSearchGoodsOrders.Location = new System.Drawing.Point(11, 239);
-            this.cbSearchGoodsOrders.Name = "cbSearchGoodsOrders";
-            this.cbSearchGoodsOrders.Size = new System.Drawing.Size(628, 21);
-            this.cbSearchGoodsOrders.TabIndex = 11;
-            // 
-            // cbSearchOrders
-            // 
-            this.cbSearchOrders.FormattingEnabled = true;
-            this.cbSearchOrders.Location = new System.Drawing.Point(7, 38);
-            this.cbSearchOrders.Name = "cbSearchOrders";
-            this.cbSearchOrders.Size = new System.Drawing.Size(218, 21);
-            this.cbSearchOrders.TabIndex = 9;
-            // 
             // OrdersControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -513,9 +514,8 @@ namespace DB3Client.Controls
             this.Size = new System.Drawing.Size(1072, 541);
             this.tabControlOrders.ResumeLayout(false);
             this.btnAddGoodOrders.ResumeLayout(false);
+            this.btnAddGoodOrders.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPurchase)).EndInit();
-            this.gbItemOrder.ResumeLayout(false);
-            this.gbItemOrder.PerformLayout();
             this.mlGroupBox2.ResumeLayout(false);
             this.mlGroupBox2.PerformLayout();
             this.mlGroupBox1.ResumeLayout(false);
@@ -545,9 +545,6 @@ namespace DB3Client.Controls
         private MLTextBox tbInvoiceNumberOrders;
         private MLLabel mlLabel5;
         private MLTextBox tbWarehouseReceiptOrders;
-        private MLGroupBox gbItemOrder;
-        private MLLabel search_item_order;
-        private MLComboBox cbSearchItemNameCode;
         private MetroFramework.Controls.MetroGrid dgvPurchase;
         private MLButton btnAddItemsOrders;
         private MLButton btnAddParthners;
@@ -556,5 +553,8 @@ namespace DB3Client.Controls
         private MLTextBox tbAmountOrders;
         private System.Windows.Forms.ComboBox cbSearchGoodsOrders;
         private System.Windows.Forms.ComboBox cbSearchOrders;
+        private MLLabel mlLabel1;
+        private MLLabel lbTotalOrders;
+        private MLLabel lbTotal;
     }
 }
