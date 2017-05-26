@@ -54,7 +54,7 @@ namespace DB3Server.BusinessLogic
                         var i = new SoldItem
                         {
                             ItemId = item.ItemId,
-                            Price = item.Price,
+                            Price = item.Price*100,
                             Quantity = item.Quantity,
                             SaleId = s.SaleId,
                             SoldItemId = Guid.NewGuid()
@@ -65,13 +65,10 @@ namespace DB3Server.BusinessLogic
 
                     if (isWhole)
                     {
-                        var max = entities.Invoices.Max(h => (long?) h.InvoiceId);
-                        long id = (max == null ? 0 : (long) max) + 1;
                         var invoice = new Invoice();
                         invoice.PartnerId = s.BuyerId;
                         invoice.OwnerId = s.SellerId;
                         invoice.SaleId = s.SaleId;
-                        invoice.InvoiceId = id;
                         s.Invoice = invoice;
                     }
 

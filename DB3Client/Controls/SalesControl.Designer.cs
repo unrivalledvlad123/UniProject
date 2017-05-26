@@ -30,12 +30,13 @@ namespace DB3Client.Controls
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControlSales = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new Common.Forms.Base.MLTabPage();
             this.gbClientInfo = new Common.Forms.Base.MLGroupBox();
+            this.btnAddContractS = new Common.Forms.Base.MLButton();
             this.btnGenerateInvoice = new Common.Forms.Base.MLButton();
             this.mlGroupBox7 = new Common.Forms.Base.MLGroupBox();
             this.mlLabel16 = new Common.Forms.Base.MLLabel();
@@ -73,7 +74,7 @@ namespace DB3Client.Controls
             this.btnAdd = new Common.Forms.Base.MLButton();
             this.btnFinish = new Common.Forms.Base.MLButton();
             this.dgvSoldGoods = new MetroFramework.Controls.MetroGrid();
-            this.btnAddContractS = new Common.Forms.Base.MLButton();
+            this.errorLabel = new Common.Forms.Base.MLErrorLabel();
             this.tabControlSales.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.gbClientInfo.SuspendLayout();
@@ -134,6 +135,16 @@ namespace DB3Client.Controls
             this.gbClientInfo.TabStop = false;
             this.gbClientInfo.Text = "client_info";
             this.gbClientInfo.Enter += new System.EventHandler(this.gbClientInfo_Enter);
+            // 
+            // btnAddContractS
+            // 
+            this.btnAddContractS.Location = new System.Drawing.Point(13, 264);
+            this.btnAddContractS.Name = "btnAddContractS";
+            this.btnAddContractS.Size = new System.Drawing.Size(240, 22);
+            this.btnAddContractS.TabIndex = 8;
+            this.btnAddContractS.Text = "add_contract";
+            this.btnAddContractS.UseSelectable = true;
+            this.btnAddContractS.Click += new System.EventHandler(this.btnAddContractS_Click);
             // 
             // btnGenerateInvoice
             // 
@@ -347,6 +358,7 @@ namespace DB3Client.Controls
             // mlGroupBox3
             // 
             this.mlGroupBox3.BackColor = System.Drawing.Color.White;
+            this.mlGroupBox3.Controls.Add(this.errorLabel);
             this.mlGroupBox3.Controls.Add(this.mlLabel3);
             this.mlGroupBox3.Controls.Add(this.mlLabel2);
             this.mlGroupBox3.Controls.Add(this.mlLabel1);
@@ -567,51 +579,51 @@ namespace DB3Client.Controls
             this.dgvSoldGoods.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvSoldGoods.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvSoldGoods.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSoldGoods.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSoldGoods.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvSoldGoods.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSoldGoods.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSoldGoods.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvSoldGoods.EnableHeadersVisualStyles = false;
             this.dgvSoldGoods.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dgvSoldGoods.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dgvSoldGoods.Location = new System.Drawing.Point(3, 303);
             this.dgvSoldGoods.Name = "dgvSoldGoods";
             this.dgvSoldGoods.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSoldGoods.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSoldGoods.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvSoldGoods.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvSoldGoods.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSoldGoods.Size = new System.Drawing.Size(1334, 192);
             this.dgvSoldGoods.TabIndex = 2;
             // 
-            // btnAddContractS
+            // errorLabel
             // 
-            this.btnAddContractS.Location = new System.Drawing.Point(13, 264);
-            this.btnAddContractS.Name = "btnAddContractS";
-            this.btnAddContractS.Size = new System.Drawing.Size(240, 22);
-            this.btnAddContractS.TabIndex = 8;
-            this.btnAddContractS.Text = "add_contract";
-            this.btnAddContractS.UseSelectable = true;
-            this.btnAddContractS.Click += new System.EventHandler(this.btnAddContractS_Click);
+            this.errorLabel.ForeColor = System.Drawing.Color.Red;
+            this.errorLabel.Location = new System.Drawing.Point(7, 181);
+            this.errorLabel.MaximumSize = new System.Drawing.Size(218, 60);
+            this.errorLabel.Name = "errorLabel";
+            this.errorLabel.Size = new System.Drawing.Size(218, 60);
+            this.errorLabel.TabIndex = 3;
+            this.errorLabel.Visible = false;
             // 
             // SalesControl
             // 
@@ -683,5 +695,6 @@ namespace DB3Client.Controls
         private MLLabel mlLabel16;
         private System.Windows.Forms.PictureBox pictureBox1;
         private MLButton btnAddContractS;
+        private MLErrorLabel errorLabel;
     }
 }

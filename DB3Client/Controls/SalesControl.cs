@@ -190,11 +190,13 @@ namespace DB3Client.Controls
             f.labelTotalAmountClient.Text = "0";
             f.labelCashClient.Text = "0";
             f.labelChangeClient.Text = "0";
-            mlLabel11.Text = "-";
-            mlLabel12.Text = "-";
-            mlLabel14.Text = "-";
-            mlLabel13.Text = "-";
-            mlLabel16.Text = "-";
+            mlLabel11.Text = "";
+            mlLabel12.Text = "";
+            mlLabel14.Text = "";
+            mlLabel13.Text = "";
+            mlLabel16.Text = "";
+            tbAmount.Text = "";
+            errorLabel.Visible = false;
 
         }
 
@@ -240,15 +242,15 @@ namespace DB3Client.Controls
             s.SellerId = (DataHolder.Owner.OwnerId);
             s.SoldItems = new List<CommonSoldItem>();
 
-            
+
             foreach (DataGridViewRow row in dgvSoldGoods.Rows)
             {
-                var index = (int)row.Cells[6].Value;
+                var index = (int) row.Cells[6].Value;
                 KeyValuePair<int, decimal> pair = DataHolder.Settings.VatSettingsByGroup.FirstOrDefault(p => p.Key == index);
                 var item = new CommonSoldItem();
                 if (row.Cells[5].Value != null)
                 {
-                    item.Price = 1 + pair.Key * decimal.Parse(row.Cells[3].Value.ToString());
+                    item.Price = (1 + pair.Value) * decimal.Parse(row.Cells[3].Value.ToString());
                     item.Quantity = int.Parse(row.Cells[1].Value.ToString());
                     item.ItemId = (Guid) row.Cells[5].Value;
 
@@ -257,13 +259,17 @@ namespace DB3Client.Controls
             }
 
             var sale = await SASale.PostCreateDirectSale(s);
-            MessageBox.Show(sale == null ? "Not saved!" : "SAVED!");
-            if(sale != null)
+            if (sale == null)
+            {
+                errorLabel.Visible = true;
+                errorLabel.Text = "not_enough_quantity";
+            }
+            else
             {
                 ClearAll();
             }
         }
-        
+
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -277,26 +283,22 @@ namespace DB3Client.Controls
             
         }
 
-        
+
         private void btnDetach_Click(object sender, EventArgs e)
         {
-           
-           
-
-
-            if(!trigger)
+            if (!trigger)
             {
                 trigger = true;
                 f.Show();
-            }else
+            }
+            else
             {
                 trigger = false;
                 f.Hide();
             }
-
         }
 
-  
+
 
         private void cbWholesale_CheckedChanged(object sender, EventArgs e)
         {
@@ -309,7 +311,7 @@ namespace DB3Client.Controls
             //cbSearchContract.SelectedIndex = -1;
             CommonSale s = new CommonSale();
             s.BuyerId = ((CommonContract) cbSearchContract.SelectedItem).PartnerId;
-            s.SellerId = DataHolder.PrimeryMol.MolId;
+            s.SellerId = DataHolder.PrimeryMol.MolId;//remove
             s.SellerId = (DataHolder.Owner.OwnerId);
             s.SoldItems = new List<CommonSoldItem>();
 
@@ -320,7 +322,7 @@ namespace DB3Client.Controls
                 var item = new CommonSoldItem();
                 if (row.Cells[5].Value != null)
                 {
-                    item.Price = 1 + pair.Key * decimal.Parse(row.Cells[3].Value.ToString());
+                    item.Price = (1 + pair.Value) * decimal.Parse(row.Cells[3].Value.ToString());
                     item.Quantity = int.Parse(row.Cells[1].Value.ToString());
                     item.ItemId = (Guid) row.Cells[5].Value;
 
@@ -398,13 +400,15 @@ namespace DB3Client.Controls
 
         }
 
-        private void btnAddContractS_Click(object sender, EventArgs e)
+        private async void btnAddContractS_Click(object sender, EventArgs e)
         {
             AddEditContractForm editForm = new AddEditContractForm(new CommonContract(), new CommonMol());
 
             if (editForm.ShowDialog() == DialogResult.OK)
             {
-                
+                AllContacts = await SAContract.GetAllContracts(cbSearchContract.Text);
+                cbSearchContract.DataSource = AllContacts;
+                cbSearchContract.SelectedIndex = -1;
             }
         }
     }
