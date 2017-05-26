@@ -127,8 +127,9 @@
             // 
             this.dgvSoldGoodsClient.AllowUserToAddRows = false;
             this.dgvSoldGoodsClient.AllowUserToResizeRows = false;
-            this.dgvSoldGoodsClient.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dgvSoldGoodsClient.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvSoldGoodsClient.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgvSoldGoodsClient.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvSoldGoodsClient.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;

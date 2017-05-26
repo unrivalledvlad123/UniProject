@@ -399,8 +399,8 @@
   <data name="delete" xml:space="preserve">
     <value>Delete</value>
   </data>
-  <data name="detach" xml:space="preserve">
-    <value>Detach</value>
+  <data name="att_detach" xml:space="preserve">
+    <value>Attach/Detach</value>
   </data>
   <data name="finish" xml:space="preserve">
     <value>Finish</value>
@@ -555,7 +555,7 @@
   <data name="manage_mol" xml:space="preserve">
     <value>Manage Accountable persons</value>
   </data>
-<data name="add_new_parthner" xml:space="preserve">
+  <data name="add_new_parthner" xml:space="preserve">
     <value>new parthner</value>
   </data>
   <data name="company_address_orders" xml:space="preserve">
@@ -608,7 +608,8 @@
   </data>
   <data name="add_parthners" xml:space="preserve">
     <value>new parthner</value>
-  </data> <data name="amount" xml:space="preserve">
+  </data>
+  <data name="amount" xml:space="preserve">
     <value>Amount:</value>
   </data>
   <data name="bank_transfer" xml:space="preserve">
@@ -646,4 +647,5 @@
   </data>
   <data name="view_invoice" xml:space="preserve">
     <value>View Invoice</value>
-  </data></root>
+  </data>
+</root>

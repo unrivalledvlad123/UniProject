@@ -205,6 +205,15 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Attach/Detach.
+        /// </summary>
+        internal static string att_detach {
+            get {
+                return ResourceManager.GetString("att_detach", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bank:.
         /// </summary>
         internal static string bank {
@@ -489,15 +498,6 @@ namespace Common.Resourses {
         internal static string description_grid_goods {
             get {
                 return ResourceManager.GetString("description_grid_goods", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Detach.
-        /// </summary>
-        internal static string detach {
-            get {
-                return ResourceManager.GetString("detach", resourceCulture);
             }
         }
         
@@ -1245,15 +1245,6 @@ namespace Common.Resourses {
         internal static string report_for {
             get {
                 return ResourceManager.GetString("report_for", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Goods movement report.
-        /// </summary>
-        internal static string report_for_goods_movement {
-            get {
-                return ResourceManager.GetString("report_for_goods_movement", resourceCulture);
             }
         }
         
