@@ -209,6 +209,16 @@ namespace DB3Client.Controls
                 string name = mlLabel1.Text;
                 string quantity = tbQuantity.Text;
                 int measurementUnit = a.MeasurmentUnit;
+                //if (DataHolder.UserCulture.TwoLetterISOLanguageName == "bg")
+                //{
+                //    Enums.UnitTypesBg types = (Enums.UnitTypesBg) a.MeasurmentUnit;
+                //    a. = types.ToString();
+                //}
+                //else
+                //{
+                //    Enums.UnitTypes types = (Enums.UnitTypes)a.MeasurmentUnit;
+                //    a.UnitString = types.ToString();
+                //}
                 string price = mlLabel2.Text;
                 var vat = 1 + temp.Value;
                 var vatPrice = vat * (decimal) float.Parse(price);

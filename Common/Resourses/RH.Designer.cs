@@ -502,6 +502,15 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Directory Settings.
+        /// </summary>
+        internal static string directory_settings {
+            get {
+                return ResourceManager.GetString("directory_settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Editing company Info failed!.
         /// </summary>
         internal static string edit_company_fail_error {
@@ -934,6 +943,15 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Make primery.
+        /// </summary>
+        internal static string make_primery {
+            get {
+                return ResourceManager.GetString("make_primery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Manage company.
         /// </summary>
         internal static string manage_company {
@@ -1231,6 +1249,15 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remove primery.
+        /// </summary>
+        internal static string remove_primery {
+            get {
+                return ResourceManager.GetString("remove_primery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Repeat password.
         /// </summary>
         internal static string repeat_password {
@@ -1245,6 +1272,15 @@ namespace Common.Resourses {
         internal static string report_for {
             get {
                 return ResourceManager.GetString("report_for", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Goods movement report.
+        /// </summary>
+        internal static string report_for_goods_movement {
+            get {
+                return ResourceManager.GetString("report_for_goods_movement", resourceCulture);
             }
         }
         
@@ -1587,6 +1623,15 @@ namespace Common.Resourses {
         internal static string vat_number {
             get {
                 return ResourceManager.GetString("vat_number", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Settings.
+        /// </summary>
+        internal static string vat_settings {
+            get {
+                return ResourceManager.GetString("vat_settings", resourceCulture);
             }
         }
         

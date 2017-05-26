@@ -416,6 +416,13 @@
     <None Include="Resources\report_sales.jpg" />
     <None Include="Resources\report_sales_shadow.jpg" />
     <None Include="Resources\blueLineUp.png" />
+    <None Include="Resources\cash_register90.png" />
+    <None Include="Resources\admin_icon.png" />
+    <None Include="Resources\warehouse_90.png" />
+    <None Include="Resources\admin_icon90.png" />
+    <None Include="Resources\orders90.png" />
+    <None Include="Resources\partners_icon90.png" />
+    <None Include="Resources\reports.png" />
     <Content Include="Resourses\Images\200x200.png" />
     <Content Include="Resourses\Images\ico.ico" />
     <Content Include="Resourses\Images\50x400 mainFormLogo.png" />

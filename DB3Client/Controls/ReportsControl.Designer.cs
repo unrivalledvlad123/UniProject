@@ -36,12 +36,14 @@ namespace DB3Client.Controls
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.tabControlReports = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new Common.Forms.Base.MLTabPage();
+            this.mlLabel1 = new Common.Forms.Base.MLLabel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.panelReportsNew = new MetroFramework.Controls.MetroPanel();
             this.metroTabPage2 = new Common.Forms.Base.MLTabPage();
+            this.mlLabel2 = new Common.Forms.Base.MLLabel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panelDiagrams = new MetroFramework.Controls.MetroPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -49,8 +51,6 @@ namespace DB3Client.Controls
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.mlToolTp1 = new Common.Forms.Base.MLToolTp();
-            this.mlLabel1 = new Common.Forms.Base.MLLabel();
-            this.mlLabel2 = new Common.Forms.Base.MLLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.tabControlReports.SuspendLayout();
@@ -142,6 +142,16 @@ namespace DB3Client.Controls
             this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.VerticalScrollbarSize = 10;
             // 
+            // mlLabel1
+            // 
+            this.mlLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.mlLabel1.Location = new System.Drawing.Point(0, 0);
+            this.mlLabel1.MaximumSize = new System.Drawing.Size(100, 10);
+            this.mlLabel1.MinimumSize = new System.Drawing.Size(100, 10);
+            this.mlLabel1.Name = "mlLabel1";
+            this.mlLabel1.Size = new System.Drawing.Size(100, 10);
+            this.mlLabel1.TabIndex = 3;
+            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -229,6 +239,15 @@ namespace DB3Client.Controls
             this.metroTabPage2.VerticalScrollbarBarColor = true;
             this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.VerticalScrollbarSize = 10;
+            // 
+            // mlLabel2
+            // 
+            this.mlLabel2.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.mlLabel2.Location = new System.Drawing.Point(6, 0);
+            this.mlLabel2.MinimumSize = new System.Drawing.Size(100, 10);
+            this.mlLabel2.Name = "mlLabel2";
+            this.mlLabel2.Size = new System.Drawing.Size(100, 10);
+            this.mlLabel2.TabIndex = 4;
             // 
             // tableLayoutPanel1
             // 
@@ -325,25 +344,6 @@ namespace DB3Client.Controls
             this.mlToolTp1.Style = MetroFramework.MetroColorStyle.Default;
             this.mlToolTp1.StyleManager = null;
             this.mlToolTp1.Theme = MetroFramework.MetroThemeStyle.Default;
-            // 
-            // mlLabel1
-            // 
-            this.mlLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.mlLabel1.Location = new System.Drawing.Point(0, 0);
-            this.mlLabel1.MaximumSize = new System.Drawing.Size(100, 10);
-            this.mlLabel1.MinimumSize = new System.Drawing.Size(100, 10);
-            this.mlLabel1.Name = "mlLabel1";
-            this.mlLabel1.Size = new System.Drawing.Size(100, 10);
-            this.mlLabel1.TabIndex = 3;
-            // 
-            // mlLabel2
-            // 
-            this.mlLabel2.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.mlLabel2.Location = new System.Drawing.Point(6, 0);
-            this.mlLabel2.MinimumSize = new System.Drawing.Size(100, 10);
-            this.mlLabel2.Name = "mlLabel2";
-            this.mlLabel2.Size = new System.Drawing.Size(100, 10);
-            this.mlLabel2.TabIndex = 4;
             // 
             // ReportsControl
             // 

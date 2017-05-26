@@ -651,4 +651,19 @@
   <data name="view_invoice" xml:space="preserve">
     <value>Покажи Фактура</value>
   </data>
+  <data name="directory_settings" xml:space="preserve">
+    <value>Настройки на пътищата</value>
+  </data>
+  <data name="report_for_goods_movement" xml:space="preserve">
+    <value>Отчет за движение на стоки</value>
+  </data>
+  <data name="vat_settings" xml:space="preserve">
+    <value>ДДС Настройки</value>
+  </data>
+  <data name="make_primery" xml:space="preserve">
+    <value>Направи главен</value>
+  </data>
+  <data name="remove_primery" xml:space="preserve">
+    <value>Премахни главен</value>
+  </data>
 </root>

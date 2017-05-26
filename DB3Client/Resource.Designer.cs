@@ -93,6 +93,26 @@ namespace DB3Client {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap admin_icon {
+            get {
+                object obj = ResourceManager.GetObject("admin_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap admin_icon90 {
+            get {
+                object obj = ResourceManager.GetObject("admin_icon90", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap agree {
             get {
                 object obj = ResourceManager.GetObject("agree", resourceCulture);
@@ -136,6 +156,16 @@ namespace DB3Client {
         internal static System.Drawing.Bitmap blueLineUp {
             get {
                 object obj = ResourceManager.GetObject("blueLineUp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cash_register90 {
+            get {
+                object obj = ResourceManager.GetObject("cash_register90", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -213,6 +243,26 @@ namespace DB3Client {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap orders90 {
+            get {
+                object obj = ResourceManager.GetObject("orders90", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap partners_icon90 {
+            get {
+                object obj = ResourceManager.GetObject("partners_icon90", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap report_sales {
             get {
                 object obj = ResourceManager.GetObject("report_sales", resourceCulture);
@@ -226,6 +276,16 @@ namespace DB3Client {
         internal static System.Drawing.Bitmap report_sales_shadow {
             get {
                 object obj = ResourceManager.GetObject("report_sales_shadow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap reports {
+            get {
+                object obj = ResourceManager.GetObject("reports", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -256,6 +316,16 @@ namespace DB3Client {
         internal static System.Drawing.Bitmap Search2 {
             get {
                 object obj = ResourceManager.GetObject("Search2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap warehouse_90 {
+            get {
+                object obj = ResourceManager.GetObject("warehouse_90", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
