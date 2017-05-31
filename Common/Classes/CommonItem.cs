@@ -18,6 +18,7 @@ namespace Common.Classes
         public int SellingPriceCent { get; set; }
         public int Quantity { get; set; }
         public decimal ParcePrice { get; set; }
+        public string MeasurmentUnitString { get; set; }
 
         public override string ToString()
         {

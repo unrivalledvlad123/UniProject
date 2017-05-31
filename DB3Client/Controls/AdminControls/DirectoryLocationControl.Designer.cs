@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.mlGroupBox1 = new Common.Forms.Base.MLGroupBox();
+            this.labelError = new Common.Forms.Base.MLErrorLabel();
             this.btnSave = new Common.Forms.Base.MLButton();
             this.ff = new Common.Forms.Base.MLLabel();
             this.tbPdfSaveLocation = new Common.Forms.Base.MLTextBox();
-            this.labelError = new Common.Forms.Base.MLErrorLabel();
             this.mlGroupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,7 +49,16 @@
             this.mlGroupBox1.Size = new System.Drawing.Size(596, 508);
             this.mlGroupBox1.TabIndex = 7;
             this.mlGroupBox1.TabStop = false;
-            this.mlGroupBox1.Text = "mlGroupBox1";
+            this.mlGroupBox1.Text = "directory_settings";
+            // 
+            // labelError
+            // 
+            this.labelError.AutoSize = true;
+            this.labelError.ForeColor = System.Drawing.Color.Red;
+            this.labelError.Location = new System.Drawing.Point(6, 93);
+            this.labelError.Name = "labelError";
+            this.labelError.Size = new System.Drawing.Size(0, 13);
+            this.labelError.TabIndex = 8;
             // 
             // btnSave
             // 
@@ -100,15 +109,6 @@
             this.tbPdfSaveLocation.UseSelectable = true;
             this.tbPdfSaveLocation.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.tbPdfSaveLocation.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // labelError
-            // 
-            this.labelError.AutoSize = true;
-            this.labelError.ForeColor = System.Drawing.Color.Red;
-            this.labelError.Location = new System.Drawing.Point(6, 93);
-            this.labelError.Name = "labelError";
-            this.labelError.Size = new System.Drawing.Size(0, 13);
-            this.labelError.TabIndex = 8;
             // 
             // DirectoryLocationControl
             // 

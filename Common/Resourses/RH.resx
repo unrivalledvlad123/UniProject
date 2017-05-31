@@ -648,7 +648,19 @@
   <data name="view_invoice" xml:space="preserve">
     <value>View Invoice</value>
   </data>
-  <data name="restricted_user" xml:space="preserve">
-    <value>Restricted Access?</value>
+  <data name="directory_settings" xml:space="preserve">
+    <value>Directory Settings</value>
+  </data>
+  <data name="report_for_goods_movement" xml:space="preserve">
+    <value>Goods movement report</value>
+  </data>
+  <data name="vat_settings" xml:space="preserve">
+    <value>VAT Settings</value>
+  </data>
+  <data name="make_primery" xml:space="preserve">
+    <value>Make primery</value>
+  </data>
+  <data name="remove_primery" xml:space="preserve">
+    <value>Remove primery</value>
   </data>
 </root>
