@@ -17,5 +17,7 @@ namespace DB3Server
         public int RowID { get; set; }
         public int PartnerType { get; set; }
         public decimal Discount { get; set; }
+        public Nullable<decimal> RangeFrom { get; set; }
+        public Nullable<decimal> RangeTo { get; set; }
     }
 }

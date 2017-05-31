@@ -663,4 +663,7 @@
   <data name="remove_primery" xml:space="preserve">
     <value>Remove primery</value>
   </data>
+  <data name="restricted_user" xml:space="preserve">
+    <value>Restricted access?</value>
+  </data>
 </root>

@@ -27,5 +27,6 @@ namespace Common.Classes
         public string BuyerMol { get; set; }
         public string OwnerMol { get; set; }
         public List<CommonSoldItem> SoldItems { get; set; }
+        public decimal DiscountPercent { get; set; }
     }
 }

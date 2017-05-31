@@ -27,6 +27,7 @@
           <Property Name="OwnerSwiftCode" Type="varchar" MaxLength="50" />
           <Property Name="BuyerMol" Type="varchar" MaxLength="250" />
           <Property Name="OwnerMol" Type="varchar" MaxLength="250" />
+          <Property Name="DiscountPercent" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="Item">
           <Key>
@@ -96,6 +97,8 @@
           <Property Name="RowID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PartnerType" Type="int" Nullable="false" />
           <Property Name="Discount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="RangeFrom" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="RangeTo" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="PartnerItemMapping">
           <Key>
@@ -457,12 +460,6 @@
             <End Role="Sale" EntitySet="Sales" />
             <End Role="SoldItem" EntitySet="SoldItems" />
           </AssociationSet>
-          <EntitySet Name="Invoices" EntityType="Model.Invoice" />
-          <AssociationSet Name="FK_Sales_Invoice" Association="Model.FK_Sales_Invoice">
-            <End Role="Invoice" EntitySet="Invoices" />
-            <End Role="Sale" EntitySet="Sales" />
-          </AssociationSet>
-          <EntitySet Name="PartnerDiscounts" EntityType="Model.PartnerDiscount" />
           <EntitySet Name="Partners" EntityType="Model.Partner" />
           <AssociationSet Name="FK_PartnerItemMapping_Partner" Association="Model.FK_PartnerItemMapping_Partner">
             <End Role="Partner" EntitySet="Partners" />
@@ -474,6 +471,12 @@
           </AssociationSet>
           <AssociationSet Name="FK_Sales_Partner1" Association="Model.FK_Sales_Partner1">
             <End Role="Partner" EntitySet="Partners" />
+            <End Role="Sale" EntitySet="Sales" />
+          </AssociationSet>
+          <EntitySet Name="PartnerDiscounts" EntityType="Model.PartnerDiscount" />
+          <EntitySet Name="Invoices" EntityType="Model.Invoice" />
+          <AssociationSet Name="FK_Sales_Invoice" Association="Model.FK_Sales_Invoice">
+            <End Role="Invoice" EntitySet="Invoices" />
             <End Role="Sale" EntitySet="Sales" />
           </AssociationSet>
           </EntityContainer>
@@ -634,8 +637,8 @@
           <Property Name="InvoiceId" Type="Guid" />
           <NavigationProperty Name="Owner" Relationship="Model.FK_Sales_Owner" FromRole="Sale" ToRole="Owner" />
           <NavigationProperty Name="SoldItems" Relationship="Model.FK_SoldItem_Sales1" FromRole="Sale" ToRole="SoldItem" />
-          <NavigationProperty Name="Invoice" Relationship="Model.FK_Sales_Invoice" FromRole="Sale" ToRole="Invoice" />
           <NavigationProperty Name="Partner" Relationship="Model.FK_Sales_Partner1" FromRole="Sale" ToRole="Partner" />
+          <NavigationProperty Name="Invoice" Relationship="Model.FK_Sales_Invoice" FromRole="Sale" ToRole="Invoice" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -736,50 +739,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Invoice">
-          <Key>
-            <PropertyRef Name="InvoiceId" />
-          </Key>
-          <Property Name="OwnerId" Type="Guid" Nullable="false" />
-          <Property Name="PartnerId" Type="Guid" Nullable="false" />
-          <Property Name="SaleId" Type="Guid" Nullable="false" />
-          <Property Name="InvoiceId" Type="Guid" Nullable="false" />
-          <Property Name="InvoiceNumber" Type="Int32" Nullable="false" />
-          <Property Name="BuyerCompanyName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="BuyerAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="BuyerVATNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="BuyerBulstat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OwnerCompanyName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="OwnerAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="OwnerVATNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OwnerBulstat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OwnerBank" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="OwnerIBAN" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="OwnerSwiftCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="BuyerMol" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="OwnerMol" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Sales" Relationship="Model.FK_Sales_Invoice" FromRole="Invoice" ToRole="Sale" />
-        </EntityType>
-        <Association Name="FK_Sales_Invoice">
-          <End Type="Model.Invoice" Role="Invoice" Multiplicity="0..1" />
-          <End Type="Model.Sale" Role="Sale" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Invoice">
-              <PropertyRef Name="InvoiceId" />
-            </Principal>
-            <Dependent Role="Sale">
-              <PropertyRef Name="InvoiceId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="PartnerDiscount">
-          <Key>
-            <PropertyRef Name="RowID" />
-          </Key>
-          <Property Name="RowID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PartnerType" Type="Int32" Nullable="false" />
-          <Property Name="Discount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-        </EntityType>
         <EntityType Name="Partner">
           <Key>
             <PropertyRef Name="PartnerId" />
@@ -830,6 +789,53 @@
             </Principal>
             <Dependent Role="Sale">
               <PropertyRef Name="BuyerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PartnerDiscount">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PartnerType" Type="Int32" Nullable="false" />
+          <Property Name="Discount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="RangeFrom" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="RangeTo" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Invoice">
+          <Key>
+            <PropertyRef Name="InvoiceId" />
+          </Key>
+          <Property Name="OwnerId" Type="Guid" Nullable="false" />
+          <Property Name="PartnerId" Type="Guid" Nullable="false" />
+          <Property Name="SaleId" Type="Guid" Nullable="false" />
+          <Property Name="InvoiceId" Type="Guid" Nullable="false" />
+          <Property Name="InvoiceNumber" Type="Int32" Nullable="false" />
+          <Property Name="BuyerCompanyName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="BuyerAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="BuyerVATNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BuyerBulstat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerCompanyName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerVATNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerBulstat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerBank" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerIBAN" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerSwiftCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BuyerMol" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerMol" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="DiscountPercent" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="Sales" Relationship="Model.FK_Sales_Invoice" FromRole="Invoice" ToRole="Sale" />
+        </EntityType>
+        <Association Name="FK_Sales_Invoice">
+          <End Type="Model.Invoice" Role="Invoice" Multiplicity="0..1" />
+          <End Type="Model.Sale" Role="Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Invoice">
+              <PropertyRef Name="InvoiceId" />
+            </Principal>
+            <Dependent Role="Sale">
+              <PropertyRef Name="InvoiceId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -980,9 +986,36 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Partners">
+            <EntityTypeMapping TypeName="Model.Partner">
+              <MappingFragment StoreEntitySet="Partner">
+                <ScalarProperty Name="Sum" ColumnName="Sum" />
+                <ScalarProperty Name="PartnerType" ColumnName="PartnerType" />
+                <ScalarProperty Name="Bulstat" ColumnName="Bulstat" />
+                <ScalarProperty Name="VATNumber" ColumnName="VATNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PartnerDiscounts">
+            <EntityTypeMapping TypeName="Model.PartnerDiscount">
+              <MappingFragment StoreEntitySet="PartnerDiscount">
+                <ScalarProperty Name="RangeTo" ColumnName="RangeTo" />
+                <ScalarProperty Name="RangeFrom" ColumnName="RangeFrom" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="PartnerType" ColumnName="PartnerType" />
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Invoices">
             <EntityTypeMapping TypeName="Model.Invoice">
               <MappingFragment StoreEntitySet="Invoice">
+                <ScalarProperty Name="DiscountPercent" ColumnName="DiscountPercent" />
                 <ScalarProperty Name="OwnerMol" ColumnName="OwnerMol" />
                 <ScalarProperty Name="BuyerMol" ColumnName="BuyerMol" />
                 <ScalarProperty Name="OwnerSwiftCode" ColumnName="OwnerSwiftCode" />
@@ -1001,30 +1034,6 @@
                 <ScalarProperty Name="SaleId" ColumnName="SaleId" />
                 <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
                 <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PartnerDiscounts">
-            <EntityTypeMapping TypeName="Model.PartnerDiscount">
-              <MappingFragment StoreEntitySet="PartnerDiscount">
-                <ScalarProperty Name="Discount" ColumnName="Discount" />
-                <ScalarProperty Name="PartnerType" ColumnName="PartnerType" />
-                <ScalarProperty Name="RowID" ColumnName="RowID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Partners">
-            <EntityTypeMapping TypeName="Model.Partner">
-              <MappingFragment StoreEntitySet="Partner">
-                <ScalarProperty Name="Sum" ColumnName="Sum" />
-                <ScalarProperty Name="PartnerType" ColumnName="PartnerType" />
-                <ScalarProperty Name="Bulstat" ColumnName="Bulstat" />
-                <ScalarProperty Name="VATNumber" ColumnName="VATNumber" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
-                <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -1303,7 +1303,7 @@ namespace Common.Resourses {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Restricted Access?.
+        ///   Looks up a localized string similar to Restricted access?.
         /// </summary>
         internal static string restricted_user {
             get {

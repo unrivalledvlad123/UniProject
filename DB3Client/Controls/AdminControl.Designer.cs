@@ -44,6 +44,7 @@ namespace DB3Client.Controls
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControlAdmin = new Common.Forms.Base.MLTabControl();
             this.metroTabPage1 = new Common.Forms.Base.MLTabPage();
+            this.tbSearchUser = new Common.Forms.Base.MLTextBox();
             this.dgvUsers = new MetroFramework.Controls.MetroGrid();
             this.btnAddNewUser = new Common.Forms.Base.MLButton();
             this.btnEditUser = new Common.Forms.Base.MLButton();
@@ -95,7 +96,6 @@ namespace DB3Client.Controls
             this.mlButton1 = new Common.Forms.Base.MLButton();
             this.panelSettings = new MetroFramework.Controls.MetroPanel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.tbSearchUser = new Common.Forms.Base.MLTextBox();
             this.tabControlAdmin.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
@@ -128,7 +128,7 @@ namespace DB3Client.Controls
             this.tabControlAdmin.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlAdmin.Location = new System.Drawing.Point(0, 0);
             this.tabControlAdmin.Name = "tabControlAdmin";
-            this.tabControlAdmin.SelectedIndex = 0;
+            this.tabControlAdmin.SelectedIndex = 2;
             this.tabControlAdmin.Size = new System.Drawing.Size(932, 560);
             this.tabControlAdmin.TabIndex = 0;
             this.tabControlAdmin.UseSelectable = true;
@@ -151,6 +151,36 @@ namespace DB3Client.Controls
             this.metroTabPage1.VerticalScrollbarBarColor = true;
             this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.VerticalScrollbarSize = 10;
+            // 
+            // tbSearchUser
+            // 
+            // 
+            // 
+            // 
+            this.tbSearchUser.CustomButton.Image = null;
+            this.tbSearchUser.CustomButton.Location = new System.Drawing.Point(275, 1);
+            this.tbSearchUser.CustomButton.Name = "";
+            this.tbSearchUser.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.tbSearchUser.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.tbSearchUser.CustomButton.TabIndex = 1;
+            this.tbSearchUser.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.tbSearchUser.CustomButton.UseSelectable = true;
+            this.tbSearchUser.CustomButton.Visible = false;
+            this.tbSearchUser.Lines = new string[0];
+            this.tbSearchUser.Location = new System.Drawing.Point(3, 17);
+            this.tbSearchUser.MaxLength = 32767;
+            this.tbSearchUser.Name = "tbSearchUser";
+            this.tbSearchUser.PasswordChar = '\0';
+            this.tbSearchUser.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.tbSearchUser.SelectedText = "";
+            this.tbSearchUser.SelectionLength = 0;
+            this.tbSearchUser.SelectionStart = 0;
+            this.tbSearchUser.ShortcutsEnabled = true;
+            this.tbSearchUser.Size = new System.Drawing.Size(297, 23);
+            this.tbSearchUser.TabIndex = 7;
+            this.tbSearchUser.UseSelectable = true;
+            this.tbSearchUser.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.tbSearchUser.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // dgvUsers
             // 
@@ -861,7 +891,7 @@ namespace DB3Client.Controls
             this.mlButton1.Name = "mlButton1";
             this.mlButton1.Size = new System.Drawing.Size(256, 24);
             this.mlButton1.TabIndex = 2;
-            this.mlButton1.Text = "under_development";
+            this.mlButton1.Text = "promotion_settings";
             this.mlButton1.UseSelectable = true;
             // 
             // panelSettings
@@ -887,36 +917,6 @@ namespace DB3Client.Controls
             this.pictureBox2.Size = new System.Drawing.Size(3, 512);
             this.pictureBox2.TabIndex = 5;
             this.pictureBox2.TabStop = false;
-            // 
-            // tbSearchUser
-            // 
-            // 
-            // 
-            // 
-            this.tbSearchUser.CustomButton.Image = null;
-            this.tbSearchUser.CustomButton.Location = new System.Drawing.Point(275, 1);
-            this.tbSearchUser.CustomButton.Name = "";
-            this.tbSearchUser.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.tbSearchUser.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.tbSearchUser.CustomButton.TabIndex = 1;
-            this.tbSearchUser.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.tbSearchUser.CustomButton.UseSelectable = true;
-            this.tbSearchUser.CustomButton.Visible = false;
-            this.tbSearchUser.Lines = new string[0];
-            this.tbSearchUser.Location = new System.Drawing.Point(3, 17);
-            this.tbSearchUser.MaxLength = 32767;
-            this.tbSearchUser.Name = "tbSearchUser";
-            this.tbSearchUser.PasswordChar = '\0';
-            this.tbSearchUser.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.tbSearchUser.SelectedText = "";
-            this.tbSearchUser.SelectionLength = 0;
-            this.tbSearchUser.SelectionStart = 0;
-            this.tbSearchUser.ShortcutsEnabled = true;
-            this.tbSearchUser.Size = new System.Drawing.Size(297, 23);
-            this.tbSearchUser.TabIndex = 7;
-            this.tbSearchUser.UseSelectable = true;
-            this.tbSearchUser.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.tbSearchUser.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // AdminControl
             // 

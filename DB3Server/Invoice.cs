@@ -38,6 +38,7 @@ namespace DB3Server
         public string OwnerSwiftCode { get; set; }
         public string BuyerMol { get; set; }
         public string OwnerMol { get; set; }
+        public Nullable<decimal> DiscountPercent { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sale> Sales { get; set; }

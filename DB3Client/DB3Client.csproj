@@ -287,6 +287,7 @@
     <Compile Include="ServiceAccess\SASale.cs" />
     <Compile Include="ServiceAccess\SASettings.cs" />
     <Compile Include="ServiceAccess\SAUsers.cs" />
+    <Compile Include="Utils.cs" />
     <EmbeddedResource Include="Controls\AdminControl.resx">
       <DependentUpon>AdminControl.cs</DependentUpon>
     </EmbeddedResource>

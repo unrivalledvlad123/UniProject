@@ -81,6 +81,34 @@ namespace DB3Server.BusinessLogic
                             invoice.BuyerVATNumber = partner.VATNumber;
                             MOL mol = entities.MOLs.FirstOrDefault(p => p.OwnerId == partner.PartnerId);
                             invoice.BuyerMol = mol!=null ? $"{mol.FirstName} {mol.LastName}" : "";
+                            decimal counter = 0;
+                            foreach (var item in s.SoldItems)
+                            {
+                                WarehouseItem whItem = entities.WarehouseItems.FirstOrDefault(p => p.ItemId == item.ItemId);
+                                counter += ((decimal)whItem.SellingPriceCent.Value / 100) * item.Quantity;
+                            }
+                            partner.Sum += counter;
+                            List<PartnerDiscount> discount = entities.PartnerDiscounts.ToList();
+                            foreach (PartnerDiscount t in discount)
+                            {
+                                if (partner.Sum >= t.RangeFrom && partner.Sum <= t.RangeTo)
+                                {
+                                    if (partner.PartnerType == t.PartnerType)
+                                    {
+                                        invoice.DiscountPercent = t.Discount;
+                                    }
+                                    else
+                                    {
+                                        partner.PartnerType = t.PartnerType;
+                                        invoice.DiscountPercent = t.Discount;
+                                    }
+                                }
+                            }
+                            entities.Partners.Attach(partner);
+                            var entry = entities.Entry(partner);
+                            entry.Property(e => e.Sum).IsModified = true;
+                            entry.Property(e => e.PartnerType).IsModified = true;
+                            entities.SaveChanges();
                         }
                         Owner owner = entities.Owners.First();
                         invoice.OwnerAddress = owner.Address;
@@ -128,7 +156,7 @@ namespace DB3Server.BusinessLogic
             }
         }
 
-        internal static List<CommonSale> GetAllSales(String search)
+        internal static List<CommonSale> GetAllSales(string search)
         {
             DatabaseEntities entities = new DatabaseEntities();
             List<Sale> allDbSales = new List<Sale>();
@@ -197,6 +225,7 @@ namespace DB3Server.BusinessLogic
                 result.OwnerSwiftCode = invoice.OwnerSwiftCode;
                 result.BuyerMol = invoice.BuyerMol;
                 result.OwnerMol = invoice.OwnerMol;
+                result.DiscountPercent = invoice.DiscountPercent.Value;
             }
             result.SoldItems = new List<CommonSoldItem>();
             return result;

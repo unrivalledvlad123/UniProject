@@ -41,14 +41,6 @@ namespace DB3Client.Controls
             LoadCompanyData();
             LoadMolList();
             tabControlAdmin.SelectedTab = metroTabPage1;
-
-            List<Control> test = new List<Control>();
-            test.Add(btnAddMol);
-            foreach (Control btn in test)
-            {
-                btn.Enabled = false;
-            }
-
         }
 
 

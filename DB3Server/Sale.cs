@@ -30,7 +30,7 @@ namespace DB3Server
         public virtual Owner Owner { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SoldItem> SoldItems { get; set; }
-        public virtual Invoice Invoice { get; set; }
         public virtual Partner Partner { get; set; }
+        public virtual Invoice Invoice { get; set; }
     }
 }

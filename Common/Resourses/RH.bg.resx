@@ -666,4 +666,7 @@
   <data name="remove_primery" xml:space="preserve">
     <value>Премахни главен</value>
   </data>
+  <data name="restricted_user" xml:space="preserve">
+    <value>Органичен достъп?</value>
+  </data>
 </root>
