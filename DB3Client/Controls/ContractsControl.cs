@@ -218,7 +218,7 @@ namespace DB3Client.Controls
 
                 if (!string.IsNullOrEmpty(selectedItem.InvoiceId))
                 {
-                    InvoiceTemplateForm form = new InvoiceTemplateForm(selectedItem, false);
+                    InvoiceTemplateForm form = new InvoiceTemplateForm(selectedItem,false);
 
                     if (form.ShowDialog() == DialogResult.OK)
                     {

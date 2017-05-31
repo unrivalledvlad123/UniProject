@@ -57,7 +57,7 @@ namespace DB3Server.BusinessLogic
                             Price = item.Price*100,
                             Quantity = item.Quantity,
                             SaleId = s.SaleId,
-                            SoldItemId = Guid.NewGuid()
+                            SoldItemId = NewGuid()
                         };
 
                         s.SoldItems.Add(i);
@@ -69,6 +69,33 @@ namespace DB3Server.BusinessLogic
                         invoice.PartnerId = s.BuyerId;
                         invoice.OwnerId = s.SellerId;
                         invoice.SaleId = s.SaleId;
+                        invoice.InvoiceId = NewGuid();
+                        invoice.InvoiceNumber = entities.Invoices.Max(p => p.InvoiceNumber) + 1;
+                        Partner partner = entities.Partners.FirstOrDefault(p => p.PartnerId == s.BuyerId);
+
+                        if (partner != null)
+                        {
+                            invoice.BuyerAddress = partner.Address;
+                            invoice.BuyerBulstat = partner.Bulstat;
+                            invoice.BuyerCompanyName = partner.CompanyName;
+                            invoice.BuyerVATNumber = partner.VATNumber;
+                            MOL mol = entities.MOLs.FirstOrDefault(p => p.OwnerId == partner.PartnerId);
+                            invoice.BuyerMol = mol!=null ? $"{mol.FirstName} {mol.LastName}" : "";
+                        }
+                        Owner owner = entities.Owners.First();
+                        invoice.OwnerAddress = owner.Address;
+                        invoice.OwnerBank = owner.Bank;
+                        invoice.OwnerBulstat = owner.Bulstat;
+                        invoice.OwnerIBAN = owner.IBAN;
+                        invoice.OwnerCompanyName = owner.CompanyName;
+                        invoice.OwnerSwiftCode = owner.SWIFTCode;
+                        invoice.OwnerVATNumber = owner.VATNumber;
+                        MOL mol2 = entities.MOLs.FirstOrDefault(p => p.OwnerId == owner.OwnerId && p.IsPrimary);
+                        if (mol2 != null)
+                        {
+                            invoice.OwnerMol = $"{mol2.FirstName} {mol2.LastName}";
+                        }
+
                         s.Invoice = invoice;
                     }
 
@@ -80,7 +107,7 @@ namespace DB3Server.BusinessLogic
                     sale.SaleId = s.SaleId;
                     sale.SellerId = s.SellerId;
                     sale.Type = s.Type;
-                    sale.InvoiceId = s.InvoiceId.ToString();
+                    sale.InvoiceId = s.Invoice.InvoiceNumber.ToString();
                     sale.SoldItems = new List<CommonSoldItem>();
                     foreach (var h in s.SoldItems)
                     {
@@ -95,7 +122,7 @@ namespace DB3Server.BusinessLogic
                 }
                 return null;
             }
-            catch (Exception e)
+            catch (Exception )
             {
                 return null;
             }
@@ -123,7 +150,7 @@ namespace DB3Server.BusinessLogic
                 CommonSale sale = new CommonSale();
                 sale.BuyerId = dbSale.BuyerId;
                 sale.Date = dbSale.Date;
-                sale.InvoiceId = dbSale.InvoiceId.ToString();
+                sale.InvoiceId = dbSale.Invoice?.InvoiceNumber.ToString();
                 sale.SaleId = dbSale.SaleId;
                 sale.SellerId = dbSale.SellerId;
                 sale.Type = dbSale.Type;
@@ -143,6 +170,36 @@ namespace DB3Server.BusinessLogic
                 sale.BuyerCompanyName = dbSale.Partner.CompanyName;
             }
             return allSales;
+        }
+
+        internal static CommonInvoice GetInvoive(Guid saleId)
+        {
+            CommonInvoice result = new CommonInvoice();
+            DatabaseEntities entities = new DatabaseEntities();
+            Invoice invoice = entities.Invoices.FirstOrDefault(p => p.SaleId == saleId);
+            if (invoice != null)
+            {
+                result.OwnerId = invoice.OwnerId;
+                result.PartnerId = invoice.PartnerId;
+                result.SaleId = invoice.SaleId;
+                result.InvoiceId = invoice.InvoiceId;
+                result.InvoiceNumber = invoice.InvoiceNumber;
+                result.BuyerCompanyName = invoice.BuyerCompanyName;
+                result.BuyerAddress = invoice.BuyerAddress;
+                result.BuyerVATNumber = invoice.BuyerVATNumber;
+                result.BuyerBulstat = invoice.BuyerBulstat;
+                result.OwnerCompanyName = invoice.OwnerCompanyName;
+                result.OwnerAddress = invoice.OwnerAddress;
+                result.OwnerVATNumber = invoice.OwnerVATNumber;
+                result.OwnerBulstat = invoice.OwnerBulstat;
+                result.OwnerBank = invoice.OwnerBank;
+                result.OwnerIBAN = invoice.OwnerIBAN;
+                result.OwnerSwiftCode = invoice.OwnerSwiftCode;
+                result.BuyerMol = invoice.BuyerMol;
+                result.OwnerMol = invoice.OwnerMol;
+            }
+            result.SoldItems = new List<CommonSoldItem>();
+            return result;
         }
     }
 }

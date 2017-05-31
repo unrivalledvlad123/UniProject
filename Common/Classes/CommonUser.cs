@@ -17,5 +17,6 @@ namespace Common.Classes
         public int Role { get; set; }
         public string RoleString { get; set; }
         public Guid UserId { get; set; }
+        public bool IsRestrictedUser { get; set; }
     }
 }

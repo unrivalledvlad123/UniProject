@@ -651,4 +651,7 @@
   <data name="view_invoice" xml:space="preserve">
     <value>Покажи Фактура</value>
   </data>
+  <data name="restricted_user" xml:space="preserve">
+    <value>Ограничен достъп?</value>
+  </data>
 </root>

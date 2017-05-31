@@ -25,12 +25,12 @@ namespace DB3Server
         public System.Guid SellerId { get; set; }
         public System.DateTime Date { get; set; }
         public int Type { get; set; }
-        public Nullable<long> InvoiceId { get; set; }
+        public Nullable<System.Guid> InvoiceId { get; set; }
     
         public virtual Owner Owner { get; set; }
-        public virtual Partner Partner { get; set; }
-        public virtual Invoice Invoice { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SoldItem> SoldItems { get; set; }
+        public virtual Invoice Invoice { get; set; }
+        public virtual Partner Partner { get; set; }
     }
 }

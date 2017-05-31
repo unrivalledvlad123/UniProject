@@ -31,6 +31,8 @@ namespace DB3Client.Forms.AdminForms
         private void InitializeComponent()
         {
             this.mlGroupBox1 = new Common.Forms.Base.MLGroupBox();
+            this.cbRestricteduser = new Common.Forms.Base.MLCheckBox();
+            this.mlLabel4 = new Common.Forms.Base.MLLabel();
             this.tbPassword = new Common.Forms.Base.MLTextBox();
             this.mlLabel2 = new Common.Forms.Base.MLLabel();
             this.mlLabel3 = new Common.Forms.Base.MLLabel();
@@ -49,6 +51,9 @@ namespace DB3Client.Forms.AdminForms
             // 
             // mlGroupBox1
             // 
+            this.mlGroupBox1.BackColor = System.Drawing.Color.White;
+            this.mlGroupBox1.Controls.Add(this.cbRestricteduser);
+            this.mlGroupBox1.Controls.Add(this.mlLabel4);
             this.mlGroupBox1.Controls.Add(this.tbPassword);
             this.mlGroupBox1.Controls.Add(this.mlLabel2);
             this.mlGroupBox1.Controls.Add(this.mlLabel3);
@@ -69,6 +74,26 @@ namespace DB3Client.Forms.AdminForms
             this.mlGroupBox1.TabIndex = 0;
             this.mlGroupBox1.TabStop = false;
             this.mlGroupBox1.Text = "create_new_user";
+            // 
+            // cbRestricteduser
+            // 
+            this.cbRestricteduser.AutoSize = true;
+            this.cbRestricteduser.Location = new System.Drawing.Point(202, 188);
+            this.cbRestricteduser.MinimumSize = new System.Drawing.Size(40, 15);
+            this.cbRestricteduser.Name = "cbRestricteduser";
+            this.cbRestricteduser.Size = new System.Drawing.Size(40, 15);
+            this.cbRestricteduser.TabIndex = 15;
+            this.cbRestricteduser.UseSelectable = true;
+            // 
+            // mlLabel4
+            // 
+            this.mlLabel4.AutoSize = true;
+            this.mlLabel4.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.mlLabel4.Location = new System.Drawing.Point(7, 184);
+            this.mlLabel4.Name = "mlLabel4";
+            this.mlLabel4.Size = new System.Drawing.Size(98, 19);
+            this.mlLabel4.TabIndex = 14;
+            this.mlLabel4.Text = "restricted_user";
             // 
             // tbPassword
             // 
@@ -153,7 +178,7 @@ namespace DB3Client.Forms.AdminForms
             // labelError
             // 
             this.labelError.ForeColor = System.Drawing.Color.Red;
-            this.labelError.Location = new System.Drawing.Point(6, 214);
+            this.labelError.Location = new System.Drawing.Point(6, 245);
             this.labelError.Name = "labelError";
             this.labelError.Size = new System.Drawing.Size(357, 71);
             this.labelError.TabIndex = 13;
@@ -205,7 +230,7 @@ namespace DB3Client.Forms.AdminForms
             this.tbAssignedTo.CustomButton.UseSelectable = true;
             this.tbAssignedTo.CustomButton.Visible = false;
             this.tbAssignedTo.Lines = new string[0];
-            this.tbAssignedTo.Location = new System.Drawing.Point(202, 174);
+            this.tbAssignedTo.Location = new System.Drawing.Point(202, 219);
             this.tbAssignedTo.MaxLength = 32767;
             this.tbAssignedTo.Name = "tbAssignedTo";
             this.tbAssignedTo.PasswordChar = '\0';
@@ -224,7 +249,7 @@ namespace DB3Client.Forms.AdminForms
             // 
             this.mlLabel5.AutoSize = true;
             this.mlLabel5.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.mlLabel5.Location = new System.Drawing.Point(7, 178);
+            this.mlLabel5.Location = new System.Drawing.Point(7, 223);
             this.mlLabel5.Name = "mlLabel5";
             this.mlLabel5.Size = new System.Drawing.Size(81, 19);
             this.mlLabel5.TabIndex = 8;
@@ -309,5 +334,7 @@ namespace DB3Client.Forms.AdminForms
         private Common.Forms.Base.MLButton btnSave;
         private Common.Forms.Base.MLComboBox cbUserRole;
         private Common.Forms.Base.MLErrorLabel labelError;
+        private Common.Forms.Base.MLLabel mlLabel4;
+        private Common.Forms.Base.MLCheckBox cbRestricteduser;
     }
 }

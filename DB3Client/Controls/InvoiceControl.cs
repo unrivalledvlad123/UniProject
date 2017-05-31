@@ -35,15 +35,6 @@ namespace DB3Client.Controls
             SetGridColumnsItems();
             LoadDataFromDb();
 
-
-
-
-
-
-            // ExportInvoiceToPdf MUST!!!!!!!!!!!!!!!! be the last method to call!!!!!!!!!!!!!
-            //ExportInvoiceToPdf();
-            // !!!!!!!!!!!!!!!!!!!!
-
         }
 
 
@@ -95,28 +86,26 @@ namespace DB3Client.Controls
 
         private async void LoadDataFromDb()
         {
-            CommonContract contract = await SAContract.GetPartnersById(Sale.BuyerId.ToString());
-            mlLabel17.Text = contract.CompanyName;
-            mlLabel15.Text = contract.VatNumber;
-            mlLabel13.Text = contract.Bulstat;
-            List<CommonMol> mols = await SAOwner.getAllMols(contract.PartnerId);
-            CommonMol cMol = mols.Count == 0 ? new CommonMol() : mols.First();
-            mlLabel7.Text = cMol.FirstName + " " + cMol.LastName;
-            mlLabel29.Text = mlLabel7.Text;
-            mlLabel9.Text = contract.Address;
-            labelInvoiceNumber.Text = Sale.InvoiceNumber;
+            CommonInvoice invoice = await SASale.GetInvoive(Sale.SaleId);
+
+            mlLabel17.Text = invoice.BuyerCompanyName;
+            mlLabel15.Text = invoice.BuyerVATNumber;
+            mlLabel13.Text = invoice.BuyerBulstat;
+            mlLabel7.Text = invoice.BuyerMol;
+            mlLabel29.Text = invoice.BuyerMol;
+            mlLabel9.Text = invoice.BuyerAddress;
+            labelInvoiceNumber.Text = invoice.InvoiceNumber.ToString().PadLeft(10, '0');
             mlLabel19.Text = Sale.Date.ToString(CultureInfo.InvariantCulture);
             mlLabel18.Text = Sale.Date.ToString(CultureInfo.InvariantCulture);
-            CompanyOwner owner = await SAOwner.getOwner(Sale.SellerId);
-            mlLabel24.Text = owner.CompanyName;
-            mlLabel23.Text = owner.VatNumber ?? "0";
-            mlLabel22.Text = owner.Bulstat ?? "0";
-            mlLabel42.Text = owner.Iban ?? "0";
-            mlLabel41.Text = owner.SwiftCode ?? "0";
-            mlLabel40.Text = owner.Bank ?? "0";
-            mlLabel21.Text = owner.Address;
-            mlLabel20.Text = DataHolder.PrimeryMol.FirstName + " " + DataHolder.PrimeryMol.LastName;
-            mlLabel28.Text = mlLabel20.Text;
+            mlLabel24.Text = invoice.OwnerCompanyName;
+            mlLabel23.Text = invoice.OwnerVATNumber;
+            mlLabel22.Text = invoice.OwnerBulstat;
+            mlLabel42.Text = invoice.OwnerIBAN;
+            mlLabel41.Text = invoice.OwnerSwiftCode;
+            mlLabel40.Text = invoice.OwnerBank;
+            mlLabel21.Text = invoice.OwnerAddress;
+            mlLabel20.Text = invoice.OwnerMol;
+            mlLabel28.Text = invoice.OwnerMol;
 
             decimal totalBoth = 0;
             decimal ddsTotal = 0;
@@ -158,10 +147,10 @@ namespace DB3Client.Controls
             labelAmount.Text = totatAmount.ToString();
             labelTotal.Text = totalBoth.ToString();
             labelDDS.Text = ddsTotal.ToString();
-           
+
             // do not change set grid size and export method order!
             SetGridSize();
-            if (SavePdf == true)
+            if (SavePdf)
             {
                 ExportInvoiceToPdf();
             }

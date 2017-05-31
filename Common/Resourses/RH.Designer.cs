@@ -1267,6 +1267,15 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Restricted Access?.
+        /// </summary>
+        internal static string restricted_user {
+            get {
+                return ResourceManager.GetString("restricted_user", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sales.
         /// </summary>
         internal static string sales {

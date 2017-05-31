@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Common;
 using Common.Classes;
+using Common.Forms.Base;
 using DB3Client.Controls.AdminControls;
 using DB3Client.Forms;
 using DB3Client.Forms.AdminForms;
@@ -39,8 +40,15 @@ namespace DB3Client.Controls
             LoadData();
             LoadCompanyData();
             LoadMolList();
-
             tabControlAdmin.SelectedTab = metroTabPage1;
+
+            List<Control> test = new List<Control>();
+            test.Add(btnAddMol);
+            foreach (Control btn in test)
+            {
+                btn.Enabled = false;
+            }
+
         }
 
 

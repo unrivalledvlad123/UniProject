@@ -648,4 +648,7 @@
   <data name="view_invoice" xml:space="preserve">
     <value>View Invoice</value>
   </data>
+  <data name="restricted_user" xml:space="preserve">
+    <value>Restricted Access?</value>
+  </data>
 </root>

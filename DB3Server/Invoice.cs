@@ -20,10 +20,24 @@ namespace DB3Server
             this.Sales = new HashSet<Sale>();
         }
     
-        public long InvoiceId { get; set; }
         public System.Guid OwnerId { get; set; }
         public System.Guid PartnerId { get; set; }
         public System.Guid SaleId { get; set; }
+        public System.Guid InvoiceId { get; set; }
+        public int InvoiceNumber { get; set; }
+        public string BuyerCompanyName { get; set; }
+        public string BuyerAddress { get; set; }
+        public string BuyerVATNumber { get; set; }
+        public string BuyerBulstat { get; set; }
+        public string OwnerCompanyName { get; set; }
+        public string OwnerAddress { get; set; }
+        public string OwnerVATNumber { get; set; }
+        public string OwnerBulstat { get; set; }
+        public string OwnerBank { get; set; }
+        public string OwnerIBAN { get; set; }
+        public string OwnerSwiftCode { get; set; }
+        public string BuyerMol { get; set; }
+        public string OwnerMol { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sale> Sales { get; set; }

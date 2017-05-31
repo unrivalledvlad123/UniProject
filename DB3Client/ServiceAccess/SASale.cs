@@ -87,5 +87,32 @@ namespace DB3Client.ServiceAccess
             }
             return allSales;
         }
+
+        public static async Task<CommonInvoice> GetInvoive(Guid SaleId)
+        {
+            CommonInvoice invoice = new CommonInvoice();
+            HttpResponseMessage response;
+
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(DataHolder.ServerAddress);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic");
+
+                try
+                {
+                    response = await client.GetAsync("api/sales/invoice/" + SaleId);
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw new Exception(ex.InnerException.Message);
+                }
+
+                if (response.IsSuccessStatusCode)
+                {
+                    invoice = await response.Content.ReadAsAsync<CommonInvoice>();
+                }
+            }
+            return invoice;
+        }
     }
 }

@@ -27,6 +27,13 @@ namespace DB3Server.Controllers
             return BLSales.GetAllSales(search);
         }
 
+        [System.Web.Http.Route("api/sales/invoice/{saleId}")]
+        public CommonInvoice GetInvoice(Guid saleId)
+        {
+            return BLSales.GetInvoive(saleId);
+        }
+
+
     }
-    
+
 }
