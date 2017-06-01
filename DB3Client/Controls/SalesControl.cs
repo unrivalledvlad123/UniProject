@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Data;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,6 +18,7 @@ using DB3Client.Forms.SalesForms;
 using DB3Client.Properties;
 using DB3Client.ServiceAccess;
 using MetroFramework.Drawing;
+using Org.BouncyCastle.Bcpg;
 
 namespace DB3Client.Controls
 {
@@ -33,7 +35,7 @@ namespace DB3Client.Controls
             InitializeComponent();
             SetGridColomns();
             LoadDataAsync();
-
+            
             tabControlSales.SelectedTab = metroTabPage1;
             cbWholesale.Checked = false;
             gbClientInfo.Enabled = false;
@@ -56,6 +58,7 @@ namespace DB3Client.Controls
             c1.HeaderText = DataHolder.GetString("item_name");
             c1.DataPropertyName = "Name";
             c1.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
+            c1.ReadOnly = true;
             dgvSoldGoods.Columns.Add(c1);
 
             DataGridViewTextBoxColumn c2 = new DataGridViewTextBoxColumn();
@@ -70,6 +73,7 @@ namespace DB3Client.Controls
             c3.HeaderText = DataHolder.GetString("measurment_unit");
             c3.DataPropertyName = "MeasurmentUnit";
             c3.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
+            c3.ReadOnly = true;
             dgvSoldGoods.Columns.Add(c3);
 
             DataGridViewTextBoxColumn c4 = new DataGridViewTextBoxColumn();
@@ -77,6 +81,7 @@ namespace DB3Client.Controls
             c4.HeaderText = DataHolder.GetString("price_each");
             c4.DataPropertyName = "PriceEach";
             c4.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
+            c4.ReadOnly = true;
             dgvSoldGoods.Columns.Add(c4);
 
             DataGridViewTextBoxColumn c5 = new DataGridViewTextBoxColumn();
@@ -84,6 +89,7 @@ namespace DB3Client.Controls
             c5.HeaderText = DataHolder.GetString("total");
             c5.DataPropertyName = "Total";
             c5.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
+            c5.ReadOnly = true;
             dgvSoldGoods.Columns.Add(c5);
 
             DataGridViewTextBoxColumn c6 = new DataGridViewTextBoxColumn();
@@ -207,6 +213,7 @@ namespace DB3Client.Controls
                 CommonItem a = ((CommonItem) cbSearch.SelectedItem);
                 KeyValuePair<int,decimal> temp = DataHolder.Settings.VatSettingsByGroup.FirstOrDefault(p => p.Key == a.Type);
                 string name = mlLabel1.Text;
+                
                 string quantity = tbQuantity.Text;
                 int measurementUnit = a.MeasurmentUnit;
                 //if (DataHolder.UserCulture.TwoLetterISOLanguageName == "bg")
@@ -420,6 +427,29 @@ namespace DB3Client.Controls
                 cbSearchContract.DataSource = AllContacts;
                 cbSearchContract.SelectedIndex = -1;
             }
+        }
+
+
+        private void dgvSoldGoods_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+           
+              
+         
+            var v = dgvSoldGoods.CurrentRow;
+           int index = dgvSoldGoods.Rows.IndexOf(v);
+               
+                float totalPrice = float.Parse(v.Cells[1].Value.ToString()) * float.Parse(v.Cells[3].Value.ToString());
+
+            v.Cells[4].Value = totalPrice;
+
+            f.dgvSoldGoodsClient.Rows[index].Cells[1].Value = v.Cells[1].Value;
+            f.dgvSoldGoodsClient.Rows[index].Cells[4].Value = v.Cells[4].Value;
+
+            // f.dgvSoldGoodsClient.Rows.Add(name, quantity, measurementUnit, price, totalPrice);
+            //dgvSoldGoods.Rows.Add(name, quantity, measurementUnit, price, totalPrice, a.ItemId, a.Type);
+            UpdateTotal();
+            
+            
         }
     }
 }

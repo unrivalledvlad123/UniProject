@@ -412,6 +412,15 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Contract Groups.
+        /// </summary>
+        internal static string contract_groups {
+            get {
+                return ResourceManager.GetString("contract_groups", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contracts.
         /// </summary>
         internal static string contracts {
@@ -1357,6 +1366,15 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Search Contracts.
+        /// </summary>
+        internal static string search_contract {
+            get {
+                return ResourceManager.GetString("search_contract", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Search by name or item code:.
         /// </summary>
         internal static string search_info {
@@ -1690,7 +1708,7 @@ namespace Common.Resourses {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Wholesale?.
+        ///   Looks up a localized string similar to Sale with Invoice!.
         /// </summary>
         internal static string wholesale {
             get {

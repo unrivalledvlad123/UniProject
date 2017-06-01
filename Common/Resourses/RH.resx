@@ -445,7 +445,7 @@
     <value>Total Amount:</value>
   </data>
   <data name="wholesale" xml:space="preserve">
-    <value>Wholesale?</value>
+    <value>Sale with Invoice!</value>
   </data>
   <data name="invoice" xml:space="preserve">
     <value>Invoice</value>
@@ -662,5 +662,11 @@
   </data>
   <data name="remove_primery" xml:space="preserve">
     <value>Remove primery</value>
+  </data>
+  <data name="contract_groups" xml:space="preserve">
+    <value>Contract Groups</value>
+  </data>
+  <data name="search_contract" xml:space="preserve">
+    <value>Search Contracts</value>
   </data>
 </root>

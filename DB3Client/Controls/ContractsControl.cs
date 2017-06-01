@@ -232,6 +232,12 @@ namespace DB3Client.Controls
 
             }
         }
+
+        private void cbContractType1_DropDown(object sender, EventArgs e)
+        {
+            cbContractType1.Items.Add("all");
+
+        }
     }
 }
 

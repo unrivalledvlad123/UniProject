@@ -448,7 +448,7 @@
     <value>Обща Сума:</value>
   </data>
   <data name="wholesale" xml:space="preserve">
-    <value>Продажба на едро?</value>
+    <value>Продажба с Фактура!</value>
   </data>
   <data name="invoice" xml:space="preserve">
     <value>Фактура</value>
@@ -665,5 +665,11 @@
   </data>
   <data name="remove_primery" xml:space="preserve">
     <value>Премахни главен</value>
+  </data>
+  <data name="contract_groups" xml:space="preserve">
+    <value>Групи Контрагенти</value>
+  </data>
+  <data name="search_contract" xml:space="preserve">
+    <value>Търсене на Контрагент</value>
   </data>
 </root>
