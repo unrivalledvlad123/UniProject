@@ -165,7 +165,7 @@
     <Compile Include="BusinessLogic\BLSettings.cs" />
     <Compile Include="Controllers\ContractController.cs" />
     <Compile Include="Controllers\ExampleController.cs" />
-    <Compile Include="Controllers\ItemCotroller.cs" />
+    <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\OwnerController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\SalesController.cs" />
@@ -203,6 +203,12 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Partner.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PartnerDiscount.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PartnerItemMapping.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

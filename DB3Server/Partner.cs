@@ -17,8 +17,9 @@ namespace DB3Server
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Partner()
         {
-            this.Sales = new HashSet<Sale>();
+            this.PartnerItemMappings = new HashSet<PartnerItemMapping>();
             this.Purchases = new HashSet<Purchase>();
+            this.Sales = new HashSet<Sale>();
         }
     
         public System.Guid PartnerId { get; set; }
@@ -28,10 +29,14 @@ namespace DB3Server
         public string Email { get; set; }
         public string VATNumber { get; set; }
         public string Bulstat { get; set; }
+        public int PartnerType { get; set; }
+        public Nullable<decimal> Sum { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sale> Sales { get; set; }
+        public virtual ICollection<PartnerItemMapping> PartnerItemMappings { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Purchase> Purchases { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Sale> Sales { get; set; }
     }
 }

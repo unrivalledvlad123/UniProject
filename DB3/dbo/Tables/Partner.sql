@@ -6,8 +6,14 @@
     [Email]       VARCHAR (50)     NULL,
     [VATNumber]   VARCHAR (50)     NULL,
     [Bulstat]     VARCHAR (50)     NULL,
+    [PartnerType] INT              NOT NULL,
+    [Sum]         DECIMAL (18, 2)  NULL,
     CONSTRAINT [PK_Partner_1] PRIMARY KEY CLUSTERED ([PartnerId] ASC)
 );
+
+
+
+
 
 
 

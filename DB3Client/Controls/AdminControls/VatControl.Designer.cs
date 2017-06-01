@@ -81,14 +81,12 @@
             this.labelErrorSettings.Location = new System.Drawing.Point(6, 100);
             this.labelErrorSettings.MaximumSize = new System.Drawing.Size(306, 61);
             this.labelErrorSettings.Name = "labelErrorSettings";
-            this.labelErrorSettings.Size = new System.Drawing.Size(38, 13);
+            this.labelErrorSettings.Size = new System.Drawing.Size(0, 13);
             this.labelErrorSettings.TabIndex = 6;
-            this.labelErrorSettings.Text = "";
             this.labelErrorSettings.Visible = false;
             // 
             // btnSaveSettings
             // 
-            this.btnSaveSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSaveSettings.Location = new System.Drawing.Point(238, 74);
             this.btnSaveSettings.Name = "btnSaveSettings";
             this.btnSaveSettings.Size = new System.Drawing.Size(75, 23);

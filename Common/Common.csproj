@@ -64,6 +64,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\CommonDiscounts.cs" />
+    <Compile Include="Classes\CommonInvoice.cs" />
     <Compile Include="Classes\CommonItem.cs" />
     <Compile Include="Classes\CommonContract.cs" />
     <Compile Include="Classes\CommonMol.cs" />

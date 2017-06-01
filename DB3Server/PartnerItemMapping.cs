@@ -12,15 +12,13 @@ namespace DB3Server
     using System;
     using System.Collections.Generic;
     
-    public partial class PurchasedItem
+    public partial class PartnerItemMapping
     {
-        public decimal Price { get; set; }
-        public int Quantity { get; set; }
-        public System.Guid PurchaseId { get; set; }
+        public int rowId { get; set; }
+        public System.Guid PartnerId { get; set; }
         public System.Guid ItemId { get; set; }
-        public System.Guid PurchasedItemId { get; set; }
     
-        public virtual Purchase Purchase { get; set; }
         public virtual Item Item { get; set; }
+        public virtual Partner Partner { get; set; }
     }
 }

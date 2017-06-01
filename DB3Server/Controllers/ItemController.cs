@@ -22,6 +22,12 @@ namespace DB3Server.Controllers
         {
             return BLItem.GetItemsById(search);
         }
+        
+        [System.Web.Http.Route("api/item/getallitemsmapped")]
+        public List<KeyValuePair<Guid,List<CommonItem>>> GetAllItemsMapped()
+        {
+            return BLItem.GetAllItemsMapped();
+        }
 
     }
 }

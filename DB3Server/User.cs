@@ -22,6 +22,7 @@ namespace DB3Server
         public int Role { get; set; }
         public string PasswordSalt { get; set; }
         public System.Guid UserId { get; set; }
+        public Nullable<bool> IsRestrictedUser { get; set; }
     
         public virtual Owner Owner { get; set; }
     }

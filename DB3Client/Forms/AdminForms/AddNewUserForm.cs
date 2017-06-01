@@ -39,6 +39,7 @@ namespace DB3Client.Forms.AdminForms
                 Enums.UserRoles role;
                 Enum.TryParse(cbUserRole.SelectedValue.ToString(), out role);
                 newUser.Role = (int) role;
+                newUser.IsRestrictedUser = cbRestricteduser.Checked;
                 // switch between new user and existing user
                 var success = await SAUsers.PostCreateUser(newUser);
                

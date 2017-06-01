@@ -64,5 +64,32 @@ namespace DB3Client.ServiceAccess
             }
             return null;
         }
+
+        public static async Task<List<KeyValuePair<Guid,List<CommonItem>>>> GetAllItemsMapped()
+        {
+           List<KeyValuePair<Guid,List<CommonItem>>> items = new List<KeyValuePair<Guid, List<CommonItem>>>();
+            HttpResponseMessage response;
+
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(DataHolder.ServerAddress);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic");
+
+                try
+                {
+                    response = await client.GetAsync("api/item/getallitemsmapped");
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw new Exception(ex.InnerException.Message);
+                }
+
+                if (response.IsSuccessStatusCode)
+                {
+                    items = await response.Content.ReadAsAsync<List<KeyValuePair<Guid, List<CommonItem>>>>();
+                }
+            }
+            return items;
+        }
     }
 }

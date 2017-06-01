@@ -11,7 +11,7 @@ namespace Common.Forms.Base
     /// <summary>
     /// Multi-Language Button implementation	
     /// </summary>
-    public class MLToolTp : MetroToolTip
+    public class MLToolTp : ToolTip
     {
         public new void SetToolTip(Control control, string caption)
         {

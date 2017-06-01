@@ -42,12 +42,17 @@
             this.tbAssignedTo = new Common.Forms.Base.MLTextBox();
             this.mlLabel5 = new Common.Forms.Base.MLLabel();
             this.mlLabel6 = new Common.Forms.Base.MLLabel();
+            this.cbRestricteduser = new Common.Forms.Base.MLCheckBox();
+            this.mlLabel4 = new Common.Forms.Base.MLLabel();
             this.mlGroupBox1.SuspendLayout();
             this.gbPasswordChange.SuspendLayout();
             this.SuspendLayout();
             // 
             // mlGroupBox1
             // 
+            this.mlGroupBox1.BackColor = System.Drawing.Color.White;
+            this.mlGroupBox1.Controls.Add(this.cbRestricteduser);
+            this.mlGroupBox1.Controls.Add(this.mlLabel4);
             this.mlGroupBox1.Controls.Add(this.btncCancel);
             this.mlGroupBox1.Controls.Add(this.btnSave);
             this.mlGroupBox1.Controls.Add(this.cbPasswordChange);
@@ -88,7 +93,7 @@
             // cbPasswordChange
             // 
             this.cbPasswordChange.AutoSize = true;
-            this.cbPasswordChange.Location = new System.Drawing.Point(12, 112);
+            this.cbPasswordChange.Location = new System.Drawing.Point(10, 134);
             this.cbPasswordChange.Name = "cbPasswordChange";
             this.cbPasswordChange.Size = new System.Drawing.Size(117, 15);
             this.cbPasswordChange.TabIndex = 26;
@@ -98,11 +103,12 @@
             // 
             // gbPasswordChange
             // 
+            this.gbPasswordChange.BackColor = System.Drawing.Color.White;
             this.gbPasswordChange.Controls.Add(this.tbPassword);
             this.gbPasswordChange.Controls.Add(this.tbPassword2);
             this.gbPasswordChange.Controls.Add(this.labelPass2);
             this.gbPasswordChange.Controls.Add(this.labelPass);
-            this.gbPasswordChange.Location = new System.Drawing.Point(12, 133);
+            this.gbPasswordChange.Location = new System.Drawing.Point(10, 155);
             this.gbPasswordChange.Name = "gbPasswordChange";
             this.gbPasswordChange.Size = new System.Drawing.Size(352, 125);
             this.gbPasswordChange.TabIndex = 25;
@@ -192,7 +198,7 @@
             // labelError
             // 
             this.labelError.ForeColor = System.Drawing.Color.Red;
-            this.labelError.Location = new System.Drawing.Point(9, 261);
+            this.labelError.Location = new System.Drawing.Point(7, 283);
             this.labelError.Name = "labelError";
             this.labelError.Size = new System.Drawing.Size(357, 71);
             this.labelError.TabIndex = 24;
@@ -259,6 +265,26 @@
             this.mlLabel6.TabIndex = 20;
             this.mlLabel6.Text = "user_role";
             // 
+            // cbRestricteduser
+            // 
+            this.cbRestricteduser.AutoSize = true;
+            this.cbRestricteduser.Location = new System.Drawing.Point(194, 105);
+            this.cbRestricteduser.MinimumSize = new System.Drawing.Size(40, 15);
+            this.cbRestricteduser.Name = "cbRestricteduser";
+            this.cbRestricteduser.Size = new System.Drawing.Size(40, 15);
+            this.cbRestricteduser.TabIndex = 30;
+            this.cbRestricteduser.UseSelectable = true;
+            // 
+            // mlLabel4
+            // 
+            this.mlLabel4.AutoSize = true;
+            this.mlLabel4.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.mlLabel4.Location = new System.Drawing.Point(10, 101);
+            this.mlLabel4.Name = "mlLabel4";
+            this.mlLabel4.Size = new System.Drawing.Size(98, 19);
+            this.mlLabel4.TabIndex = 29;
+            this.mlLabel4.Text = "restricted_user";
+            // 
             // EditUserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -290,5 +316,7 @@
         private Common.Forms.Base.MLCheckBox cbPasswordChange;
         private Common.Forms.Base.MLButton btncCancel;
         private Common.Forms.Base.MLButton btnSave;
+        private Common.Forms.Base.MLCheckBox cbRestricteduser;
+        private Common.Forms.Base.MLLabel mlLabel4;
     }
 }
