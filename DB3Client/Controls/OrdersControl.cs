@@ -11,6 +11,7 @@ using Common;
 using Common.Classes;
 using Common.Forms.Base;
 using DB3Client.Forms.ContractsForms;
+using DB3Client.Properties;
 using DB3Client.ServiceAccess;
 
 namespace DB3Client.Controls
@@ -19,6 +20,7 @@ namespace DB3Client.Controls
     {
         public List<CommonContract> AllContacts = new List<CommonContract>();
         public List<CommonItem> AllItems = new List<CommonItem>();
+        public List<KeyValuePair<Guid, List<CommonItem>>> MappedItems = new List<KeyValuePair<Guid, List<CommonItem>>>();
         public bool trigger = false;
         public MLLabel LbBulstatHidden
         {
@@ -118,6 +120,12 @@ namespace DB3Client.Controls
         {
             if (trigger)
             {
+                if (Settings.Default.ItemMapping)
+                {
+                    KeyValuePair<Guid, List<CommonItem>> mappedItems = MappedItems.FirstOrDefault(p => p.Key == ((CommonContract) cbSearchOrders.SelectedItem).PartnerId);
+                    cbSearchGoodsOrders.DataSource = mappedItems.Value;
+                }
+               
                 companyNameHidden.Text = ((CommonContract) cbSearchOrders.SelectedItem).CompanyName;
                 lbVatHidden.Text = ((CommonContract) cbSearchOrders.SelectedItem).VatNumber;
                 lbBulstatHidden.Text = ((CommonContract) cbSearchOrders.SelectedItem).Bulstat;
@@ -129,8 +137,6 @@ namespace DB3Client.Controls
             else
             {
                 trigger = true;
-                //cbSearchOrders.SelectedIndex = -1;
-
             }
 
 
@@ -151,9 +157,36 @@ namespace DB3Client.Controls
         {
             try
             {
-                AllItems = await SAItem.GetAllItems(cbSearchGoodsOrders.Text);
+                if (Settings.Default.ItemMapping)
+                {
+                    List<KeyValuePair<Guid, List<CommonItem>>> results = await SAItem.GetAllItemsMapped();
+                    foreach (var kvp in results)
+                    {
+                        foreach (var row in kvp.Value)
+                        {
+                            if (DataHolder.UserCulture.TwoLetterISOLanguageName == "bg")
+                            {
+                                Enums.UnitTypesBg types = (Enums.UnitTypesBg)row.MeasurmentUnit;
+                                row.MeasurmentUnitString = types.ToString();
+                            }
+                            else
+                            {
+                                Enums.UnitTypes types = (Enums.UnitTypes)row.MeasurmentUnit;
+                                row.MeasurmentUnitString = types.ToString();
+                            }
+                        }
+                    }
+                    MappedItems = results;
+                    cbSearchGoodsOrders.DropDownStyle = ComboBoxStyle.DropDown;
+                    cbSearchGoodsOrders.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                    cbSearchGoodsOrders.AutoCompleteSource = AutoCompleteSource.ListItems;
+
+                }
+                else
+                {
+                   AllItems = await SAItem.GetAllItems(cbSearchGoodsOrders.Text);
                 List<CommonItem> k = new List<CommonItem>();
-            
+
                 foreach (CommonItem Item in AllItems)
                 {
 
@@ -166,16 +199,14 @@ namespace DB3Client.Controls
                     }
                     else
                     {
-                        Enums.UnitTypes types = (Enums.UnitTypes)Item.MeasurmentUnit;
+                        Enums.UnitTypes types = (Enums.UnitTypes) Item.MeasurmentUnit;
                         Item.MeasurmentUnitString = types.ToString();
                     }
-                        
-
+                }  
                 }
-
+               
                 cbSearchGoodsOrders.DataSource = AllItems;
                 cbSearchGoodsOrders.SelectedIndex = -1;
-
                 cbSearchGoodsOrders.DropDownStyle = ComboBoxStyle.DropDown;
                 cbSearchGoodsOrders.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
                 cbSearchGoodsOrders.AutoCompleteSource = AutoCompleteSource.ListItems;

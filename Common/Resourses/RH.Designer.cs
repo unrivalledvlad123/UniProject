@@ -187,6 +187,15 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please fill all fields!.
+        /// </summary>
+        internal static string all_fields_are_required {
+            get {
+                return ResourceManager.GetString("all_fields_are_required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Amount:.
         /// </summary>
         internal static string amount {
@@ -511,6 +520,42 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to End amount.
+        /// </summary>
+        internal static string discount_end_amount {
+            get {
+                return ResourceManager.GetString("discount_end_amount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Discount percent.
+        /// </summary>
+        internal static string discount_percent {
+            get {
+                return ResourceManager.GetString("discount_percent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start amount.
+        /// </summary>
+        internal static string discount_start_amount {
+            get {
+                return ResourceManager.GetString("discount_start_amount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Promotion Title.
+        /// </summary>
+        internal static string discount_title {
+            get {
+                return ResourceManager.GetString("discount_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Editing company Info failed!.
         /// </summary>
         internal static string edit_company_fail_error {
@@ -610,6 +655,24 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enable item mapping.
+        /// </summary>
+        internal static string enable_partner_item_mapping {
+            get {
+                return ResourceManager.GetString("enable_partner_item_mapping", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable Promotions.
+        /// </summary>
+        internal static string enable_promotions {
+            get {
+                return ResourceManager.GetString("enable_promotions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please filll fileds Name and Type of Goods.
         /// </summary>
         internal static string enter_text_error {
@@ -696,6 +759,15 @@ namespace Common.Resourses {
         internal static string from_date {
             get {
                 return ResourceManager.GetString("from_date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to General settings.
+        /// </summary>
+        internal static string general_settings {
+            get {
+                return ResourceManager.GetString("general_settings", resourceCulture);
             }
         }
         
@@ -997,6 +1069,15 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A promotion with this name already exist!.
+        /// </summary>
+        internal static string name_already_existing {
+            get {
+                return ResourceManager.GetString("name_already_existing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name of Goods.
         /// </summary>
         internal static string name_goods {
@@ -1173,6 +1254,15 @@ namespace Common.Resourses {
         internal static string product_info {
             get {
                 return ResourceManager.GetString("product_info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Promotion Settings.
+        /// </summary>
+        internal static string promotion_settings {
+            get {
+                return ResourceManager.GetString("promotion_settings", resourceCulture);
             }
         }
         

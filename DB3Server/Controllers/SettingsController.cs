@@ -23,6 +23,17 @@ namespace DB3Server.Controllers
         {
             return BLSettings.UpdateSettings(pair);
         }
-      
+     
+        [System.Web.Http.Route("api/settings/getdiscounts")]
+        public List<CommonDiscounts> GetDiscountSettings()
+        {
+            return BLSettings.GetDiscountSettings();
+        }
+
+        [System.Web.Http.Route("api/settings/updatediscount")]
+        public bool PostUpdateDiscount([FromBody]CommonDiscounts disc)
+        {
+            return BLSettings.UpdateDiscount(disc);
+        }
     }
 }

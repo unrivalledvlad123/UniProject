@@ -99,6 +99,7 @@
           <Property Name="Discount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="RangeFrom" Type="decimal" Precision="18" Scale="2" />
           <Property Name="RangeTo" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TypeName" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="PartnerItemMapping">
           <Key>
@@ -473,12 +474,12 @@
             <End Role="Partner" EntitySet="Partners" />
             <End Role="Sale" EntitySet="Sales" />
           </AssociationSet>
-          <EntitySet Name="PartnerDiscounts" EntityType="Model.PartnerDiscount" />
           <EntitySet Name="Invoices" EntityType="Model.Invoice" />
           <AssociationSet Name="FK_Sales_Invoice" Association="Model.FK_Sales_Invoice">
             <End Role="Invoice" EntitySet="Invoices" />
             <End Role="Sale" EntitySet="Sales" />
           </AssociationSet>
+          <EntitySet Name="PartnerDiscounts" EntityType="Model.PartnerDiscount" />
           </EntityContainer>
         <EntityType Name="sysdiagram">
           <Key>
@@ -792,16 +793,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="PartnerDiscount">
-          <Key>
-            <PropertyRef Name="RowID" />
-          </Key>
-          <Property Name="RowID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PartnerType" Type="Int32" Nullable="false" />
-          <Property Name="Discount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="RangeFrom" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="RangeTo" Type="Decimal" Precision="18" Scale="2" />
-        </EntityType>
         <EntityType Name="Invoice">
           <Key>
             <PropertyRef Name="InvoiceId" />
@@ -839,6 +830,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="PartnerDiscount">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PartnerType" Type="Int32" Nullable="false" />
+          <Property Name="Discount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="RangeFrom" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="RangeTo" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1001,17 +1003,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PartnerDiscounts">
-            <EntityTypeMapping TypeName="Model.PartnerDiscount">
-              <MappingFragment StoreEntitySet="PartnerDiscount">
-                <ScalarProperty Name="RangeTo" ColumnName="RangeTo" />
-                <ScalarProperty Name="RangeFrom" ColumnName="RangeFrom" />
-                <ScalarProperty Name="Discount" ColumnName="Discount" />
-                <ScalarProperty Name="PartnerType" ColumnName="PartnerType" />
-                <ScalarProperty Name="RowID" ColumnName="RowID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Invoices">
             <EntityTypeMapping TypeName="Model.Invoice">
               <MappingFragment StoreEntitySet="Invoice">
@@ -1034,6 +1025,18 @@
                 <ScalarProperty Name="SaleId" ColumnName="SaleId" />
                 <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
                 <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PartnerDiscounts">
+            <EntityTypeMapping TypeName="Model.PartnerDiscount">
+              <MappingFragment StoreEntitySet="PartnerDiscount">
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="RangeTo" ColumnName="RangeTo" />
+                <ScalarProperty Name="RangeFrom" ColumnName="RangeFrom" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="PartnerType" ColumnName="PartnerType" />
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

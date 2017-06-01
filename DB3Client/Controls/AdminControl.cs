@@ -22,7 +22,7 @@ using Newtonsoft.Json.Linq;
 
 namespace DB3Client.Controls
 {
-    public partial class AdminControl : UserControl
+    public partial class AdminControl : MetroFramework.Controls.MetroUserControl
     {
         private static List<CommonUser> AllUsers;
         private static List<CommonMol> AllMols;
@@ -207,7 +207,7 @@ namespace DB3Client.Controls
         public async void LoadData()
         {
             AllUsers = await SAUsers.GetAllUsers(DataHolder.Owner.OwnerId);
-            dgvUsers.DataSource = AllUsers;
+            dgvUsers.DataSource = string.IsNullOrWhiteSpace(tbSearchUser.Text) ? AllUsers : AllUsers.Where(p => p.Username.Contains(tbSearchUser.Text)).ToList();
         }
 
         public void LoadCompanyData()
@@ -312,6 +312,11 @@ namespace DB3Client.Controls
                 }
 
             }
+        }
+
+        private void tbSearchUser_TextChanged(object sender, EventArgs e)
+        {
+            dgvUsers.DataSource = !string.IsNullOrWhiteSpace(tbSearchUser.Text) ? AllUsers.Where(p => p.Username.Contains(tbSearchUser.Text)).ToList() : AllUsers;
         }
 
         #endregion
@@ -483,6 +488,19 @@ namespace DB3Client.Controls
             panelSettings.Controls.Clear();
             panelSettings.Controls.Add(control);
         }
+        private void mlButton1_Click(object sender, EventArgs e)
+        {
+            PromotionControl control = new PromotionControl() { Dock = DockStyle.Fill };
+            panelSettings.Controls.Clear();
+            panelSettings.Controls.Add(control);
+        }
+        private void btnGenerealSettings_Click(object sender, EventArgs e)
+        {
+            GeneralSettingsControl control = new GeneralSettingsControl() { Dock = DockStyle.Fill };
+            panelSettings.Controls.Clear();
+            panelSettings.Controls.Add(control);
+        }
+        
 
         #endregion
 

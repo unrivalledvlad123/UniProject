@@ -15,6 +15,7 @@ namespace DB3Server.BusinessLogic
         {
             CommonSettings settings = new CommonSettings();
             settings.VatSettingsByGroup = new List<KeyValuePair<int, decimal>>();
+            settings.Discounts = new List<CommonDiscounts>();
 
             DatabaseEntities entities = new DatabaseEntities();
             List<ItemTypesDD> dbEntries = entities.ItemTypesDDS.ToList();
@@ -24,6 +25,19 @@ namespace DB3Server.BusinessLogic
                 KeyValuePair<int, decimal> pair = new KeyValuePair<int, decimal>(row.Type, row.DDSPercent);
                 settings.VatSettingsByGroup.Add(pair);
             }
+            List<PartnerDiscount> dbSet = entities.PartnerDiscounts.ToList();
+            foreach (var row in dbSet)
+            {
+                CommonDiscounts element = new CommonDiscounts();
+                element.RowId = row.RowID;
+                element.Discount = row.Discount;
+                element.PartnerType = row.PartnerType;
+                element.RangeFrom = row.RangeFrom.Value;
+                element.RangeTo = row.RangeTo.Value;
+                element.TypeName = row.TypeName;
+                settings.Discounts.Add(element);
+            }
+
             return settings;
         }
 
@@ -42,6 +56,50 @@ namespace DB3Server.BusinessLogic
                 return true;
             }
             catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        internal static List<CommonDiscounts> GetDiscountSettings()
+        {
+            List<CommonDiscounts> result = new List<CommonDiscounts>();
+            DatabaseEntities entities = new DatabaseEntities();
+            List<PartnerDiscount> dbSet = entities.PartnerDiscounts.ToList();
+            foreach (var row in dbSet)
+            {
+                CommonDiscounts element = new CommonDiscounts();
+                element.RowId = row.RowID;
+                element.Discount = row.Discount;
+                element.PartnerType = row.PartnerType;
+                element.RangeFrom = row.RangeFrom.Value;
+                element.RangeTo = row.RangeTo.Value;
+                element.TypeName = row.TypeName;
+                result.Add(element);
+            }
+            return result;
+        }
+
+        internal static bool UpdateDiscount(CommonDiscounts discount)
+        {
+            try
+            {
+                DatabaseEntities entities = new DatabaseEntities();
+                PartnerDiscount dbSet = entities.PartnerDiscounts.FirstOrDefault(p => p.RowID == discount.RowId);
+                dbSet.Discount = discount.Discount;
+                dbSet.RangeFrom = discount.RangeFrom;
+                dbSet.RangeTo = discount.RangeTo;
+                dbSet.TypeName = discount.TypeName;
+                entities.PartnerDiscounts.Attach(dbSet);
+                var entry = entities.Entry(dbSet);
+                entry.Property(e => e.Discount).IsModified = true;
+                entry.Property(e => e.RangeFrom).IsModified = true;
+                entry.Property(e => e.RangeTo).IsModified = true;
+                entry.Property(e => e.TypeName).IsModified = true;
+                entities.SaveChanges();
+                return true;
+            }
+            catch (Exception e)
             {
                 return false;
             }

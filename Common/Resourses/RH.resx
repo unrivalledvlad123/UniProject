@@ -666,4 +666,34 @@
   <data name="restricted_user" xml:space="preserve">
     <value>Restricted access?</value>
   </data>
+  <data name="all_fields_are_required" xml:space="preserve">
+    <value>Please fill all fields!</value>
+  </data>
+  <data name="discount_end_amount" xml:space="preserve">
+    <value>End amount</value>
+  </data>
+  <data name="discount_percent" xml:space="preserve">
+    <value>Discount percent</value>
+  </data>
+  <data name="discount_start_amount" xml:space="preserve">
+    <value>Start amount</value>
+  </data>
+  <data name="discount_title" xml:space="preserve">
+    <value>Promotion Title</value>
+  </data>
+  <data name="enable_promotions" xml:space="preserve">
+    <value>Enable Promotions</value>
+  </data>
+  <data name="name_already_existing" xml:space="preserve">
+    <value>A promotion with this name already exist!</value>
+  </data>
+  <data name="promotion_settings" xml:space="preserve">
+    <value>Promotion Settings</value>
+  </data>
+  <data name="enable_partner_item_mapping" xml:space="preserve">
+    <value>Enable item mapping</value>
+  </data>
+  <data name="general_settings" xml:space="preserve">
+    <value>General settings</value>
+  </data>
 </root>

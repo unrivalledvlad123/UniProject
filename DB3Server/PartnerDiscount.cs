@@ -19,5 +19,6 @@ namespace DB3Server
         public decimal Discount { get; set; }
         public Nullable<decimal> RangeFrom { get; set; }
         public Nullable<decimal> RangeTo { get; set; }
+        public string TypeName { get; set; }
     }
 }

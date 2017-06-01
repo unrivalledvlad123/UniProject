@@ -25,18 +25,6 @@ namespace DB3Client.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.0")]
-        public decimal VatMultiplier {
-            get {
-                return ((decimal)(this["VatMultiplier"]));
-            }
-            set {
-                this["VatMultiplier"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string InvoiceSaveLocation {
             get {
@@ -44,6 +32,30 @@ namespace DB3Client.Properties {
             }
             set {
                 this["InvoiceSaveLocation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool PromotionEnabled {
+            get {
+                return ((bool)(this["PromotionEnabled"]));
+            }
+            set {
+                this["PromotionEnabled"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ItemMapping {
+            get {
+                return ((bool)(this["ItemMapping"]));
+            }
+            set {
+                this["ItemMapping"] = value;
             }
         }
     }

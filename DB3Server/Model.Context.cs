@@ -38,7 +38,7 @@ namespace DB3Server
         public virtual DbSet<Sale> Sales { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Partner> Partners { get; set; }
-        public virtual DbSet<PartnerDiscount> PartnerDiscounts { get; set; }
         public virtual DbSet<Invoice> Invoices { get; set; }
+        public virtual DbSet<PartnerDiscount> PartnerDiscounts { get; set; }
     }
 }

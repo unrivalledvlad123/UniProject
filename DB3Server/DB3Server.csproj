@@ -165,7 +165,7 @@
     <Compile Include="BusinessLogic\BLSettings.cs" />
     <Compile Include="Controllers\ContractController.cs" />
     <Compile Include="Controllers\ExampleController.cs" />
-    <Compile Include="Controllers\ItemCotroller.cs" />
+    <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\OwnerController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\SalesController.cs" />

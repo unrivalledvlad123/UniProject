@@ -73,5 +73,39 @@ namespace DB3Server.BusinessLogic
             }
             return null;
         }
+
+        internal static List<KeyValuePair<Guid, List<CommonItem>>> GetAllItemsMapped()
+        {
+            List<KeyValuePair<Guid,List<CommonItem>>> result = new List<KeyValuePair<Guid, List<CommonItem>>>();
+            DatabaseEntities entities = new DatabaseEntities();
+            List<Partner> allPartners = entities.Partners.ToList();
+            foreach (var partner in allPartners)
+            {
+                KeyValuePair<Guid, List<CommonItem>> pair = new KeyValuePair<Guid, List<CommonItem>>(partner.PartnerId, new List<CommonItem>());
+                result.Add(pair);
+            }
+            List<PartnerItemMapping> mapping = entities.PartnerItemMappings.ToList();
+            foreach (var row in mapping)
+            {
+                Item item = entities.Items.FirstOrDefault(p => p.ItemId == row.ItemId);
+                CommonItem comItem = new CommonItem
+                {
+                    Description = item.Description,
+                    ItemCode = item.ItemCode,
+                    ItemId = item.ItemId,
+                    MeasurmentUnit = item.MeasurmentUnit.Value,
+                    Name = item.Name,
+                    Type = item.Type.Value,
+                    SellingPriceCent = item.WarehouseItem.SellingPriceCent.Value,
+                    Quantity = item.WarehouseItem.Quantity.Value
+                };
+                var keyValuePair = result.Find(p => p.Key == row.PartnerId);
+                keyValuePair.Value.Add(comItem);
+            }
+
+
+
+            return result;
+        }
     }
 }

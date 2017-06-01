@@ -121,7 +121,7 @@ namespace DB3Client.Controls
             this.tabControlReports.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlReports.Location = new System.Drawing.Point(0, 0);
             this.tabControlReports.Name = "tabControlReports";
-            this.tabControlReports.SelectedIndex = 1;
+            this.tabControlReports.SelectedIndex = 0;
             this.tabControlReports.Size = new System.Drawing.Size(1236, 601);
             this.tabControlReports.TabIndex = 0;
             this.tabControlReports.UseSelectable = true;
@@ -339,12 +339,6 @@ namespace DB3Client.Controls
             this.pictureBox3.TabIndex = 2;
             this.pictureBox3.TabStop = false;
             // 
-            // mlToolTp1
-            // 
-            this.mlToolTp1.Style = MetroFramework.MetroColorStyle.Default;
-            this.mlToolTp1.StyleManager = null;
-            this.mlToolTp1.Theme = MetroFramework.MetroThemeStyle.Default;
-            // 
             // ReportsControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -390,8 +384,8 @@ namespace DB3Client.Controls
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.PictureBox pictureBox7;
         private MetroFramework.Controls.MetroPanel panelReportsNew;
-        private MLToolTp mlToolTp1;
         private MLLabel mlLabel1;
         private MLLabel mlLabel2;
+        private MLToolTp mlToolTp1;
     }
 }

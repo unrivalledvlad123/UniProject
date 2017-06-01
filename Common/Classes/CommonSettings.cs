@@ -11,5 +11,8 @@ namespace Common.Classes
         public List<KeyValuePair<int,decimal>> VatSettingsByGroup { get; set; }
         public List<KeyValuePair<string,decimal>> VatSettingsByGroupName { get; set; }
         public string PdfSaveLocation { get; set; }
+        public bool PromotionEnabled { get; set; }
+        public List<CommonDiscounts> Discounts { get; set; }
+
     }
 }

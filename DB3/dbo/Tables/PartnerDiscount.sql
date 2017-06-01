@@ -4,8 +4,11 @@
     [Discount]    DECIMAL (18, 2) NOT NULL,
     [RangeFrom]   DECIMAL (18, 2) NULL,
     [RangeTo]     DECIMAL (18, 2) NULL,
+    [TypeName]    VARCHAR (50)    NOT NULL,
     CONSTRAINT [PK_PartnerDiscount] PRIMARY KEY CLUSTERED ([RowID] ASC)
 );
+
+
 
 
 
