@@ -25,6 +25,8 @@ namespace DB3Server.BusinessLogic
                 p.Bulstat = contract.Bulstat;
                 Guid tempGuid = Guid.NewGuid();
                 p.PartnerId = tempGuid;
+                p.Sum = 0;
+                p.PartnerType = 0;
 
                 entities.Partners.Add(p);
                 entities.SaveChanges();
@@ -56,6 +58,8 @@ namespace DB3Server.BusinessLogic
                 contract.PartnerId = dbPartner.PartnerId;
                 contract.Address = dbPartner.Address;
                 contract.Bulstat = dbPartner.Bulstat;
+                contract.PartnerType = dbPartner.PartnerType;
+                contract.Sum = dbPartner.Sum.Value;
                 contract.CompanyName = dbPartner.CompanyName;
                 contract.Email = dbPartner.Email;
                 contract.Phone = dbPartner.Phone;
@@ -76,6 +80,8 @@ namespace DB3Server.BusinessLogic
                 contract.PartnerId = dbPartner.PartnerId;
                 contract.Address = dbPartner.Address;
                 contract.Bulstat = dbPartner.Bulstat;
+                contract.PartnerType = dbPartner.PartnerType;
+                contract.Sum = dbPartner.Sum.Value;
                 contract.CompanyName = dbPartner.CompanyName;
                 contract.Email = dbPartner.Email;
                 contract.Phone = dbPartner.Phone;
@@ -95,6 +101,7 @@ namespace DB3Server.BusinessLogic
             dbPartner.Phone = oldPartner.Phone;
             dbPartner.VATNumber = oldPartner.VatNumber;
             dbPartner.Bulstat = oldPartner.Bulstat;
+            
 
             entities.Partners.Attach(dbPartner);
             var entry = entities.Entry(dbPartner);

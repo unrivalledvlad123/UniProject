@@ -18,6 +18,7 @@ namespace DB3Client.Controls
 {
     public partial class ContractsControl : UserControl
     {
+        public List<CommonContract>ListOfAllContracts = new List<CommonContract>();
         public ContractsControl()
         {
             InitializeComponent();
@@ -26,6 +27,9 @@ namespace DB3Client.Controls
             LoadDataTransactions();
             SetGridColomnsContracts();
             tabControlContracts.SelectedTab = metroTabPage1;
+            cbContractType1.DisplayMember = "TypeName";
+            cbContractType1.DataSource = DataHolder.Settings.Discounts;
+
         }
 
         private void btnAddContract_Click(object sender, EventArgs e)
@@ -41,19 +45,19 @@ namespace DB3Client.Controls
 
         private async void LoadDataContracts()
         {
-            List<CommonContract> list = await SAContract.GetAllContracts(tbSearchContracts.Text);
-            dgvContracts.DataSource = list;
+            ListOfAllContracts = await SAContract.GetAllContracts(tbSearchContracts.Text);
+            dgvContracts.DataSource = ListOfAllContracts;
         }
 
-        private void tbSearchContracts_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode != Keys.Enter)
-            {
-                return;
-            }
-
-            LoadDataContracts();
-        }
+//        private void tbSearchContracts_KeyDown(object sender, KeyEventArgs e)
+//        {
+//            if (e.KeyCode != Keys.Enter)
+//            {
+//                return;
+//            }
+//
+//            LoadDataContracts();
+//        }
 
         private async void btnEditContract_Click(object sender, EventArgs e)
         {
@@ -233,9 +237,19 @@ namespace DB3Client.Controls
             }
         }
 
-        private void cbContractType1_DropDown(object sender, EventArgs e)
+        private void tbSearchContracts_TextChanged(object sender, EventArgs e)
         {
-            cbContractType1.Items.Add("all");
+            CommonDiscounts item = (CommonDiscounts) cbContractType1.SelectedItem;
+            if (!string.IsNullOrEmpty(tbSearchContracts.Text))
+            {
+                dgvContracts.DataSource =
+                    ListOfAllContracts.Where(
+                        p => p.CompanyName.Contains(tbSearchContracts.Text) && p.PartnerType == item.PartnerType).ToList();
+            }
+            else
+            {
+                dgvContracts.DataSource = ListOfAllContracts;
+            }
 
         }
     }

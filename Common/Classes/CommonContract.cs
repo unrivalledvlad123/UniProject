@@ -15,6 +15,9 @@ namespace Common.Classes
         public string Email { get; set; }
         public string Bulstat { get; set; }
         public string VatNumber { get; set; }
+        public int PartnerType { get; set; }
+        public decimal Sum { get; set; }
+
         public override string ToString()
         {
             return this.CompanyName + " (" + this.Bulstat + ")";
