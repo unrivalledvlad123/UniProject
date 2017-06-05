@@ -26,10 +26,11 @@ namespace DB3Server
         public System.DateTime Date { get; set; }
         public string InvoiceId { get; set; }
         public string WareHouseReceipt { get; set; }
+        public bool PaymentCompleted { get; set; }
     
         public virtual Owner Owner { get; set; }
+        public virtual Partner Partner { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PurchasedItem> PurchasedItems { get; set; }
-        public virtual Partner Partner { get; set; }
     }
 }

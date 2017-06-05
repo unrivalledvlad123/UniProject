@@ -16,6 +16,7 @@ namespace Common.Classes
         public string InvoiceId { get; set; }
         public List<CommonSoldItem> SoldItems { get; set; }
         public string ParsePrice { get; set; }
+        public bool PaymentCompleted { get; set; }
         public double TotalPrice
         {
             get

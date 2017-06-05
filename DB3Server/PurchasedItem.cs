@@ -20,7 +20,7 @@ namespace DB3Server
         public System.Guid ItemId { get; set; }
         public System.Guid PurchasedItemId { get; set; }
     
-        public virtual Purchase Purchase { get; set; }
         public virtual Item Item { get; set; }
+        public virtual Purchase Purchase { get; set; }
     }
 }

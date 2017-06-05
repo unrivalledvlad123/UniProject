@@ -49,6 +49,13 @@ namespace DB3Server.BusinessLogic
                     s.SoldItems = new List<SoldItem>();
                     Guid tempGuid = NewGuid();
                     s.SaleId = tempGuid;
+                    ////
+                    //// FIX payment completed after payment completed interface is ready. for now all are true;
+                    ////
+                    s.PaymentCompleted = true;
+                    ////
+                    ////
+                    /////
                     foreach (var item in sale.SoldItems)
                     {
                         var i = new SoldItem
@@ -70,7 +77,8 @@ namespace DB3Server.BusinessLogic
                         invoice.OwnerId = s.SellerId;
                         invoice.SaleId = s.SaleId;
                         invoice.InvoiceId = NewGuid();
-                        invoice.InvoiceNumber = entities.Invoices.Max(p => p.InvoiceNumber) + 1;
+
+                        invoice.InvoiceNumber = entities.Invoices.DefaultIfEmpty().Max(p => p == null ? 0 : p.InvoiceNumber) + 1;
                         Partner partner = entities.Partners.FirstOrDefault(p => p.PartnerId == s.BuyerId);
 
                         if (partner != null)
@@ -80,12 +88,12 @@ namespace DB3Server.BusinessLogic
                             invoice.BuyerCompanyName = partner.CompanyName;
                             invoice.BuyerVATNumber = partner.VATNumber;
                             MOL mol = entities.MOLs.FirstOrDefault(p => p.OwnerId == partner.PartnerId);
-                            invoice.BuyerMol = mol!=null ? $"{mol.FirstName} {mol.LastName}" : "";
+                            invoice.BuyerMol = mol != null ? $"{mol.FirstName} {mol.LastName}" : "";
                             decimal counter = 0;
                             foreach (var item in s.SoldItems)
                             {
                                 WarehouseItem whItem = entities.WarehouseItems.FirstOrDefault(p => p.ItemId == item.ItemId);
-                                counter += ((decimal)whItem.SellingPriceCent.Value / 100) * item.Quantity;
+                                counter += ((decimal) whItem.SellingPriceCent.Value / 100) * item.Quantity;
                             }
                             partner.Sum += counter;
                             List<PartnerDiscount> discount = entities.PartnerDiscounts.ToList();
@@ -137,6 +145,9 @@ namespace DB3Server.BusinessLogic
                     sale.Type = s.Type;
                     sale.InvoiceId = s.Invoice.InvoiceNumber.ToString();
                     sale.SoldItems = new List<CommonSoldItem>();
+                    //// FIx payment completed 
+                    sale.PaymentCompleted = true;
+
                     foreach (var h in s.SoldItems)
                     {
                         var item = new CommonSoldItem();
@@ -150,7 +161,7 @@ namespace DB3Server.BusinessLogic
                 }
                 return null;
             }
-            catch (Exception )
+            catch (Exception e)
             {
                 return null;
             }
@@ -182,6 +193,7 @@ namespace DB3Server.BusinessLogic
                 sale.SaleId = dbSale.SaleId;
                 sale.SellerId = dbSale.SellerId;
                 sale.Type = dbSale.Type;
+                sale.PaymentCompleted = dbSale.PaymentCompleted;
                 allSales.Add(sale);
 
                 sale.SoldItems = new List<CommonSoldItem>();

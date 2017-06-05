@@ -12,31 +12,30 @@ namespace DB3Server
     using System;
     using System.Collections.Generic;
     
-    public partial class Owner
+    public partial class WarehouseReceipt
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Owner()
+        public WarehouseReceipt()
         {
-            this.Users = new HashSet<User>();
-            this.Purchases = new HashSet<Purchase>();
             this.Sales = new HashSet<Sale>();
         }
     
         public System.Guid OwnerId { get; set; }
-        public string CompanyName { get; set; }
-        public string Address { get; set; }
-        public string Phone { get; set; }
-        public string Email { get; set; }
-        public string VATNumber { get; set; }
-        public string Bulstat { get; set; }
-        public string Bank { get; set; }
-        public string SWIFTCode { get; set; }
-        public string IBAN { get; set; }
+        public System.Guid PartnerId { get; set; }
+        public System.Guid SaleId { get; set; }
+        public System.Guid WarehouseReceiptId { get; set; }
+        public int WarehouseReceiptNumber { get; set; }
+        public string BuyerCompanyName { get; set; }
+        public string BuyerAddress { get; set; }
+        public string BuyerVATNumber { get; set; }
+        public string BuyerBulstat { get; set; }
+        public string OwnerCompanyName { get; set; }
+        public string OwnerAddress { get; set; }
+        public string OwnerVATNumber { get; set; }
+        public string OwnerBulstat { get; set; }
+        public string BuyerMol { get; set; }
+        public string OwnerMol { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> Users { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Purchase> Purchases { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sale> Sales { get; set; }
     }

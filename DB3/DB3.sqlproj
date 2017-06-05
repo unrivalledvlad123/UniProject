@@ -77,5 +77,6 @@
     <Build Include="dbo\Tables\ItemTypesDDS.sql" />
     <Build Include="dbo\Tables\PartnerItemMapping.sql" />
     <Build Include="dbo\Tables\PartnerDiscount.sql" />
+    <Build Include="dbo\Tables\WarehouseReceipt.sql" />
   </ItemGroup>
 </Project>
