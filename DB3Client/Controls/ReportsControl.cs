@@ -20,6 +20,8 @@ using DB3Client.ServiceAccess;
 
 namespace DB3Client.Controls
 {
+    [Permission(PermissionId = "DCBB48FB-5B18-4395-AF8C-B332C15A91E1", PermissionName = "test", PermissionLocation = "report_control", PermissionControlRoot = "report_control")]
+    [Permission(PermissionId = "DCBB48FB-5B18-4335-AF8C-B332C15A91E1", PermissionName = "test", PermissionLocation = "randomForm", PermissionControlRoot = "report_control")]
     public partial class ReportsControl : MetroFramework.Controls.MetroUserControl
     {
 

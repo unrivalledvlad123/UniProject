@@ -44,8 +44,12 @@ namespace DB3Client.Controls
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControlAdmin = new Common.Forms.Base.MLTabControl();
             this.metroTabPage1 = new Common.Forms.Base.MLTabPage();
-            this.tbSearchUser = new Common.Forms.Base.MLTextBox();
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvUsers = new MetroFramework.Controls.MetroGrid();
+            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.treeViewPermissions = new System.Windows.Forms.TreeView();
+            this.btnSavePermissions = new Common.Forms.Base.MLButton();
+            this.tbSearchUser = new Common.Forms.Base.MLTextBox();
             this.btnAddNewUser = new Common.Forms.Base.MLButton();
             this.btnEditUser = new Common.Forms.Base.MLButton();
             this.btnDeleteUser = new Common.Forms.Base.MLButton();
@@ -58,6 +62,8 @@ namespace DB3Client.Controls
             this.dgvMol = new MetroFramework.Controls.MetroGrid();
             this.dgvPrimaryMol = new MetroFramework.Controls.MetroGrid();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBoxRed = new System.Windows.Forms.PictureBox();
+            this.pictureBoxGreen = new System.Windows.Forms.PictureBox();
             this.mlLabel8 = new Common.Forms.Base.MLLabel();
             this.mlLabel9 = new Common.Forms.Base.MLLabel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -65,6 +71,7 @@ namespace DB3Client.Controls
             this.btnDeleteMol = new Common.Forms.Base.MLButton();
             this.btnAddMol = new Common.Forms.Base.MLButton();
             this.btnEditMol = new Common.Forms.Base.MLButton();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.mlGroupBox4 = new Common.Forms.Base.MLGroupBox();
             this.mlErrorLabel1 = new Common.Forms.Base.MLErrorLabel();
             this.groupBox1 = new Common.Forms.Base.MLGroupBox();
@@ -91,16 +98,15 @@ namespace DB3Client.Controls
             this.btnDirectorySettings = new Common.Forms.Base.MLButton();
             this.btnVatSettings = new Common.Forms.Base.MLButton();
             this.mlButton1 = new Common.Forms.Base.MLButton();
-            this.panelSettings = new MetroFramework.Controls.MetroPanel();
-            this.toolTip1 = new Common.Forms.Base.MLToolTp();
             this.btnGenerealSettings = new Common.Forms.Base.MLButton();
-            this.pictureBoxRed = new System.Windows.Forms.PictureBox();
-            this.pictureBoxGreen = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panelSettings = new MetroFramework.Controls.MetroPanel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new Common.Forms.Base.MLToolTp();
             this.tabControlAdmin.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
+            this.tableLayoutPanel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
+            this.tableLayoutPanel9.SuspendLayout();
             this.metroTabPage2.SuspendLayout();
             this.mlGroupBox1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -110,15 +116,15 @@ namespace DB3Client.Controls
             ((System.ComponentModel.ISupportInitialize)(this.dgvMol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrimaryMol)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRed)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGreen)).BeginInit();
             this.tableLayoutPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.mlGroupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.metroTabPage3.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRed)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGreen)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -130,15 +136,15 @@ namespace DB3Client.Controls
             this.tabControlAdmin.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlAdmin.Location = new System.Drawing.Point(0, 0);
             this.tabControlAdmin.Name = "tabControlAdmin";
-            this.tabControlAdmin.SelectedIndex = 2;
+            this.tabControlAdmin.SelectedIndex = 0;
             this.tabControlAdmin.Size = new System.Drawing.Size(932, 560);
             this.tabControlAdmin.TabIndex = 0;
             this.tabControlAdmin.UseSelectable = true;
             // 
             // metroTabPage1
             // 
+            this.metroTabPage1.Controls.Add(this.tableLayoutPanel8);
             this.metroTabPage1.Controls.Add(this.tbSearchUser);
-            this.metroTabPage1.Controls.Add(this.dgvUsers);
             this.metroTabPage1.Controls.Add(this.btnAddNewUser);
             this.metroTabPage1.Controls.Add(this.btnEditUser);
             this.metroTabPage1.Controls.Add(this.btnDeleteUser);
@@ -153,6 +159,104 @@ namespace DB3Client.Controls
             this.metroTabPage1.VerticalScrollbarBarColor = true;
             this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.VerticalScrollbarSize = 10;
+            // 
+            // tableLayoutPanel8
+            // 
+            this.tableLayoutPanel8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel8.BackColor = System.Drawing.Color.White;
+            this.tableLayoutPanel8.ColumnCount = 2;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel8.Controls.Add(this.dgvUsers, 0, 0);
+            this.tableLayoutPanel8.Controls.Add(this.tableLayoutPanel9, 1, 0);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(3, 46);
+            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            this.tableLayoutPanel8.RowCount = 1;
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(921, 469);
+            this.tableLayoutPanel8.TabIndex = 8;
+            // 
+            // dgvUsers
+            // 
+            this.dgvUsers.AllowUserToResizeRows = false;
+            this.dgvUsers.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvUsers.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvUsers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvUsers.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvUsers.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvUsers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvUsers.EnableHeadersVisualStyles = false;
+            this.dgvUsers.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.dgvUsers.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dgvUsers.Location = new System.Drawing.Point(3, 3);
+            this.dgvUsers.Name = "dgvUsers";
+            this.dgvUsers.ReadOnly = true;
+            this.dgvUsers.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvUsers.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvUsers.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvUsers.Size = new System.Drawing.Size(638, 463);
+            this.dgvUsers.TabIndex = 4;
+            this.dgvUsers.SelectionChanged += new System.EventHandler(this.dgvUsers_SelectionChanged);
+            // 
+            // tableLayoutPanel9
+            // 
+            this.tableLayoutPanel9.ColumnCount = 1;
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel9.Controls.Add(this.treeViewPermissions, 0, 0);
+            this.tableLayoutPanel9.Controls.Add(this.btnSavePermissions, 0, 1);
+            this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(647, 3);
+            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
+            this.tableLayoutPanel9.RowCount = 2;
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(271, 463);
+            this.tableLayoutPanel9.TabIndex = 5;
+            // 
+            // treeViewPermissions
+            // 
+            this.treeViewPermissions.CheckBoxes = true;
+            this.treeViewPermissions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeViewPermissions.Location = new System.Drawing.Point(3, 3);
+            this.treeViewPermissions.Name = "treeViewPermissions";
+            this.treeViewPermissions.Size = new System.Drawing.Size(265, 428);
+            this.treeViewPermissions.TabIndex = 5;
+            // 
+            // btnSavePermissions
+            // 
+            this.btnSavePermissions.Location = new System.Drawing.Point(3, 437);
+            this.btnSavePermissions.Name = "btnSavePermissions";
+            this.btnSavePermissions.Size = new System.Drawing.Size(75, 23);
+            this.btnSavePermissions.TabIndex = 0;
+            this.btnSavePermissions.Text = "save";
+            this.btnSavePermissions.UseSelectable = true;
+            this.btnSavePermissions.Click += new System.EventHandler(this.btnSavePermissions_Click);
             // 
             // tbSearchUser
             // 
@@ -185,60 +289,13 @@ namespace DB3Client.Controls
             this.tbSearchUser.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             this.tbSearchUser.TextChanged += new System.EventHandler(this.tbSearchUser_TextChanged);
             // 
-            // dgvUsers
-            // 
-            this.dgvUsers.AllowUserToResizeRows = false;
-            this.dgvUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvUsers.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvUsers.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvUsers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dgvUsers.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvUsers.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvUsers.EnableHeadersVisualStyles = false;
-            this.dgvUsers.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.dgvUsers.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dgvUsers.Location = new System.Drawing.Point(3, 46);
-            this.dgvUsers.Name = "dgvUsers";
-            this.dgvUsers.ReadOnly = true;
-            this.dgvUsers.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvUsers.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvUsers.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dgvUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvUsers.Size = new System.Drawing.Size(919, 478);
-            this.dgvUsers.TabIndex = 4;
-            this.dgvUsers.SelectionChanged += new System.EventHandler(this.dgvUsers_SelectionChanged);
-            // 
             // btnAddNewUser
             // 
             this.btnAddNewUser.Location = new System.Drawing.Point(306, 17);
             this.btnAddNewUser.Name = "btnAddNewUser";
             this.btnAddNewUser.Size = new System.Drawing.Size(95, 23);
             this.btnAddNewUser.TabIndex = 3;
+            this.btnAddNewUser.Tag = "DCBB98FB-5B18-4395-AF8C-B332C15A9151";
             this.btnAddNewUser.Text = "add_new_user";
             this.toolTip1.SetToolTip(this.btnAddNewUser, "add_new_user");
             this.btnAddNewUser.UseSelectable = true;
@@ -250,6 +307,7 @@ namespace DB3Client.Controls
             this.btnEditUser.Name = "btnEditUser";
             this.btnEditUser.Size = new System.Drawing.Size(95, 23);
             this.btnEditUser.TabIndex = 5;
+            this.btnEditUser.Tag = "DCBB58FB-5B18-4395-AF8C-B332C15A9151";
             this.btnEditUser.Text = "edit_user";
             this.toolTip1.SetToolTip(this.btnEditUser, "edit_user");
             this.btnEditUser.UseSelectable = true;
@@ -472,6 +530,32 @@ namespace DB3Client.Controls
             this.tableLayoutPanel2.Size = new System.Drawing.Size(38, 211);
             this.tableLayoutPanel2.TabIndex = 8;
             // 
+            // pictureBoxRed
+            // 
+            this.pictureBoxRed.BackgroundImage = global::DB3Client.Resource.nav_right_red;
+            this.pictureBoxRed.Location = new System.Drawing.Point(3, 108);
+            this.pictureBoxRed.Name = "pictureBoxRed";
+            this.pictureBoxRed.Size = new System.Drawing.Size(32, 30);
+            this.pictureBoxRed.TabIndex = 16;
+            this.pictureBoxRed.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBoxRed, "remove_primery");
+            this.pictureBoxRed.Click += new System.EventHandler(this.pictureBoxRed_Click);
+            this.pictureBoxRed.MouseEnter += new System.EventHandler(this.pictureBoxRed_MouseEnter);
+            this.pictureBoxRed.MouseLeave += new System.EventHandler(this.pictureBoxRed_MouseLeave);
+            // 
+            // pictureBoxGreen
+            // 
+            this.pictureBoxGreen.BackgroundImage = global::DB3Client.Resource.nav_left_green;
+            this.pictureBoxGreen.Location = new System.Drawing.Point(3, 72);
+            this.pictureBoxGreen.Name = "pictureBoxGreen";
+            this.pictureBoxGreen.Size = new System.Drawing.Size(32, 30);
+            this.pictureBoxGreen.TabIndex = 11;
+            this.pictureBoxGreen.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBoxGreen, "make_primery");
+            this.pictureBoxGreen.Click += new System.EventHandler(this.pictureBoxGreen_Click);
+            this.pictureBoxGreen.MouseEnter += new System.EventHandler(this.pictureBoxGreen_MouseEnter);
+            this.pictureBoxGreen.MouseLeave += new System.EventHandler(this.pictureBoxGreen_MouseLeave);
+            // 
             // mlLabel8
             // 
             this.mlLabel8.AutoSize = true;
@@ -561,6 +645,17 @@ namespace DB3Client.Controls
             this.toolTip1.SetToolTip(this.btnEditMol, "edit_mol");
             this.btnEditMol.UseSelectable = true;
             this.btnEditMol.Click += new System.EventHandler(this.btnEditMol_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.BackgroundImage = global::DB3Client.Resource.blueLine;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 39);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(434, 3);
+            this.pictureBox1.TabIndex = 10;
+            this.pictureBox1.TabStop = false;
             // 
             // mlGroupBox4
             // 
@@ -872,6 +967,17 @@ namespace DB3Client.Controls
             this.mlButton1.UseSelectable = true;
             this.mlButton1.Click += new System.EventHandler(this.mlButton1_Click);
             // 
+            // btnGenerealSettings
+            // 
+            this.btnGenerealSettings.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnGenerealSettings.Location = new System.Drawing.Point(6, 105);
+            this.btnGenerealSettings.Name = "btnGenerealSettings";
+            this.btnGenerealSettings.Size = new System.Drawing.Size(256, 24);
+            this.btnGenerealSettings.TabIndex = 3;
+            this.btnGenerealSettings.Text = "general_settings";
+            this.btnGenerealSettings.UseSelectable = true;
+            this.btnGenerealSettings.Click += new System.EventHandler(this.btnGenerealSettings_Click);
+            // 
             // panelSettings
             // 
             this.panelSettings.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -885,54 +991,6 @@ namespace DB3Client.Controls
             this.panelSettings.VerticalScrollbarBarColor = true;
             this.panelSettings.VerticalScrollbarHighlightOnWheel = false;
             this.panelSettings.VerticalScrollbarSize = 10;
-            // 
-            // btnGenerealSettings
-            // 
-            this.btnGenerealSettings.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnGenerealSettings.Location = new System.Drawing.Point(6, 105);
-            this.btnGenerealSettings.Name = "btnGenerealSettings";
-            this.btnGenerealSettings.Size = new System.Drawing.Size(256, 24);
-            this.btnGenerealSettings.TabIndex = 3;
-            this.btnGenerealSettings.Text = "general_settings";
-            this.btnGenerealSettings.UseSelectable = true;
-            this.btnGenerealSettings.Click += new System.EventHandler(this.btnGenerealSettings_Click);
-            // 
-            // pictureBoxRed
-            // 
-            this.pictureBoxRed.BackgroundImage = global::DB3Client.Resource.nav_right_red;
-            this.pictureBoxRed.Location = new System.Drawing.Point(3, 108);
-            this.pictureBoxRed.Name = "pictureBoxRed";
-            this.pictureBoxRed.Size = new System.Drawing.Size(32, 30);
-            this.pictureBoxRed.TabIndex = 16;
-            this.pictureBoxRed.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBoxRed, "remove_primery");
-            this.pictureBoxRed.Click += new System.EventHandler(this.pictureBoxRed_Click);
-            this.pictureBoxRed.MouseEnter += new System.EventHandler(this.pictureBoxRed_MouseEnter);
-            this.pictureBoxRed.MouseLeave += new System.EventHandler(this.pictureBoxRed_MouseLeave);
-            // 
-            // pictureBoxGreen
-            // 
-            this.pictureBoxGreen.BackgroundImage = global::DB3Client.Resource.nav_left_green;
-            this.pictureBoxGreen.Location = new System.Drawing.Point(3, 72);
-            this.pictureBoxGreen.Name = "pictureBoxGreen";
-            this.pictureBoxGreen.Size = new System.Drawing.Size(32, 30);
-            this.pictureBoxGreen.TabIndex = 11;
-            this.pictureBoxGreen.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBoxGreen, "make_primery");
-            this.pictureBoxGreen.Click += new System.EventHandler(this.pictureBoxGreen_Click);
-            this.pictureBoxGreen.MouseEnter += new System.EventHandler(this.pictureBoxGreen_MouseEnter);
-            this.pictureBoxGreen.MouseLeave += new System.EventHandler(this.pictureBoxGreen_MouseLeave);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.BackgroundImage = global::DB3Client.Resource.blueLine;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 39);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(434, 3);
-            this.pictureBox1.TabIndex = 10;
-            this.pictureBox1.TabStop = false;
             // 
             // pictureBox2
             // 
@@ -953,7 +1011,9 @@ namespace DB3Client.Controls
             this.Size = new System.Drawing.Size(932, 560);
             this.tabControlAdmin.ResumeLayout(false);
             this.metroTabPage1.ResumeLayout(false);
+            this.tableLayoutPanel8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
+            this.tableLayoutPanel9.ResumeLayout(false);
             this.metroTabPage2.ResumeLayout(false);
             this.mlGroupBox1.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -964,7 +1024,10 @@ namespace DB3Client.Controls
             ((System.ComponentModel.ISupportInitialize)(this.dgvMol)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrimaryMol)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRed)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGreen)).EndInit();
             this.tableLayoutPanel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.mlGroupBox4.ResumeLayout(false);
             this.mlGroupBox4.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -972,9 +1035,6 @@ namespace DB3Client.Controls
             this.metroTabPage3.ResumeLayout(false);
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRed)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGreen)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
@@ -1038,5 +1098,9 @@ namespace DB3Client.Controls
         private MLTextBox tbSearchUser;
         private MLToolTp toolTip1;
         private MLButton btnGenerealSettings;
+        private TableLayoutPanel tableLayoutPanel8;
+        private TreeView treeViewPermissions;
+        private TableLayoutPanel tableLayoutPanel9;
+        private MLButton btnSavePermissions;
     }
 }

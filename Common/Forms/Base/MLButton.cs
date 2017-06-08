@@ -20,8 +20,7 @@ namespace Common.Forms.Base
 					base.Text = DataHolder.GetString( value );
 			}
 		}
-
-		public MLButton()
+        public MLButton()
 		{
 		}
 
