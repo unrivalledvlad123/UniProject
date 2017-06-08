@@ -132,6 +132,7 @@
     <Compile Include="Forms\Base\MLTile.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="PermissionAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resourses\RH.Designer.cs">
       <AutoGen>True</AutoGen>

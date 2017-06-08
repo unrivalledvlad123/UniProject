@@ -22,8 +22,13 @@ using Newtonsoft.Json.Linq;
 
 namespace DB3Client.Controls
 {
+    [Permission(PermissionId = "DCBB98FB-5B18-4395-AF8C-B332C15A9151",PermissionName = "add_new_user", PermissionLocation = "manage_users",PermissionControlRoot = "administration")]
+    [Permission(PermissionId = "DCBB98FB-5B18-4395-AF8C-B332C13291E1", PermissionName = "edit_user", PermissionLocation = "manage_users", PermissionControlRoot = "administration")]
+    [Permission(PermissionId = "DCBB98FB-5B18-4395-AF8C-B332C13291E1", PermissionName = "delete_user", PermissionLocation = "manage_users", PermissionControlRoot = "administration")]
+    [Permission(PermissionId = "DCBB98FB-5B18-4395-AF8C-B332C13291E1", PermissionName = "can_what_the_fuck?", PermissionLocation = "admin_contorol41", PermissionControlRoot = "admin_control")]
     public partial class AdminControl : MetroFramework.Controls.MetroUserControl
     {
+        List<TreeNode> allNodes = new List<TreeNode>();
         private static List<CommonUser> AllUsers;
         private static List<CommonMol> AllMols;
         private static List<CommonMol> NonPrimeryMols = new List<CommonMol>();
@@ -41,6 +46,9 @@ namespace DB3Client.Controls
             LoadCompanyData();
             LoadMolList();
             tabControlAdmin.SelectedTab = metroTabPage1;
+            BuildPermissionsTree();
+            Utils.AjustUserAccess(this);
+
         }
 
 
@@ -245,6 +253,80 @@ namespace DB3Client.Controls
             dgvPrimaryMol.DataSource = primeryMol;
         }
 
+
+        public void BuildPermissionsTree()
+        {
+            List<PermissionAttribute> allPermissionAttributes = Utils.GetPermissionAttributes();
+
+            foreach (var atribute in allPermissionAttributes)
+            {
+                TreeNode node = new TreeNode();
+                node.Text = DataHolder.GetString(atribute.PermissionControlRoot);
+               // node.Tag = atribute.PermissionId;
+                node.Name = atribute.PermissionControlRoot;
+                if (!treeViewPermissions.Nodes.ContainsKey(atribute.PermissionControlRoot))
+                {
+                    treeViewPermissions.Nodes.Add(node);
+                }
+            }
+            foreach (var location in allPermissionAttributes)
+            {
+                TreeNode node = new TreeNode();
+                node.Text = DataHolder.GetString(location.PermissionLocation);
+               // node.Tag = location.PermissionId;
+                node.Name = location.PermissionLocation;
+                if (treeViewPermissions.Nodes.ContainsKey(location.PermissionControlRoot))
+                {
+                    if (!treeViewPermissions.Nodes[location.PermissionControlRoot].Nodes.ContainsKey(node.Name))
+                    {
+                        treeViewPermissions.Nodes[location.PermissionControlRoot].Nodes.Add(node);
+                    }
+                }
+            }
+            foreach (var action in allPermissionAttributes)
+            {
+                TreeNode node = new TreeNode();
+                node.Text = DataHolder.GetString(action.PermissionName);
+                node.Tag = action.PermissionId;
+                node.Name = action.PermissionName;
+                if (treeViewPermissions.Nodes.ContainsKey(action.PermissionControlRoot))
+                {
+                    if (treeViewPermissions.Nodes[action.PermissionControlRoot].Nodes.ContainsKey(action.PermissionLocation))
+                    {
+                        if (!treeViewPermissions.Nodes[action.PermissionControlRoot].Nodes[action.PermissionLocation].Nodes.ContainsKey(node.Name))
+                        {
+                            treeViewPermissions.Nodes[action.PermissionControlRoot].Nodes[action.PermissionLocation].Nodes.Add(node);
+                        }
+                    }
+                }
+            }
+            treeViewPermissions.ExpandAll();
+        }
+
+        public void CheckPermission()
+        {
+            allNodes.Clear();
+            List<KeyValuePair<Guid,bool>> userPermissions = new List<KeyValuePair<Guid, bool>>();
+            userPermissions.Add(new KeyValuePair<Guid, bool>(Guid.Parse("DCBB98FB-5B18-4395-AF8C-B332C15A9151"),true ));// get from DB 
+            TreeNode oMainNode = treeViewPermissions.Nodes[0];
+            GetNodesRecursive(oMainNode);
+            foreach (TreeNode node in allNodes)
+            {
+                if (node.Tag == null) continue;
+                KeyValuePair<Guid, bool> sincedRow = userPermissions.FirstOrDefault(p => p.Key == Guid.Parse(node.Tag.ToString()));
+                node.Checked = sincedRow.Key != Guid.Empty && sincedRow.Value;
+            }
+        }
+
+        public void GetNodesRecursive(TreeNode oParentNode)
+        {
+            allNodes.Add(oParentNode);
+            foreach (TreeNode oSubNode in oParentNode.Nodes)
+            {
+                GetNodesRecursive(oSubNode);
+            }
+        }
+
         #endregion
 
         #region // < ====== Events =====> //
@@ -263,6 +345,7 @@ namespace DB3Client.Controls
                 btnEditUser.Enabled = true;
                 btnDeleteUser.Enabled = true;
             }
+            CheckPermission();
         }
 
         private void btnAddNewUser_Click(object sender, EventArgs e)
@@ -319,6 +402,18 @@ namespace DB3Client.Controls
             dgvUsers.DataSource = !string.IsNullOrWhiteSpace(tbSearchUser.Text) ? AllUsers.Where(p => p.Username.Contains(tbSearchUser.Text)).ToList() : AllUsers;
         }
 
+        private void btnSavePermissions_Click(object sender, EventArgs e)
+        {
+            List<KeyValuePair<Guid, bool>> newPermissions = new List<KeyValuePair<Guid, bool>>();
+            foreach (TreeNode node in allNodes)
+            {
+                if (node.Tag == null) continue;
+                KeyValuePair<Guid, bool> element = new KeyValuePair<Guid, bool>(Guid.Parse(node.Tag.ToString()), node.Checked);
+                newPermissions.Add(element);
+            }
+
+            //add save to DB
+        }
         #endregion
 
         #region // < ========== Manage Company Events ============ > //
@@ -500,7 +595,8 @@ namespace DB3Client.Controls
             panelSettings.Controls.Clear();
             panelSettings.Controls.Add(control);
         }
-        
+
+
 
         #endregion
 
@@ -508,4 +604,5 @@ namespace DB3Client.Controls
 
 
     }
+
 }
