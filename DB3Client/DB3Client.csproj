@@ -189,6 +189,12 @@
     <Compile Include="Controls\ReportControls\Reports\ReportBuySellControl.Designer.cs">
       <DependentUpon>ReportBuySellControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ReportControls\Reports\ReportDocumentsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ReportControls\Reports\ReportDocumentsControl.Designer.cs">
+      <DependentUpon>ReportDocumentsControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ReportsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -200,6 +206,12 @@
     </Compile>
     <Compile Include="Controls\SalesControl.Designer.cs">
       <DependentUpon>SalesControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SalesReceiptsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SalesReceiptsControl.Designer.cs">
+      <DependentUpon>SalesReceiptsControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\WarehouseControl.cs">
       <SubType>UserControl</SubType>
@@ -260,6 +272,12 @@
     </Compile>
     <Compile Include="Forms\SalesForms\SalesClientForm.Designer.cs">
       <DependentUpon>SalesClientForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SalesReceiptForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SalesReceiptForm.Designer.cs">
+      <DependentUpon>SalesReceiptForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\TrasactionForms\TransactionDetailsForm.cs">
       <SubType>Form</SubType>
@@ -338,11 +356,17 @@
     <EmbeddedResource Include="Controls\ReportControls\Reports\ReportBuySellControl.resx">
       <DependentUpon>ReportBuySellControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ReportControls\Reports\ReportDocumentsControl.resx">
+      <DependentUpon>ReportDocumentsControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\ReportsControl.resx">
       <DependentUpon>ReportsControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\SalesControl.resx">
       <DependentUpon>SalesControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SalesReceiptsControl.resx">
+      <DependentUpon>SalesReceiptsControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\WarehouseControl.resx">
       <DependentUpon>WarehouseControl.cs</DependentUpon>
@@ -373,6 +397,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SalesForms\SalesClientForm.resx">
       <DependentUpon>SalesClientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SalesReceiptForm.resx">
+      <DependentUpon>SalesReceiptForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TrasactionForms\TransactionDetailsForm.resx">
       <DependentUpon>TransactionDetailsForm.cs</DependentUpon>
@@ -443,6 +470,10 @@
     <None Include="Resources\orders90.png" />
     <None Include="Resources\partners_icon90.png" />
     <None Include="Resources\reports.png" />
+    <None Include="Resources\documents_icon.jpg" />
+    <None Include="Resources\documents_icon1.jpg" />
+    <None Include="Resources\documents_icon_shadow.jpg" />
+    <None Include="Resources\folders_documents.jpg" />
     <Content Include="Resourses\Images\200x200.png" />
     <Content Include="Resourses\Images\ico.ico" />
     <Content Include="Resourses\Images\50x400 mainFormLogo.png" />

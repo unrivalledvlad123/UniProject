@@ -173,9 +173,49 @@ namespace DB3Client {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap documents_icon {
+            get {
+                object obj = ResourceManager.GetObject("documents_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap documents_icon_shadow {
+            get {
+                object obj = ResourceManager.GetObject("documents_icon_shadow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap documents_icon1 {
+            get {
+                object obj = ResourceManager.GetObject("documents_icon1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap emptyBasket1 {
             get {
                 object obj = ResourceManager.GetObject("emptyBasket1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap folders_documents {
+            get {
+                object obj = ResourceManager.GetObject("folders_documents", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

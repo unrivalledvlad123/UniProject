@@ -445,7 +445,7 @@
     <value>Total Amount:</value>
   </data>
   <data name="wholesale" xml:space="preserve">
-    <value>Wholesale?</value>
+    <value>Sale with Invoice!</value>
   </data>
   <data name="invoice" xml:space="preserve">
     <value>Invoice</value>
@@ -695,5 +695,23 @@
   </data>
   <data name="general_settings" xml:space="preserve">
     <value>General settings</value>
+  </data>
+  <data name="sales_receipt" xml:space="preserve">
+    <value>Sales Receipt</value>
+  </data>
+  <data name="sales_receipt_date" xml:space="preserve">
+    <value>Date:</value>
+  </data>
+  <data name="sales_receipt_number" xml:space="preserve">
+    <value>Number:</value>
+  </data>
+  <data name="sale_receipt_number" xml:space="preserve">
+    <value>Sale Receipt Number</value>
+  </data>
+  <data name="view_sale_receipt" xml:space="preserve">
+    <value>View Sale Receipt</value>
+  </data>
+  <data name="goods_movement" xml:space="preserve">
+    <value>Movement of goods:</value>
   </data>
 </root>

@@ -14,9 +14,11 @@ namespace Common.Classes
         public DateTime Date { get; set; }
         public int Type { get; set; }
         public string InvoiceId { get; set; }
+        public string WarehouseReceiptId { get; set; }
         public List<CommonSoldItem> SoldItems { get; set; }
         public string ParsePrice { get; set; }
         public bool PaymentCompleted { get; set; }
+
         public double TotalPrice
         {
             get
@@ -46,6 +48,17 @@ namespace Common.Classes
                 return InvoiceId.PadLeft(10, '0');
             }
         }
-    }
 
+        public string WarehouseReceiptNumber
+        {
+            get
+            {
+                if (String.IsNullOrEmpty(WarehouseReceiptId))
+                {
+                    return "";
+                }
+                return WarehouseReceiptId.PadLeft(10, '0');
+            }
+        }
+    }
 }

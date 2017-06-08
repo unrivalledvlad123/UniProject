@@ -85,6 +85,9 @@
             this.mlLabel29 = new Common.Forms.Base.MLLabel();
             this.mlLabel30 = new Common.Forms.Base.MLLabel();
             this.mlLabel31 = new Common.Forms.Base.MLLabel();
+            this.mlLabelDiscountType = new Common.Forms.Base.MLLabel();
+            this.labelDiscount = new Common.Forms.Base.MLLabel();
+            this.mlLabel25 = new Common.Forms.Base.MLLabel();
             this.DONOTTOUCH.SuspendLayout();
             this.mlGroupBox1.SuspendLayout();
             this.mlGroupBox2.SuspendLayout();
@@ -573,6 +576,9 @@
             // mlGroupBox5
             // 
             this.mlGroupBox5.BackColor = System.Drawing.Color.White;
+            this.mlGroupBox5.Controls.Add(this.mlLabelDiscountType);
+            this.mlGroupBox5.Controls.Add(this.labelDiscount);
+            this.mlGroupBox5.Controls.Add(this.mlLabel25);
             this.mlGroupBox5.Controls.Add(this.labelTotal);
             this.mlGroupBox5.Controls.Add(this.labelDDS);
             this.mlGroupBox5.Controls.Add(this.labelAmount);
@@ -588,7 +594,7 @@
             // labelTotal
             // 
             this.labelTotal.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.labelTotal.Location = new System.Drawing.Point(138, 58);
+            this.labelTotal.Location = new System.Drawing.Point(138, 77);
             this.labelTotal.Name = "labelTotal";
             this.labelTotal.Size = new System.Drawing.Size(231, 19);
             this.labelTotal.TabIndex = 10;
@@ -597,7 +603,7 @@
             // labelDDS
             // 
             this.labelDDS.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.labelDDS.Location = new System.Drawing.Point(138, 39);
+            this.labelDDS.Location = new System.Drawing.Point(138, 58);
             this.labelDDS.Name = "labelDDS";
             this.labelDDS.Size = new System.Drawing.Size(231, 19);
             this.labelDDS.TabIndex = 9;
@@ -626,7 +632,7 @@
             // 
             this.mlLabel37.AutoSize = true;
             this.mlLabel37.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.mlLabel37.Location = new System.Drawing.Point(6, 58);
+            this.mlLabel37.Location = new System.Drawing.Point(6, 76);
             this.mlLabel37.Name = "mlLabel37";
             this.mlLabel37.Size = new System.Drawing.Size(117, 19);
             this.mlLabel37.TabIndex = 6;
@@ -636,7 +642,7 @@
             // 
             this.mlLabel39.AutoSize = true;
             this.mlLabel39.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.mlLabel39.Location = new System.Drawing.Point(6, 39);
+            this.mlLabel39.Location = new System.Drawing.Point(6, 58);
             this.mlLabel39.Name = "mlLabel39";
             this.mlLabel39.Size = new System.Drawing.Size(36, 19);
             this.mlLabel39.TabIndex = 5;
@@ -694,6 +700,34 @@
             this.mlLabel31.Size = new System.Drawing.Size(90, 19);
             this.mlLabel31.TabIndex = 0;
             this.mlLabel31.Text = "recipient_mol";
+            // 
+            // mlLabelDiscountType
+            // 
+            this.mlLabelDiscountType.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.mlLabelDiscountType.Location = new System.Drawing.Point(73, 39);
+            this.mlLabelDiscountType.Name = "mlLabelDiscountType";
+            this.mlLabelDiscountType.Size = new System.Drawing.Size(51, 19);
+            this.mlLabelDiscountType.TabIndex = 13;
+            this.mlLabelDiscountType.Text = "0";
+            // 
+            // labelDiscount
+            // 
+            this.labelDiscount.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.labelDiscount.Location = new System.Drawing.Point(137, 39);
+            this.labelDiscount.Name = "labelDiscount";
+            this.labelDiscount.Size = new System.Drawing.Size(231, 19);
+            this.labelDiscount.TabIndex = 12;
+            this.labelDiscount.Text = "fill here";
+            // 
+            // mlLabel25
+            // 
+            this.mlLabel25.AutoSize = true;
+            this.mlLabel25.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.mlLabel25.Location = new System.Drawing.Point(6, 39);
+            this.mlLabel25.Name = "mlLabel25";
+            this.mlLabel25.Size = new System.Drawing.Size(61, 19);
+            this.mlLabel25.TabIndex = 11;
+            this.mlLabel25.Text = "discount";
             // 
             // InvoiceControl
             // 
@@ -776,5 +810,8 @@
         private Common.Forms.Base.MLLabel mlLabel47;
         private System.Windows.Forms.FlowLayoutPanel DONOTTOUCH;
         private MetroFramework.Controls.MetroGrid dgvItems;
+        private Common.Forms.Base.MLLabel mlLabelDiscountType;
+        private Common.Forms.Base.MLLabel labelDiscount;
+        private Common.Forms.Base.MLLabel mlLabel25;
     }
 }

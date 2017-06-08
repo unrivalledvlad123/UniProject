@@ -448,7 +448,7 @@
     <value>Обща Сума:</value>
   </data>
   <data name="wholesale" xml:space="preserve">
-    <value>Продажба на едро?</value>
+    <value>Продажба с Фактура!</value>
   </data>
   <data name="invoice" xml:space="preserve">
     <value>Фактура</value>
@@ -698,5 +698,23 @@
   </data>
   <data name="general_settings" xml:space="preserve">
     <value>Общи настройки</value>
+  </data>
+  <data name="sales_receipt" xml:space="preserve">
+    <value>Стокова Разписка</value>
+  </data>
+  <data name="sales_receipt_date" xml:space="preserve">
+    <value>Дата:</value>
+  </data>
+  <data name="sales_receipt_number" xml:space="preserve">
+    <value>Номер:</value>
+  </data>
+  <data name="sale_receipt_number" xml:space="preserve">
+    <value>Номер на стокова разписка</value>
+  </data>
+  <data name="view_sale_receipt" xml:space="preserve">
+    <value>Покажи Стокова Разписка</value>
+  </data>
+  <data name="goods_movement" xml:space="preserve">
+    <value>Движение на стоки:</value>
   </data>
 </root>

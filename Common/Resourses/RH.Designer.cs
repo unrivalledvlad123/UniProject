@@ -421,15 +421,6 @@ namespace Common.Resourses {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Contract Groups.
-        /// </summary>
-        internal static string contract_groups {
-            get {
-                return ResourceManager.GetString("contract_groups", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Contracts.
         /// </summary>
         internal static string contracts {
@@ -795,6 +786,15 @@ namespace Common.Resourses {
         internal static string generate_invoice {
             get {
                 return ResourceManager.GetString("generate_invoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Movement of goods:.
+        /// </summary>
+        internal static string goods_movement {
+            get {
+                return ResourceManager.GetString("goods_movement", resourceCulture);
             }
         }
         
@@ -1411,6 +1411,15 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sale Receipt Number.
+        /// </summary>
+        internal static string sale_receipt_number {
+            get {
+                return ResourceManager.GetString("sale_receipt_number", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sales.
         /// </summary>
         internal static string sales {
@@ -1425,6 +1434,33 @@ namespace Common.Resourses {
         internal static string sales_diagram {
             get {
                 return ResourceManager.GetString("sales_diagram", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sales Receipt.
+        /// </summary>
+        internal static string sales_receipt {
+            get {
+                return ResourceManager.GetString("sales_receipt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date:.
+        /// </summary>
+        internal static string sales_receipt_date {
+            get {
+                return ResourceManager.GetString("sales_receipt_date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number:.
+        /// </summary>
+        internal static string sales_receipt_number {
+            get {
+                return ResourceManager.GetString("sales_receipt_number", resourceCulture);
             }
         }
         
@@ -1461,15 +1497,6 @@ namespace Common.Resourses {
         internal static string search_company_name {
             get {
                 return ResourceManager.GetString("search_company_name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Search Contracts.
-        /// </summary>
-        internal static string search_contract {
-            get {
-                return ResourceManager.GetString("search_contract", resourceCulture);
             }
         }
         
@@ -1767,6 +1794,15 @@ namespace Common.Resourses {
         internal static string view_invoice {
             get {
                 return ResourceManager.GetString("view_invoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View Sale Receipt.
+        /// </summary>
+        internal static string view_sale_receipt {
+            get {
+                return ResourceManager.GetString("view_sale_receipt", resourceCulture);
             }
         }
         

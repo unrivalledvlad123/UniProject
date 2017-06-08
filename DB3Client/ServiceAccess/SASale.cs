@@ -88,7 +88,7 @@ namespace DB3Client.ServiceAccess
             return allSales;
         }
 
-        public static async Task<CommonInvoice> GetInvoive(Guid SaleId)
+        public static async Task<CommonInvoice> GetInvoice(Guid SaleId)
         {
             CommonInvoice invoice = new CommonInvoice();
             HttpResponseMessage response;
@@ -113,6 +113,33 @@ namespace DB3Client.ServiceAccess
                 }
             }
             return invoice;
+        }
+
+        public static async Task<CommonWarehouseReceipt> GetReceipt(Guid SaleId)
+        {
+            CommonWarehouseReceipt receipt = new CommonWarehouseReceipt();
+            HttpResponseMessage response;
+
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(DataHolder.ServerAddress);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic");
+
+                try
+                {
+                    response = await client.GetAsync("api/sales/receipt/" + SaleId);
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw new Exception(ex.InnerException.Message);
+                }
+
+                if (response.IsSuccessStatusCode)
+                {
+                    receipt = await response.Content.ReadAsAsync<CommonWarehouseReceipt>();
+                }
+            }
+            return receipt;
         }
     }
 }

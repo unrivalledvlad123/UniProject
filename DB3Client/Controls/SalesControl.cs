@@ -285,6 +285,12 @@ namespace DB3Client.Controls
             {
                 ClearAll();
             }
+
+            SalesReceiptForm form = new SalesReceiptForm(sale);
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+
+            }
         }
 
 

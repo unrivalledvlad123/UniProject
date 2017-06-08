@@ -38,6 +38,7 @@ namespace DB3Client.Controls
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControlContracts = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new Common.Forms.Base.MLTabPage();
+            this.treeView1 = new System.Windows.Forms.TreeView();
             this.cbContractType1 = new Common.Forms.Base.MLComboBox();
             this.mlLabel2 = new Common.Forms.Base.MLLabel();
             this.mlLabel1 = new Common.Forms.Base.MLLabel();
@@ -47,6 +48,7 @@ namespace DB3Client.Controls
             this.btnAddContract = new Common.Forms.Base.MLButton();
             this.dgvContracts = new MetroFramework.Controls.MetroGrid();
             this.metroTabPage2 = new Common.Forms.Base.MLTabPage();
+            this.btnViewSaleReceipt = new Common.Forms.Base.MLButton();
             this.btnViewInvoice = new Common.Forms.Base.MLButton();
             this.metroLabel3 = new Common.Forms.Base.MLLabel();
             this.btnViewTransactionDetails = new Common.Forms.Base.MLButton();
@@ -76,6 +78,7 @@ namespace DB3Client.Controls
             // 
             // metroTabPage1
             // 
+            this.metroTabPage1.Controls.Add(this.treeView1);
             this.metroTabPage1.Controls.Add(this.cbContractType1);
             this.metroTabPage1.Controls.Add(this.mlLabel2);
             this.metroTabPage1.Controls.Add(this.mlLabel1);
@@ -96,12 +99,22 @@ namespace DB3Client.Controls
             this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.VerticalScrollbarSize = 10;
             // 
+            // treeView1
+            // 
+            this.treeView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.treeView1.Location = new System.Drawing.Point(4, 191);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(196, 227);
+            this.treeView1.TabIndex = 12;
+            this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
+            // 
             // cbContractType1
             // 
             this.cbContractType1.DisplayMember = "(none)";
             this.cbContractType1.FormattingEnabled = true;
             this.cbContractType1.ItemHeight = 23;
-            this.cbContractType1.Location = new System.Drawing.Point(408, 107);
+            this.cbContractType1.Location = new System.Drawing.Point(418, 104);
             this.cbContractType1.MaxDropDownItems = 5;
             this.cbContractType1.Name = "cbContractType1";
             this.cbContractType1.Size = new System.Drawing.Size(170, 29);
@@ -169,11 +182,10 @@ namespace DB3Client.Controls
             this.tbSearchContracts.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.tbSearchContracts.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             this.tbSearchContracts.TextChanged += new System.EventHandler(this.tbSearchContracts_TextChanged);
-//            this.tbSearchContracts.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbSearchContracts_KeyDown);
             // 
             // btnEditContract
             // 
-            this.btnEditContract.Location = new System.Drawing.Point(199, 155);
+            this.btnEditContract.Location = new System.Drawing.Point(206, 155);
             this.btnEditContract.Name = "btnEditContract";
             this.btnEditContract.Size = new System.Drawing.Size(202, 23);
             this.btnEditContract.TabIndex = 4;
@@ -185,7 +197,7 @@ namespace DB3Client.Controls
             // 
             this.btnAddContract.Location = new System.Drawing.Point(3, 155);
             this.btnAddContract.Name = "btnAddContract";
-            this.btnAddContract.Size = new System.Drawing.Size(190, 23);
+            this.btnAddContract.Size = new System.Drawing.Size(197, 23);
             this.btnAddContract.TabIndex = 3;
             this.btnAddContract.Text = "add_contract";
             this.btnAddContract.UseSelectable = true;
@@ -221,7 +233,7 @@ namespace DB3Client.Controls
             this.dgvContracts.EnableHeadersVisualStyles = false;
             this.dgvContracts.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dgvContracts.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dgvContracts.Location = new System.Drawing.Point(3, 191);
+            this.dgvContracts.Location = new System.Drawing.Point(206, 191);
             this.dgvContracts.Name = "dgvContracts";
             this.dgvContracts.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -234,12 +246,13 @@ namespace DB3Client.Controls
             this.dgvContracts.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvContracts.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvContracts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvContracts.Size = new System.Drawing.Size(1050, 224);
+            this.dgvContracts.Size = new System.Drawing.Size(847, 227);
             this.dgvContracts.TabIndex = 2;
             // 
             // metroTabPage2
             // 
             this.metroTabPage2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.metroTabPage2.Controls.Add(this.btnViewSaleReceipt);
             this.metroTabPage2.Controls.Add(this.btnViewInvoice);
             this.metroTabPage2.Controls.Add(this.metroLabel3);
             this.metroTabPage2.Controls.Add(this.btnViewTransactionDetails);
@@ -249,20 +262,30 @@ namespace DB3Client.Controls
             this.metroTabPage2.HorizontalScrollbarBarColor = true;
             this.metroTabPage2.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.HorizontalScrollbarSize = 10;
-            this.metroTabPage2.Location = new System.Drawing.Point(4, 38);
+            this.metroTabPage2.Location = new System.Drawing.Point(4, 35);
             this.metroTabPage2.Name = "metroTabPage2";
-            this.metroTabPage2.Size = new System.Drawing.Size(1056, 418);
+            this.metroTabPage2.Size = new System.Drawing.Size(1056, 421);
             this.metroTabPage2.TabIndex = 1;
             this.metroTabPage2.Text = "tansactions";
             this.metroTabPage2.VerticalScrollbarBarColor = true;
             this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.VerticalScrollbarSize = 10;
             // 
+            // btnViewSaleReceipt
+            // 
+            this.btnViewSaleReceipt.Location = new System.Drawing.Point(337, 69);
+            this.btnViewSaleReceipt.Name = "btnViewSaleReceipt";
+            this.btnViewSaleReceipt.Size = new System.Drawing.Size(155, 23);
+            this.btnViewSaleReceipt.TabIndex = 19;
+            this.btnViewSaleReceipt.Text = "view_sale_receipt";
+            this.btnViewSaleReceipt.UseSelectable = true;
+            this.btnViewSaleReceipt.Click += new System.EventHandler(this.btnViewSaleReceipt_Click);
+            // 
             // btnViewInvoice
             // 
-            this.btnViewInvoice.Location = new System.Drawing.Point(205, 69);
+            this.btnViewInvoice.Location = new System.Drawing.Point(174, 69);
             this.btnViewInvoice.Name = "btnViewInvoice";
-            this.btnViewInvoice.Size = new System.Drawing.Size(195, 23);
+            this.btnViewInvoice.Size = new System.Drawing.Size(157, 23);
             this.btnViewInvoice.TabIndex = 18;
             this.btnViewInvoice.Text = "view_invoice";
             this.btnViewInvoice.UseSelectable = true;
@@ -282,7 +305,7 @@ namespace DB3Client.Controls
             // 
             this.btnViewTransactionDetails.Location = new System.Drawing.Point(3, 69);
             this.btnViewTransactionDetails.Name = "btnViewTransactionDetails";
-            this.btnViewTransactionDetails.Size = new System.Drawing.Size(196, 23);
+            this.btnViewTransactionDetails.Size = new System.Drawing.Size(165, 23);
             this.btnViewTransactionDetails.TabIndex = 15;
             this.btnViewTransactionDetails.Text = "view_transaction_details";
             this.btnViewTransactionDetails.UseSelectable = true;
@@ -331,7 +354,7 @@ namespace DB3Client.Controls
             this.dgvTransactions.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvTransactions.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvTransactions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTransactions.Size = new System.Drawing.Size(1050, 291);
+            this.dgvTransactions.Size = new System.Drawing.Size(1050, 294);
             this.dgvTransactions.TabIndex = 12;
             // 
             // tbSearchTransactions
@@ -340,7 +363,7 @@ namespace DB3Client.Controls
             // 
             // 
             this.tbSearchTransactions.CustomButton.Image = null;
-            this.tbSearchTransactions.CustomButton.Location = new System.Drawing.Point(373, 1);
+            this.tbSearchTransactions.CustomButton.Location = new System.Drawing.Point(465, 1);
             this.tbSearchTransactions.CustomButton.Name = "";
             this.tbSearchTransactions.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.tbSearchTransactions.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -358,7 +381,7 @@ namespace DB3Client.Controls
             this.tbSearchTransactions.SelectionLength = 0;
             this.tbSearchTransactions.SelectionStart = 0;
             this.tbSearchTransactions.ShortcutsEnabled = true;
-            this.tbSearchTransactions.Size = new System.Drawing.Size(397, 25);
+            this.tbSearchTransactions.Size = new System.Drawing.Size(489, 25);
             this.tbSearchTransactions.TabIndex = 10;
             this.tbSearchTransactions.UseSelectable = true;
             this.tbSearchTransactions.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -415,5 +438,7 @@ namespace DB3Client.Controls
         private MLLabel mlLabel1;
         private string cbContractType;
         private MLComboBox cbContractType1;
+        private MLButton btnViewSaleReceipt;
+        private System.Windows.Forms.TreeView treeView1;
     }
 }

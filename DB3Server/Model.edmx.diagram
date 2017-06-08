@@ -26,7 +26,7 @@
         <EntityTypeShape EntityType="Model.PartnerDiscount" Width="1.5" PointX="7.25" PointY="0.75" />
         <EntityTypeShape EntityType="Model.Purchase" Width="1.5" PointX="7.25" PointY="3.25" />
         <EntityTypeShape EntityType="Model.Sale" Width="1.5" PointX="7.25" PointY="6.375" />
-        <EntityTypeShape EntityType="Model.WarehouseReceipt" Width="1.5" PointX="8.125" PointY="11.125" />
+        <EntityTypeShape EntityType="Model.WarehouseReceipt" Width="2.25" PointX="8.125" PointY="11.125" />
         <AssociationConnector Association="Model.FK_Sales_Invoice" />
         <AssociationConnector Association="Model.FK_Purchase_Owner" />
         <AssociationConnector Association="Model.FK_Sales_Owner" />

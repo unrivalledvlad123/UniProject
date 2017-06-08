@@ -86,7 +86,7 @@ namespace DB3Client.Controls
 
         private async void LoadDataFromDb()
         {
-            CommonInvoice invoice = await SASale.GetInvoive(Sale.SaleId);
+            CommonInvoice invoice = await SASale.GetInvoice(Sale.SaleId);
 
             mlLabel17.Text = invoice.BuyerCompanyName;
             mlLabel15.Text = invoice.BuyerVATNumber;

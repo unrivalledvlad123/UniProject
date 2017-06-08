@@ -143,7 +143,11 @@ namespace DB3Server.BusinessLogic
                     sale.SaleId = s.SaleId;
                     sale.SellerId = s.SellerId;
                     sale.Type = s.Type;
-                    sale.InvoiceId = s.Invoice.InvoiceNumber.ToString();
+                    if (isWhole)
+                    {
+                        sale.InvoiceId = s.Invoice.InvoiceNumber.ToString();
+                    }
+                    
                     sale.SoldItems = new List<CommonSoldItem>();
                     //// FIx payment completed 
                     sale.PaymentCompleted = true;
@@ -212,7 +216,7 @@ namespace DB3Server.BusinessLogic
             return allSales;
         }
 
-        internal static CommonInvoice GetInvoive(Guid saleId)
+        internal static CommonInvoice GetInvoice(Guid saleId)
         {
             CommonInvoice result = new CommonInvoice();
             DatabaseEntities entities = new DatabaseEntities();
@@ -238,6 +242,34 @@ namespace DB3Server.BusinessLogic
                 result.BuyerMol = invoice.BuyerMol;
                 result.OwnerMol = invoice.OwnerMol;
                 result.DiscountPercent = invoice.DiscountPercent.Value;
+            }
+            result.SoldItems = new List<CommonSoldItem>();
+            return result;
+        }
+
+        internal static CommonWarehouseReceipt GetReceipt(Guid saleId)
+        {
+            CommonWarehouseReceipt result = new CommonWarehouseReceipt();
+            DatabaseEntities entities = new DatabaseEntities();
+            WarehouseReceipt receipt = entities.WarehouseReceipts.FirstOrDefault(p => p.SaleId == saleId);
+            if (receipt != null)
+            {
+                result.OwnerId = receipt.OwnerId;
+                result.PartnerId = receipt.PartnerId;
+                result.SaleId = receipt.SaleId;
+                result.WarehouseReceiptId = receipt.WarehouseReceiptId;
+                result.WarehouseReceiptNumber = receipt.WarehouseReceiptNumber;
+                result.BuyerCompanyName = receipt.BuyerCompanyName;
+                result.BuyerAddress = receipt.BuyerAddress;
+                result.BuyerVATNumber = receipt.BuyerVATNumber;
+                result.BuyerBulstat = receipt.BuyerBulstat;
+                result.OwnerCompanyName = receipt.OwnerCompanyName;
+                result.OwnerAddress = receipt.OwnerAddress;
+                result.OwnerVATNumber = receipt.OwnerVATNumber;
+                result.OwnerBulstat = receipt.OwnerBulstat;
+                result.BuyerMol = receipt.BuyerMol;
+                result.OwnerMol = receipt.OwnerMol;
+                result.DiscountPercent = receipt.DiscountPercent.Value;
             }
             result.SoldItems = new List<CommonSoldItem>();
             return result;

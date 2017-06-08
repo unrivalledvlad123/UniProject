@@ -30,7 +30,7 @@ namespace DB3Server.Controllers
         [System.Web.Http.Route("api/sales/invoice/{saleId}")]
         public CommonInvoice GetInvoice(Guid saleId)
         {
-            return BLSales.GetInvoive(saleId);
+            return BLSales.GetInvoice(saleId);
         }
 
 

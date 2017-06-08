@@ -14,6 +14,7 @@
     [OwnerBulstat]           VARCHAR (50)     NULL,
     [BuyerMol]               VARCHAR (250)    NULL,
     [OwnerMol]               VARCHAR (250)    NULL,
+    [DiscountPercent] DECIMAL(18, 2) NULL, 
     CONSTRAINT [PK_WarehouseReceipt] PRIMARY KEY CLUSTERED ([WarehouseReceiptId] ASC)
 );
 

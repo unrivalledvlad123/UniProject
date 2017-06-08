@@ -22,6 +22,7 @@ namespace DB3Client.Controls
         public ContractsControl()
         {
             InitializeComponent();
+            LoadContractsTypes();
             LoadDataContracts();
             SetGridColomnsAllSales();
             LoadDataTransactions();
@@ -46,7 +47,8 @@ namespace DB3Client.Controls
         private async void LoadDataContracts()
         {
             ListOfAllContracts = await SAContract.GetAllContracts(tbSearchContracts.Text);
-            dgvContracts.DataSource = ListOfAllContracts;
+            FilterContracts();
+//            dgvContracts.DataSource = ListOfAllContracts;
         }
 
 //        private void tbSearchContracts_KeyDown(object sender, KeyEventArgs e)
@@ -189,6 +191,13 @@ namespace DB3Client.Controls
             c3.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
             dgvTransactions.Columns.Add(c3);
 
+            DataGridViewTextBoxColumn c5 = new DataGridViewTextBoxColumn();
+            c5.Name = "WarehouseReceiptNumber";
+            c5.HeaderText = DataHolder.GetString("sale_receipt_number");
+            c5.DataPropertyName = "WarehouseReceiptNumber";
+            c5.AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
+            dgvTransactions.Columns.Add(c5);
+
             DataGridViewTextBoxColumn c4 = new DataGridViewTextBoxColumn();
             c4.Name = "totalAmount";
             c4.HeaderText = DataHolder.GetString("total_amount");
@@ -239,20 +248,90 @@ namespace DB3Client.Controls
 
         private void tbSearchContracts_TextChanged(object sender, EventArgs e)
         {
-            CommonDiscounts item = (CommonDiscounts) cbContractType1.SelectedItem;
+            FilterContracts();
+        }
+
+        private void FilterContracts()
+        {
+            string selectedType = treeView1.SelectedNode != null ? treeView1.SelectedNode.Text : "";
+            int partnerType = -1;
+            foreach (var t in DataHolder.Settings.Discounts)
+            {
+                if (t.TypeName == selectedType)
+                {
+                    partnerType = t.PartnerType;
+                }
+            }
+
             if (!string.IsNullOrEmpty(tbSearchContracts.Text))
             {
                 dgvContracts.DataSource =
                     ListOfAllContracts.Where(
-                        p => p.CompanyName.Contains(tbSearchContracts.Text) && p.PartnerType == item.PartnerType).ToList();
+                        p => p.CompanyName.Contains(tbSearchContracts.Text) && p.PartnerType == partnerType).ToList();
             }
             else
-            {
-                dgvContracts.DataSource = ListOfAllContracts;
+            {//
+                dgvContracts.DataSource = ListOfAllContracts.Where(p => p.PartnerType == partnerType).ToList();
             }
+        }
 
+        private async void LoadContractsTypes()
+        {
+            TreeNode root = new TreeNode("All Contracts");
+            
+
+            treeView1.Nodes.Add(root);
+//            TreeNode t1 = new TreeNode("Glod");
+//            TreeNode t2 = new TreeNode("Sylver");
+//            TreeNode t3 = new TreeNode("Bronze");
+//            TreeNode t4 = new TreeNode("Regular");
+
+           
+            List<TreeNode> l = new List<TreeNode>();
+            foreach (var t in DataHolder.Settings.Discounts)
+            {
+                var node = new TreeNode(t.TypeName);
+               
+                l.Add(node);
+            }
+            
+
+            root.Nodes.AddRange(l.ToArray());
+            
+         
+        }
+
+        private void btnViewSaleReceipt_Click(object sender, EventArgs e)
+        {
+            if (dgvTransactions.SelectedRows.Count == 1 && dgvTransactions.SelectedRows[0] != null)
+            {
+
+                CommonSale selectedItem = (CommonSale) dgvTransactions.SelectedRows[0].DataBoundItem;
+
+                if (!string.IsNullOrEmpty(selectedItem.InvoiceId))
+                {
+                    SalesReceiptForm form = new SalesReceiptForm(selectedItem, false);
+                    if (form.ShowDialog() == DialogResult.OK)
+                    {
+
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Няма издаден документ към продажбата!");
+                }
+
+            }
+        }
+
+        private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            treeView1.SelectedNode = e.Node;
+            FilterContracts();
         }
     }
 }
+
+ 
 
  

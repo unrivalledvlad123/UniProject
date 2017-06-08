@@ -73,6 +73,7 @@
     <Compile Include="Classes\CommonSettings.cs" />
     <Compile Include="Classes\CommonSoldItem.cs" />
     <Compile Include="Classes\CommonWarehouseItemsPrice.cs" />
+    <Compile Include="Classes\CommonWarehouseReceipt.cs" />
     <Compile Include="Classes\CompanyOwner.cs" />
     <Compile Include="Classes\CommonUser.cs" />
     <Compile Include="Classes\DTOs\DiagramDTO.cs" />

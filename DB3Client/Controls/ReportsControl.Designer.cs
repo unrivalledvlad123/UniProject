@@ -41,6 +41,7 @@ namespace DB3Client.Controls
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.panelReportsNew = new MetroFramework.Controls.MetroPanel();
             this.metroTabPage2 = new Common.Forms.Base.MLTabPage();
             this.mlLabel2 = new Common.Forms.Base.MLLabel();
@@ -59,6 +60,7 @@ namespace DB3Client.Controls
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.tableLayoutPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.metroTabPage2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -184,10 +186,12 @@ namespace DB3Client.Controls
             // 
             // tableLayoutPanel5
             // 
-            this.tableLayoutPanel5.ColumnCount = 2;
+            this.tableLayoutPanel5.ColumnCount = 3;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.Controls.Add(this.pictureBox7, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.pictureBox8, 1, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
@@ -209,6 +213,19 @@ namespace DB3Client.Controls
             this.pictureBox7.Click += new System.EventHandler(this.pictureBox7_Click);
             this.pictureBox7.MouseEnter += new System.EventHandler(this.pictureBox7_MouseEnter);
             this.pictureBox7.MouseLeave += new System.EventHandler(this.pictureBox7_MouseLeave);
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.BackgroundImage = global::DB3Client.Resource.documents_icon1;
+            this.pictureBox8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox8.Location = new System.Drawing.Point(73, 3);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(64, 64);
+            this.pictureBox8.TabIndex = 1;
+            this.pictureBox8.TabStop = false;
+            this.pictureBox8.Click += new System.EventHandler(this.pictureBox8_Click);
+            this.pictureBox8.MouseEnter += new System.EventHandler(this.pictureBox8_MouseEnter);
+            this.pictureBox8.MouseLeave += new System.EventHandler(this.pictureBox8_MouseLeave);
             // 
             // panelReportsNew
             // 
@@ -266,7 +283,7 @@ namespace DB3Client.Controls
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 76F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 9F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1228, 546);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1228, 549);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // panelDiagrams
@@ -277,7 +294,7 @@ namespace DB3Client.Controls
             this.panelDiagrams.HorizontalScrollbarSize = 10;
             this.panelDiagrams.Location = new System.Drawing.Point(3, 88);
             this.panelDiagrams.Name = "panelDiagrams";
-            this.panelDiagrams.Size = new System.Drawing.Size(1222, 455);
+            this.panelDiagrams.Size = new System.Drawing.Size(1222, 458);
             this.panelDiagrams.TabIndex = 0;
             this.panelDiagrams.VerticalScrollbarBarColor = true;
             this.panelDiagrams.VerticalScrollbarHighlightOnWheel = false;
@@ -354,6 +371,7 @@ namespace DB3Client.Controls
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.tableLayoutPanel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.metroTabPage2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -387,5 +405,6 @@ namespace DB3Client.Controls
         private MLLabel mlLabel1;
         private MLLabel mlLabel2;
         private MLToolTp mlToolTp1;
+        private System.Windows.Forms.PictureBox pictureBox8;
     }
 }

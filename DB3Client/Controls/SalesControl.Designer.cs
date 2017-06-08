@@ -448,7 +448,7 @@ namespace DB3Client.Controls
             // 
             this.labelChange.AutoSize = true;
             this.labelChange.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.labelChange.Location = new System.Drawing.Point(141, 89);
+            this.labelChange.Location = new System.Drawing.Point(131, 89);
             this.labelChange.Name = "labelChange";
             this.labelChange.Size = new System.Drawing.Size(17, 19);
             this.labelChange.TabIndex = 5;
@@ -458,7 +458,7 @@ namespace DB3Client.Controls
             // 
             this.labelCash.AutoSize = true;
             this.labelCash.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.labelCash.Location = new System.Drawing.Point(141, 51);
+            this.labelCash.Location = new System.Drawing.Point(131, 51);
             this.labelCash.Name = "labelCash";
             this.labelCash.Size = new System.Drawing.Size(17, 19);
             this.labelCash.TabIndex = 4;
@@ -468,7 +468,7 @@ namespace DB3Client.Controls
             // 
             this.labelTotalAmount.AutoSize = true;
             this.labelTotalAmount.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.labelTotalAmount.Location = new System.Drawing.Point(141, 16);
+            this.labelTotalAmount.Location = new System.Drawing.Point(131, 11);
             this.labelTotalAmount.Name = "labelTotalAmount";
             this.labelTotalAmount.Size = new System.Drawing.Size(17, 19);
             this.labelTotalAmount.TabIndex = 3;
@@ -611,7 +611,7 @@ namespace DB3Client.Controls
             this.dgvSoldGoods.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvSoldGoods.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvSoldGoods.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSoldGoods.Size = new System.Drawing.Size(785, 814);
+            this.dgvSoldGoods.Size = new System.Drawing.Size(785, 942);
             this.dgvSoldGoods.TabIndex = 2;
             this.dgvSoldGoods.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSoldGoods_CellValueChanged);
             // 

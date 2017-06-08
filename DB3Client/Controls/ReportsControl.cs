@@ -66,9 +66,10 @@ namespace DB3Client.Controls
         {
             pictureBox2.BackgroundImage = Resource._1495654881_bar_chart;
         }
+
         private void pictureBox7_Click(object sender, EventArgs e)
         {
-            ReportBuySellControl control = new ReportBuySellControl() { Dock = DockStyle.Fill };
+            ReportBuySellControl control = new ReportBuySellControl() {Dock = DockStyle.Fill};
             panelReportsNew.Controls.Clear();
             panelReportsNew.Controls.Add(control);
         }
@@ -83,7 +84,24 @@ namespace DB3Client.Controls
             pictureBox7.BackgroundImage = Resource.report_sales;
         }
 
-        
+
+        private void pictureBox8_Click(object sender, EventArgs e)
+        {
+                   ReportDocumentsControl control1 = new ReportDocumentsControl() { Dock = DockStyle.Fill };
+                    panelReportsNew.Controls.Clear();
+                   panelReportsNew.Controls.Add(control1);
+        }
+
+        private void pictureBox8_MouseEnter(object sender, EventArgs e)
+        {
+            pictureBox8.BackgroundImage = Resource.documents_icon_shadow;
+        }
+
+        private void pictureBox8_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox8.BackgroundImage = Resource.documents_icon1;
+        }
+
         #endregion
 
 

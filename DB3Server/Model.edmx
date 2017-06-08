@@ -205,6 +205,7 @@
           <Property Name="OwnerBulstat" Type="varchar" MaxLength="50" />
           <Property Name="BuyerMol" Type="varchar" MaxLength="250" />
           <Property Name="OwnerMol" Type="varchar" MaxLength="250" />
+          <Property Name="DiscountPercent" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <Association Name="FK_PartnerItemMapping_Item">
           <End Role="Item" Type="Self.Item" Multiplicity="1" />
@@ -826,6 +827,7 @@
           <Property Name="BuyerMol" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="OwnerMol" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Sales" Relationship="Model.FK_Sales_WarehouseReceipt" FromRole="WarehouseReceipt" ToRole="Sale" />
+          <Property Name="DiscountPercent" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <Association Name="FK_Sales_Invoice">
           <End Type="Model.Invoice" Role="Invoice" Multiplicity="0..1" />
@@ -1128,6 +1130,7 @@
           <EntitySetMapping Name="WarehouseReceipts">
             <EntityTypeMapping TypeName="Model.WarehouseReceipt">
               <MappingFragment StoreEntitySet="WarehouseReceipt">
+                <ScalarProperty Name="DiscountPercent" ColumnName="DiscountPercent" />
                 <ScalarProperty Name="OwnerMol" ColumnName="OwnerMol" />
                 <ScalarProperty Name="BuyerMol" ColumnName="BuyerMol" />
                 <ScalarProperty Name="OwnerBulstat" ColumnName="OwnerBulstat" />
