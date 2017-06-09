@@ -22,7 +22,7 @@ namespace DB3Client.Controls
         public ContractsControl()
         {
             InitializeComponent();
-            LoadContractsTypes();
+           
             LoadDataContracts();
             SetGridColomnsAllSales();
             LoadDataTransactions();
@@ -30,7 +30,7 @@ namespace DB3Client.Controls
             tabControlContracts.SelectedTab = metroTabPage1;
             cbContractType1.DisplayMember = "TypeName";
             cbContractType1.DataSource = DataHolder.Settings.Discounts;
-
+            LoadContractsTypes();
         }
 
         private void btnAddContract_Click(object sender, EventArgs e)
@@ -280,23 +280,32 @@ namespace DB3Client.Controls
             TreeNode root = new TreeNode("All Contracts");
             
 
+
             treeView1.Nodes.Add(root);
-//            TreeNode t1 = new TreeNode("Glod");
-//            TreeNode t2 = new TreeNode("Sylver");
-//            TreeNode t3 = new TreeNode("Bronze");
-//            TreeNode t4 = new TreeNode("Regular");
 
            
             List<TreeNode> l = new List<TreeNode>();
             foreach (var t in DataHolder.Settings.Discounts)
             {
-                var node = new TreeNode(t.TypeName);
-               
-                l.Add(node);
+                //var node = new TreeNode(t.TypeName);
+               TreeNode node = new TreeNode();
+                node.Name = t.TypeName;
+                node.Text = t.TypeName;
+               // l.Add(node);
+                treeView1.Nodes[0].Nodes.Add(node);
+            }
+            ListOfAllContracts = await SAContract.GetAllContracts(tbSearchContracts.Text);
+            foreach (var c in ListOfAllContracts)
+            {
+                TreeNode node = new TreeNode();
+                node.Name = c.CompanyName;
+                node.Text = c.CompanyName;
+                node.Tag = c.PartnerId;
+                treeView1.Nodes[0].Nodes[c.PartnerType].Nodes.Add(node);
             }
             
 
-            root.Nodes.AddRange(l.ToArray());
+           // root.Nodes.AddRange(l.ToArray());
             
          
         }
@@ -327,7 +336,18 @@ namespace DB3Client.Controls
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             treeView1.SelectedNode = e.Node;
-            FilterContracts();
+            if (e.Node.Tag != null)
+            {
+                List<CommonContract> contract =
+                    ListOfAllContracts.Where(p => p.PartnerId == Guid.Parse(e.Node.Tag.ToString())).ToList();
+                dgvContracts.DataSource = null;
+                dgvContracts.DataSource = contract;
+            }
+            else
+            {
+                FilterContracts();
+            }
+            
         }
     }
 }
