@@ -123,7 +123,7 @@ namespace DB3Client.Controls
             this.tabControlReports.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlReports.Location = new System.Drawing.Point(0, 0);
             this.tabControlReports.Name = "tabControlReports";
-            this.tabControlReports.SelectedIndex = 0;
+            this.tabControlReports.SelectedIndex = 1;
             this.tabControlReports.Size = new System.Drawing.Size(1236, 601);
             this.tabControlReports.TabIndex = 0;
             this.tabControlReports.UseSelectable = true;
@@ -209,6 +209,7 @@ namespace DB3Client.Controls
             this.pictureBox7.Size = new System.Drawing.Size(64, 64);
             this.pictureBox7.TabIndex = 0;
             this.pictureBox7.TabStop = false;
+            this.pictureBox7.Tag = "D0069D2C-7026-4890-BEA4-429079310B44";
             this.mlToolTp1.SetToolTip(this.pictureBox7, "sales_report");
             this.pictureBox7.Click += new System.EventHandler(this.pictureBox7_Click);
             this.pictureBox7.MouseEnter += new System.EventHandler(this.pictureBox7_MouseEnter);
@@ -223,6 +224,7 @@ namespace DB3Client.Controls
             this.pictureBox8.Size = new System.Drawing.Size(64, 64);
             this.pictureBox8.TabIndex = 1;
             this.pictureBox8.TabStop = false;
+            this.pictureBox8.Tag = "66FD2477-33A8-4234-AB8F-53495133FB29";
             this.pictureBox8.Click += new System.EventHandler(this.pictureBox8_Click);
             this.pictureBox8.MouseEnter += new System.EventHandler(this.pictureBox8_MouseEnter);
             this.pictureBox8.MouseLeave += new System.EventHandler(this.pictureBox8_MouseLeave);
@@ -327,6 +329,7 @@ namespace DB3Client.Controls
             this.pictureBox1.Size = new System.Drawing.Size(64, 64);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Tag = "D3112746-2E1B-4676-82FB-684B186F9AE9";
             this.mlToolTp1.SetToolTip(this.pictureBox1, "sales_diagram");
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             this.pictureBox1.MouseEnter += new System.EventHandler(this.pictureBox1_MouseEnter);
@@ -341,6 +344,7 @@ namespace DB3Client.Controls
             this.pictureBox2.Size = new System.Drawing.Size(64, 64);
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Tag = "A402B320-9296-4120-8B50-B80155C46255";
             this.mlToolTp1.SetToolTip(this.pictureBox2, "report_for_goods_movement");
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             this.pictureBox2.MouseEnter += new System.EventHandler(this.pictureBox2_MouseEnter);

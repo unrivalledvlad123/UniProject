@@ -69,6 +69,38 @@ namespace DB3Server.BusinessLogic
 
                         s.SoldItems.Add(i);
                     }
+                    WarehouseReceipt receipt = new WarehouseReceipt();
+                    receipt.PartnerId = s.BuyerId;
+                    receipt.OwnerId = s.SellerId;
+                    receipt.SaleId = s.SaleId;
+                    receipt.WarehouseReceiptId = NewGuid();
+
+                    receipt.WarehouseReceiptNumber = entities.WarehouseReceipts.DefaultIfEmpty().Max(p => p == null ? 0 : p.WarehouseReceiptNumber) + 1;
+
+                    Partner partner1 = entities.Partners.FirstOrDefault(p => p.PartnerId == s.BuyerId);
+
+                    if (partner1 != null)
+                    {
+                        receipt.BuyerAddress = partner1.Address;
+                        receipt.BuyerBulstat = partner1.Bulstat;
+                        receipt.BuyerCompanyName = partner1.CompanyName;
+                        receipt.BuyerVATNumber = partner1.VATNumber;
+                        MOL mol = entities.MOLs.FirstOrDefault(p => p.OwnerId == partner1.PartnerId);
+                        receipt.BuyerMol = mol != null ? $"{mol.FirstName} {mol.LastName}" : "";
+                        PartnerDiscount discount = entities.PartnerDiscounts.FirstOrDefault(p => p.PartnerType == partner1.PartnerType);
+                        if (discount != null) receipt.DiscountPercent = discount.Discount;
+                    }
+                    Owner owner1 = entities.Owners.First();
+                    receipt.OwnerAddress = owner1.Address;
+                   receipt.OwnerBulstat = owner1.Bulstat;
+                   receipt.OwnerCompanyName = owner1.CompanyName;
+                    receipt.OwnerVATNumber = owner1.VATNumber;
+                    MOL mol21 = entities.MOLs.FirstOrDefault(p => p.OwnerId == owner1.OwnerId && p.IsPrimary);
+                    if (mol21 != null)
+                    {
+                        receipt.OwnerMol = $"{mol21.FirstName} {mol21.LastName}";
+                    }
+                    s.WarehouseReceipt = receipt;
 
                     if (isWhole)
                     {

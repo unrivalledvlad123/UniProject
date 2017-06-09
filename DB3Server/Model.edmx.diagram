@@ -14,12 +14,10 @@
         <EntityTypeShape EntityType="Model.PurchasedItem" Width="1.5" PointX="9.5" PointY="3.375" />
         <EntityTypeShape EntityType="Model.Item" Width="1.5" PointX="11.75" PointY="5.125" />
         <EntityTypeShape EntityType="Model.PartnerItemMapping" Width="1.5" PointX="4.25" PointY="0.75" />
-        <EntityTypeShape EntityType="Model.User" Width="1.5" PointX="2" PointY="7.5" />
         <AssociationConnector Association="Model.FK_PartnerItemMapping_Item" />
         <AssociationConnector Association="Model.FK_PurchasedItem_Item1" />
         <AssociationConnector Association="Model.FK_SoldItem_Item1" />
         <AssociationConnector Association="Model.FK_WarehouseItems_Item" />
-        <AssociationConnector Association="Model.FK_Users_Owner1" />
         <EntityTypeShape EntityType="Model.Partner" Width="1.5" PointX="4.25" PointY="3.125" />
         <AssociationConnector Association="Model.FK_PartnerItemMapping_Partner" />
         <EntityTypeShape EntityType="Model.Invoice" Width="1.5" PointX="6.125" PointY="11.125" />
@@ -35,6 +33,8 @@
         <AssociationConnector Association="Model.FK_PurchasedItem_Purchase1" />
         <AssociationConnector Association="Model.FK_Sales_WarehouseReceipt" />
         <AssociationConnector Association="Model.FK_SoldItem_Sales1" />
+        <EntityTypeShape EntityType="Model.User" Width="1.5" PointX="1.75" PointY="7.5" />
+        <AssociationConnector Association="Model.FK_Users_Owner1" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

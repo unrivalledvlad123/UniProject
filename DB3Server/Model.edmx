@@ -176,7 +176,7 @@
           <Property Name="Role" Type="int" Nullable="false" />
           <Property Name="PasswordSalt" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="IsRestrictedUser" Type="bit" />
+          <Property Name="Permissions" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="WarehouseItems">
           <Key>
@@ -463,7 +463,6 @@
           <EntitySet Name="PurchasedItems" EntityType="Model.PurchasedItem" />
           <EntitySet Name="Items" EntityType="Model.Item" />
           <EntitySet Name="PartnerItemMappings" EntityType="Model.PartnerItemMapping" />
-          <EntitySet Name="Users" EntityType="Model.User" />
           <AssociationSet Name="FK_PartnerItemMapping_Item" Association="Model.FK_PartnerItemMapping_Item">
             <End Role="Item" EntitySet="Items" />
             <End Role="PartnerItemMapping" EntitySet="PartnerItemMappings" />
@@ -479,10 +478,6 @@
           <AssociationSet Name="FK_WarehouseItems_Item" Association="Model.FK_WarehouseItems_Item">
             <End Role="Item" EntitySet="Items" />
             <End Role="WarehouseItem" EntitySet="WarehouseItems" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Users_Owner1" Association="Model.FK_Users_Owner1">
-            <End Role="Owner" EntitySet="Owners" />
-            <End Role="User" EntitySet="Users" />
           </AssociationSet>
           <EntitySet Name="Partners" EntityType="Model.Partner" />
           <AssociationSet Name="FK_PartnerItemMapping_Partner" Association="Model.FK_PartnerItemMapping_Partner">
@@ -526,6 +521,11 @@
             <End Role="Sale" EntitySet="Sales" />
             <End Role="SoldItem" EntitySet="SoldItems" />
           </AssociationSet>
+          <EntitySet Name="Users" EntityType="Model.User" />
+          <AssociationSet Name="FK_Users_Owner1" Association="Model.FK_Users_Owner1">
+            <End Role="Owner" EntitySet="Owners" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="sysdiagram">
           <Key>
@@ -560,9 +560,9 @@
           <Property Name="Bank" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="SWIFTCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IBAN" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Users" Relationship="Model.FK_Users_Owner1" FromRole="Owner" ToRole="User" />
           <NavigationProperty Name="Purchases" Relationship="Model.FK_Purchase_Owner" FromRole="Owner" ToRole="Purchase" />
           <NavigationProperty Name="Sales" Relationship="Model.FK_Sales_Owner" FromRole="Owner" ToRole="Sale" />
+          <NavigationProperty Name="Users" Relationship="Model.FK_Users_Owner1" FromRole="Owner" ToRole="User" />
         </EntityType>
         <EntityType Name="SoldItem">
           <Key>
@@ -634,21 +634,6 @@
           <NavigationProperty Name="Item" Relationship="Model.FK_PartnerItemMapping_Item" FromRole="PartnerItemMapping" ToRole="Item" />
           <NavigationProperty Name="Partner" Relationship="Model.FK_PartnerItemMapping_Partner" FromRole="PartnerItemMapping" ToRole="Partner" />
         </EntityType>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="Username" />
-          </Key>
-          <Property Name="Username" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="OwnerId" Type="Guid" Nullable="false" />
-          <Property Name="Password" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="AssignedTo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="RegisteredAt" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Role" Type="Int32" Nullable="false" />
-          <Property Name="PasswordSalt" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UserId" Type="Guid" Nullable="false" />
-          <Property Name="IsRestrictedUser" Type="Boolean" />
-          <NavigationProperty Name="Owner" Relationship="Model.FK_Users_Owner1" FromRole="User" ToRole="Owner" />
-        </EntityType>
         <Association Name="FK_PartnerItemMapping_Item">
           <End Type="Model.Item" Role="Item" Multiplicity="1" />
           <End Type="Model.PartnerItemMapping" Role="PartnerItemMapping" Multiplicity="*" />
@@ -694,18 +679,6 @@
             </Principal>
             <Dependent Role="WarehouseItem">
               <PropertyRef Name="ItemId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Users_Owner1">
-          <End Type="Model.Owner" Role="Owner" Multiplicity="1" />
-          <End Type="Model.User" Role="User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Owner">
-              <PropertyRef Name="OwnerId" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="OwnerId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -925,6 +898,33 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerId" Type="Guid" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="AssignedTo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="RegisteredAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Role" Type="Int32" Nullable="false" />
+          <Property Name="PasswordSalt" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="Permissions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Owner" Relationship="Model.FK_Users_Owner1" FromRole="User" ToRole="Owner" />
+        </EntityType>
+        <Association Name="FK_Users_Owner1">
+          <End Type="Model.Owner" Role="Owner" Multiplicity="1" />
+          <End Type="Model.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Owner">
+              <PropertyRef Name="OwnerId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="OwnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1033,21 +1033,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="Model.User">
-              <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="IsRestrictedUser" ColumnName="IsRestrictedUser" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
-                <ScalarProperty Name="Role" ColumnName="Role" />
-                <ScalarProperty Name="RegisteredAt" ColumnName="RegisteredAt" />
-                <ScalarProperty Name="AssignedTo" ColumnName="AssignedTo" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Partners">
             <EntityTypeMapping TypeName="Model.Partner">
               <MappingFragment StoreEntitySet="Partner">
@@ -1146,6 +1131,21 @@
                 <ScalarProperty Name="SaleId" ColumnName="SaleId" />
                 <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
                 <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Model.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Permissions" ColumnName="Permissions" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="RegisteredAt" ColumnName="RegisteredAt" />
+                <ScalarProperty Name="AssignedTo" ColumnName="AssignedTo" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -43,7 +43,11 @@ namespace DB3Server.Controllers
             return BLAuthenticationProvider.DeleteUser(userId);
         }
 
-
+        [System.Web.Http.Route("api/users/updatepermissions/{userId}")]
+        public bool PostUpdateUserPermissions(Guid userId, [FromBody] string newPerms)
+        {
+            return BLAuthenticationProvider.UpdateUserPermissions(userId,newPerms);
+        }
     }
 
 }

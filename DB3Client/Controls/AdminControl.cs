@@ -22,10 +22,15 @@ using Newtonsoft.Json.Linq;
 
 namespace DB3Client.Controls
 {
-    [Permission(PermissionId = "DCBB98FB-5B18-4395-AF8C-B332C15A9151",PermissionName = "add_new_user", PermissionLocation = "manage_users",PermissionControlRoot = "administration")]
-    [Permission(PermissionId = "DCBB98FB-5B18-4395-AF8C-B332C13291E1", PermissionName = "edit_user", PermissionLocation = "manage_users", PermissionControlRoot = "administration")]
-    [Permission(PermissionId = "DCBB98FB-5B18-4395-AF8C-B332C13291E1", PermissionName = "delete_user", PermissionLocation = "manage_users", PermissionControlRoot = "administration")]
-    [Permission(PermissionId = "DCBB98FB-5B18-4395-AF8C-B332C13291E1", PermissionName = "can_what_the_fuck?", PermissionLocation = "admin_contorol41", PermissionControlRoot = "admin_control")]
+    [Permission(PermissionId = "B762587D-D868-456A-BB05-547D7C292DD5", PermissionName = "add_new_user", PermissionLocation = "manage_users",PermissionControlRoot = "administration")]
+    [Permission(PermissionId = "6A1D1F0D-7742-4AC7-901F-D1ED22F05DD7", PermissionName = "edit_company_info", PermissionLocation = "manage_company", PermissionControlRoot = "administration")]
+    [Permission(PermissionId = "2A1F186A-1CC5-4830-BDE9-4E489753C297", PermissionName = "add_mol", PermissionLocation = "manage_company", PermissionControlRoot = "administration")]
+    [Permission(PermissionId = "E008B27F-52FA-4D1A-8C35-1570F1EBE6DC", PermissionName = "make_primery", PermissionLocation = "manage_company", PermissionControlRoot = "administration")]
+    [Permission(PermissionId = "3374E66E-031E-4C5A-A42E-4ECE01E0B439", PermissionName = "remove_primery", PermissionLocation = "manage_company", PermissionControlRoot = "administration")]
+    [Permission(PermissionId = "B97FE6B2-CFD4-4656-91FB-FAC579798A93", PermissionName = "vat_settings", PermissionLocation = "settings_tab", PermissionControlRoot = "administration")]
+    [Permission(PermissionId = "B5EA5576-4597-47CD-AA49-F8C83ADFED04", PermissionName = "directory_settings", PermissionLocation = "settings_tab", PermissionControlRoot = "administration")]
+    [Permission(PermissionId = "E395707A-7A50-4E82-801D-6CBB8931A8A2", PermissionName = "promotion_settings", PermissionLocation = "settings_tab", PermissionControlRoot = "administration")]
+    [Permission(PermissionId = "3DBBFE0B-F340-4709-BB76-C60E0871032A", PermissionName = "general_settings", PermissionLocation = "settings_tab", PermissionControlRoot = "administration")]
     public partial class AdminControl : MetroFramework.Controls.MetroUserControl
     {
         List<TreeNode> allNodes = new List<TreeNode>();
@@ -33,7 +38,7 @@ namespace DB3Client.Controls
         private static List<CommonMol> AllMols;
         private static List<CommonMol> NonPrimeryMols = new List<CommonMol>();
         private static CommonMol PrimeryMol = new CommonMol();
-
+       
 
         public AdminControl()
         {
@@ -305,16 +310,36 @@ namespace DB3Client.Controls
 
         public void CheckPermission()
         {
-            allNodes.Clear();
-            List<KeyValuePair<Guid,bool>> userPermissions = new List<KeyValuePair<Guid, bool>>();
-            userPermissions.Add(new KeyValuePair<Guid, bool>(Guid.Parse("DCBB98FB-5B18-4395-AF8C-B332C15A9151"),true ));// get from DB 
-            TreeNode oMainNode = treeViewPermissions.Nodes[0];
-            GetNodesRecursive(oMainNode);
-            foreach (TreeNode node in allNodes)
+
+            if (dgvUsers.SelectedRows.Count == 1 && dgvUsers.SelectedRows[0].DataBoundItem != null)
             {
-                if (node.Tag == null) continue;
-                KeyValuePair<Guid, bool> sincedRow = userPermissions.FirstOrDefault(p => p.Key == Guid.Parse(node.Tag.ToString()));
-                node.Checked = sincedRow.Key != Guid.Empty && sincedRow.Value;
+                CommonUser selectedUser = (CommonUser) dgvUsers.SelectedRows[0].DataBoundItem;
+                allNodes.Clear();
+                Dictionary<string, bool> userPermission = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, bool>>(selectedUser.Permissions);
+                foreach (TreeNode node in treeViewPermissions.Nodes)
+                {
+                    GetNodesRecursive(node);
+                }
+
+                foreach (TreeNode node in allNodes)
+                {
+                    if (node.Tag == null) continue;
+                    if (userPermission == null)
+                    {
+                        node.Checked = false;
+                    }
+                    else
+                    {
+                        if (userPermission.ContainsKey(node.Tag.ToString()))
+                        {
+                            node.Checked = userPermission[node.Tag.ToString()];
+                        }
+                        else
+                        {
+                            node.Checked = false;
+                        }
+                    }
+                }
             }
         }
 
@@ -335,17 +360,28 @@ namespace DB3Client.Controls
 
         private void dgvUsers_SelectionChanged(object sender, EventArgs e)
         {
+            
             if (dgvUsers.SelectedRows.Count != 1)
             {
                 btnEditUser.Enabled = false;
                 btnDeleteUser.Enabled = false;
+                btnSavePermissions.Enabled = false;
             }
             else
             {
                 btnEditUser.Enabled = true;
                 btnDeleteUser.Enabled = true;
+                btnSavePermissions.Enabled = true;
             }
             CheckPermission();
+            if (dgvUsers.SelectedRows.Count ==1 && dgvUsers.SelectedRows[0]!= null)
+            {
+                CommonUser user = (CommonUser)dgvUsers.SelectedRows[0].DataBoundItem;
+                if (user.UserId == DataHolder.CurrnetUserId)
+                {
+                    btnSavePermissions.Enabled = false;
+                }
+            }
         }
 
         private void btnAddNewUser_Click(object sender, EventArgs e)
@@ -402,18 +438,41 @@ namespace DB3Client.Controls
             dgvUsers.DataSource = !string.IsNullOrWhiteSpace(tbSearchUser.Text) ? AllUsers.Where(p => p.Username.Contains(tbSearchUser.Text)).ToList() : AllUsers;
         }
 
-        private void btnSavePermissions_Click(object sender, EventArgs e)
+        private async void btnSavePermissions_Click(object sender, EventArgs e)
         {
-            List<KeyValuePair<Guid, bool>> newPermissions = new List<KeyValuePair<Guid, bool>>();
-            foreach (TreeNode node in allNodes)
+            if (dgvUsers.SelectedRows.Count == 1 && dgvUsers.SelectedRows[0] != null)
             {
-                if (node.Tag == null) continue;
-                KeyValuePair<Guid, bool> element = new KeyValuePair<Guid, bool>(Guid.Parse(node.Tag.ToString()), node.Checked);
-                newPermissions.Add(element);
-            }
+                CommonUser selectedItem = (CommonUser) dgvUsers.SelectedRows[0].DataBoundItem;
+                Dictionary<string, bool> newPermissions = new Dictionary<string, bool>();
+                foreach (TreeNode node in allNodes)
+                {
+                    if (node.Tag == null) continue;
+                    newPermissions.Add(node.Tag.ToString(), node.Checked);
+                }
 
-            //add save to DB
+                var output = Newtonsoft.Json.JsonConvert.SerializeObject(newPermissions);
+                bool success = await SAUsers.PostUpdateUserPermissions(selectedItem.UserId, output);
+
+                if (success)
+                {
+                    labelError.Text = "success_error_settings";
+                    labelError.ForeColor = Color.Green;
+                    labelError.Visible = true;
+                    LoadData();
+                }
+                else
+                {
+                    labelError.Text = "fail_error_settings";
+                    labelError.ForeColor = Color.Red;
+                    labelError.Visible = true;
+                }
+            }
         }
+        private void dgvUsers_Click(object sender, EventArgs e)
+        {
+            labelError.Visible = false;
+        }
+
         #endregion
 
         #region // < ========== Manage Company Events ============ > //
@@ -598,11 +657,12 @@ namespace DB3Client.Controls
 
 
 
-        #endregion
 
         #endregion
 
+        #endregion
 
+        
     }
 
 }

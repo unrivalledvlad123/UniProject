@@ -20,8 +20,10 @@ using DB3Client.ServiceAccess;
 
 namespace DB3Client.Controls
 {
-    [Permission(PermissionId = "DCBB48FB-5B18-4395-AF8C-B332C15A91E1", PermissionName = "test", PermissionLocation = "report_control", PermissionControlRoot = "report_control")]
-    [Permission(PermissionId = "DCBB48FB-5B18-4335-AF8C-B332C15A91E1", PermissionName = "test", PermissionLocation = "randomForm", PermissionControlRoot = "report_control")]
+    [Permission(PermissionId = "D0069D2C-7026-4890-BEA4-429079310B44", PermissionName = "sales_report", PermissionLocation = "tab_reports", PermissionControlRoot = "reports")]
+    [Permission(PermissionId = "66FD2477-33A8-4234-AB8F-53495133FB29", PermissionName = "documents_report", PermissionLocation = "tab_reports", PermissionControlRoot = "reports")]
+    [Permission(PermissionId = "D3112746-2E1B-4676-82FB-684B186F9AE9", PermissionName = "sales_diagram", PermissionLocation = "tab_diagrams", PermissionControlRoot = "reports")]
+    [Permission(PermissionId = "A402B320-9296-4120-8B50-B80155C46255", PermissionName = "report_for_goods_movement", PermissionLocation = "tab_diagrams", PermissionControlRoot = "reports")]
     public partial class ReportsControl : MetroFramework.Controls.MetroUserControl
     {
 
@@ -30,6 +32,7 @@ namespace DB3Client.Controls
         {
             InitializeComponent();
             tabControlReports.SelectedTab = metroTabPage1;
+            Utils.AjustUserAccess(this);
 
         }
 

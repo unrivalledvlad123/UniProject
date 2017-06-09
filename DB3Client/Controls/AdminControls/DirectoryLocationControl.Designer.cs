@@ -33,6 +33,7 @@
             this.btnSave = new Common.Forms.Base.MLButton();
             this.ff = new Common.Forms.Base.MLLabel();
             this.tbPdfSaveLocation = new Common.Forms.Base.MLTextBox();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.mlGroupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -109,6 +110,7 @@
             this.tbPdfSaveLocation.UseSelectable = true;
             this.tbPdfSaveLocation.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.tbPdfSaveLocation.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.tbPdfSaveLocation.Click += new System.EventHandler(this.tbPdfSaveLocation_Click);
             // 
             // DirectoryLocationControl
             // 
@@ -130,5 +132,6 @@
         private Common.Forms.Base.MLGroupBox mlGroupBox1;
         private Common.Forms.Base.MLButton btnSave;
         private Common.Forms.Base.MLErrorLabel labelError;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
 }

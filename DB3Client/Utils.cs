@@ -15,20 +15,25 @@ namespace DB3Client
     {
         public static void AjustUserAccess(Control rootControl)
         {
-            List<Control> allcontrols = GetAllButtonControls(rootControl).ToList();
-            List<KeyValuePair<Guid, bool>> userPermissions = new List<KeyValuePair<Guid, bool>>();
-            userPermissions.Add(new KeyValuePair<Guid, bool>(Guid.Parse("DCBB98FB-5B18-4395-AF8C-B332C15A9151"), true)); // get from DB 
+            List<Control> allcontrols = GetAllControls(rootControl).ToList();
+            Dictionary<string, bool> userPermission = JsonConvert.DeserializeObject<Dictionary<string, bool>>(DataHolder.UserPermissions);
             foreach (var control in allcontrols)
             {
                 if (control.Tag == null) continue;
-                KeyValuePair<Guid, bool> sincedRow = userPermissions.FirstOrDefault(p => p.Key == Guid.Parse(control.Tag.ToString()));
-                if (sincedRow.Key != Guid.Empty)
+                if (userPermission == null)
                 {
-                    control.Enabled = sincedRow.Value;
+                    control.Enabled = false;
                 }
                 else
                 {
-                    control.Enabled = false;
+                    if (userPermission.ContainsKey(control.Tag.ToString()))
+                    {
+                        control.Enabled = userPermission[control.Tag.ToString()];
+                    }
+                    else
+                    {
+                        control.Enabled = false;
+                    }
                 }
             }
         }
@@ -53,13 +58,13 @@ namespace DB3Client
             return allAttributes;
         }
 
-        public static IEnumerable<Control> GetAllButtonControls(Control container)
+        public static IEnumerable<Control> GetAllControls(Control container)
         {
             List<Control> controlList = new List<Control>();
             foreach (Control c in container.Controls)
             {
-                controlList.AddRange(GetAllButtonControls(c));
-                if (c is Button)
+                controlList.AddRange(GetAllControls(c));
+                if (c != null)
                     controlList.Add(c);
             }
             return controlList;
