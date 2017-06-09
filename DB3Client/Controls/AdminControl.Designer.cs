@@ -136,7 +136,7 @@ namespace DB3Client.Controls
             this.tabControlAdmin.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlAdmin.Location = new System.Drawing.Point(0, 0);
             this.tabControlAdmin.Name = "tabControlAdmin";
-            this.tabControlAdmin.SelectedIndex = 1;
+            this.tabControlAdmin.SelectedIndex = 0;
             this.tabControlAdmin.Size = new System.Drawing.Size(932, 560);
             this.tabControlAdmin.TabIndex = 0;
             this.tabControlAdmin.UseSelectable = true;
@@ -248,6 +248,7 @@ namespace DB3Client.Controls
             this.treeViewPermissions.Name = "treeViewPermissions";
             this.treeViewPermissions.Size = new System.Drawing.Size(265, 422);
             this.treeViewPermissions.TabIndex = 5;
+            this.treeViewPermissions.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeViewPermissions_AfterCheck);
             // 
             // tableLayoutPanel10
             // 
