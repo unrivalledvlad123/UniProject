@@ -18,12 +18,17 @@ using DB3Client.Forms;
 using DB3Client.Forms.AdminForms;
 using DB3Client.ServiceAccess;
 using MetroFramework.Properties;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace DB3Client.Controls
 {
     [Permission(PermissionId = "B762587D-D868-456A-BB05-547D7C292DD5", PermissionName = "add_new_user", PermissionLocation = "manage_users",PermissionControlRoot = "administration")]
+    [Permission(PermissionId = "AEE0DF0D-94AE-488D-8F50-E5185BF56499", PermissionName = "edit_user", PermissionLocation = "manage_users", PermissionControlRoot = "administration")]
+    [Permission(PermissionId = "99CEE3E2-6AD4-4A3C-8722-3363F98218A9", PermissionName = "delete_user", PermissionLocation = "manage_users", PermissionControlRoot = "administration")]
     [Permission(PermissionId = "6A1D1F0D-7742-4AC7-901F-D1ED22F05DD7", PermissionName = "edit_company_info", PermissionLocation = "manage_company", PermissionControlRoot = "administration")]
+    [Permission(PermissionId = "79DC9C51-F2F9-4FA6-90B5-B762CAFE2A15", PermissionName = "edit_mol", PermissionLocation = "manage_company", PermissionControlRoot = "administration")]
+    [Permission(PermissionId = "E8962FA8-C653-49BB-AAA7-8ACA9D3E1A11", PermissionName = "delete_mol", PermissionLocation = "manage_company", PermissionControlRoot = "administration")]
     [Permission(PermissionId = "2A1F186A-1CC5-4830-BDE9-4E489753C297", PermissionName = "add_mol", PermissionLocation = "manage_company", PermissionControlRoot = "administration")]
     [Permission(PermissionId = "E008B27F-52FA-4D1A-8C35-1570F1EBE6DC", PermissionName = "make_primery", PermissionLocation = "manage_company", PermissionControlRoot = "administration")]
     [Permission(PermissionId = "3374E66E-031E-4C5A-A42E-4ECE01E0B439", PermissionName = "remove_primery", PermissionLocation = "manage_company", PermissionControlRoot = "administration")]
@@ -360,7 +365,7 @@ namespace DB3Client.Controls
 
         private void dgvUsers_SelectionChanged(object sender, EventArgs e)
         {
-            
+
             if (dgvUsers.SelectedRows.Count != 1)
             {
                 btnEditUser.Enabled = false;
@@ -373,6 +378,34 @@ namespace DB3Client.Controls
                 btnDeleteUser.Enabled = true;
                 btnSavePermissions.Enabled = true;
             }
+            Dictionary<string, bool> userPermission = JsonConvert.DeserializeObject<Dictionary<string, bool>>(DataHolder.UserPermissions);
+            if (userPermission != null)
+            {
+                if (userPermission.ContainsKey(btnEditUser.Tag.ToString()))
+                {
+                    if (dgvUsers.SelectedRows.Count == 1)
+                    {
+                        btnEditUser.Enabled = userPermission[btnEditUser.Tag.ToString()];
+                    }
+                    else
+                    {
+                        btnEditUser.Enabled = false;
+                    }
+
+                }
+                if (userPermission.ContainsKey(btnDeleteUser.Tag.ToString()))
+                {
+                    if (dgvUsers.SelectedRows.Count == 1)
+                    {
+                        btnDeleteUser.Enabled = userPermission[btnDeleteUser.Tag.ToString()];
+                    }
+                    else
+                    {
+                        btnDeleteUser.Enabled = false;
+                    }
+                }
+            }
+
             CheckPermission();
             if (dgvUsers.SelectedRows.Count ==1 && dgvUsers.SelectedRows[0]!= null)
             {
@@ -506,6 +539,47 @@ namespace DB3Client.Controls
             {
                 btnEditMol.Enabled = true;
                 btnDeleteMol.Enabled = true;
+            }
+            Dictionary<string, bool> userPermission = JsonConvert.DeserializeObject<Dictionary<string, bool>>(DataHolder.UserPermissions);
+            if (userPermission != null)
+            {
+                if (userPermission.ContainsKey(btnEditMol.Tag.ToString()))
+                {
+                    if (dgvMol.SelectedRows.Count == 1)
+                    {
+                        btnEditMol.Enabled = userPermission[btnEditMol.Tag.ToString()];
+                    }
+                    else
+                    {
+                        btnEditMol.Enabled = false;
+                    }
+
+                }
+                else
+                {
+                    if (dgvMol.SelectedRows.Count == 1)
+                    {
+                        btnEditMol.Enabled = false;
+                    }
+                }
+                if (userPermission.ContainsKey(btnDeleteMol.Tag.ToString()))
+                {
+                    if (dgvMol.SelectedRows.Count == 1)
+                    {
+                        btnDeleteMol.Enabled = userPermission[btnDeleteMol.Tag.ToString()];
+                    }
+                    else
+                    {
+                        btnDeleteMol.Enabled = false;
+                    }
+                }
+                else
+                {
+                    if (dgvMol.SelectedRows.Count == 1)
+                    {
+                        btnDeleteMol.Enabled = false;
+                    }
+                }
             }
         }
 
