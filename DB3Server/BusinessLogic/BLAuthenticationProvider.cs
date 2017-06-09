@@ -32,7 +32,7 @@ namespace DB3Server.BusinessLogic
                 user.OwnerId = dbUser.OwnerId;
                 user.RegisteredAt = dbUser.RegisteredAt;
                 user.UserId = dbUser.UserId;
-                user.IsRestrictedUser = dbUser.IsRestrictedUser ?? true;
+                user.Permissions = dbUser.Permissions;
                
 
                 return user;
@@ -56,7 +56,7 @@ namespace DB3Server.BusinessLogic
                 user.Username = dbUser.Username;
                 Enums.UserRoles role = (Enums.UserRoles)dbUser.Role;
                 user.RoleString = role.ToString();
-                user.IsRestrictedUser = dbUser.IsRestrictedUser ?? true;
+                user.Permissions = dbUser.Permissions;
                 users.Add(user);
             }
             return users;
@@ -94,7 +94,7 @@ namespace DB3Server.BusinessLogic
             newUser.AssignedTo = user.AssignedTo;
             newUser.Role = user.Role;
             newUser.UserId = Guid.NewGuid();
-            newUser.IsRestrictedUser = user.IsRestrictedUser;
+            newUser.Permissions = "";
             entities.Users.Add(newUser);
             entities.SaveChanges();
             return true;
@@ -107,7 +107,6 @@ namespace DB3Server.BusinessLogic
             if (user == null) return false;
             user.Role = oldUser.Role;
             user.AssignedTo = oldUser.AssignedTo;
-            user.IsRestrictedUser = oldUser.IsRestrictedUser;
             if (!string.IsNullOrEmpty(oldUser.Password))
             {
                 string newSalt = GenerateSalt();
@@ -121,12 +120,27 @@ namespace DB3Server.BusinessLogic
             entry.Property(e => e.AssignedTo).IsModified = true;
             entry.Property(e => e.Password).IsModified = true;
             entry.Property(e => e.PasswordSalt).IsModified = true;
-            entry.Property(e => e.IsRestrictedUser).IsModified = true;
             entities.SaveChanges();
             return true;
         }
 
-        
+        internal static bool UpdateUserPermissions(Guid userId, string newPerms)
+        {
+            DatabaseEntities entities = new DatabaseEntities();
+            User user = entities.Users.FirstOrDefault(p => p.UserId == userId);
+            if (user != null)
+            {
+                user.Permissions = newPerms;
+                entities.Users.Attach(user);
+                var entry = entities.Entry(user);
+                entry.Property(e => e.Permissions).IsModified = true;
+                entities.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+
+
         #endregion
 
         #region // <===== Util methods ======> //

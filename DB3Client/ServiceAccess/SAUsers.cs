@@ -151,6 +151,34 @@ namespace DB3Client.ServiceAccess
             return users;
         }
 
+        public static async Task<bool> PostUpdateUserPermissions(Guid userId, string newPerms)
+        {
+            bool success = false;
+            HttpResponseMessage response;
+
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(DataHolder.ServerAddress);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic");
+
+                try
+                {
+                    response = await client.PostAsJsonAsync("api/users/updatepermissions/" + userId , newPerms);
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw new Exception(ex.InnerException.Message);
+                }
+
+                if (response.IsSuccessStatusCode)
+                {
+                    success = await response.Content.ReadAsAsync<bool>();
+                }
+            }
+
+            return success;
+        }
+
 
 
     }

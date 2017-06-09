@@ -82,7 +82,7 @@ namespace DB3Client.Controls.AdminControls
                     else
                     {
                         labelError.Text = "fail_error_settings";
-                        labelError.ForeColor = Color.Green;
+                        labelError.ForeColor = Color.Red;
                         labelError.Visible = true;
 
                     }

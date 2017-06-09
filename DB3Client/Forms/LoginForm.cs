@@ -60,7 +60,7 @@ namespace DB3Client.Forms
                         DataHolder.OwnerId = user.OwnerId;
                         DataHolder.Username = user.Username;
                         DataHolder.UserType = user.Role;
-                        DataHolder.IsRestricted = user.IsRestrictedUser;
+                        DataHolder.UserPermissions = user.Permissions;
                         DataHolder.Settings = await SASettings.getUserSettings();
                         List<CommonMol> allMols = await SAOwner.getAllMols(user.OwnerId);
                         foreach (var mol in allMols)
@@ -91,7 +91,7 @@ namespace DB3Client.Forms
                             DataHolder.UserType = 99;
                             DataHolder.UserCulture = new CultureInfo("en-US");
                             DataHolder.PrimeryMol = null;
-                            DataHolder.IsRestricted = true;
+                            DataHolder.UserPermissions = "";
                             DataHolder.Settings = new CommonSettings();
                         }
                     }

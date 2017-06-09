@@ -26,15 +26,15 @@ namespace Common
         private static string serverAddress;
         private static CommonMol primeryMol;
         private static CommonSettings settings;
-        private static bool isRestricted;
+        private static string permissions;
 
         #endregion
 
         #region // <====== Public Fields =======> //
-        public static bool IsRestricted
+        public static string UserPermissions
         {
-            get { return isRestricted; }
-            set { isRestricted = value; }
+            get { return permissions; }
+            set { permissions = value; }
         }
 
         public static Guid OwnerId
