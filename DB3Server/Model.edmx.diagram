@@ -20,21 +20,23 @@
         <AssociationConnector Association="Model.FK_WarehouseItems_Item" />
         <EntityTypeShape EntityType="Model.Partner" Width="1.5" PointX="4.25" PointY="3.125" />
         <AssociationConnector Association="Model.FK_PartnerItemMapping_Partner" />
-        <EntityTypeShape EntityType="Model.Invoice" Width="1.5" PointX="6.125" PointY="11.125" />
         <EntityTypeShape EntityType="Model.PartnerDiscount" Width="1.5" PointX="7.25" PointY="0.75" />
         <EntityTypeShape EntityType="Model.Purchase" Width="1.5" PointX="7.25" PointY="3.25" />
-        <EntityTypeShape EntityType="Model.Sale" Width="1.5" PointX="7.25" PointY="6.375" />
-        <EntityTypeShape EntityType="Model.WarehouseReceipt" Width="2.25" PointX="8.125" PointY="11.125" />
-        <AssociationConnector Association="Model.FK_Sales_Invoice" />
         <AssociationConnector Association="Model.FK_Purchase_Owner" />
-        <AssociationConnector Association="Model.FK_Sales_Owner" />
         <AssociationConnector Association="Model.FK_Purchase_Partner1" />
-        <AssociationConnector Association="Model.FK_Sales_Partner1" />
         <AssociationConnector Association="Model.FK_PurchasedItem_Purchase1" />
-        <AssociationConnector Association="Model.FK_Sales_WarehouseReceipt" />
-        <AssociationConnector Association="Model.FK_SoldItem_Sales1" />
         <EntityTypeShape EntityType="Model.User" Width="1.5" PointX="1.75" PointY="7.5" />
         <AssociationConnector Association="Model.FK_Users_Owner1" />
+        <EntityTypeShape EntityType="Model.Counter" Width="1.5" PointX="5.5" PointY="11.5" />
+        <EntityTypeShape EntityType="Model.Document" Width="1.5" PointX="7.25" PointY="10.625" />
+        <EntityTypeShape EntityType="Model.DocumentTypeCounter" Width="1.5" PointX="5.5" PointY="14" />
+        <EntityTypeShape EntityType="Model.Sale" Width="1.5" PointX="7.25" PointY="7.125" />
+        <AssociationConnector Association="Model.FK_DocumentTypeCounter_Counter" />
+        <AssociationConnector Association="Model.FK_Documents_DocumentTypeCounter" />
+        <AssociationConnector Association="Model.FK_Sales_Invoice" />
+        <AssociationConnector Association="Model.FK_Sales_Owner" />
+        <AssociationConnector Association="Model.FK_Sales_Partner1" />
+        <AssociationConnector Association="Model.FK_SoldItem_Sales1" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
