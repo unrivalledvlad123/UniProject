@@ -14,12 +14,12 @@ namespace DB3Server.Controllers
         [System.Web.Http.Route("api/sales/create-direct")]
         public CommonSale PostCreateDirectSale([FromBody]CommonSale sale)
         {
-            return BLSales.CreateSale(sale);
+            return BLSales.CreateSale(sale,2);
         }
         [System.Web.Http.Route("api/sales/create-whole")]
         public CommonSale PostCreateWholeSale([FromBody]CommonSale sale)
         {
-            return BLSales.CreateSale(sale,true);
+            return BLSales.CreateSale(sale,2,true);
         }
         [System.Web.Http.Route("api/sales/list/{search?}")]
         public List<CommonSale> GetAllSales(String search = "")

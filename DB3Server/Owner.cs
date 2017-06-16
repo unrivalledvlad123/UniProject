@@ -18,8 +18,8 @@ namespace DB3Server
         public Owner()
         {
             this.Purchases = new HashSet<Purchase>();
-            this.Sales = new HashSet<Sale>();
             this.Users = new HashSet<User>();
+            this.Sales = new HashSet<Sale>();
         }
     
         public System.Guid OwnerId { get; set; }
@@ -36,8 +36,8 @@ namespace DB3Server
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Purchase> Purchases { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sale> Sales { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<User> Users { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Sale> Sales { get; set; }
     }
 }

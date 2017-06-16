@@ -5,7 +5,16 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Invoice">
+        <EntityType Name="Counter">
+          <Key>
+            <PropertyRef Name="CounterId" />
+          </Key>
+          <Property Name="CounterId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CurrentNumber" Type="int" />
+          <Property Name="StartNumber" Type="int" />
+          <Property Name="EndNumber" Type="int" />
+        </EntityType>
+        <EntityType Name="Documents">
           <Key>
             <PropertyRef Name="InvoiceId" />
           </Key>
@@ -28,6 +37,15 @@
           <Property Name="BuyerMol" Type="varchar" MaxLength="250" />
           <Property Name="OwnerMol" Type="varchar" MaxLength="250" />
           <Property Name="DiscountPercent" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="DocumentType" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DocumentTypeCounter">
+          <Key>
+            <PropertyRef Name="DocumentType" />
+          </Key>
+          <Property Name="DocumentType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CounterId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DocumentName" Type="varchar" MaxLength="150" Nullable="false" />
         </EntityType>
         <EntityType Name="Item">
           <Key>
@@ -140,9 +158,8 @@
           <Property Name="SellerId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Date" Type="datetime" Nullable="false" />
           <Property Name="Type" Type="int" Nullable="false" />
-          <Property Name="InvoiceId" Type="uniqueidentifier" />
+          <Property Name="DocumentId" Type="uniqueidentifier" />
           <Property Name="PaymentCompleted" Type="bit" Nullable="false" />
-          <Property Name="WarehouseReceiptId" Type="uniqueidentifier" />
         </EntityType>
         <EntityType Name="SoldItem">
           <Key>
@@ -186,27 +203,30 @@
           <Property Name="Quantity" Type="int" />
           <Property Name="SellingPriceCent" Type="int" />
         </EntityType>
-        <EntityType Name="WarehouseReceipt">
-          <Key>
-            <PropertyRef Name="WarehouseReceiptId" />
-          </Key>
-          <Property Name="OwnerId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="PartnerId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="SaleId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="WarehouseReceiptId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="WarehouseReceiptNumber" Type="int" Nullable="false" />
-          <Property Name="BuyerCompanyName" Type="varchar" MaxLength="250" />
-          <Property Name="BuyerAddress" Type="varchar" MaxLength="250" />
-          <Property Name="BuyerVATNumber" Type="varchar" MaxLength="50" />
-          <Property Name="BuyerBulstat" Type="varchar" MaxLength="50" />
-          <Property Name="OwnerCompanyName" Type="varchar" MaxLength="200" />
-          <Property Name="OwnerAddress" Type="varchar" MaxLength="250" />
-          <Property Name="OwnerVATNumber" Type="varchar" MaxLength="50" />
-          <Property Name="OwnerBulstat" Type="varchar" MaxLength="50" />
-          <Property Name="BuyerMol" Type="varchar" MaxLength="250" />
-          <Property Name="OwnerMol" Type="varchar" MaxLength="250" />
-          <Property Name="DiscountPercent" Type="decimal" Precision="18" Scale="2" />
-        </EntityType>
+        <Association Name="FK_Documents_DocumentTypeCounter">
+          <End Role="DocumentTypeCounter" Type="Self.DocumentTypeCounter" Multiplicity="1" />
+          <End Role="Documents" Type="Self.Documents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DocumentTypeCounter">
+              <PropertyRef Name="DocumentType" />
+            </Principal>
+            <Dependent Role="Documents">
+              <PropertyRef Name="DocumentType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DocumentTypeCounter_Counter">
+          <End Role="Counter" Type="Self.Counter" Multiplicity="1" />
+          <End Role="DocumentTypeCounter" Type="Self.DocumentTypeCounter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Counter">
+              <PropertyRef Name="CounterId" />
+            </Principal>
+            <Dependent Role="DocumentTypeCounter">
+              <PropertyRef Name="CounterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_PartnerItemMapping_Item">
           <End Role="Item" Type="Self.Item" Multiplicity="1" />
           <End Role="PartnerItemMapping" Type="Self.PartnerItemMapping" Multiplicity="*" />
@@ -280,14 +300,14 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Sales_Invoice">
-          <End Role="Invoice" Type="Self.Invoice" Multiplicity="0..1" />
+          <End Role="Documents" Type="Self.Documents" Multiplicity="0..1" />
           <End Role="Sales" Type="Self.Sales" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Invoice">
+            <Principal Role="Documents">
               <PropertyRef Name="InvoiceId" />
             </Principal>
             <Dependent Role="Sales">
-              <PropertyRef Name="InvoiceId" />
+              <PropertyRef Name="DocumentId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -312,18 +332,6 @@
             </Principal>
             <Dependent Role="Sales">
               <PropertyRef Name="BuyerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Sales_WarehouseReceipt">
-          <End Role="WarehouseReceipt" Type="Self.WarehouseReceipt" Multiplicity="0..1" />
-          <End Role="Sales" Type="Self.Sales" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WarehouseReceipt">
-              <PropertyRef Name="WarehouseReceiptId" />
-            </Principal>
-            <Dependent Role="Sales">
-              <PropertyRef Name="WarehouseReceiptId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -376,7 +384,9 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="ModelStoreContainer">
-          <EntitySet Name="Invoice" EntityType="Self.Invoice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Counter" EntityType="Self.Counter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Documents" EntityType="Self.Documents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DocumentTypeCounter" EntityType="Self.DocumentTypeCounter" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemTypesDDS" EntityType="Self.ItemTypesDDS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MOL" EntityType="Self.MOL" Schema="dbo" store:Type="Tables" />
@@ -391,7 +401,14 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WarehouseItems" EntityType="Self.WarehouseItems" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="WarehouseReceipt" EntityType="Self.WarehouseReceipt" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Documents_DocumentTypeCounter" Association="Self.FK_Documents_DocumentTypeCounter">
+            <End Role="DocumentTypeCounter" EntitySet="DocumentTypeCounter" />
+            <End Role="Documents" EntitySet="Documents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DocumentTypeCounter_Counter" Association="Self.FK_DocumentTypeCounter_Counter">
+            <End Role="Counter" EntitySet="Counter" />
+            <End Role="DocumentTypeCounter" EntitySet="DocumentTypeCounter" />
+          </AssociationSet>
           <AssociationSet Name="FK_PartnerItemMapping_Item" Association="Self.FK_PartnerItemMapping_Item">
             <End Role="Item" EntitySet="Item" />
             <End Role="PartnerItemMapping" EntitySet="PartnerItemMapping" />
@@ -417,7 +434,7 @@
             <End Role="PurchasedItem" EntitySet="PurchasedItem" />
           </AssociationSet>
           <AssociationSet Name="FK_Sales_Invoice" Association="Self.FK_Sales_Invoice">
-            <End Role="Invoice" EntitySet="Invoice" />
+            <End Role="Documents" EntitySet="Documents" />
             <End Role="Sales" EntitySet="Sales" />
           </AssociationSet>
           <AssociationSet Name="FK_Sales_Owner" Association="Self.FK_Sales_Owner">
@@ -426,10 +443,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_Sales_Partner1" Association="Self.FK_Sales_Partner1">
             <End Role="Partner" EntitySet="Partner" />
-            <End Role="Sales" EntitySet="Sales" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Sales_WarehouseReceipt" Association="Self.FK_Sales_WarehouseReceipt">
-            <End Role="WarehouseReceipt" EntitySet="WarehouseReceipt" />
             <End Role="Sales" EntitySet="Sales" />
           </AssociationSet>
           <AssociationSet Name="FK_SoldItem_Item1" Association="Self.FK_SoldItem_Item1">
@@ -484,47 +497,52 @@
             <End Role="Partner" EntitySet="Partners" />
             <End Role="PartnerItemMapping" EntitySet="PartnerItemMappings" />
           </AssociationSet>
-          <EntitySet Name="Invoices" EntityType="Model.Invoice" />
           <EntitySet Name="PartnerDiscounts" EntityType="Model.PartnerDiscount" />
           <EntitySet Name="Purchases" EntityType="Model.Purchase" />
-          <EntitySet Name="Sales" EntityType="Model.Sale" />
-          <EntitySet Name="WarehouseReceipts" EntityType="Model.WarehouseReceipt" />
-          <AssociationSet Name="FK_Sales_Invoice" Association="Model.FK_Sales_Invoice">
-            <End Role="Invoice" EntitySet="Invoices" />
-            <End Role="Sale" EntitySet="Sales" />
-          </AssociationSet>
           <AssociationSet Name="FK_Purchase_Owner" Association="Model.FK_Purchase_Owner">
             <End Role="Owner" EntitySet="Owners" />
             <End Role="Purchase" EntitySet="Purchases" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Sales_Owner" Association="Model.FK_Sales_Owner">
-            <End Role="Owner" EntitySet="Owners" />
-            <End Role="Sale" EntitySet="Sales" />
           </AssociationSet>
           <AssociationSet Name="FK_Purchase_Partner1" Association="Model.FK_Purchase_Partner1">
             <End Role="Partner" EntitySet="Partners" />
             <End Role="Purchase" EntitySet="Purchases" />
           </AssociationSet>
-          <AssociationSet Name="FK_Sales_Partner1" Association="Model.FK_Sales_Partner1">
-            <End Role="Partner" EntitySet="Partners" />
-            <End Role="Sale" EntitySet="Sales" />
-          </AssociationSet>
           <AssociationSet Name="FK_PurchasedItem_Purchase1" Association="Model.FK_PurchasedItem_Purchase1">
             <End Role="Purchase" EntitySet="Purchases" />
             <End Role="PurchasedItem" EntitySet="PurchasedItems" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Sales_WarehouseReceipt" Association="Model.FK_Sales_WarehouseReceipt">
-            <End Role="WarehouseReceipt" EntitySet="WarehouseReceipts" />
-            <End Role="Sale" EntitySet="Sales" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SoldItem_Sales1" Association="Model.FK_SoldItem_Sales1">
-            <End Role="Sale" EntitySet="Sales" />
-            <End Role="SoldItem" EntitySet="SoldItems" />
           </AssociationSet>
           <EntitySet Name="Users" EntityType="Model.User" />
           <AssociationSet Name="FK_Users_Owner1" Association="Model.FK_Users_Owner1">
             <End Role="Owner" EntitySet="Owners" />
             <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <EntitySet Name="Counters" EntityType="Model.Counter" />
+          <EntitySet Name="Documents" EntityType="Model.Document" />
+          <EntitySet Name="DocumentTypeCounters" EntityType="Model.DocumentTypeCounter" />
+          <EntitySet Name="Sales" EntityType="Model.Sale" />
+          <AssociationSet Name="FK_DocumentTypeCounter_Counter" Association="Model.FK_DocumentTypeCounter_Counter">
+            <End Role="Counter" EntitySet="Counters" />
+            <End Role="DocumentTypeCounter" EntitySet="DocumentTypeCounters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Documents_DocumentTypeCounter" Association="Model.FK_Documents_DocumentTypeCounter">
+            <End Role="DocumentTypeCounter" EntitySet="DocumentTypeCounters" />
+            <End Role="Document" EntitySet="Documents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sales_Invoice" Association="Model.FK_Sales_Invoice">
+            <End Role="Document" EntitySet="Documents" />
+            <End Role="Sale" EntitySet="Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sales_Owner" Association="Model.FK_Sales_Owner">
+            <End Role="Owner" EntitySet="Owners" />
+            <End Role="Sale" EntitySet="Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sales_Partner1" Association="Model.FK_Sales_Partner1">
+            <End Role="Partner" EntitySet="Partners" />
+            <End Role="Sale" EntitySet="Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoldItem_Sales1" Association="Model.FK_SoldItem_Sales1">
+            <End Role="Sale" EntitySet="Sales" />
+            <End Role="SoldItem" EntitySet="SoldItems" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="sysdiagram">
@@ -561,8 +579,8 @@
           <Property Name="SWIFTCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IBAN" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Purchases" Relationship="Model.FK_Purchase_Owner" FromRole="Owner" ToRole="Purchase" />
-          <NavigationProperty Name="Sales" Relationship="Model.FK_Sales_Owner" FromRole="Owner" ToRole="Sale" />
           <NavigationProperty Name="Users" Relationship="Model.FK_Users_Owner1" FromRole="Owner" ToRole="User" />
+          <NavigationProperty Name="Sales" Relationship="Model.FK_Sales_Owner" FromRole="Owner" ToRole="Sale" />
         </EntityType>
         <EntityType Name="SoldItem">
           <Key>
@@ -711,31 +729,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Invoice">
-          <Key>
-            <PropertyRef Name="InvoiceId" />
-          </Key>
-          <Property Name="OwnerId" Type="Guid" Nullable="false" />
-          <Property Name="PartnerId" Type="Guid" Nullable="false" />
-          <Property Name="SaleId" Type="Guid" Nullable="false" />
-          <Property Name="InvoiceId" Type="Guid" Nullable="false" />
-          <Property Name="InvoiceNumber" Type="Int32" Nullable="false" />
-          <Property Name="BuyerCompanyName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="BuyerAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="BuyerVATNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="BuyerBulstat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OwnerCompanyName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="OwnerAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="OwnerVATNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OwnerBulstat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OwnerBank" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="OwnerIBAN" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="OwnerSwiftCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="BuyerMol" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="OwnerMol" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="DiscountPercent" Type="Decimal" Precision="18" Scale="2" />
-          <NavigationProperty Name="Sales" Relationship="Model.FK_Sales_Invoice" FromRole="Invoice" ToRole="Sale" />
-        </EntityType>
         <EntityType Name="PartnerDiscount">
           <Key>
             <PropertyRef Name="RowID" />
@@ -762,58 +755,6 @@
           <NavigationProperty Name="Partner" Relationship="Model.FK_Purchase_Partner1" FromRole="Purchase" ToRole="Partner" />
           <NavigationProperty Name="PurchasedItems" Relationship="Model.FK_PurchasedItem_Purchase1" FromRole="Purchase" ToRole="PurchasedItem" />
         </EntityType>
-        <EntityType Name="Sale">
-          <Key>
-            <PropertyRef Name="SaleId" />
-          </Key>
-          <Property Name="SaleId" Type="Guid" Nullable="false" />
-          <Property Name="BuyerId" Type="Guid" Nullable="false" />
-          <Property Name="SellerId" Type="Guid" Nullable="false" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Type" Type="Int32" Nullable="false" />
-          <Property Name="InvoiceId" Type="Guid" />
-          <Property Name="PaymentCompleted" Type="Boolean" Nullable="false" />
-          <Property Name="WarehouseReceiptId" Type="Guid" />
-          <NavigationProperty Name="Invoice" Relationship="Model.FK_Sales_Invoice" FromRole="Sale" ToRole="Invoice" />
-          <NavigationProperty Name="Owner" Relationship="Model.FK_Sales_Owner" FromRole="Sale" ToRole="Owner" />
-          <NavigationProperty Name="Partner" Relationship="Model.FK_Sales_Partner1" FromRole="Sale" ToRole="Partner" />
-          <NavigationProperty Name="WarehouseReceipt" Relationship="Model.FK_Sales_WarehouseReceipt" FromRole="Sale" ToRole="WarehouseReceipt" />
-          <NavigationProperty Name="SoldItems" Relationship="Model.FK_SoldItem_Sales1" FromRole="Sale" ToRole="SoldItem" />
-        </EntityType>
-        <EntityType Name="WarehouseReceipt">
-          <Key>
-            <PropertyRef Name="WarehouseReceiptId" />
-          </Key>
-          <Property Name="OwnerId" Type="Guid" Nullable="false" />
-          <Property Name="PartnerId" Type="Guid" Nullable="false" />
-          <Property Name="SaleId" Type="Guid" Nullable="false" />
-          <Property Name="WarehouseReceiptId" Type="Guid" Nullable="false" />
-          <Property Name="WarehouseReceiptNumber" Type="Int32" Nullable="false" />
-          <Property Name="BuyerCompanyName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="BuyerAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="BuyerVATNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="BuyerBulstat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OwnerCompanyName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="OwnerAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="OwnerVATNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OwnerBulstat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="BuyerMol" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="OwnerMol" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Sales" Relationship="Model.FK_Sales_WarehouseReceipt" FromRole="WarehouseReceipt" ToRole="Sale" />
-          <Property Name="DiscountPercent" Type="Decimal" Precision="18" Scale="2" />
-        </EntityType>
-        <Association Name="FK_Sales_Invoice">
-          <End Type="Model.Invoice" Role="Invoice" Multiplicity="0..1" />
-          <End Type="Model.Sale" Role="Sale" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Invoice">
-              <PropertyRef Name="InvoiceId" />
-            </Principal>
-            <Dependent Role="Sale">
-              <PropertyRef Name="InvoiceId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Purchase_Owner">
           <End Type="Model.Owner" Role="Owner" Multiplicity="1" />
           <End Type="Model.Purchase" Role="Purchase" Multiplicity="*" />
@@ -823,18 +764,6 @@
             </Principal>
             <Dependent Role="Purchase">
               <PropertyRef Name="BuyerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Sales_Owner">
-          <End Type="Model.Owner" Role="Owner" Multiplicity="1" />
-          <End Type="Model.Sale" Role="Sale" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Owner">
-              <PropertyRef Name="OwnerId" />
-            </Principal>
-            <Dependent Role="Sale">
-              <PropertyRef Name="SellerId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -850,18 +779,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Sales_Partner1">
-          <End Type="Model.Partner" Role="Partner" Multiplicity="1" />
-          <End Type="Model.Sale" Role="Sale" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Partner">
-              <PropertyRef Name="PartnerId" />
-            </Principal>
-            <Dependent Role="Sale">
-              <PropertyRef Name="BuyerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_PurchasedItem_Purchase1">
           <End Type="Model.Purchase" Role="Purchase" Multiplicity="1" />
           <End Type="Model.PurchasedItem" Role="PurchasedItem" Multiplicity="*" />
@@ -871,30 +788,6 @@
             </Principal>
             <Dependent Role="PurchasedItem">
               <PropertyRef Name="PurchaseId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Sales_WarehouseReceipt">
-          <End Type="Model.WarehouseReceipt" Role="WarehouseReceipt" Multiplicity="0..1" />
-          <End Type="Model.Sale" Role="Sale" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WarehouseReceipt">
-              <PropertyRef Name="WarehouseReceiptId" />
-            </Principal>
-            <Dependent Role="Sale">
-              <PropertyRef Name="WarehouseReceiptId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SoldItem_Sales1">
-          <End Type="Model.Sale" Role="Sale" Multiplicity="1" />
-          <End Type="Model.SoldItem" Role="SoldItem" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Sale">
-              <PropertyRef Name="SaleId" />
-            </Principal>
-            <Dependent Role="SoldItem">
-              <PropertyRef Name="SaleId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -922,6 +815,141 @@
             </Principal>
             <Dependent Role="User">
               <PropertyRef Name="OwnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Counter">
+          <Key>
+            <PropertyRef Name="CounterId" />
+          </Key>
+          <Property Name="CounterId" Type="Guid" Nullable="false" />
+          <Property Name="CurrentNumber" Type="Int32" />
+          <Property Name="StartNumber" Type="Int32" />
+          <Property Name="EndNumber" Type="Int32" />
+          <NavigationProperty Name="DocumentTypeCounters" Relationship="Model.FK_DocumentTypeCounter_Counter" FromRole="Counter" ToRole="DocumentTypeCounter" />
+        </EntityType>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="InvoiceId" />
+          </Key>
+          <Property Name="OwnerId" Type="Guid" Nullable="false" />
+          <Property Name="PartnerId" Type="Guid" Nullable="false" />
+          <Property Name="SaleId" Type="Guid" Nullable="false" />
+          <Property Name="InvoiceId" Type="Guid" Nullable="false" />
+          <Property Name="InvoiceNumber" Type="Int32" Nullable="false" />
+          <Property Name="BuyerCompanyName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="BuyerAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="BuyerVATNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BuyerBulstat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerCompanyName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerVATNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerBulstat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerBank" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerIBAN" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerSwiftCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BuyerMol" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerMol" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="DiscountPercent" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="DocumentType" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DocumentTypeCounter" Relationship="Model.FK_Documents_DocumentTypeCounter" FromRole="Document" ToRole="DocumentTypeCounter" />
+          <NavigationProperty Name="Sales" Relationship="Model.FK_Sales_Invoice" FromRole="Document" ToRole="Sale" />
+        </EntityType>
+        <EntityType Name="DocumentTypeCounter">
+          <Key>
+            <PropertyRef Name="DocumentType" />
+          </Key>
+          <Property Name="DocumentType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CounterId" Type="Guid" Nullable="false" />
+          <Property Name="DocumentName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Counter" Relationship="Model.FK_DocumentTypeCounter_Counter" FromRole="DocumentTypeCounter" ToRole="Counter" />
+          <NavigationProperty Name="Documents" Relationship="Model.FK_Documents_DocumentTypeCounter" FromRole="DocumentTypeCounter" ToRole="Document" />
+        </EntityType>
+        <EntityType Name="Sale">
+          <Key>
+            <PropertyRef Name="SaleId" />
+          </Key>
+          <Property Name="SaleId" Type="Guid" Nullable="false" />
+          <Property Name="BuyerId" Type="Guid" Nullable="false" />
+          <Property Name="SellerId" Type="Guid" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="DocumentId" Type="Guid" />
+          <Property Name="PaymentCompleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Document" Relationship="Model.FK_Sales_Invoice" FromRole="Sale" ToRole="Document" />
+          <NavigationProperty Name="Owner" Relationship="Model.FK_Sales_Owner" FromRole="Sale" ToRole="Owner" />
+          <NavigationProperty Name="Partner" Relationship="Model.FK_Sales_Partner1" FromRole="Sale" ToRole="Partner" />
+          <NavigationProperty Name="SoldItems" Relationship="Model.FK_SoldItem_Sales1" FromRole="Sale" ToRole="SoldItem" />
+        </EntityType>
+        <Association Name="FK_DocumentTypeCounter_Counter">
+          <End Type="Model.Counter" Role="Counter" Multiplicity="1" />
+          <End Type="Model.DocumentTypeCounter" Role="DocumentTypeCounter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Counter">
+              <PropertyRef Name="CounterId" />
+            </Principal>
+            <Dependent Role="DocumentTypeCounter">
+              <PropertyRef Name="CounterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Documents_DocumentTypeCounter">
+          <End Type="Model.DocumentTypeCounter" Role="DocumentTypeCounter" Multiplicity="1" />
+          <End Type="Model.Document" Role="Document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DocumentTypeCounter">
+              <PropertyRef Name="DocumentType" />
+            </Principal>
+            <Dependent Role="Document">
+              <PropertyRef Name="DocumentType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sales_Invoice">
+          <End Type="Model.Document" Role="Document" Multiplicity="0..1" />
+          <End Type="Model.Sale" Role="Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Document">
+              <PropertyRef Name="InvoiceId" />
+            </Principal>
+            <Dependent Role="Sale">
+              <PropertyRef Name="DocumentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sales_Owner">
+          <End Type="Model.Owner" Role="Owner" Multiplicity="1" />
+          <End Type="Model.Sale" Role="Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Owner">
+              <PropertyRef Name="OwnerId" />
+            </Principal>
+            <Dependent Role="Sale">
+              <PropertyRef Name="SellerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sales_Partner1">
+          <End Type="Model.Partner" Role="Partner" Multiplicity="1" />
+          <End Type="Model.Sale" Role="Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partner">
+              <PropertyRef Name="PartnerId" />
+            </Principal>
+            <Dependent Role="Sale">
+              <PropertyRef Name="BuyerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoldItem_Sales1">
+          <End Type="Model.Sale" Role="Sale" Multiplicity="1" />
+          <End Type="Model.SoldItem" Role="SoldItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sale">
+              <PropertyRef Name="SaleId" />
+            </Principal>
+            <Dependent Role="SoldItem">
+              <PropertyRef Name="SaleId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1048,31 +1076,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Invoices">
-            <EntityTypeMapping TypeName="Model.Invoice">
-              <MappingFragment StoreEntitySet="Invoice">
-                <ScalarProperty Name="DiscountPercent" ColumnName="DiscountPercent" />
-                <ScalarProperty Name="OwnerMol" ColumnName="OwnerMol" />
-                <ScalarProperty Name="BuyerMol" ColumnName="BuyerMol" />
-                <ScalarProperty Name="OwnerSwiftCode" ColumnName="OwnerSwiftCode" />
-                <ScalarProperty Name="OwnerIBAN" ColumnName="OwnerIBAN" />
-                <ScalarProperty Name="OwnerBank" ColumnName="OwnerBank" />
-                <ScalarProperty Name="OwnerBulstat" ColumnName="OwnerBulstat" />
-                <ScalarProperty Name="OwnerVATNumber" ColumnName="OwnerVATNumber" />
-                <ScalarProperty Name="OwnerAddress" ColumnName="OwnerAddress" />
-                <ScalarProperty Name="OwnerCompanyName" ColumnName="OwnerCompanyName" />
-                <ScalarProperty Name="BuyerBulstat" ColumnName="BuyerBulstat" />
-                <ScalarProperty Name="BuyerVATNumber" ColumnName="BuyerVATNumber" />
-                <ScalarProperty Name="BuyerAddress" ColumnName="BuyerAddress" />
-                <ScalarProperty Name="BuyerCompanyName" ColumnName="BuyerCompanyName" />
-                <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
-                <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
-                <ScalarProperty Name="SaleId" ColumnName="SaleId" />
-                <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
-                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="PartnerDiscounts">
             <EntityTypeMapping TypeName="Model.PartnerDiscount">
               <MappingFragment StoreEntitySet="PartnerDiscount">
@@ -1098,42 +1101,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Sales">
-            <EntityTypeMapping TypeName="Model.Sale">
-              <MappingFragment StoreEntitySet="Sales">
-                <ScalarProperty Name="WarehouseReceiptId" ColumnName="WarehouseReceiptId" />
-                <ScalarProperty Name="PaymentCompleted" ColumnName="PaymentCompleted" />
-                <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="SellerId" ColumnName="SellerId" />
-                <ScalarProperty Name="BuyerId" ColumnName="BuyerId" />
-                <ScalarProperty Name="SaleId" ColumnName="SaleId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="WarehouseReceipts">
-            <EntityTypeMapping TypeName="Model.WarehouseReceipt">
-              <MappingFragment StoreEntitySet="WarehouseReceipt">
-                <ScalarProperty Name="DiscountPercent" ColumnName="DiscountPercent" />
-                <ScalarProperty Name="OwnerMol" ColumnName="OwnerMol" />
-                <ScalarProperty Name="BuyerMol" ColumnName="BuyerMol" />
-                <ScalarProperty Name="OwnerBulstat" ColumnName="OwnerBulstat" />
-                <ScalarProperty Name="OwnerVATNumber" ColumnName="OwnerVATNumber" />
-                <ScalarProperty Name="OwnerAddress" ColumnName="OwnerAddress" />
-                <ScalarProperty Name="OwnerCompanyName" ColumnName="OwnerCompanyName" />
-                <ScalarProperty Name="BuyerBulstat" ColumnName="BuyerBulstat" />
-                <ScalarProperty Name="BuyerVATNumber" ColumnName="BuyerVATNumber" />
-                <ScalarProperty Name="BuyerAddress" ColumnName="BuyerAddress" />
-                <ScalarProperty Name="BuyerCompanyName" ColumnName="BuyerCompanyName" />
-                <ScalarProperty Name="WarehouseReceiptNumber" ColumnName="WarehouseReceiptNumber" />
-                <ScalarProperty Name="WarehouseReceiptId" ColumnName="WarehouseReceiptId" />
-                <ScalarProperty Name="SaleId" ColumnName="SaleId" />
-                <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
-                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="Model.User">
               <MappingFragment StoreEntitySet="Users">
@@ -1146,6 +1113,64 @@
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Counters">
+            <EntityTypeMapping TypeName="Model.Counter">
+              <MappingFragment StoreEntitySet="Counter">
+                <ScalarProperty Name="EndNumber" ColumnName="EndNumber" />
+                <ScalarProperty Name="StartNumber" ColumnName="StartNumber" />
+                <ScalarProperty Name="CurrentNumber" ColumnName="CurrentNumber" />
+                <ScalarProperty Name="CounterId" ColumnName="CounterId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Documents">
+            <EntityTypeMapping TypeName="Model.Document">
+              <MappingFragment StoreEntitySet="Documents">
+                <ScalarProperty Name="DocumentType" ColumnName="DocumentType" />
+                <ScalarProperty Name="DiscountPercent" ColumnName="DiscountPercent" />
+                <ScalarProperty Name="OwnerMol" ColumnName="OwnerMol" />
+                <ScalarProperty Name="BuyerMol" ColumnName="BuyerMol" />
+                <ScalarProperty Name="OwnerSwiftCode" ColumnName="OwnerSwiftCode" />
+                <ScalarProperty Name="OwnerIBAN" ColumnName="OwnerIBAN" />
+                <ScalarProperty Name="OwnerBank" ColumnName="OwnerBank" />
+                <ScalarProperty Name="OwnerBulstat" ColumnName="OwnerBulstat" />
+                <ScalarProperty Name="OwnerVATNumber" ColumnName="OwnerVATNumber" />
+                <ScalarProperty Name="OwnerAddress" ColumnName="OwnerAddress" />
+                <ScalarProperty Name="OwnerCompanyName" ColumnName="OwnerCompanyName" />
+                <ScalarProperty Name="BuyerBulstat" ColumnName="BuyerBulstat" />
+                <ScalarProperty Name="BuyerVATNumber" ColumnName="BuyerVATNumber" />
+                <ScalarProperty Name="BuyerAddress" ColumnName="BuyerAddress" />
+                <ScalarProperty Name="BuyerCompanyName" ColumnName="BuyerCompanyName" />
+                <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
+                <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
+                <ScalarProperty Name="SaleId" ColumnName="SaleId" />
+                <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
+                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DocumentTypeCounters">
+            <EntityTypeMapping TypeName="Model.DocumentTypeCounter">
+              <MappingFragment StoreEntitySet="DocumentTypeCounter">
+                <ScalarProperty Name="DocumentName" ColumnName="DocumentName" />
+                <ScalarProperty Name="CounterId" ColumnName="CounterId" />
+                <ScalarProperty Name="DocumentType" ColumnName="DocumentType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sales">
+            <EntityTypeMapping TypeName="Model.Sale">
+              <MappingFragment StoreEntitySet="Sales">
+                <ScalarProperty Name="PaymentCompleted" ColumnName="PaymentCompleted" />
+                <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="SellerId" ColumnName="SellerId" />
+                <ScalarProperty Name="BuyerId" ColumnName="BuyerId" />
+                <ScalarProperty Name="SaleId" ColumnName="SaleId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

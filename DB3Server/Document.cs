@@ -12,10 +12,10 @@ namespace DB3Server
     using System;
     using System.Collections.Generic;
     
-    public partial class Invoice
+    public partial class Document
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Invoice()
+        public Document()
         {
             this.Sales = new HashSet<Sale>();
         }
@@ -39,7 +39,9 @@ namespace DB3Server
         public string BuyerMol { get; set; }
         public string OwnerMol { get; set; }
         public Nullable<decimal> DiscountPercent { get; set; }
+        public int DocumentType { get; set; }
     
+        public virtual DocumentTypeCounter DocumentTypeCounter { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sale> Sales { get; set; }
     }

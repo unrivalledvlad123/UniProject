@@ -172,7 +172,13 @@
     <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="BD3Service.cs" />
-    <Compile Include="Invoice.cs">
+    <Compile Include="Counter.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Document.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DocumentTypeCounter.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Item.cs">
@@ -232,9 +238,6 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="WarehouseItem.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WarehouseReceipt.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">

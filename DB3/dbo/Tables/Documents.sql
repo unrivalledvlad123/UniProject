@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[Invoice] (
+﻿CREATE TABLE [dbo].[Documents] (
     [OwnerId]          UNIQUEIDENTIFIER NOT NULL,
     [PartnerId]        UNIQUEIDENTIFIER NOT NULL,
     [SaleId]           UNIQUEIDENTIFIER NOT NULL,
@@ -18,14 +18,8 @@
     [BuyerMol]         VARCHAR (250)    NULL,
     [OwnerMol]         VARCHAR (250)    NULL,
     [DiscountPercent]  DECIMAL (18, 2)  NULL,
-    CONSTRAINT [PK_Invoice] PRIMARY KEY CLUSTERED ([InvoiceId] ASC)
+    [DocumentType]     INT              NOT NULL,
+    CONSTRAINT [PK_Invoice] PRIMARY KEY CLUSTERED ([InvoiceId] ASC),
+    CONSTRAINT [FK_Documents_DocumentTypeCounter] FOREIGN KEY ([DocumentType]) REFERENCES [dbo].[DocumentTypeCounter] ([DocumentType])
 );
-
-
-
-
-
-
-
-
 

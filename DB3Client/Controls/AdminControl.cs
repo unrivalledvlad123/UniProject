@@ -393,6 +393,10 @@ namespace DB3Client.Controls
                     }
 
                 }
+                else
+                {
+                    btnEditUser.Enabled = false;
+                }
                 if (userPermission.ContainsKey(btnDeleteUser.Tag.ToString()))
                 {
                     if (dgvUsers.SelectedRows.Count == 1)
@@ -403,6 +407,10 @@ namespace DB3Client.Controls
                     {
                         btnDeleteUser.Enabled = false;
                     }
+                }
+                else
+                {
+                    btnDeleteUser.Enabled = false;
                 }
             }
 

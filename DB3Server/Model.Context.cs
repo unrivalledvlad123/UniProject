@@ -35,11 +35,12 @@ namespace DB3Server
         public virtual DbSet<Item> Items { get; set; }
         public virtual DbSet<PartnerItemMapping> PartnerItemMappings { get; set; }
         public virtual DbSet<Partner> Partners { get; set; }
-        public virtual DbSet<Invoice> Invoices { get; set; }
         public virtual DbSet<PartnerDiscount> PartnerDiscounts { get; set; }
         public virtual DbSet<Purchase> Purchases { get; set; }
-        public virtual DbSet<Sale> Sales { get; set; }
-        public virtual DbSet<WarehouseReceipt> WarehouseReceipts { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Counter> Counters { get; set; }
+        public virtual DbSet<Document> Documents { get; set; }
+        public virtual DbSet<DocumentTypeCounter> DocumentTypeCounters { get; set; }
+        public virtual DbSet<Sale> Sales { get; set; }
     }
 }

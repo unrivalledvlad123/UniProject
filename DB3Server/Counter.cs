@@ -12,26 +12,20 @@ namespace DB3Server
     using System;
     using System.Collections.Generic;
     
-    public partial class Sale
+    public partial class Counter
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Sale()
+        public Counter()
         {
-            this.SoldItems = new HashSet<SoldItem>();
+            this.DocumentTypeCounters = new HashSet<DocumentTypeCounter>();
         }
     
-        public System.Guid SaleId { get; set; }
-        public System.Guid BuyerId { get; set; }
-        public System.Guid SellerId { get; set; }
-        public System.DateTime Date { get; set; }
-        public int Type { get; set; }
-        public Nullable<System.Guid> DocumentId { get; set; }
-        public bool PaymentCompleted { get; set; }
+        public System.Guid CounterId { get; set; }
+        public Nullable<int> CurrentNumber { get; set; }
+        public Nullable<int> StartNumber { get; set; }
+        public Nullable<int> EndNumber { get; set; }
     
-        public virtual Document Document { get; set; }
-        public virtual Owner Owner { get; set; }
-        public virtual Partner Partner { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SoldItem> SoldItems { get; set; }
+        public virtual ICollection<DocumentTypeCounter> DocumentTypeCounters { get; set; }
     }
 }

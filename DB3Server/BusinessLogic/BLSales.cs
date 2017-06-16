@@ -12,7 +12,7 @@ namespace DB3Server.BusinessLogic
 {
     class BLSales
     {
-        internal static CommonSale CreateSale(CommonSale sale, bool isWhole = false)
+        internal static CommonSale CreateSale(CommonSale sale, int documentType, bool isWhole = false)
         {
             try
             {
@@ -44,7 +44,7 @@ namespace DB3Server.BusinessLogic
                     Sale s = new Sale();
                     s.BuyerId = sale.BuyerId;
                     s.Date = DateTime.Now;
-                    s.InvoiceId = null;
+                    s.DocumentId = null;
                     s.SellerId = sale.SellerId;
                     s.SoldItems = new List<SoldItem>();
                     Guid tempGuid = NewGuid();
@@ -69,58 +69,38 @@ namespace DB3Server.BusinessLogic
 
                         s.SoldItems.Add(i);
                     }
-                    WarehouseReceipt receipt = new WarehouseReceipt();
-                    receipt.PartnerId = s.BuyerId;
-                    receipt.OwnerId = s.SellerId;
-                    receipt.SaleId = s.SaleId;
-                    receipt.WarehouseReceiptId = NewGuid();
-
-                    receipt.WarehouseReceiptNumber = entities.WarehouseReceipts.DefaultIfEmpty().Max(p => p == null ? 0 : p.WarehouseReceiptNumber) + 1;
-
-                    Partner partner1 = entities.Partners.FirstOrDefault(p => p.PartnerId == s.BuyerId);
-
-                    if (partner1 != null)
-                    {
-                        receipt.BuyerAddress = partner1.Address;
-                        receipt.BuyerBulstat = partner1.Bulstat;
-                        receipt.BuyerCompanyName = partner1.CompanyName;
-                        receipt.BuyerVATNumber = partner1.VATNumber;
-                        MOL mol = entities.MOLs.FirstOrDefault(p => p.OwnerId == partner1.PartnerId);
-                        receipt.BuyerMol = mol != null ? $"{mol.FirstName} {mol.LastName}" : "";
-                        PartnerDiscount discount = entities.PartnerDiscounts.FirstOrDefault(p => p.PartnerType == partner1.PartnerType);
-                        if (discount != null) receipt.DiscountPercent = discount.Discount;
-                    }
-                    Owner owner1 = entities.Owners.First();
-                    receipt.OwnerAddress = owner1.Address;
-                   receipt.OwnerBulstat = owner1.Bulstat;
-                   receipt.OwnerCompanyName = owner1.CompanyName;
-                    receipt.OwnerVATNumber = owner1.VATNumber;
-                    MOL mol21 = entities.MOLs.FirstOrDefault(p => p.OwnerId == owner1.OwnerId && p.IsPrimary);
-                    if (mol21 != null)
-                    {
-                        receipt.OwnerMol = $"{mol21.FirstName} {mol21.LastName}";
-                    }
-                    s.WarehouseReceipt = receipt;
-
+                   
                     if (isWhole)
                     {
-                        var invoice = new Invoice();
-                        invoice.PartnerId = s.BuyerId;
-                        invoice.OwnerId = s.SellerId;
-                        invoice.SaleId = s.SaleId;
-                        invoice.InvoiceId = NewGuid();
+                        var document = new Document();
+                        document.PartnerId = s.BuyerId;
+                        document.OwnerId = s.SellerId;
+                        document.SaleId = s.SaleId;
+                        document.InvoiceId = NewGuid();
+                        document.DocumentType = documentType;
+                        DocumentTypeCounter docType = entities.DocumentTypeCounters.FirstOrDefault(p => p.DocumentType == documentType);
+                        if (docType != null)
+                        {
+                            Counter currentCounter = docType.Counter;
+                            document.InvoiceNumber = currentCounter.CurrentNumber + 1 ?? 1;
+                            currentCounter.CurrentNumber = document.InvoiceNumber;
+                            entities.Counters.Attach(currentCounter);
+                            var entry = entities.Entry(currentCounter);
+                            entry.Property(e => e.CurrentNumber).IsModified = true;
+                            entities.SaveChanges();
+                        }
 
-                        invoice.InvoiceNumber = entities.Invoices.DefaultIfEmpty().Max(p => p == null ? 0 : p.InvoiceNumber) + 1;
+
                         Partner partner = entities.Partners.FirstOrDefault(p => p.PartnerId == s.BuyerId);
 
                         if (partner != null)
                         {
-                            invoice.BuyerAddress = partner.Address;
-                            invoice.BuyerBulstat = partner.Bulstat;
-                            invoice.BuyerCompanyName = partner.CompanyName;
-                            invoice.BuyerVATNumber = partner.VATNumber;
+                            document.BuyerAddress = partner.Address;
+                            document.BuyerBulstat = partner.Bulstat;
+                            document.BuyerCompanyName = partner.CompanyName;
+                            document.BuyerVATNumber = partner.VATNumber;
                             MOL mol = entities.MOLs.FirstOrDefault(p => p.OwnerId == partner.PartnerId);
-                            invoice.BuyerMol = mol != null ? $"{mol.FirstName} {mol.LastName}" : "";
+                            document.BuyerMol = mol != null ? $"{mol.FirstName} {mol.LastName}" : "";
                             decimal counter = 0;
                             foreach (var item in s.SoldItems)
                             {
@@ -135,12 +115,12 @@ namespace DB3Server.BusinessLogic
                                 {
                                     if (partner.PartnerType == t.PartnerType)
                                     {
-                                        invoice.DiscountPercent = t.Discount;
+                                        document.DiscountPercent = t.Discount;
                                     }
                                     else
                                     {
                                         partner.PartnerType = t.PartnerType;
-                                        invoice.DiscountPercent = t.Discount;
+                                        document.DiscountPercent = t.Discount;
                                     }
                                 }
                             }
@@ -151,20 +131,20 @@ namespace DB3Server.BusinessLogic
                             entities.SaveChanges();
                         }
                         Owner owner = entities.Owners.First();
-                        invoice.OwnerAddress = owner.Address;
-                        invoice.OwnerBank = owner.Bank;
-                        invoice.OwnerBulstat = owner.Bulstat;
-                        invoice.OwnerIBAN = owner.IBAN;
-                        invoice.OwnerCompanyName = owner.CompanyName;
-                        invoice.OwnerSwiftCode = owner.SWIFTCode;
-                        invoice.OwnerVATNumber = owner.VATNumber;
+                        document.OwnerAddress = owner.Address;
+                        document.OwnerBank = owner.Bank;
+                        document.OwnerBulstat = owner.Bulstat;
+                        document.OwnerIBAN = owner.IBAN;
+                        document.OwnerCompanyName = owner.CompanyName;
+                        document.OwnerSwiftCode = owner.SWIFTCode;
+                        document.OwnerVATNumber = owner.VATNumber;
                         MOL mol2 = entities.MOLs.FirstOrDefault(p => p.OwnerId == owner.OwnerId && p.IsPrimary);
                         if (mol2 != null)
                         {
-                            invoice.OwnerMol = $"{mol2.FirstName} {mol2.LastName}";
+                            document.OwnerMol = $"{mol2.FirstName} {mol2.LastName}";
                         }
 
-                        s.Invoice = invoice;
+                        s.Document = document;
                     }
 
                     entities.Sales.Add(s);
@@ -177,7 +157,7 @@ namespace DB3Server.BusinessLogic
                     sale.Type = s.Type;
                     if (isWhole)
                     {
-                        sale.InvoiceId = s.Invoice.InvoiceNumber.ToString();
+                        sale.InvoiceId = s.Document.InvoiceNumber.ToString();
                     }
                     
                     sale.SoldItems = new List<CommonSoldItem>();
@@ -225,7 +205,7 @@ namespace DB3Server.BusinessLogic
                 CommonSale sale = new CommonSale();
                 sale.BuyerId = dbSale.BuyerId;
                 sale.Date = dbSale.Date;
-                sale.InvoiceId = dbSale.Invoice?.InvoiceNumber.ToString();
+                sale.InvoiceId = dbSale.Document?.InvoiceNumber.ToString();
                 sale.SaleId = dbSale.SaleId;
                 sale.SellerId = dbSale.SellerId;
                 sale.Type = dbSale.Type;
@@ -252,7 +232,7 @@ namespace DB3Server.BusinessLogic
         {
             CommonInvoice result = new CommonInvoice();
             DatabaseEntities entities = new DatabaseEntities();
-            Invoice invoice = entities.Invoices.FirstOrDefault(p => p.SaleId == saleId);
+            Document invoice = entities.Documents.FirstOrDefault(p => p.SaleId == saleId);
             if (invoice != null)
             {
                 result.OwnerId = invoice.OwnerId;
@@ -283,14 +263,14 @@ namespace DB3Server.BusinessLogic
         {
             CommonWarehouseReceipt result = new CommonWarehouseReceipt();
             DatabaseEntities entities = new DatabaseEntities();
-            WarehouseReceipt receipt = entities.WarehouseReceipts.FirstOrDefault(p => p.SaleId == saleId);
+            Document receipt = entities.Documents.FirstOrDefault(p => p.SaleId == saleId);
             if (receipt != null)
             {
                 result.OwnerId = receipt.OwnerId;
                 result.PartnerId = receipt.PartnerId;
                 result.SaleId = receipt.SaleId;
-                result.WarehouseReceiptId = receipt.WarehouseReceiptId;
-                result.WarehouseReceiptNumber = receipt.WarehouseReceiptNumber;
+                result.WarehouseReceiptId = receipt.InvoiceId;
+                result.WarehouseReceiptNumber = receipt.InvoiceNumber;
                 result.BuyerCompanyName = receipt.BuyerCompanyName;
                 result.BuyerAddress = receipt.BuyerAddress;
                 result.BuyerVATNumber = receipt.BuyerVATNumber;
