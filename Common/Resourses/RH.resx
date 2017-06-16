@@ -537,8 +537,8 @@
   <data name="btn_Close" xml:space="preserve">
     <value>Close</value>
   </data>
-  <data name="tansactions" xml:space="preserve">
-    <value>Tansactions</value>
+  <data name="transactions" xml:space="preserve">
+    <value>Transactions</value>
   </data>
   <data name="all_available_MOLS" xml:space="preserve">
     <value>All available Acc persons.</value>
@@ -713,5 +713,17 @@
   </data>
   <data name="goods_movement" xml:space="preserve">
     <value>Movement of goods:</value>
+  </data>
+  <data name="documents_report" xml:space="preserve">
+    <value>Documents Report</value>
+  </data>
+  <data name="export_to_csv_d" xml:space="preserve">
+    <value>Export to CSV</value>
+  </data>
+  <data name="clear_contents" xml:space="preserve">
+    <value>Clear contents!</value>
+  </data>
+  <data name="document_contants" xml:space="preserve">
+    <value>Document contents:</value>
   </data>
 </root>

@@ -30,9 +30,9 @@ namespace DB3Client.Controls
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControlSales = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new Common.Forms.Base.MLTabPage();
             this.gbClientInfo = new Common.Forms.Base.MLGroupBox();
@@ -140,6 +140,7 @@ namespace DB3Client.Controls
             this.btnAddContractS.Name = "btnAddContractS";
             this.btnAddContractS.Size = new System.Drawing.Size(240, 22);
             this.btnAddContractS.TabIndex = 8;
+            this.btnAddContractS.Tag = "C94D8A03-0D9C-4CC5-AEE0-2365B4A6439B";
             this.btnAddContractS.Text = "add_contract";
             this.btnAddContractS.UseSelectable = true;
             this.btnAddContractS.Click += new System.EventHandler(this.btnAddContractS_Click);
@@ -150,6 +151,7 @@ namespace DB3Client.Controls
             this.btnGenerateInvoice.Name = "btnGenerateInvoice";
             this.btnGenerateInvoice.Size = new System.Drawing.Size(251, 23);
             this.btnGenerateInvoice.TabIndex = 7;
+            this.btnGenerateInvoice.Tag = "35BB373E-FD2F-4E2E-AF40-958566D919DD";
             this.btnGenerateInvoice.Text = "generate_invoice";
             this.btnGenerateInvoice.UseSelectable = true;
             this.btnGenerateInvoice.Click += new System.EventHandler(this.btnGenerateInvoice_Click);
@@ -304,6 +306,7 @@ namespace DB3Client.Controls
             this.btnDetach.Name = "btnDetach";
             this.btnDetach.Size = new System.Drawing.Size(144, 23);
             this.btnDetach.TabIndex = 2;
+            this.btnDetach.Tag = "1AB76F10-0655-4EDC-8B4D-5BCC23A24C0B";
             this.btnDetach.Text = "att_detach";
             this.btnDetach.UseSelectable = true;
             this.btnDetach.Click += new System.EventHandler(this.btnDetach_Click);
@@ -325,6 +328,7 @@ namespace DB3Client.Controls
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(144, 23);
             this.btnDelete.TabIndex = 3;
+            this.btnDelete.Tag = "D59CC3F4-0ABE-4429-B8CB-19716C0C135E";
             this.btnDelete.Text = "delete";
             this.btnDelete.UseSelectable = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -425,6 +429,7 @@ namespace DB3Client.Controls
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(144, 23);
             this.btnAdd.TabIndex = 2;
+            this.btnAdd.Tag = "0EA27560-DEBC-454D-A06B-53582888472D";
             this.btnAdd.Text = "add";
             this.btnAdd.UseSelectable = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -510,6 +515,7 @@ namespace DB3Client.Controls
             this.btnFinish.Name = "btnFinish";
             this.btnFinish.Size = new System.Drawing.Size(245, 23);
             this.btnFinish.TabIndex = 5;
+            this.btnFinish.Tag = "F3775EF1-ABFA-488A-B87A-BDD3C9A47818";
             this.btnFinish.Text = "finish";
             this.btnFinish.UseSelectable = true;
             this.btnFinish.Click += new System.EventHandler(this.btnFinish_Click);
@@ -578,40 +584,40 @@ namespace DB3Client.Controls
             this.dgvSoldGoods.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvSoldGoods.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvSoldGoods.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSoldGoods.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSoldGoods.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dgvSoldGoods.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSoldGoods.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSoldGoods.DefaultCellStyle = dataGridViewCellStyle14;
             this.dgvSoldGoods.EnableHeadersVisualStyles = false;
             this.dgvSoldGoods.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dgvSoldGoods.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dgvSoldGoods.Location = new System.Drawing.Point(535, 4);
             this.dgvSoldGoods.Name = "dgvSoldGoods";
             this.dgvSoldGoods.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSoldGoods.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSoldGoods.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dgvSoldGoods.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvSoldGoods.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSoldGoods.Size = new System.Drawing.Size(785, 942);
+            this.dgvSoldGoods.Size = new System.Drawing.Size(768, 1006);
             this.dgvSoldGoods.TabIndex = 2;
             this.dgvSoldGoods.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSoldGoods_CellValueChanged);
             // 

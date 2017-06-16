@@ -22,6 +22,14 @@ using Org.BouncyCastle.Bcpg;
 
 namespace DB3Client.Controls
 {
+    [Permission(PermissionId = "0EA27560-DEBC-454D-A06B-53582888472D", PermissionName = "add", PermissionLocation = "tab_page_direct_sales", PermissionControlRoot = "sales")]
+    [Permission(PermissionId = "D59CC3F4-0ABE-4429-B8CB-19716C0C135E", PermissionName = "delete", PermissionLocation = "tab_page_direct_sales", PermissionControlRoot = "sales")]
+    [Permission(PermissionId = "1AB76F10-0655-4EDC-8B4D-5BCC23A24C0B", PermissionName = "att_detach", PermissionLocation = "tab_page_direct_sales", PermissionControlRoot = "sales")]
+    [Permission(PermissionId = "F3775EF1-ABFA-488A-B87A-BDD3C9A47818", PermissionName = "finish", PermissionLocation = "tab_page_direct_sales", PermissionControlRoot = "sales")]
+    [Permission(PermissionId = "C94D8A03-0D9C-4CC5-AEE0-2365B4A6439B", PermissionName = "add_contract", PermissionLocation = "tab_page_direct_sales", PermissionControlRoot = "sales")]
+    [Permission(PermissionId = "35BB373E-FD2F-4E2E-AF40-958566D919DD", PermissionName = "generate_invoice", PermissionLocation = "tab_page_direct_sales", PermissionControlRoot = "sales")]
+
+
     public partial class SalesControl : MetroFramework.Controls.MetroUserControl
     {
         public List<CommonItem> AllItems = new List<CommonItem>();

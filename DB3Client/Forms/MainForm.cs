@@ -131,8 +131,14 @@ namespace DB3Client.Forms
             labelTime.Text = DateTime.Now.ToString("dd MMMM yyyy HH:mm:ss", DataHolder.UserCulture);
         }
 
+
         #endregion
 
-       
+        private void mlDocuments_Click(object sender, EventArgs e)
+        {
+            DocumentsControl documentsControl = new DocumentsControl() { Dock = DockStyle.Fill };
+            MainContainer.Controls.Clear();
+            MainContainer.Controls.Add(documentsControl);
+        }
     }
 }

@@ -41,6 +41,7 @@ namespace DB3Client.Forms
             this.labelLogedAs = new Common.Forms.Base.MLLabel();
             this.labelCurrentServer = new Common.Forms.Base.MLLabel();
             this.mlGroupBox1 = new Common.Forms.Base.MLGroupBox();
+            this.mlDocuments = new Common.Forms.Base.MLTile();
             this.mtReports = new Common.Forms.Base.MLTile();
             this.mtSales = new Common.Forms.Base.MLTile();
             this.mtWerehouse = new Common.Forms.Base.MLTile();
@@ -61,7 +62,7 @@ namespace DB3Client.Forms
             this.mpContainer.HorizontalScrollbarBarColor = true;
             this.mpContainer.HorizontalScrollbarHighlightOnWheel = false;
             this.mpContainer.HorizontalScrollbarSize = 10;
-            this.mpContainer.Location = new System.Drawing.Point(191, 128);
+            this.mpContainer.Location = new System.Drawing.Point(191, 129);
             this.mpContainer.Name = "mpContainer";
             this.mpContainer.Size = new System.Drawing.Size(977, 602);
             this.mpContainer.TabIndex = 0;
@@ -136,6 +137,7 @@ namespace DB3Client.Forms
             this.mlGroupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.mlGroupBox1.BackColor = System.Drawing.Color.White;
+            this.mlGroupBox1.Controls.Add(this.mlDocuments);
             this.mlGroupBox1.Controls.Add(this.mtReports);
             this.mlGroupBox1.Controls.Add(this.mtSales);
             this.mlGroupBox1.Controls.Add(this.mtWerehouse);
@@ -149,12 +151,28 @@ namespace DB3Client.Forms
             this.mlGroupBox1.TabStop = false;
             this.mlGroupBox1.Text = "main_navigation";
             // 
+            // mlDocuments
+            // 
+            this.mlDocuments.ActiveControl = null;
+            this.mlDocuments.Location = new System.Drawing.Point(6, 358);
+            this.mlDocuments.Name = "mlDocuments";
+            this.mlDocuments.Size = new System.Drawing.Size(150, 77);
+            this.mlDocuments.TabIndex = 13;
+            this.mlDocuments.Text = "documents";
+            this.mlDocuments.TileImage = global::DB3Client.Resource.documents90;
+            this.mlDocuments.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.mlDocuments.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.mlDocuments.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.mlDocuments.UseSelectable = true;
+            this.mlDocuments.UseTileImage = true;
+            this.mlDocuments.Click += new System.EventHandler(this.mlDocuments_Click);
+            // 
             // mtReports
             // 
             this.mtReports.ActiveControl = null;
-            this.mtReports.Location = new System.Drawing.Point(6, 410);
+            this.mtReports.Location = new System.Drawing.Point(6, 441);
             this.mtReports.Name = "mtReports";
-            this.mtReports.Size = new System.Drawing.Size(150, 88);
+            this.mtReports.Size = new System.Drawing.Size(150, 77);
             this.mtReports.TabIndex = 12;
             this.mtReports.Text = "reports";
             this.mtReports.TileImage = global::DB3Client.Resource.reports;
@@ -168,10 +186,10 @@ namespace DB3Client.Forms
             // mtSales
             // 
             this.mtSales.ActiveControl = null;
-            this.mtSales.Location = new System.Drawing.Point(6, 19);
+            this.mtSales.Location = new System.Drawing.Point(6, 26);
             this.mtSales.Name = "mtSales";
             this.mtSales.PaintTileCount = false;
-            this.mtSales.Size = new System.Drawing.Size(150, 92);
+            this.mtSales.Size = new System.Drawing.Size(150, 77);
             this.mtSales.TabIndex = 7;
             this.mtSales.Text = "sales";
             this.mtSales.TileImage = global::DB3Client.Resource.cash_register90;
@@ -187,9 +205,9 @@ namespace DB3Client.Forms
             this.mtWerehouse.ActiveControl = null;
             this.mtWerehouse.BackColor = System.Drawing.Color.White;
             this.mtWerehouse.ForeColor = System.Drawing.Color.Black;
-            this.mtWerehouse.Location = new System.Drawing.Point(6, 117);
+            this.mtWerehouse.Location = new System.Drawing.Point(6, 109);
             this.mtWerehouse.Name = "mtWerehouse";
-            this.mtWerehouse.Size = new System.Drawing.Size(150, 92);
+            this.mtWerehouse.Size = new System.Drawing.Size(150, 77);
             this.mtWerehouse.TabIndex = 10;
             this.mtWerehouse.Text = "werehouse";
             this.mtWerehouse.TileImage = global::DB3Client.Resource.warehouse_90;
@@ -203,9 +221,9 @@ namespace DB3Client.Forms
             // mtAdmin
             // 
             this.mtAdmin.ActiveControl = null;
-            this.mtAdmin.Location = new System.Drawing.Point(6, 504);
+            this.mtAdmin.Location = new System.Drawing.Point(6, 524);
             this.mtAdmin.Name = "mtAdmin";
-            this.mtAdmin.Size = new System.Drawing.Size(150, 92);
+            this.mtAdmin.Size = new System.Drawing.Size(150, 77);
             this.mtAdmin.TabIndex = 11;
             this.mtAdmin.Text = "administration";
             this.mtAdmin.TileImage = global::DB3Client.Resource.admin_icon90;
@@ -219,9 +237,9 @@ namespace DB3Client.Forms
             // mtContacts
             // 
             this.mtContacts.ActiveControl = null;
-            this.mtContacts.Location = new System.Drawing.Point(6, 214);
+            this.mtContacts.Location = new System.Drawing.Point(6, 192);
             this.mtContacts.Name = "mtContacts";
-            this.mtContacts.Size = new System.Drawing.Size(150, 92);
+            this.mtContacts.Size = new System.Drawing.Size(150, 77);
             this.mtContacts.TabIndex = 9;
             this.mtContacts.Text = "contacts";
             this.mtContacts.TileImage = global::DB3Client.Resource.partners_icon90;
@@ -235,9 +253,9 @@ namespace DB3Client.Forms
             // mtOrders
             // 
             this.mtOrders.ActiveControl = null;
-            this.mtOrders.Location = new System.Drawing.Point(6, 312);
+            this.mtOrders.Location = new System.Drawing.Point(6, 275);
             this.mtOrders.Name = "mtOrders";
-            this.mtOrders.Size = new System.Drawing.Size(150, 92);
+            this.mtOrders.Size = new System.Drawing.Size(150, 77);
             this.mtOrders.TabIndex = 8;
             this.mtOrders.Text = "orders";
             this.mtOrders.TileImage = global::DB3Client.Resource.orders90;
@@ -292,5 +310,6 @@ namespace DB3Client.Forms
         private MLLink metroLink1;
         private System.Windows.Forms.GroupBox groupBox1;
         private MLGroupBox mlGroupBox1;
+        private MLTile mlDocuments;
     }
 }

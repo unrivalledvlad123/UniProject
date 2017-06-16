@@ -313,6 +313,15 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Clear contents!.
+        /// </summary>
+        internal static string clear_contents {
+            get {
+                return ResourceManager.GetString("clear_contents", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Client Information.
         /// </summary>
         internal static string client_info {
@@ -556,6 +565,24 @@ namespace Common.Resourses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Document contents:.
+        /// </summary>
+        internal static string document_contants {
+            get {
+                return ResourceManager.GetString("document_contants", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Documents Report.
+        /// </summary>
+        internal static string documents_report {
+            get {
+                return ResourceManager.GetString("documents_report", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Editing company Info failed!.
         /// </summary>
         internal static string edit_company_fail_error {
@@ -714,6 +741,15 @@ namespace Common.Resourses {
         internal static string export_to_csv {
             get {
                 return ResourceManager.GetString("export_to_csv", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export to CSV.
+        /// </summary>
+        internal static string export_to_csv_d {
+            get {
+                return ResourceManager.GetString("export_to_csv_d", resourceCulture);
             }
         }
         
@@ -1618,15 +1654,6 @@ namespace Common.Resourses {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tansactions.
-        /// </summary>
-        internal static string tansactions {
-            get {
-                return ResourceManager.GetString("tansactions", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Price list.
         /// </summary>
         internal static string tb_price_list_wharehouse {
@@ -1695,6 +1722,15 @@ namespace Common.Resourses {
         internal static string tp_orders {
             get {
                 return ResourceManager.GetString("tp_orders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transactions.
+        /// </summary>
+        internal static string transactions {
+            get {
+                return ResourceManager.GetString("transactions", resourceCulture);
             }
         }
         

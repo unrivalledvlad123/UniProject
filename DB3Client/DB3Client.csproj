@@ -159,6 +159,12 @@
     <Compile Include="Controls\ContractsControl.Designer.cs">
       <DependentUpon>ContractsControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\DocumentsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DocumentsControl.Designer.cs">
+      <DependentUpon>DocumentsControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\InvoiceControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -341,6 +347,9 @@
     <EmbeddedResource Include="Controls\ContractsControl.resx">
       <DependentUpon>ContractsControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\DocumentsControl.resx">
+      <DependentUpon>DocumentsControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\InvoiceControl.resx">
       <DependentUpon>InvoiceControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -472,6 +481,9 @@
     <None Include="Resources\documents_icon1.jpg" />
     <None Include="Resources\documents_icon_shadow.jpg" />
     <None Include="Resources\folders_documents.jpg" />
+    <None Include="Resources\documents90.png" />
+    <None Include="Resources\left.png" />
+    <None Include="Resources\left.jpg" />
     <Content Include="Resourses\Images\200x200.png" />
     <Content Include="Resourses\Images\ico.ico" />
     <Content Include="Resourses\Images\50x400 mainFormLogo.png" />

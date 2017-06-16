@@ -16,6 +16,13 @@ using DB3Client.ServiceAccess;
 
 namespace DB3Client.Controls
 {
+    [Permission(PermissionId = "F7B69CFE-7897-41EF-92B6-F355FE35B426", PermissionName = "add_contract", PermissionLocation = "contacts", PermissionControlRoot = "contacts")]
+    [Permission(PermissionId = "34B2CB6B-5561-4F9C-BC21-AD5849D6684C", PermissionName = "edit_contract", PermissionLocation = "contacts", PermissionControlRoot = "contacts")]
+    [Permission(PermissionId = "F7B69CFE-7897-41EF-92B6-F355FE35B426", PermissionName = "add_contract", PermissionLocation = "contacts", PermissionControlRoot = "contacts")]
+    [Permission(PermissionId = "DD4329FC-968D-4D60-B1C5-514AB41B7D6C", PermissionName = "view_transaction_details", PermissionLocation = "transactions", PermissionControlRoot = "contacts")]
+    [Permission(PermissionId = "5D8ADF57-AC19-46B9-84BF-B264DC39E501", PermissionName = "view_invoice", PermissionLocation = "transactions", PermissionControlRoot = "contacts")]
+    [Permission(PermissionId = "1AB9DA40-1175-4791-ADF2-7795B58AD05C", PermissionName = "view_sale_receipt", PermissionLocation = "transactions", PermissionControlRoot = "contacts")]
+
     public partial class ContractsControl : UserControl
     {
         public List<CommonContract>ListOfAllContracts = new List<CommonContract>();
@@ -349,6 +356,8 @@ namespace DB3Client.Controls
             }
             
         }
+
+        
     }
 }
 

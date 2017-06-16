@@ -540,7 +540,7 @@
   <data name="btn_Close" xml:space="preserve">
     <value>Затвори</value>
   </data>
-  <data name="tansactions" xml:space="preserve">
+  <data name="transactions" xml:space="preserve">
     <value>Продажби</value>
   </data>
   <data name="all_available_MOLS" xml:space="preserve">
@@ -716,5 +716,17 @@
   </data>
   <data name="goods_movement" xml:space="preserve">
     <value>Движение на стоки:</value>
+  </data>
+  <data name="documents_report" xml:space="preserve">
+    <value>Репорт Документи</value>
+  </data>
+  <data name="export_to_csv_d" xml:space="preserve">
+    <value>Запис като CSV</value>
+  </data>
+  <data name="clear_contents" xml:space="preserve">
+    <value>Изчисти полетата!</value>
+  </data>
+  <data name="document_contants" xml:space="preserve">
+    <value>Документът съдържа:</value>
   </data>
 </root>
